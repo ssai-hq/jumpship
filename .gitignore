@@ -1,0 +1,31 @@
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Go
+engine/bin/
+*.test
+*.out
+vendor/
+
+# Node / web
+node_modules/
+.next/
+dist/
+*.local
+
+# Env & secrets — never commit credentials
+.env
+.env.*
+*.pem
+*.key
+
+# Local dev state
+*.sqlite
+*.sqlite3
+deploy/box/data/
+.terraform/
+*.tfstate
+*.tfstate.*
