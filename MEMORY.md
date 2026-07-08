@@ -5,6 +5,7 @@ Running log of durable decisions and build state. Newest first. Keep entries dat
 ## 2026-07-08 — Repo initialized
 
 - Monorepo created under `ssai-hq/jumpship` (public). Engine (Go), web, deploy, docs all in one repo — deliberate reversal of the earlier 7-repo polyrepo plan for MVP speed.
+- Central brain: `mdhq/*MIGRATIONPIVOT/jumpship-docs/` in the ssai workspace — all planning/design docs for this repo go there (repo is public; docs stay private).
 - Canonical build plan: `fable-scaffold.md` in the ssai workspace (`mdhq/*MIGRATIONPIVOT/mission3-mongo-to-pg-research/`). Component specs, mapping-spec format, verification pyramid, and acceptance criteria all live there.
 - Nothing built yet. First milestone per the scaffold's 6-day sprint: profiler + corruption injector + golden test corpus.
 

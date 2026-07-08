@@ -6,7 +6,11 @@ MongoDB → Postgres migration engine with a verifiable guarantee. This is the S
 
 The whole migration gets built, but the **guarantee is the product**: integrity verification, human-gated cutover/rollback, and an auditable reversibility ledger. The transform layer (profiling, schema synthesis, data movement) is built to be *good enough and verifiable*; the verification/cutover surface is built to be best in the world. General coding agents commoditize the transform — they structurally can't own the guarantee.
 
-Canonical design doc: `../mdhq/*MIGRATIONPIVOT/mission3-mongo-to-pg-research/fable-scaffold.md` (in the parent ssai workspace, not this repo). The 97-failure-mode catalog and mitigations in the same directory are the spec for the guarantee surface. FM/M numbers referenced in code comments and commits point there.
+## The central brain
+
+**`../mdhq/*MIGRATIONPIVOT/jumpship-docs/`** (in the parent ssai workspace, not this repo) is the central brain for this repo — planning docs, design notes, and session outputs for jumpship live there, never in the public repo. Check it first when picking up work.
+
+The research foundation sits alongside it in `../mdhq/*MIGRATIONPIVOT/mission3-mongo-to-pg-research/`: `fable-scaffold.md` is the canonical design doc, and the 97-failure-mode catalog + mitigations are the spec for the guarantee surface. FM/M numbers referenced in code comments and commits point there.
 
 ## Load-bearing architectural constraints (decided; do not relitigate)
 
