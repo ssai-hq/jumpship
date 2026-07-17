@@ -1,0 +1,174 @@
+{
+  "$id": "https://jumpship.dev/contracts/cell/bootstrap.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One-use bootstrap/request/poll/complete exchange. Only keyed hashes of bootstrap and poll secrets are contract fields; private key material is forbidden.",
+  "properties": {
+    "action": {
+      "enum": [
+        "request",
+        "poll",
+        "complete"
+      ],
+      "type": "string"
+    },
+    "bootstrap_exchange_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "bootstrap_secret_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_release_binding_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "certificate_receipt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "certificate_request_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "control_region_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "csr_der_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_manifest_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "instance_identity_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "poll_secret_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "response_replay_until": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "issued",
+        "delivered",
+        "denied"
+      ],
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "bootstrap_exchange_id",
+    "action",
+    "deployment_manifest_id",
+    "deployment_manifest_hash",
+    "cell_release_binding_id",
+    "control_region_epoch",
+    "instance_identity_hash",
+    "csr_der_hash",
+    "bootstrap_secret_hash",
+    "poll_secret_hash",
+    "certificate_request_id",
+    "certificate_receipt_id",
+    "status",
+    "issued_at",
+    "expires_at",
+    "response_replay_until"
+  ],
+  "title": "Cell Bootstrap Exchange",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F06",
+    "F07"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

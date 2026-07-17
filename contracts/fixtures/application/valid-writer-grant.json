@@ -1,0 +1,31 @@
+{
+  "expected_valid": true,
+  "instance": {
+    "application_authority_epoch": 4,
+    "artifact_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "audience": "jumpship-application-writer",
+    "build_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "cohort_id": "018f0f7e-7b8a-7abc-8def-0123456789ac",
+    "config_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+    "credential_generation": 3,
+    "deploy_unit_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "encrypted_credential_envelope_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "environment": "production",
+    "expires_at": "2026-07-18T00:15:00Z",
+    "grant_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "migration_id": "018f0f7e-7b8a-7abc-8def-0123456789ac",
+    "nonce": "abcdefghijklmnopqrstuvwxyzABCDEF0123456789_-",
+    "not_before": "2026-07-18T00:00:00Z",
+    "payload_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "purpose": "application_writer_grant",
+    "reserved_cohort_generation": 8,
+    "schema_version": "1.0.0",
+    "signature_envelope_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "state": "signed_dormant",
+    "store": "target",
+    "workload_identity_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "workspace_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "writer_id": "018f0f7e-7b8a-7abc-8def-0123456789ab"
+  },
+  "schema_path": "contracts/application/application-writer-grant.schema.json"
+}

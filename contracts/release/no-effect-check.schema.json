@@ -1,0 +1,203 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/no-effect-check.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Zero-traffic probe proving a candidate has no listener, consumer, scheduler, writer, grant, route, lifecycle, or signer authority.",
+  "properties": {
+    "artifact_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "artifact_kind": {
+      "enum": [
+        "oci_image",
+        "web_deployment",
+        "ami",
+        "binary"
+      ],
+      "type": "string"
+    },
+    "binding_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "binding_inventory_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "checked_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "consumer_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "contract_manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "grant_authority_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "lifecycle_authority_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "listener_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:no_effect_check:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "no_effect_check_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "no_effect_check_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "no_effect_check",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "no_effect_check_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "probe_image_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "pass",
+        "fail"
+      ],
+      "type": "string"
+    },
+    "result_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "route_authority_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "scheduler_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signer_authority_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "writer_authority_count": {
+      "maximum": 0,
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "no_effect_check_id",
+    "artifact_kind",
+    "artifact_digest",
+    "deployment_id",
+    "config_hash",
+    "contract_manifest_hash",
+    "binding_inventory_version",
+    "binding_inventory_root",
+    "probe_image_digest",
+    "listener_count",
+    "consumer_count",
+    "scheduler_count",
+    "writer_authority_count",
+    "grant_authority_count",
+    "lifecycle_authority_count",
+    "route_authority_count",
+    "signer_authority_count",
+    "result",
+    "result_root",
+    "checked_at",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Deployment No Effect Check Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

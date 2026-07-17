@@ -1,0 +1,408 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "queued",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "queued"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "declared",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "attempt",
+  "schema_path": "contracts/workflow/attempt-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "declared",
+    "queued",
+    "running",
+    "waiting",
+    "succeeded",
+    "failed_recoverable",
+    "failed_terminal",
+    "canceled"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "declared",
+      "to_state": "queued"
+    },
+    {
+      "expected": "valid",
+      "from_state": "queued",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "waiting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "waiting",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "canceled"
+    }
+  ]
+}

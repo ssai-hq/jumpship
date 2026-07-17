@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "audience": "jumpship-coding-agent",
+      "case_id": "coding-agent-browser-ceremony",
+      "expected": "audience_not_allowed",
+      "method": "browser_ceremony.create"
+    },
+    {
+      "case_id": "peer-uid-mismatch",
+      "expected": "peer_identity_mismatch",
+      "peer_uid": 501,
+      "socket_owner_uid": 502
+    },
+    {
+      "case_id": "handle-replay",
+      "expected": "capability_handle_replayed",
+      "handle_state": "consumed"
+    },
+    {
+      "case_id": "bearer-field",
+      "expected": "unknown_property",
+      "extra_property": "access_token"
+    }
+  ],
+  "fixture_version": "1.0.0"
+}

@@ -1,0 +1,514 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/agent-bundle.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "harness_image"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "runtime"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "provider_adapter"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "model_route"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "prompt_bundle"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "skill_bundle"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "semantic_artifact_manifest"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "context_compiler"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "tool_catalog"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "active_run_budget_profile"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "analysis_runner_image"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "analysis_runner_policy"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "analysis_runner_descriptor"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "corridor_profile"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "provider_data_use_record"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "checkpoint_compatibility"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "sanitizer"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "components": {
+          "contains": {
+            "properties": {
+              "kind": {
+                "const": "evaluator_contract"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    }
+  ],
+  "description": "Content-addressed executable agent component set; provenance signatures remain detached.",
+  "properties": {
+    "agent_bundle_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "bundle_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "components": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "harness_image",
+              "runtime",
+              "provider_adapter",
+              "model_route",
+              "prompt_bundle",
+              "skill_bundle",
+              "semantic_artifact_manifest",
+              "context_compiler",
+              "tool_catalog",
+              "active_run_budget_profile",
+              "analysis_runner_image",
+              "analysis_runner_policy",
+              "analysis_runner_descriptor",
+              "corridor_profile",
+              "provider_data_use_record",
+              "checkpoint_compatibility",
+              "sanitizer",
+              "evaluator_contract"
+            ],
+            "type": "string"
+          },
+          "object_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "version": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "object_id",
+          "version",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 18,
+      "minItems": 18,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:agent_bundle:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "agent_bundle_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "created_at"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "agent_bundle_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "agent_bundle",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "runtime_contract_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "supported_release_unit_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tool_catalog_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "agent_bundle_id",
+    "bundle_version",
+    "content_sha256",
+    "components",
+    "runtime_contract_hash",
+    "tool_catalog_hash",
+    "provider_data_use_record_id",
+    "provider_data_use_record_hash",
+    "supported_release_unit_schema_hash",
+    "created_at",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Immutable Agent Bundle Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

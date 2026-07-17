@@ -1,0 +1,117 @@
+{
+  "cases": [
+    {
+      "document": {
+        "approvals": [
+          {
+            "approval_evidence_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "approved_at": "2026-07-18T02:00:00Z",
+            "operator_id": "018f0f00-0000-7000-8000-000000000011",
+            "operator_role": "recovery_operator"
+          },
+          {
+            "approval_evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "approved_at": "2026-07-18T02:01:00Z",
+            "operator_id": "018f0f00-0000-7000-8000-000000000012",
+            "operator_role": "security_operator"
+          }
+        ],
+        "current_control_region_epoch": 8,
+        "environment": "production",
+        "expires_at": "2026-07-18T02:17:00Z",
+        "failover_manifest_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "infrastructure_readiness_root": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "issued_at": "2026-07-18T02:02:00Z",
+        "nonce_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "primary_fence_receipt_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "prior_control_region_epoch": 7,
+        "provider_journal_reconciliation_root": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "purpose": "control_region_failover",
+        "release_unit_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "release_unit_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "restore_point_id": "rds-restore-20260718-001",
+        "restore_root_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "schema_version": "1.0.0",
+        "source_region": "us-east-1",
+        "target_region": "us-west-2"
+      },
+      "expected": "valid",
+      "name": "two-operator-failover"
+    },
+    {
+      "document": {
+        "approvals": [
+          {
+            "approval_evidence_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "approved_at": "2026-07-18T02:00:00Z",
+            "operator_id": "018f0f00-0000-7000-8000-000000000011",
+            "operator_role": "recovery_operator"
+          }
+        ],
+        "current_control_region_epoch": 8,
+        "environment": "production",
+        "expires_at": "2026-07-18T02:17:00Z",
+        "failover_manifest_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "infrastructure_readiness_root": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "issued_at": "2026-07-18T02:02:00Z",
+        "nonce_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "primary_fence_receipt_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "prior_control_region_epoch": 7,
+        "provider_journal_reconciliation_root": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "purpose": "control_region_failover",
+        "release_unit_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "release_unit_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "restore_point_id": "rds-restore-20260718-001",
+        "restore_root_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "schema_version": "1.0.0",
+        "source_region": "us-east-1",
+        "target_region": "us-west-2"
+      },
+      "expected": "invalid",
+      "expected_error": "approvals.minItems",
+      "name": "one-operator-denied"
+    },
+    {
+      "document": {
+        "approvals": [
+          {
+            "approval_evidence_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+            "approved_at": "2026-07-18T02:00:00Z",
+            "operator_id": "018f0f00-0000-7000-8000-000000000011",
+            "operator_role": "recovery_operator"
+          },
+          {
+            "approval_evidence_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+            "approved_at": "2026-07-18T02:01:00Z",
+            "operator_id": "018f0f00-0000-7000-8000-000000000012",
+            "operator_role": "security_operator"
+          }
+        ],
+        "current_control_region_epoch": 8,
+        "environment": "production",
+        "expires_at": "2026-07-18T02:17:00Z",
+        "failover_manifest_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "infrastructure_readiness_root": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "issued_at": "2026-07-18T02:02:00Z",
+        "nonce_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "primary_fence_receipt_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "prior_control_region_epoch": 7,
+        "provider_journal_reconciliation_root": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "purpose": "cell_lifecycle_command",
+        "release_unit_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "release_unit_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "restore_point_id": "rds-restore-20260718-001",
+        "restore_root_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "schema_version": "1.0.0",
+        "source_region": "us-east-1",
+        "target_region": "us-west-2"
+      },
+      "expected": "invalid",
+      "expected_error": "purpose.const",
+      "name": "wrong-purpose-denied"
+    }
+  ],
+  "kind": "control-region-failover-fixture-set",
+  "schema_path": "contracts/recovery/control-region-failover-manifest.schema.json",
+  "schema_version": "1.0.0"
+}

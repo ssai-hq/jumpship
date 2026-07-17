@@ -1,0 +1,119 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/deployment-attestation.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Browser-human identification for reconciliation; it never proves deployment or grants deploy authority.",
+  "properties": {
+    "actor_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "actor_role": {
+      "const": "deployment_owner",
+      "type": "string"
+    },
+    "deploy_unit_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "deployment_attestation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "deployment_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "environment": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "evidence_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_artifact_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_config_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "identified_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "merge_equivalence_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "pr_binding_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "provider_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "reconciliation_state": {
+      "enum": [
+        "pending",
+        "observed",
+        "runtime_proven",
+        "stale",
+        "rejected"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deployment_attestation_id",
+    "workspace_id",
+    "migration_id",
+    "deployment_id",
+    "deploy_unit_id",
+    "provider_id",
+    "pr_binding_id",
+    "merge_equivalence_root",
+    "expected_artifact_digest",
+    "expected_config_digest",
+    "environment",
+    "actor_id",
+    "actor_role",
+    "expected_version",
+    "identified_at",
+    "reconciliation_state",
+    "evidence_root"
+  ],
+  "title": "Jumpship Customer Deployment Identification Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03",
+    "F28"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

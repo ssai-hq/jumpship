@@ -1,0 +1,395 @@
+{
+  "expected_valid": true,
+  "instance": {
+    "allowed_origins": [
+      "https://app.example.com"
+    ],
+    "api_host": "api.example.com",
+    "application_host": "app.example.com",
+    "auth_callback_host": "auth-callback.example.com",
+    "body_inspection_exclusion_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "cell_control_host": "cell-control.example.com",
+    "config_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "connector_callback_host": "auth-callback.example.com",
+    "cookies": [
+      {
+        "authoritative": true,
+        "domain_scope": "host_only",
+        "host_role": "api",
+        "http_only": true,
+        "max_age_seconds": 604800,
+        "name": "__Host-js_session",
+        "path": "/",
+        "same_site": "Lax",
+        "secure": true
+      },
+      {
+        "authoritative": false,
+        "domain_scope": "host_only",
+        "host_role": "api",
+        "http_only": true,
+        "max_age_seconds": 600,
+        "name": "__Host-js_oauth_start",
+        "path": "/",
+        "same_site": "Lax",
+        "secure": true
+      },
+      {
+        "authoritative": false,
+        "domain_scope": "host_only",
+        "host_role": "auth_callback",
+        "http_only": true,
+        "max_age_seconds": 600,
+        "name": "__Host-js_oauth_callback",
+        "path": "/",
+        "same_site": "Lax",
+        "secure": true
+      },
+      {
+        "authoritative": false,
+        "domain_scope": "parent_domain",
+        "host_role": "presentation",
+        "http_only": true,
+        "max_age_seconds": 300,
+        "name": "__Secure-js_present",
+        "path": "/",
+        "same_site": "Lax",
+        "secure": true
+      }
+    ],
+    "cors_allow_credentials": true,
+    "cors_headers": [
+      "Content-Type",
+      "X-CSRF-Token",
+      "Idempotency-Key",
+      "If-Match",
+      "X-Request-ID",
+      "traceparent"
+    ],
+    "cors_methods": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE",
+      "OPTIONS"
+    ],
+    "cors_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "csrf_exempt_operation_ids": [
+      "startIdentityOAuth",
+      "prepareIdentityOAuthCallback",
+      "consumeIdentityOAuthCallback",
+      "completeIdentityOAuth",
+      "prepareConnectorOAuthCallback",
+      "consumeConnectorOAuthCallback",
+      "completeConnectorOAuth"
+    ],
+    "csrf_header_name": "X-CSRF-Token",
+    "csrf_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "csrf_route_classes": [
+      "ordinary_mutation",
+      "security_sensitive_mutation",
+      "credential_intake",
+      "consent_execution"
+    ],
+    "csrf_session_binding": "session_id_and_route_class",
+    "csrf_storage": "page_memory_only",
+    "csrf_token_transport": "synchronizer_header",
+    "domain_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "domain_policy_version": "1.0.0",
+    "environment": "production",
+    "handler_compensation_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "handoff_binding_schema_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "handoff_expiry_seconds": 60,
+    "interstitial_csp_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "interstitial_form_action_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "interstitial_script_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "listener_rule_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "main_host_callback_denial_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "presentation_algorithms": [
+      "ES256"
+    ],
+    "presentation_audience": "jumpship-presentation",
+    "presentation_issuer_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "presentation_jwks_cache_max_seconds": 300,
+    "presentation_jwks_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "presentation_jwks_url": "https://api.example.com/v1/auth/jwks.json",
+    "presentation_key_overlap_seconds": 604800,
+    "presentation_payload_max_age_seconds": 300,
+    "presentation_purpose": "route_shaping_only",
+    "presentation_rotation_cadence": "monthly",
+    "presentation_unknown_kid_behavior": "fail_closed",
+    "providers": [
+      {
+        "client_id_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "discovery_url_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pkce_method": "S256",
+        "provider": "google",
+        "redirect_uri_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "scope_set_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "client_id_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "discovery_url_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "pkce_method": "S256",
+        "provider": "github",
+        "redirect_uri_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "scope_set_hash": "1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    ],
+    "referrer_policy": "no-referrer",
+    "release_unit_id": "2222222222222222222222222222222222222222222222222222222222222222",
+    "route_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+    "route_tuples": [
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": true,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/oauth/{provider}/start",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "auth_callback",
+        "method": "POST",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/auth/oauth/{provider}/prepare",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "none",
+        "csrf_exempt": true,
+        "host_role": "auth_callback",
+        "method": "GET",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/auth/oauth/{provider}/callback",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/oauth/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "connector_callback",
+        "method": "POST",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/connectors/{kind}/oauth/prepare",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "none",
+        "csrf_exempt": true,
+        "host_role": "connector_callback",
+        "method": "GET",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/connectors/{kind}/callback",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/connectors/oauth/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "suppressed_binary",
+        "csrf_exempt": true,
+        "host_role": "cell_control",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/internal/cell-certificates/bootstrap/request",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "suppressed_binary",
+        "csrf_exempt": true,
+        "host_role": "cell_control",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/internal/cell-certificates/bootstrap/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "schema_version": "1.0.0",
+    "sensitive_body_routes": [
+      {
+        "access_logs": "disabled",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "auth_callback",
+        "method": "POST",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/auth/oauth/{provider}/prepare",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/oauth/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "connector_callback",
+        "method": "POST",
+        "origin_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "path_template": "/v1/connectors/{kind}/oauth/prepare",
+        "route_build_digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "form_redacted",
+        "csrf_exempt": true,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/connectors/oauth/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "PUT",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/mongodb/credential",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/invitations/accept",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/device/authorizations/approve",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/device/token",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/webauthn/registration/options",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/auth/webauthn/registration/verify",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/cli/browser-ceremonies/{ceremony_id}/decision",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "enabled_redacted",
+        "body_policy": "json",
+        "csrf_exempt": false,
+        "host_role": "api",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}/confirm",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "suppressed_binary",
+        "csrf_exempt": true,
+        "host_role": "cell_control",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/internal/cell-certificates/bootstrap/request",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "access_logs": "disabled",
+        "body_policy": "suppressed_binary",
+        "csrf_exempt": true,
+        "host_role": "cell_control",
+        "method": "POST",
+        "origin_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "path_template": "/v1/internal/cell-certificates/bootstrap/complete",
+        "route_build_digest": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "session_absolute_seconds": 604800,
+    "session_idle_seconds": 43200,
+    "session_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "session_touch_interval_seconds": 300,
+    "telemetry_suppression_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "waf_redaction_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "webauthn_algorithm_policy_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "webauthn_attestation": "none",
+    "webauthn_challenge_policy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "webauthn_origins": [
+      "https://app.example.com"
+    ],
+    "webauthn_resident_key": "preferred",
+    "webauthn_rp_id": "example.com",
+    "webauthn_user_verification": "required"
+  },
+  "schema_path": "contracts/auth/deployed-auth-config.schema.json"
+}

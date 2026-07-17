@@ -1,0 +1,175 @@
+{
+  "$id": "https://jumpship.dev/contracts/client/local-broker.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "client_audience": {
+              "const": "jumpship-cli-human"
+            },
+            "method": {
+              "enum": [
+                "session.status",
+                "session.logout",
+                "api.read",
+                "api.safe_command",
+                "browser_ceremony.create",
+                "browser_ceremony.status",
+                "capability.revoke"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "client_audience": {
+              "const": "jumpship-coding-agent"
+            },
+            "method": {
+              "enum": [
+                "session.status",
+                "session.logout",
+                "api.read",
+                "api.safe_command",
+                "capability.revoke"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "description": "Length-framed peer-bound broker protocol. Bearers, refresh tokens, credential values, and presigned URLs are unrepresentable.",
+  "properties": {
+    "capability_handle": {
+      "anyOf": [
+        {
+          "pattern": "^jlc_[A-Za-z0-9_-]{32,128}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "client_audience": {
+      "enum": [
+        "jumpship-cli-human",
+        "jumpship-coding-agent"
+      ],
+      "type": "string"
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "frame_type": {
+      "enum": [
+        "request",
+        "response",
+        "receipt",
+        "error"
+      ],
+      "type": "string"
+    },
+    "method": {
+      "enum": [
+        "session.status",
+        "session.logout",
+        "api.read",
+        "api.safe_command",
+        "browser_ceremony.create",
+        "browser_ceremony.status",
+        "capability.revoke"
+      ],
+      "type": "string"
+    },
+    "peer_uid": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "protocol_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "receipt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "request_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "request_payload_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "safe_response_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "scope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "protocol_version",
+    "frame_type",
+    "request_id",
+    "client_audience",
+    "peer_uid",
+    "method",
+    "capability_handle",
+    "scope_hash",
+    "request_payload_hash",
+    "safe_response_hash",
+    "receipt_id",
+    "error_code",
+    "expires_at"
+  ],
+  "title": "Jumpship Local Credential Broker Frame Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "identity_tenant",
+  "x-jumpship-flow-ids": [
+    "F23"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

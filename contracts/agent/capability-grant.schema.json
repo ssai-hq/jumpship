@@ -1,0 +1,130 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/capability-grant.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Exact backend authorization for one bounded tool invocation; it cannot widen descriptor mode.",
+  "properties": {
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "consequence_class": {
+      "enum": [
+        "observation",
+        "reversible_effect",
+        "closing_door",
+        "irreversible_effect"
+      ],
+      "type": "string"
+    },
+    "control_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "execution_mode": {
+      "enum": [
+        "inline",
+        "durable"
+      ],
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "grant_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "operation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "scope_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_purpose": {
+      "const": "agent_capability_grant",
+      "type": "string"
+    },
+    "tool_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "tool_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "grant_id",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "run_id",
+    "operation_id",
+    "tool_id",
+    "tool_version",
+    "execution_mode",
+    "consequence_class",
+    "scope_root",
+    "input_hash",
+    "control_epoch",
+    "issued_at",
+    "expires_at",
+    "nonce_hash",
+    "signature_purpose",
+    "signature_envelope_hash"
+  ],
+  "title": "Agent Capability Grant Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F18"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

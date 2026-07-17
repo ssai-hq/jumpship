@@ -1,0 +1,233 @@
+{
+  "$id": "https://jumpship.dev/contracts/engine/operation-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Backend-authorized deterministic engine operation with immutable scope, versions, epochs, data bounds, durable-only execution mode, and idempotency identity.",
+  "properties": {
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "attempt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authorized_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "consequence_class": {
+      "enum": [
+        "observation",
+        "advisory_analysis",
+        "proposal",
+        "deterministic_effect",
+        "irreversible_boundary"
+      ],
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "corridor_profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "corridor_profile_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "execution_mode": {
+      "const": "durable",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_artifact_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mapping_spec_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mapping_spec_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "maximum_input_bytes": {
+      "maximum": 1073741824,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "maximum_input_data_class": {
+      "enum": [
+        "public",
+        "internal_operational",
+        "identity_tenant",
+        "shared_migration",
+        "restricted_customer",
+        "credential_secret",
+        "security_material"
+      ],
+      "type": "string"
+    },
+    "maximum_output_bytes": {
+      "maximum": 268435456,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "maximum_output_data_class": {
+      "enum": [
+        "public",
+        "internal_operational",
+        "identity_tenant",
+        "shared_migration",
+        "restricted_customer",
+        "credential_secret",
+        "security_material"
+      ],
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "migration_phase": {
+      "enum": [
+        "snapshot",
+        "census",
+        "design",
+        "rehearsal",
+        "bulk_load",
+        "sync",
+        "verify",
+        "cutover",
+        "watch",
+        "decommission"
+      ],
+      "type": "string"
+    },
+    "operation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "tool_descriptor_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tool_name": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "tool_version": {
+      "maxLength": 64,
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "verification_rubric_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "verification_rubric_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "operation_id",
+    "attempt_id",
+    "corridor_profile_id",
+    "corridor_profile_hash",
+    "migration_phase",
+    "mapping_spec_id",
+    "mapping_spec_hash",
+    "verification_rubric_id",
+    "verification_rubric_hash",
+    "tool_name",
+    "tool_version",
+    "tool_descriptor_hash",
+    "execution_mode",
+    "consequence_class",
+    "input_hash",
+    "input_artifact_roots",
+    "maximum_input_data_class",
+    "maximum_output_data_class",
+    "maximum_input_bytes",
+    "maximum_output_bytes",
+    "application_authority_epoch",
+    "cell_write_epoch",
+    "idempotency_key_hash",
+    "authorized_at",
+    "expires_at"
+  ],
+  "title": "Engine Operation Envelope",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F06",
+    "F10",
+    "F13",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

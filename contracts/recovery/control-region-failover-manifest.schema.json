@@ -1,0 +1,157 @@
+{
+  "$id": "https://jumpship.dev/contracts/recovery/control-region-failover-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Two-operator, no-RDS signed-payload authorization for one exact regional failover epoch transition. The signer cannot activate and the activator cannot sign.",
+  "properties": {
+    "approvals": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approval_evidence_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "approved_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "operator_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "operator_role": {
+            "enum": [
+              "recovery_operator",
+              "security_operator"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "operator_id",
+          "operator_role",
+          "approved_at",
+          "approval_evidence_hash"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "current_control_region_epoch": {
+      "minimum": 2,
+      "type": "integer"
+    },
+    "environment": {
+      "enum": [
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "failover_manifest_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "infrastructure_readiness_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "primary_fence_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "prior_control_region_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "provider_journal_reconciliation_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "purpose": {
+      "const": "control_region_failover",
+      "type": "string"
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "restore_point_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "restore_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_region": {
+      "maxLength": 32,
+      "pattern": "^[a-z]{2}(?:-gov)?-[a-z]+-[1-9][0-9]*$",
+      "type": "string"
+    },
+    "target_region": {
+      "maxLength": 32,
+      "pattern": "^[a-z]{2}(?:-gov)?-[a-z]+-[1-9][0-9]*$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "failover_manifest_id",
+    "purpose",
+    "environment",
+    "source_region",
+    "target_region",
+    "prior_control_region_epoch",
+    "current_control_region_epoch",
+    "primary_fence_receipt_hash",
+    "restore_point_id",
+    "restore_root_hash",
+    "provider_journal_reconciliation_root",
+    "infrastructure_readiness_root",
+    "release_unit_id",
+    "release_unit_hash",
+    "nonce_hash",
+    "approvals",
+    "issued_at",
+    "expires_at"
+  ],
+  "title": "Control Region Failover Manifest",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

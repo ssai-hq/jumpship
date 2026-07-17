@@ -1,0 +1,340 @@
+{
+  "$id": "https://jumpship.dev/contracts/cell/crl-publication.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "crl_der_hash": {
+              "type": "null"
+            },
+            "new_crl_root_hash": {
+              "type": "null"
+            },
+            "object_key": {
+              "type": "null"
+            },
+            "object_version_id": {
+              "type": "null"
+            },
+            "published_at": {
+              "type": "null"
+            },
+            "quarantine_evidence_hash": {
+              "type": "null"
+            },
+            "status": {
+              "enum": [
+                "reserved",
+                "claimed"
+              ]
+            },
+            "terminal_receipt_hash": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "crl_der_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "new_crl_root_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "object_key": {
+              "maxLength": 256,
+              "pattern": "^cell-ca/crl/[a-z0-9-]+/[1-9][0-9]*/[0-9a-f]{64}\\.crl$",
+              "type": "string"
+            },
+            "object_version_id": {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            },
+            "published_at": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "quarantine_evidence_hash": {
+              "type": "null"
+            },
+            "status": {
+              "const": "published"
+            },
+            "terminal_receipt_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "properties": {
+            "crl_der_hash": {
+              "type": "null"
+            },
+            "new_crl_root_hash": {
+              "type": "null"
+            },
+            "object_key": {
+              "type": "null"
+            },
+            "object_version_id": {
+              "type": "null"
+            },
+            "published_at": {
+              "type": "null"
+            },
+            "quarantine_evidence_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "status": {
+              "const": "quarantined"
+            },
+            "terminal_receipt_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "description": "Monotonic RFC 5280 CRL request/publication record over the complete set of still-unexpired revoked serials. Object locations are exact and content addressed.",
+  "properties": {
+    "ca_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "crl_der_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "crl_number": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "crl_profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "crl_publication_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issuer_kid": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "issuer_region": {
+      "maxLength": 32,
+      "pattern": "^[a-z]{2}(?:-gov)?-[a-z]+-[1-9][0-9]*$",
+      "type": "string"
+    },
+    "new_crl_root_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "next_update": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "object_key": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "pattern": "^cell-ca/crl/[a-z0-9-]+/[1-9][0-9]*/[0-9a-f]{64}\\.crl$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "object_version_id": {
+      "anyOf": [
+        {
+          "maxLength": 1024,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "previous_crl_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "published_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "quarantine_evidence_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "requested_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "revoked_serial_set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "revoked_serials": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "certificate_expires_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "key_compromise",
+              "ca_compromise",
+              "affiliation_changed",
+              "superseded",
+              "cessation_of_operation",
+              "privilege_withdrawn"
+            ],
+            "type": "string"
+          },
+          "revocation_intent_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "serial_hex": {
+            "maxLength": 40,
+            "pattern": "^(?:0[1-9a-f]|[1-9a-f])[0-9a-f]{0,39}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "serial_hex",
+          "reason",
+          "revoked_at",
+          "certificate_expires_at",
+          "revocation_intent_hash"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100000,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "reserved",
+        "claimed",
+        "published",
+        "quarantined"
+      ],
+      "type": "string"
+    },
+    "tbs_cert_list_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "terminal_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "this_update": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "crl_publication_id",
+    "issuer_region",
+    "ca_generation",
+    "issuer_kid",
+    "crl_number",
+    "previous_crl_root_hash",
+    "revoked_serials",
+    "revoked_serial_set_hash",
+    "tbs_cert_list_hash",
+    "crl_profile_hash",
+    "this_update",
+    "next_update",
+    "status",
+    "crl_der_hash",
+    "object_key",
+    "object_version_id",
+    "new_crl_root_hash",
+    "terminal_receipt_hash",
+    "quarantine_evidence_hash",
+    "requested_at",
+    "published_at"
+  ],
+  "title": "Cell CRL Publication",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F06",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 8388608
+}

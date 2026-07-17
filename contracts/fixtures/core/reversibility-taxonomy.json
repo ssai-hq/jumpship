@@ -1,0 +1,322 @@
+{
+  "cases": [
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "successful_traffic_flip",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "traffic-cutover",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "cutover",
+        "reversibility_class": "free_until_cutover",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "valid",
+      "name": "free-until-cutover"
+    },
+    {
+      "document": {
+        "clock_source": "not_applicable",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "priced_rehearsed_operation",
+        "cost_currency": "USD",
+        "cost_estimate_minor_units": 250000,
+        "decision_key": "post-cutover-reversal",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "rollback-rehearsal",
+        "reversibility_class": "expensive_after_cutover",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "valid",
+      "name": "expensive-after-cutover"
+    },
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "first_external_exposure",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "external-credential-exposure",
+        "decision_version": 1,
+        "exposure_subject_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "required_operation_id": "requestArtifactAccess",
+        "reversibility_class": "closes_on_first_external_exposure",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "valid",
+      "name": "external-exposure"
+    },
+    {
+      "document": {
+        "clock_source": "backend_utc",
+        "closed_by_receipt_hash": null,
+        "closes_at": "2026-07-19T00:00:00Z",
+        "closure_predicate": "backend_deadline",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "rollback-window",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "close-rollback-window",
+        "reversibility_class": "closes_on_a_clock",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "valid",
+      "name": "authoritative-clock"
+    },
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "first_effect",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "foundation-selection",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "apply-foundation",
+        "reversibility_class": "never_reversible",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "block_effect",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "valid",
+      "name": "never-reversible"
+    },
+    {
+      "document": {
+        "clock_source": "not_applicable",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "priced_rehearsed_operation",
+        "cost_currency": "USD",
+        "cost_estimate_minor_units": null,
+        "decision_key": "post-cutover-reversal",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "rollback-rehearsal",
+        "reversibility_class": "expensive_after_cutover",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "invalid",
+      "expected_error": "cost_estimate_minor_units",
+      "name": "priced-operation-without-cost-denied"
+    },
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "first_external_exposure",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "external-credential-exposure",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "requestArtifactAccess",
+        "reversibility_class": "closes_on_first_external_exposure",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "invalid",
+      "expected_error": "exposure_subject_hash",
+      "name": "external-exposure-without-subject-denied"
+    },
+    {
+      "document": {
+        "clock_source": "backend_utc",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "backend_deadline",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "rollback-window",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "close-rollback-window",
+        "reversibility_class": "closes_on_a_clock",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "invalid",
+      "expected_error": "closes_at",
+      "name": "clock-without-deadline-denied"
+    },
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "successful_traffic_flip",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "traffic-cutover",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "cutover",
+        "reversibility_class": "free_until_cutover",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "retain_current_authority",
+        "schema_version": "1.0.0",
+        "state": "closed",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "invalid",
+      "expected_error": "closed_by_receipt_hash",
+      "name": "closed-without-receipt-denied"
+    },
+    {
+      "document": {
+        "clock_source": "provider_receipt",
+        "closed_by_receipt_hash": null,
+        "closes_at": null,
+        "closure_predicate": "first_effect",
+        "cost_currency": null,
+        "cost_estimate_minor_units": null,
+        "decision_key": "foundation-selection",
+        "decision_version": 1,
+        "exposure_subject_hash": null,
+        "required_operation_id": "apply-foundation",
+        "reversibility_class": "never_reversible",
+        "reversibility_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safe_failure": "escalate_human",
+        "schema_version": "1.0.0",
+        "state": "open",
+        "superseded_by": null,
+        "viability_evidence_roots": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "warning_required": true,
+        "warning_threshold_seconds": [
+          86400,
+          14400,
+          3600
+        ]
+      },
+      "expected": "invalid",
+      "expected_error": "safe_failure",
+      "name": "never-reversible-unknown-safe-failure-denied"
+    }
+  ],
+  "kind": "reversibility-taxonomy-fixture-set",
+  "schema_path": "contracts/decisions/reversibility.schema.json",
+  "schema_version": "1.0.0"
+}

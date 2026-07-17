@@ -1,0 +1,817 @@
+{
+  "cases": [
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "atlas-to-supabase"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "direct_endpoint_required",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "planetscale_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "atlas-to-planetscale"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "session_pooler",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "supavisor",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "supabase-supavisor-session-selected-by-workload"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "transaction_pooler",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "supavisor",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "supabase-supavisor-transaction-selected-by-workload"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": true,
+          "application_endpoint_mode": "transaction_pooler",
+          "application_endpoint_selection_basis": "transaction_semantics_and_branch_probe",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "pgbouncer",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "planetscale_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "planetscale-branch-specific-pgbouncer"
+    },
+    {
+      "document": {
+        "composition_outcome": "refused",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": "target_endpoint_unsuitable",
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "valid",
+      "name": "direct-engine-endpoint-probe-refusal"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_lookup",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "self_managed_mongodb",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "standalone"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "standalone_requires_freeze",
+      "name": "standalone-cdc-claim-denied"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "generic_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "target.provider.enum",
+      "name": "unsupported-target-family-denied"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": false,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "pre_post_images_supported.const",
+      "name": "pre-post-mode-without-capability-denied"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_lookup",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "pre_post_images_supported.const",
+      "name": "lookup-mode-cannot-claim-pre-images"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "freeze_only",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": false,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "cdc_supported.const",
+      "name": "freeze-mode-cannot-claim-cdc"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "transaction_pooler",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "engine_endpoint_mode.const",
+      "name": "engine-admin-pooler-denied"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "transaction_pooler",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "pgbouncer",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "application_endpoint_service.const",
+      "name": "supabase-pooler-must-be-supavisor"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "transaction_pooler",
+          "application_endpoint_selection_basis": "transaction_semantics_and_branch_probe",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "pgbouncer",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "planetscale_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "application_endpoint_branch_specific.const",
+      "name": "planetscale-pgbouncer-must-be-branch-specific"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": true,
+          "application_endpoint_mode": "session_pooler",
+          "application_endpoint_selection_basis": "transaction_semantics_and_branch_probe",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "pgbouncer",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "planetscale_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "application_endpoint_mode.enum",
+      "name": "planetscale-session-pooling-is-not-a-released-shape"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "freeze_only",
+          "cdc_supported": false,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": false,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "freeze_only",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": true,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "cdc_supported.const",
+      "name": "supported-profile-requires-live-cdc"
+    },
+    {
+      "document": {
+        "composition_outcome": "supported",
+        "corridor_family": "mongodb_postgres",
+        "corridor_profile_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2026-07-18T00:00:00Z",
+        "fallback_or_refusal_reason": null,
+        "pricing_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "pricing_version": "1.0.0",
+        "profile_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "profile_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "source": {
+          "cdc_mode": "change_stream_pre_post_images",
+          "cdc_supported": true,
+          "network_rung": "private_endpoint",
+          "pre_post_images_supported": true,
+          "probe_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "provider": "mongodb_atlas",
+          "read_only_privilege_proof_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "region": "us-east-1",
+          "server_version": "7.0.12",
+          "snapshot_rung": "secondary_dump_oplog",
+          "topology": "replica_set"
+        },
+        "target": {
+          "application_endpoint_branch_specific": false,
+          "application_endpoint_mode": "direct",
+          "application_endpoint_selection_basis": "workload_semantics_and_plan_network_probes",
+          "application_endpoint_selection_proof_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+          "application_endpoint_service": "direct",
+          "branching_supported": false,
+          "engine_endpoint_mode": "direct",
+          "logical_replication_supported": true,
+          "postgres_version": "17",
+          "privilege_profile_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "probe_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "provider": "supabase_postgres",
+          "region": "us-east-1",
+          "required_extensions": [
+            "pgcrypto"
+          ]
+        }
+      },
+      "expected": "invalid",
+      "expected_error": "branching_supported.const",
+      "name": "supported-profile-requires-branching"
+    }
+  ],
+  "kind": "corridor-profile-fixture-set",
+  "schema_path": "contracts/corridors/mongodb-postgres-profile.schema.json",
+  "schema_version": "1.0.0"
+}

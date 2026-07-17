@@ -1,0 +1,171 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/composition-gate-receipt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Unsigned content-addressed J13/J19 composition proof consumed by release evidence.",
+  "properties": {
+    "check_binary_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "command_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "composition_gate_receipt_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "composition_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "dependency_handoff_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "gate_id": {
+      "enum": [
+        "J13",
+        "J19"
+      ],
+      "type": "string"
+    },
+    "image_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "import_graph_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:composition_gate_receipt:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "composition_gate_receipt_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "composition_gate_receipt_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "composition_gate_receipt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "no_effect_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "normal_binary_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "owner_packet": {
+      "enum": [
+        "P13",
+        "P19"
+      ],
+      "type": "string"
+    },
+    "ownership_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "test_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "composition_gate_receipt_id",
+    "gate_id",
+    "owner_packet",
+    "source_commit",
+    "dependency_handoff_root",
+    "composition_root",
+    "normal_binary_digest",
+    "check_binary_digest",
+    "image_digest",
+    "command_root",
+    "test_root",
+    "import_graph_root",
+    "ownership_root",
+    "no_effect_root",
+    "content_sha256",
+    "created_at",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Composition Gate Receipt Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

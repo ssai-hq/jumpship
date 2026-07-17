@@ -1,0 +1,159 @@
+{
+  "$id": "https://jumpship.dev/contracts/crypto/signature-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Purpose-scoped detached signature over typed canonical claims. The logical payload, derived object identity, and this envelope are separate objects.",
+  "properties": {
+    "algorithm": {
+      "enum": [
+        "ECDSA_P256_SHA256",
+        "RSA_PSS_SHA256"
+      ],
+      "type": "string"
+    },
+    "envelope_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "ephemeral-nonprod",
+        "persistent-nonprod",
+        "isolated-quality",
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "expires_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "key_registry_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "key_registry_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "kid": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "migration_scope": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "object_schema_id": {
+      "maxLength": 512,
+      "pattern": "^https://jumpship\\.dev/contracts/[A-Za-z0-9_./-]+\\.schema\\.json$",
+      "type": "string"
+    },
+    "object_schema_version": {
+      "maxLength": 64,
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "object_type": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "payload_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "purpose": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_base64": {
+      "description": "Detached signature bytes; excluded from the signed claims.",
+      "maxLength": 8192,
+      "minLength": 8,
+      "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$",
+      "type": "string"
+    },
+    "signer_id": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "signer_role": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "tenant_scope": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "envelope_id",
+    "object_type",
+    "object_schema_id",
+    "object_schema_version",
+    "payload_digest",
+    "purpose",
+    "environment",
+    "tenant_scope",
+    "migration_scope",
+    "kid",
+    "algorithm",
+    "signer_id",
+    "signer_role",
+    "issued_at",
+    "expires_at",
+    "key_registry_id",
+    "key_registry_hash",
+    "signature_base64"
+  ],
+  "title": "Signature Envelope",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "public",
+  "x-jumpship-flow-ids": [
+    "F06",
+    "F17",
+    "F20",
+    "F21"
+  ],
+  "x-jumpship-max-bytes": 16384
+}

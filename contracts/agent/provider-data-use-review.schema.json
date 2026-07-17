@@ -1,0 +1,304 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-data-use-review.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "properties": {
+        "approvals": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "legal"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "approvals": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "security"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "approvals": {
+          "contains": {
+            "properties": {
+              "role": {
+                "const": "product"
+              }
+            },
+            "required": [
+              "role"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    }
+  ],
+  "description": "At-most-30-day legal/security/product review payload embedded in a signed review transition; approval is valid only when all three distinct roles approved.",
+  "oneOf": [
+    {
+      "properties": {
+        "approvals": {
+          "items": {
+            "properties": {
+              "decision": {
+                "const": "approved"
+              }
+            },
+            "required": [
+              "decision"
+            ]
+          }
+        },
+        "result": {
+          "const": "approved"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "approvals": {
+          "contains": {
+            "properties": {
+              "decision": {
+                "const": "denied"
+              }
+            },
+            "required": [
+              "decision"
+            ]
+          },
+          "minContains": 1
+        },
+        "result": {
+          "const": "denied"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "result": {
+          "const": "expired"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "approvals": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approved_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "approver_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "approved",
+              "denied"
+            ],
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "legal",
+              "security",
+              "product"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "approver_id",
+          "decision",
+          "evidence_root",
+          "approved_at"
+        ],
+        "type": "object"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "distinct_approver_count": {
+      "const": 3,
+      "type": "integer"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:provider_data_use_review:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "review_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "payload_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "review_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "provider_data_use_review",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "payload_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "approved",
+        "denied",
+        "expired"
+      ],
+      "type": "string"
+    },
+    "review_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "review_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_snapshot_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "validity_seconds": {
+      "maximum": 2592000,
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "review_id",
+    "provider_data_use_record_id",
+    "provider_data_use_record_hash",
+    "review_version",
+    "source_snapshot_hash",
+    "result",
+    "approvals",
+    "distinct_approver_count",
+    "reviewed_at",
+    "valid_until",
+    "validity_seconds",
+    "payload_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Provider Data Use Review Payload Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

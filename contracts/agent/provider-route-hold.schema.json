@@ -1,0 +1,151 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-route-hold.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Control-authority hold that atomically blocks new provider lease reservations.",
+  "oneOf": [
+    {
+      "properties": {
+        "completed_at": {
+          "const": null
+        },
+        "status": {
+          "const": "open"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "status": {
+          "const": "acknowledged"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "status": {
+          "const": "expiry_barrier_reached"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "status": {
+          "const": "superseded"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "binding_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "binding_inventory_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "completed_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hold_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "opened_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reserved_lease_max_expiry": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_purpose": {
+      "const": "provider_route_hold",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "acknowledged",
+        "expiry_barrier_reached",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "transition_sequence": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "hold_id",
+    "provider_data_use_record_id",
+    "transition_id",
+    "transition_sequence",
+    "binding_inventory_version",
+    "binding_inventory_root",
+    "reserved_lease_max_expiry",
+    "status",
+    "opened_at",
+    "completed_at",
+    "signature_purpose",
+    "signature_envelope_hash"
+  ],
+  "title": "Provider Route Hold Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

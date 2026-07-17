@@ -1,0 +1,14 @@
+{
+  "expected_errors": [
+    "wrong_audience",
+    "stale_generation",
+    "unknown_property"
+  ],
+  "expected_valid": false,
+  "instance_patch": {
+    "audience": "jumpship-coding-agent",
+    "plaintext_database_password": "forbidden",
+    "reserved_cohort_generation": 0
+  },
+  "schema_path": "contracts/application/application-writer-grant.schema.json"
+}

@@ -1,0 +1,315 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "draft",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "computing",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "awaiting_human",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "awaiting_human",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "awaiting_human",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "awaiting_human",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discussing",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discussing",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discussing",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discussing",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "delegated",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "resolved",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "computing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "draft"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "draft",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "decision",
+  "schema_path": "contracts/workflow/decision-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "draft",
+    "computing",
+    "awaiting_human",
+    "discussing",
+    "delegated",
+    "resolved",
+    "superseded"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "draft",
+      "to_state": "computing"
+    },
+    {
+      "expected": "valid",
+      "from_state": "computing",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "valid",
+      "from_state": "awaiting_human",
+      "to_state": "discussing"
+    },
+    {
+      "expected": "valid",
+      "from_state": "discussing",
+      "to_state": "awaiting_human"
+    },
+    {
+      "expected": "valid",
+      "from_state": "awaiting_human",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "valid",
+      "from_state": "discussing",
+      "to_state": "delegated"
+    },
+    {
+      "expected": "valid",
+      "from_state": "awaiting_human",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "valid",
+      "from_state": "discussing",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "valid",
+      "from_state": "delegated",
+      "to_state": "resolved"
+    },
+    {
+      "expected": "valid",
+      "from_state": "resolved",
+      "to_state": "superseded"
+    }
+  ]
+}

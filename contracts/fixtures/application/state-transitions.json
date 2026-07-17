@@ -1,0 +1,2885 @@
+{
+  "fixture_version": "1.0.0",
+  "machines": {
+    "external_review": {
+      "initial": [
+        "unavailable",
+        "configuration_required",
+        "ready"
+      ],
+      "invalid_transitions": [
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "unavailable",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "configuration_required",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "ready",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "queued",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "acknowledged",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reviewing",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "findings",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "no_blocking_findings",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "timed_out",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "configuration_required"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "ready"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "queued"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_from_state",
+          "from_state": "unknown_state",
+          "to_state": "unavailable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_to_state",
+          "from_state": "unavailable",
+          "to_state": "unknown_state"
+        }
+      ],
+      "never_authorizes": [
+        "customer_validation",
+        "merge",
+        "deployment",
+        "writer_authority"
+      ],
+      "states": [
+        "unavailable",
+        "configuration_required",
+        "ready",
+        "queued",
+        "acknowledged",
+        "reviewing",
+        "findings",
+        "no_blocking_findings",
+        "failed",
+        "timed_out",
+        "superseded"
+      ],
+      "valid_transitions": [
+        {
+          "expected": "valid",
+          "from_state": "unavailable",
+          "to_state": "ready"
+        },
+        {
+          "expected": "valid",
+          "from_state": "configuration_required",
+          "to_state": "ready"
+        },
+        {
+          "expected": "valid",
+          "from_state": "ready",
+          "to_state": "queued"
+        },
+        {
+          "expected": "valid",
+          "from_state": "queued",
+          "to_state": "acknowledged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "queued",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "queued",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "valid",
+          "from_state": "queued",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "acknowledged",
+          "to_state": "reviewing"
+        },
+        {
+          "expected": "valid",
+          "from_state": "acknowledged",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "acknowledged",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "valid",
+          "from_state": "acknowledged",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reviewing",
+          "to_state": "findings"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reviewing",
+          "to_state": "no_blocking_findings"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reviewing",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reviewing",
+          "to_state": "timed_out"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reviewing",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "findings",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "no_blocking_findings",
+          "to_state": "superseded"
+        }
+      ]
+    },
+    "patch_set": {
+      "initial": "planned",
+      "invalid_transitions": [
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "planned",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "generated",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "sealed",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validated",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "validation_degraded",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "publishable",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "published",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "superseded",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "generated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "published"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "failed",
+          "to_state": "failed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_from_state",
+          "from_state": "unknown_state",
+          "to_state": "planned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_to_state",
+          "from_state": "planned",
+          "to_state": "unknown_state"
+        }
+      ],
+      "states": [
+        "planned",
+        "generated",
+        "sealed",
+        "validated",
+        "validation_degraded",
+        "publishable",
+        "published",
+        "superseded",
+        "failed"
+      ],
+      "terminal": [
+        "superseded",
+        "failed"
+      ],
+      "valid_transitions": [
+        {
+          "expected": "valid",
+          "from_state": "planned",
+          "to_state": "generated"
+        },
+        {
+          "expected": "valid",
+          "from_state": "generated",
+          "to_state": "sealed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "sealed",
+          "to_state": "validated"
+        },
+        {
+          "expected": "valid",
+          "from_state": "sealed",
+          "to_state": "validation_degraded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "validated",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "valid",
+          "from_state": "validation_degraded",
+          "to_state": "publishable"
+        },
+        {
+          "expected": "valid",
+          "from_state": "publishable",
+          "to_state": "published"
+        },
+        {
+          "expected": "valid",
+          "from_state": "published",
+          "to_state": "superseded"
+        },
+        {
+          "expected": "valid",
+          "from_state": "planned",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "generated",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "sealed",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "validated",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "validation_degraded",
+          "to_state": "failed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "publishable",
+          "to_state": "failed"
+        }
+      ]
+    },
+    "pull_request": {
+      "initial": "opening",
+      "invalid_transitions": [
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "opening",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "open",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "open",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "open",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "open",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "open",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "changes_requested",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "changes_requested",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "changes_requested",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "changes_requested",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "changes_requested",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "customer_validated",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "customer_validated",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "customer_validated",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "customer_validated",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "customer_validated",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "merged",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "deployed",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "runtime_proven",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_head",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "stale_base",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "open"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "merged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "runtime_proven"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "closed_unmerged",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_from_state",
+          "from_state": "unknown_state",
+          "to_state": "opening"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_to_state",
+          "from_state": "opening",
+          "to_state": "unknown_state"
+        }
+      ],
+      "invalidation": {
+        "head_changed": [
+          "customer_validated",
+          "stale_head"
+        ]
+      },
+      "states": [
+        "opening",
+        "open",
+        "changes_requested",
+        "customer_validated",
+        "merged",
+        "deployed",
+        "runtime_proven",
+        "stale_head",
+        "stale_base",
+        "closed_unmerged"
+      ],
+      "valid_transitions": [
+        {
+          "expected": "valid",
+          "from_state": "opening",
+          "to_state": "open"
+        },
+        {
+          "expected": "valid",
+          "from_state": "opening",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "open",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "valid",
+          "from_state": "open",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "valid",
+          "from_state": "open",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "valid",
+          "from_state": "open",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "valid",
+          "from_state": "open",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "changes_requested",
+          "to_state": "open"
+        },
+        {
+          "expected": "valid",
+          "from_state": "changes_requested",
+          "to_state": "customer_validated"
+        },
+        {
+          "expected": "valid",
+          "from_state": "changes_requested",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "valid",
+          "from_state": "changes_requested",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "valid",
+          "from_state": "changes_requested",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "customer_validated",
+          "to_state": "changes_requested"
+        },
+        {
+          "expected": "valid",
+          "from_state": "customer_validated",
+          "to_state": "merged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "customer_validated",
+          "to_state": "stale_head"
+        },
+        {
+          "expected": "valid",
+          "from_state": "customer_validated",
+          "to_state": "stale_base"
+        },
+        {
+          "expected": "valid",
+          "from_state": "customer_validated",
+          "to_state": "closed_unmerged"
+        },
+        {
+          "expected": "valid",
+          "from_state": "merged",
+          "to_state": "deployed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "deployed",
+          "to_state": "runtime_proven"
+        }
+      ]
+    },
+    "writer_control": {
+      "authority_by_state": {
+        "blocked": "none",
+        "fenced": "none",
+        "freezing": "none",
+        "revoking": "none",
+        "source_enabled": "source",
+        "source_pending": "none",
+        "source_resumed": "source",
+        "target_enabled": "target",
+        "target_fenced": "none",
+        "target_pending": "none",
+        "tombstoned": "none"
+      },
+      "epoch_dimensions": [
+        "application_authority_epoch",
+        "cell_write_epoch",
+        "cohort_generation"
+      ],
+      "invalid_transitions": [
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_enabled",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "freezing",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "fenced",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_pending",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_enabled",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoking",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "target_fenced",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_pending",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "source_resumed",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "blocked",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_from_state",
+          "from_state": "unknown_state",
+          "to_state": "source_enabled"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_to_state",
+          "from_state": "source_enabled",
+          "to_state": "unknown_state"
+        }
+      ],
+      "rollback_requires": [
+        "target_provider_denial",
+        "fresh_source_resume_stream",
+        "fresh_source_grant_generation",
+        "source_provider_gate",
+        "source_activation_receipt"
+      ],
+      "states": [
+        "source_enabled",
+        "freezing",
+        "fenced",
+        "target_pending",
+        "target_enabled",
+        "revoking",
+        "target_fenced",
+        "source_pending",
+        "source_resumed",
+        "tombstoned",
+        "blocked"
+      ],
+      "valid_transitions": [
+        {
+          "expected": "valid",
+          "from_state": "source_enabled",
+          "to_state": "freezing"
+        },
+        {
+          "expected": "valid",
+          "from_state": "freezing",
+          "to_state": "fenced"
+        },
+        {
+          "expected": "valid",
+          "from_state": "freezing",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "fenced",
+          "to_state": "target_pending"
+        },
+        {
+          "expected": "valid",
+          "from_state": "fenced",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_pending",
+          "to_state": "target_enabled"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_pending",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_enabled",
+          "to_state": "revoking"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_enabled",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "revoking",
+          "to_state": "target_fenced"
+        },
+        {
+          "expected": "valid",
+          "from_state": "revoking",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "valid",
+          "from_state": "revoking",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_fenced",
+          "to_state": "source_pending"
+        },
+        {
+          "expected": "valid",
+          "from_state": "target_fenced",
+          "to_state": "blocked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "source_pending",
+          "to_state": "source_resumed"
+        },
+        {
+          "expected": "valid",
+          "from_state": "source_pending",
+          "to_state": "blocked"
+        }
+      ]
+    },
+    "writer_grant": {
+      "activation_requires": [
+        "current_application_authority_epoch",
+        "exact_workload_identity",
+        "build_config_match",
+        "provider_gate_receipt",
+        "encrypted_envelope_hash",
+        "next_cohort_generation"
+      ],
+      "invalid_transitions": [
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reserved",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reserved",
+          "to_state": "active"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "reserved",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "signed_dormant",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "signed_dormant",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "signed_dormant",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "active",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "active",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "active",
+          "to_state": "active"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "active",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoked",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoked",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoked",
+          "to_state": "active"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoked",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "revoked",
+          "to_state": "expired"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "expired",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "expired",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "expired",
+          "to_state": "active"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "expired",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "expired",
+          "to_state": "expired"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "active"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "expired"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "illegal_transition",
+          "from_state": "tombstoned",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_from_state",
+          "from_state": "unknown_state",
+          "to_state": "reserved"
+        },
+        {
+          "expected": "invalid",
+          "expected_error": "unknown_to_state",
+          "from_state": "reserved",
+          "to_state": "unknown_state"
+        }
+      ],
+      "states": [
+        "reserved",
+        "signed_dormant",
+        "active",
+        "revoked",
+        "expired",
+        "tombstoned"
+      ],
+      "valid_transitions": [
+        {
+          "expected": "valid",
+          "from_state": "reserved",
+          "to_state": "signed_dormant"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reserved",
+          "to_state": "expired"
+        },
+        {
+          "expected": "valid",
+          "from_state": "reserved",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "valid",
+          "from_state": "signed_dormant",
+          "to_state": "active"
+        },
+        {
+          "expected": "valid",
+          "from_state": "signed_dormant",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "signed_dormant",
+          "to_state": "expired"
+        },
+        {
+          "expected": "valid",
+          "from_state": "active",
+          "to_state": "revoked"
+        },
+        {
+          "expected": "valid",
+          "from_state": "active",
+          "to_state": "expired"
+        },
+        {
+          "expected": "valid",
+          "from_state": "revoked",
+          "to_state": "tombstoned"
+        },
+        {
+          "expected": "valid",
+          "from_state": "expired",
+          "to_state": "tombstoned"
+        }
+      ]
+    }
+  }
+}

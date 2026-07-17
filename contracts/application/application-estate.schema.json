@@ -1,0 +1,593 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/application-estate.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Immutable exact-commit census. Unknown or unsupported sites remain explicit blockers.",
+  "properties": {
+    "application_estate_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "coverage_complete": {
+      "type": "boolean"
+    },
+    "coverage_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "data_access_sites": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "commit_sha": {
+            "pattern": "^[0-9a-f]{40,64}$",
+            "type": "string"
+          },
+          "content_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "coverage_state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "effect": {
+            "enum": [
+              "read",
+              "write",
+              "admin"
+            ],
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "path_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "query_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "range_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "repository_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "semantics_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "site_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "source_namespace_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "symbol_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "site_id",
+          "repository_id",
+          "commit_sha",
+          "path_hash",
+          "symbol_hash",
+          "range_hash",
+          "content_hash",
+          "effect",
+          "source_namespace_hash",
+          "query_id",
+          "semantics_root",
+          "coverage_state",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 200000,
+      "minItems": 1,
+      "type": "array"
+    },
+    "deploy_units": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "coverage_state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "deploy_unit_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "deployment_controller": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "environment": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "path_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "repository_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "deploy_unit_id",
+          "repository_id",
+          "path_hash",
+          "environment",
+          "deployment_controller",
+          "coverage_state",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 8192,
+      "minItems": 1,
+      "type": "array"
+    },
+    "edge_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 200000,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evidence_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "repositories": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "base_ref": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "build_profiles": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "ci_test_command_hashes": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "coverage_state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "installation_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "instruction_hashes": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "language_profiles": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "name": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "owner": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "package_profiles": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+              "type": "string"
+            },
+            "maxItems": 128,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "permission_proof_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "permission_proof_version": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "pinned_commit_sha": {
+            "pattern": "^[0-9a-f]{40,64}$",
+            "type": "string"
+          },
+          "repository_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "repository_id",
+          "installation_id",
+          "owner",
+          "name",
+          "base_ref",
+          "pinned_commit_sha",
+          "permission_proof_version",
+          "permission_proof_root",
+          "language_profiles",
+          "build_profiles",
+          "package_profiles",
+          "instruction_hashes",
+          "ci_test_command_hashes",
+          "coverage_state",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4096,
+      "minItems": 1,
+      "type": "array"
+    },
+    "repository_set_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "unknown_finding_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 100000,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "workloads": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "coverage_state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "data_library": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "deploy_unit_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "framework": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "http_service",
+              "worker",
+              "cron",
+              "queue_consumer",
+              "serverless",
+              "cli",
+              "migration_job",
+              "mobile",
+              "shared_library",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "language": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "runtime": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "workload_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "workload_id",
+          "deploy_unit_id",
+          "kind",
+          "runtime",
+          "language",
+          "framework",
+          "data_library",
+          "coverage_state",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 32768,
+      "minItems": 1,
+      "type": "array"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "writers": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "activation_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "cohort_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "config_source_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "coverage_state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "drain_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "effect_classes": {
+            "items": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+              "type": "string"
+            },
+            "maxItems": 32,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "fence_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "freeze_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "namespace_roots": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "maxItems": 128,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "principal_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "rollback_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "smoke_control_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "workload_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "writer_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "writer_id",
+          "workload_id",
+          "cohort_id",
+          "principal_hash",
+          "config_source_hash",
+          "namespace_roots",
+          "effect_classes",
+          "freeze_control_hash",
+          "drain_control_hash",
+          "fence_control_hash",
+          "activation_control_hash",
+          "smoke_control_hash",
+          "rollback_control_hash",
+          "coverage_state",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 100000,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "application_estate_id",
+    "workspace_id",
+    "migration_id",
+    "revision",
+    "repository_set_root",
+    "evidence_root",
+    "repositories",
+    "deploy_units",
+    "workloads",
+    "data_access_sites",
+    "writers",
+    "edge_roots",
+    "unknown_finding_roots",
+    "coverage_root",
+    "coverage_complete",
+    "created_at"
+  ],
+  "title": "Jumpship Application Estate Manifest Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F11",
+    "F13"
+  ],
+  "x-jumpship-max-bytes": 67108864
+}

@@ -1,0 +1,696 @@
+{
+  "coverage_status": "complete",
+  "kind": "reversibility-taxonomy-coverage-report",
+  "openapi_operation_count": 93,
+  "openapi_operations": [
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "startIdentityOAuth",
+      "path": "/v1/auth/oauth/{provider}/start",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "prepareIdentityOAuthCallback",
+      "path": "/v1/auth/oauth/{provider}/prepare",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "consumeIdentityOAuthCallback",
+      "path": "/v1/auth/oauth/{provider}/callback",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "completeIdentityOAuth",
+      "path": "/v1/auth/oauth/complete",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getAuthSession",
+      "path": "/v1/auth/session",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "logoutSession",
+      "path": "/v1/auth/logout",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "logoutAllSessions",
+      "path": "/v1/auth/logout-all",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createWebAuthnRegistration",
+      "path": "/v1/auth/webauthn/registration/options",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "verifyWebAuthnRegistration",
+      "path": "/v1/auth/webauthn/registration/verify",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listWebAuthnCredentials",
+      "path": "/v1/auth/webauthn/credentials",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "DELETE",
+      "operation_id": "revokeWebAuthnCredential",
+      "path": "/v1/auth/webauthn/credentials/{credential_id}",
+      "reversibility_class": "expensive_after_cutover",
+      "safe_failure": "retain_current_credential",
+      "warning_rule": "before_last_credential_revocation"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createDeviceAuthorization",
+      "path": "/v1/auth/device/authorizations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "approveDeviceAuthorization",
+      "path": "/v1/auth/device/authorizations/approve",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "exchangeDeviceToken",
+      "path": "/v1/auth/device/token",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createBrowserCeremony",
+      "path": "/v1/cli/browser-ceremonies",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getBrowserCeremony",
+      "path": "/v1/cli/browser-ceremonies/{ceremony_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "decideBrowserCeremony",
+      "path": "/v1/cli/browser-ceremonies/{ceremony_id}/decision",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listWorkspaces",
+      "path": "/v1/workspaces",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createWorkspace",
+      "path": "/v1/workspaces",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getWorkspace",
+      "path": "/v1/workspaces/{workspace_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "PATCH",
+      "operation_id": "updateWorkspace",
+      "path": "/v1/workspaces/{workspace_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listWorkspaceMembers",
+      "path": "/v1/workspaces/{workspace_id}/members",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "inviteWorkspaceMember",
+      "path": "/v1/workspaces/{workspace_id}/invitations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "acceptWorkspaceInvitation",
+      "path": "/v1/invitations/accept",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "PATCH",
+      "operation_id": "updateWorkspaceMember",
+      "path": "/v1/workspaces/{workspace_id}/members/{user_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "DELETE",
+      "operation_id": "removeWorkspaceMember",
+      "path": "/v1/workspaces/{workspace_id}/members/{user_id}",
+      "reversibility_class": "expensive_after_cutover",
+      "safe_failure": "retain_current_membership",
+      "warning_rule": "before_access_revocation"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listMigrations",
+      "path": "/v1/workspaces/{workspace_id}/migrations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createMigration",
+      "path": "/v1/workspaces/{workspace_id}/migrations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getMigration",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "PATCH",
+      "operation_id": "updateMigration",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "startMigrationFromPrompt",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/start",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getAccessManifest",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/access-manifest",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listConnectors",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "beginConnectorGrant",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/{kind}/begin",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "prepareConnectorOAuthCallback",
+      "path": "/v1/connectors/{kind}/oauth/prepare",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "completeConnectorOAuth",
+      "path": "/v1/connectors/oauth/complete",
+      "reversibility_class": "closes_on_first_external_exposure",
+      "safe_failure": "leave_grant_pending",
+      "warning_rule": "before_provider_grant_activation"
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "PUT",
+      "operation_id": "putMongoDBCredential",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/mongodb/credential",
+      "reversibility_class": "closes_on_first_external_exposure",
+      "safe_failure": "do_not_store_or_log",
+      "warning_rule": "before_secret_intake"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "consumeConnectorOAuthCallback",
+      "path": "/v1/connectors/{kind}/callback",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "verifyConnector",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/{connector_id}/verify",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "DELETE",
+      "operation_id": "disconnectConnector",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/{connector_id}",
+      "reversibility_class": "expensive_after_cutover",
+      "safe_failure": "retain_current_connector",
+      "warning_rule": "before_connector_revocation"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listConnectorRecommendations",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connector-recommendations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "assignConsentApprover",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/approvers/{consent_kind}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getApplicationEstate",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/application-estate",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getApplicationChangeSet",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/application-change-sets/{version}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "configureDraftPRAuthority",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/github/pr-authority",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "dispatchExternalReview",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/pull-requests/{pr_binding_id}/reviews/{reviewer}",
+      "reversibility_class": "closes_on_first_external_exposure",
+      "safe_failure": "do_not_dispatch",
+      "warning_rule": "before_external_reviewer_dispatch"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "recordCustomerValidation",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/pull-requests/{pr_binding_id}/customer-validation",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "PUT",
+      "operation_id": "putDeploymentEvidenceProvider",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/deploy-units/{deploy_unit_id}/deployment-evidence-provider",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "identifyDeployment",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/deployments/{deployment_id}/attest",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getDeploymentProof",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/deployments/{deployment_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listWriterCohorts",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/writer-cohorts",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "exchangeApplicationWriterIdentity",
+      "path": "/v1/application-writer/identity-exchanges",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "requestApplicationWriterGrant",
+      "path": "/v1/application-writer/grants",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listConversations",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/conversations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createConversation",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/conversations",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listConversationEvents",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/conversations/{conversation_id}/events",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createConversationMessage",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/conversations/{conversation_id}/messages",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listDecisions",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/decisions",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getDecision",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/decisions/{decision_key}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "createDecisionMessage",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/decisions/{decision_key}/messages",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "delegateDecision",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/decisions/{decision_key}/delegate",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "resolveDecision",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/decisions/{decision_key}/resolve",
+      "reversibility_class": "request_bound_five_class",
+      "safe_failure": "leave_decision_open",
+      "warning_rule": "from_request_reversibility_and_closure"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getDecisionLedger",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/ledger",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listSpecs",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/specs",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "confirmSpec",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/specs/{spec_id}/confirm",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listRubrics",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/rubrics",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "confirmRubric",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/rubrics/{rubric_id}/confirm",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listAttempts",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/attempts",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getOperation",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/operations/{operation_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "requestOperation",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/operations",
+      "reversibility_class": "descriptor_and_request_bound",
+      "safe_failure": "grant_no_effect_authority",
+      "warning_rule": "from_tool_descriptor_and_operation_contract"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "cancelOperation",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/operations/{operation_id}/cancel",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listGates",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/gates",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "requestPhaseTransition",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/phase-transitions",
+      "reversibility_class": "transition_bound",
+      "safe_failure": "retain_current_phase",
+      "warning_rule": "from_target_phase_and_current_closure"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getTrafficAuthority",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/traffic-authority",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getMigrationHealth",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/health",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "streamMigrationEvents",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/events",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getConsent",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "challengeConsent",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}/challenge",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "confirmConsent",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}/confirm",
+      "reversibility_class": "never_reversible",
+      "safe_failure": "leave_consent_unexecuted",
+      "warning_rule": "typed_phrase_and_webauthn_before_confirmation"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "declineConsent",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}/decline",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listArtifacts",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/artifacts",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "requestArtifactAccess",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/artifacts/{artifact_id}/access",
+      "reversibility_class": "closes_on_first_external_exposure",
+      "safe_failure": "issue_no_capability",
+      "warning_rule": "before_capability_issuance"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "requestArtifactUpload",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/artifact-uploads",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "requestReport",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/reports",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getReport",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/reports/{report_id}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "listIncidents",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/incidents",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "boundary_classified",
+      "method": "POST",
+      "operation_id": "abortMigration",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/abort",
+      "reversibility_class": "request_mode_bound",
+      "safe_failure": "retain_current_migration_state",
+      "warning_rule": "before_abort_cleanup_authorization"
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getDeletionState",
+      "path": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/deletion",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "receiveProviderWebhook",
+      "path": "/v1/webhooks/{provider}",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "requestCellCertificateBootstrap",
+      "path": "/v1/internal/cell-certificates/bootstrap/request",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "POST",
+      "operation_id": "completeCellCertificateBootstrap",
+      "path": "/v1/internal/cell-certificates/bootstrap/complete",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getEnvironmentAgentIncapabilities",
+      "path": "/v1/meta/agent-incapabilities",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    },
+    {
+      "coverage_disposition": "not_irreversible_or_clock_exposure_closing",
+      "method": "GET",
+      "operation_id": "getMigrationAgentIncapabilities",
+      "path": "/v1/migrations/{migration_id}/agent-incapabilities",
+      "reason": "Operation has no irreversible effect and does not close a clock or first-exposure boundary."
+    }
+  ],
+  "schema_version": "1.0.0",
+  "tool_descriptor_policy": {
+    "closing_consequence_classes": [
+      "closing_door",
+      "irreversible_effect"
+    ],
+    "coverage": "all_future_and_release_registered_descriptors",
+    "inline_effect_authority": "forbidden",
+    "required_fields": [
+      "reversibility_class",
+      "warning_rule",
+      "safe_failure"
+    ]
+  }
+}

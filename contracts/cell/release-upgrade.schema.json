@@ -1,0 +1,202 @@
+{
+  "$id": "https://jumpship.dev/contracts/cell/release-upgrade.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Operator-authorized safe-checkpoint successor-generation upgrade. It cannot silently repin an existing generation to the current environment pointer.",
+  "properties": {
+    "authorization_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "binding_supersession_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "checkpoint_schema_version": {
+      "maxLength": 64,
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "compatibility_proof_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "completed_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "from_binding_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "from_binding_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "new_cell_generation": {
+      "minimum": 2,
+      "type": "integer"
+    },
+    "new_cell_write_epoch": {
+      "minimum": 2,
+      "type": "integer"
+    },
+    "old_cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "old_cell_write_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "old_generation_fence_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_upgrade_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "restore_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "safe_checkpoint_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "state": {
+      "enum": [
+        "requested",
+        "authorized",
+        "provisioning",
+        "restored",
+        "verified",
+        "superseded",
+        "failed"
+      ],
+      "type": "string"
+    },
+    "to_binding_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "to_binding_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "verification_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "release_upgrade_id",
+    "state",
+    "from_binding_id",
+    "from_binding_hash",
+    "to_binding_id",
+    "to_binding_hash",
+    "old_cell_generation",
+    "new_cell_generation",
+    "old_cell_write_epoch",
+    "new_cell_write_epoch",
+    "safe_checkpoint_hash",
+    "checkpoint_schema_version",
+    "compatibility_proof_hash",
+    "authorization_receipt_hash",
+    "restore_receipt_hash",
+    "verification_receipt_hash",
+    "old_generation_fence_receipt_hash",
+    "binding_supersession_receipt_hash",
+    "requested_at",
+    "completed_at"
+  ],
+  "title": "Cell Release Upgrade",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06",
+    "F07",
+    "F13"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

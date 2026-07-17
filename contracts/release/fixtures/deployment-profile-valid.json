@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "expectation": "valid",
+      "payload": {
+        "allows_customer_cells": false,
+        "allows_cutover": false,
+        "data_eligibility": "sanitized_non_customer",
+        "evidence_requirements": [
+          "materialize-smoke-drain-destroy",
+          "zero-windowed-inventory-receipt"
+        ],
+        "forbidden_combinations": [
+          "unknown profile IDs or undeclared module overrides",
+          "evidence substitution from a weaker profile",
+          "ad-hoc feature flags that alter authority or recovery guarantees",
+          "customer data, production activation, or cutover",
+          "windowed resources retained after the declared run"
+        ],
+        "implementation_default": true,
+        "modules": [
+          "state-lock",
+          "oidc-deploy",
+          "windowed-shared",
+          "synthetic-cell"
+        ],
+        "persistent_inventory": [
+          {
+            "class_id": "state-and-security-logs",
+            "maximum_count": 8,
+            "minimum_count": 1
+          }
+        ],
+        "profile_hash": "a3bd2e7f4825b8f78af45128836004806090c503729ee7785544872a9c998540",
+        "profile_id": "ephemeral-nonprod",
+        "profile_version": "1.0.0",
+        "requires_ha_recovery_support": false,
+        "roots": [
+          "infra/live/nonprod-foundation",
+          "infra/live/nonprod-windowed"
+        ],
+        "schema_version": "1.0.0",
+        "windowed_inventory": [
+          {
+            "class_id": "nonprod-shared-and-cell",
+            "maximum_count": 64,
+            "minimum_count": 0
+          }
+        ]
+      },
+      "reason": "closed implementation-default profile",
+      "schema_path": "contracts/release/deployment-profile.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

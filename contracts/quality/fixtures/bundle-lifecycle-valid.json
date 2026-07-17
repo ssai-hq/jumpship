@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "expectation": "valid",
+      "payload": {
+        "actor_id": "fixture-quality-owner",
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "corpus_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "environment": "isolated-quality",
+        "environment_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "evidence_class": "boundary_fixture",
+        "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "fixture_or_release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "from_state": "offline_qualified",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:bundle_lifecycle_transition:1.0.0\u0000",
+          "excluded_fields": [
+            "transition_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "transition_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "bundle_lifecycle_transition"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "occurred_at": "2026-07-18T00:00:00Z",
+        "policy_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reason_code": "shadow_window_started",
+        "schema_version": "1.0.0",
+        "to_state": "boundary_shadow",
+        "transition_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "reason": "offline qualification enters isolated boundary shadow",
+      "schema_path": "contracts/quality/bundle-lifecycle-transition.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

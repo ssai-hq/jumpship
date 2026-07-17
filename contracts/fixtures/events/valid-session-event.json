@@ -1,0 +1,37 @@
+{
+  "expected_valid": true,
+  "instance": {
+    "actor": {
+      "id": "control-api",
+      "type": "service"
+    },
+    "causation_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "conversation_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "correlation_id": "018f0f7e-7b8a-7abc-8def-0123456789ac",
+    "decision_id": null,
+    "effective_at": "2026-07-18T00:00:00Z",
+    "event_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "event_type": "migration.phase_changed",
+    "evidence_refs": [],
+    "iteration_sequence": null,
+    "links": [],
+    "migration_id": "018f0f7e-7b8a-7abc-8def-0123456789ac",
+    "migration_sequence": 7,
+    "occurred_at": "2026-07-18T00:00:00Z",
+    "operation_id": null,
+    "payload": {
+      "progress_percent": null,
+      "projection_root": "0000000000000000000000000000000000000000000000000000000000000000",
+      "resource_id": "018f0f7e-7b8a-7abc-8def-0123456789ac",
+      "resource_version": 3,
+      "safe_status": "discovery"
+    },
+    "phase": "discovery",
+    "recorded_at": "2026-07-18T00:00:01Z",
+    "run_id": null,
+    "safe_summary": "Discovery started after connector readiness was proven.",
+    "schema_version": "1.0.0",
+    "trace_id": "11111111111111111111111111111111"
+  },
+  "schema_path": "contracts/events/session-event.schema.json"
+}

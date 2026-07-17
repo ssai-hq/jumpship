@@ -1,0 +1,745 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "planned",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provisioning",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bootstrapping",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "ready",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "active",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "degraded",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "restarting",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "revoking",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroying",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "ready"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "active"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "failed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "destroyed",
+      "to_state": "destroyed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "planned"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "planned",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "cell",
+  "schema_path": "contracts/workflow/cell-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "planned",
+    "provisioning",
+    "bootstrapping",
+    "ready",
+    "active",
+    "degraded",
+    "restarting",
+    "failed",
+    "revoking",
+    "destroying",
+    "destroyed"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "planned",
+      "to_state": "provisioning"
+    },
+    {
+      "expected": "valid",
+      "from_state": "provisioning",
+      "to_state": "bootstrapping"
+    },
+    {
+      "expected": "valid",
+      "from_state": "provisioning",
+      "to_state": "failed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "bootstrapping",
+      "to_state": "ready"
+    },
+    {
+      "expected": "valid",
+      "from_state": "bootstrapping",
+      "to_state": "failed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "ready",
+      "to_state": "active"
+    },
+    {
+      "expected": "valid",
+      "from_state": "ready",
+      "to_state": "failed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "active",
+      "to_state": "degraded"
+    },
+    {
+      "expected": "valid",
+      "from_state": "degraded",
+      "to_state": "restarting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "restarting",
+      "to_state": "ready"
+    },
+    {
+      "expected": "valid",
+      "from_state": "restarting",
+      "to_state": "failed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "ready",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "valid",
+      "from_state": "active",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "valid",
+      "from_state": "degraded",
+      "to_state": "revoking"
+    },
+    {
+      "expected": "valid",
+      "from_state": "revoking",
+      "to_state": "destroying"
+    },
+    {
+      "expected": "valid",
+      "from_state": "destroying",
+      "to_state": "destroyed"
+    }
+  ]
+}

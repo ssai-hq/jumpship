@@ -1,0 +1,313 @@
+syntax = "proto3";
+
+package jumpship.cell.v1;
+
+option go_package = "github.com/ssai-hq/jumpship/internal/contracts/cell/v1;cellv1";
+
+// EnvelopeContext is mandatory on every supervisor and recovery message.  The
+// server validates UUIDv7/hash/time encodings, signature purpose, channel
+// binding, epochs, monotonic sequence, and release protocol compatibility.
+message EnvelopeContext {
+  string workspace_id = 1;
+  string migration_id = 2;
+  string cell_id = 3;
+  uint64 cell_generation = 4;
+  uint64 control_region_epoch = 5;
+  uint64 target_write_epoch = 6;
+  string protocol_version = 7;
+  uint64 sequence = 8;
+  string causation_id = 9;
+  string correlation_id = 10;
+  string trace_id = 11;
+  string signature_envelope_hash = 12;
+  string channel_binding_hash = 13;
+}
+
+message CellHello {
+  reserved 1; // EnvelopeContext is carried exactly once by SupervisorFrame.
+  string release_unit_id = 2;
+  string release_unit_hash = 3;
+  string cell_release_binding_hash = 4;
+  string capability_hash = 5;
+  string projection_root = 6;
+  repeated ProviderControlHead provider_control_heads = 7;
+}
+
+message Heartbeat {
+  reserved 1;
+  string liveness_state = 2;
+  string health_root = 3;
+  string current_command_lease_id = 4;
+  string observed_at = 5;
+}
+
+message CommandLease {
+  reserved 1;
+  string command_lease_id = 2;
+  string command_type = 3;
+  string command_payload_hash = 4;
+  string prerequisite_root = 5;
+  string not_before = 6;
+  string expires_at = 7;
+}
+
+message CommandAck {
+  reserved 1;
+  string command_lease_id = 2;
+  string state = 3;
+  string receipt_root = 4;
+  string safe_error_code = 5;
+}
+
+message ProjectionSnapshot {
+  reserved 1;
+  uint64 projection_version = 2;
+  string projection_root = 3;
+  string migration_phase = 4;
+  string traffic_authority = 5;
+  uint64 application_authority_epoch = 6;
+}
+
+message OperationGrant {
+  reserved 1;
+  string operation_id = 2;
+  string tool_id = 3;
+  string tool_version = 4;
+  string descriptor_hash = 5;
+  string input_hash = 6;
+  string gate_root = 7;
+  string capability_grant_hash = 8;
+  string expires_at = 9;
+}
+
+message ToolReceipt {
+  reserved 1;
+  string operation_id = 2;
+  string tool_id = 3;
+  string descriptor_hash = 4;
+  string input_hash = 5;
+  string output_hash = 6;
+  string outcome = 7;
+  string effect_receipt_root = 8;
+  string safe_error_code = 9;
+}
+
+message CellEvent {
+  string event_id = 1;
+  uint64 cell_sequence = 2;
+  string event_type = 3;
+  string payload_hash = 4;
+  string data_class = 5;
+  uint64 payload_bytes = 6;
+  string safe_summary = 7;
+}
+
+message CellEventBatch {
+  reserved 1;
+  string batch_id = 2;
+  uint64 first_sequence = 3;
+  uint64 last_sequence = 4;
+  repeated CellEvent events = 5;
+  string batch_root = 6;
+}
+
+message EventAck {
+  reserved 1;
+  string batch_id = 2;
+  uint64 accepted_through_sequence = 3;
+  string inbox_receipt_root = 4;
+}
+
+message EvidenceAccessRequest {
+  reserved 1;
+  string request_id = 2;
+  string artifact_handle = 3;
+  string actor_id = 4;
+  string purpose = 5;
+  uint64 range_start = 6;
+  uint64 range_length = 7;
+  string expected_artifact_hash = 8;
+  string expires_at = 9;
+}
+
+message EvidenceAccessReceipt {
+  reserved 1;
+  string request_id = 2;
+  string issuance_nonce_hash = 3;
+  string access_policy_hash = 4;
+  string outcome = 5;
+  string access_receipt_root = 6;
+}
+
+message CredentialLeaseRequest {
+  reserved 1;
+  string request_id = 2;
+  string credential_handle = 3;
+  string operation_id = 4;
+  string tool_descriptor_hash = 5;
+  string purpose = 6;
+  string expires_at = 7;
+}
+
+message CredentialLeaseReceipt {
+  reserved 1;
+  string request_id = 2;
+  string lease_id = 3;
+  string credential_version_hash = 4;
+  string outcome = 5;
+  string lease_receipt_root = 6;
+}
+
+message RecoveryPointer {
+  reserved 1;
+  string recovery_pointer_id = 2;
+  string checkpoint_root = 3;
+  uint64 checkpoint_sequence = 4;
+  string recovery_manifest_hash = 5;
+  string observed_at = 6;
+}
+
+// ProviderControlHead is the reconnect truth for one immutable provider-data
+// record. Every ID is paired with the accepted canonical hash so a cell cannot
+// report a same-ID substitution or roll a head backward.
+message ProviderControlHead {
+  string provider_data_use_record_id = 1;
+  string provider_data_use_record_hash = 2;
+  string provider_review_id = 3;
+  string provider_review_hash = 4;
+  string provider_status_id = 5;
+  string provider_status_hash = 6;
+  string provider_transition_id = 7;
+  string provider_transition_hash = 8;
+  uint64 provider_transition_sequence = 9;
+  string public_key_registry_id = 10;
+  string public_key_registry_hash = 11;
+  string route_hold_id = 12;
+  string route_hold_hash = 13;
+  string provider_use_lease_id = 14;
+  string provider_use_lease_hash = 15;
+}
+
+message ProviderEvidenceTransitionDelivery {
+  reserved 1;
+  string delivery_id = 2;
+  string cell_release_binding_hash = 3;
+  string provider_data_use_record_id = 4;
+  string provider_data_use_record_hash = 5;
+  string transition_id = 6;
+  string transition_hash = 7;
+  uint64 transition_sequence = 8;
+  string predecessor_transition_hash = 9;
+  string embedded_review_hash = 10;
+  string embedded_status_hash = 11;
+  string transition_object_key = 12;
+  string signature_envelope_hash = 13;
+  string public_key_registry_id = 14;
+  string public_key_registry_hash = 15;
+  string registry_predecessor_hash = 16;
+}
+
+message ProviderRouteHoldFrame {
+  reserved 1;
+  string hold_id = 2;
+  string hold_hash = 3;
+  string provider_data_use_record_id = 4;
+  string transition_id = 5;
+  string cell_release_binding_hash = 6;
+  string state = 7;
+  string maximum_pre_hold_lease_expiry = 8;
+  string safe_reason_code = 9;
+}
+
+message ProviderUseLeaseFrame {
+  reserved 1;
+  string lease_id = 2;
+  string reservation_id = 3;
+  string cell_id = 4;
+  uint64 cell_generation = 5;
+  string cell_release_binding_hash = 6;
+  string provider_data_use_record_id = 7;
+  string provider_data_use_record_hash = 8;
+  string accepted_transition_id = 9;
+  uint64 accepted_transition_sequence = 10;
+  string accepted_status_hash = 11;
+  string agent_bundle_id = 12;
+  string agent_bundle_hash = 13;
+  string release_unit_id = 14;
+  string release_unit_hash = 15;
+  uint64 control_epoch = 16;
+  bool no_unresolved_binding_hold = 17;
+  string issued_at = 18;
+  string expires_at = 19;
+  uint32 ttl_seconds = 20;
+  string nonce_hash = 21;
+  string signature_purpose = 22;
+  string signature_envelope_hash = 23;
+}
+
+message ProviderControlAck {
+  reserved 1;
+  string delivery_id = 2;
+  string transition_id = 3;
+  string transition_hash = 4;
+  string route_hold_id = 5;
+  string accepted_head_hash = 6;
+  string state = 7;
+  string accepted_at = 8;
+  string signature_envelope_hash = 9;
+}
+
+message SupervisorFrame {
+  EnvelopeContext context = 1;
+  oneof frame {
+    CellHello cell_hello = 2;
+    Heartbeat heartbeat = 3;
+    CommandLease command_lease = 4;
+    CommandAck command_ack = 5;
+    ProjectionSnapshot projection_snapshot = 6;
+    OperationGrant operation_grant = 7;
+    ToolReceipt tool_receipt = 8;
+    CellEventBatch cell_event_batch = 9;
+    EventAck event_ack = 10;
+    EvidenceAccessRequest evidence_access_request = 11;
+    EvidenceAccessReceipt evidence_access_receipt = 12;
+    CredentialLeaseRequest credential_lease_request = 13;
+    CredentialLeaseReceipt credential_lease_receipt = 14;
+    RecoveryPointer recovery_pointer = 15;
+    ProviderEvidenceTransitionDelivery provider_evidence_transition = 16;
+    ProviderRouteHoldFrame provider_route_hold = 17;
+    ProviderUseLeaseFrame provider_use_lease = 18;
+    ProviderControlAck provider_control_ack = 19;
+  }
+}
+
+message RenewRequest {
+  EnvelopeContext context = 1;
+  string failover_manifest_id = 2;
+  string failover_manifest_hash = 3;
+  uint64 prior_control_region_epoch = 4;
+  uint64 current_control_region_epoch = 5;
+  string old_certificate_serial = 6;
+  string csr_der_sha256 = 7;
+  bytes csr_der = 8;
+  string instance_identity_hash = 9;
+}
+
+message RenewResponse {
+  EnvelopeContext context = 1;
+  string request_id = 2;
+  string poll_secret = 3;
+  string poll_secret_hash = 4;
+  string expires_at = 5;
+  string recovery_receipt_root = 6;
+  // This response carries no command, stream, operation, credential, or grant authority.
+}
+
+service SupervisorControl {
+  rpc Connect(stream SupervisorFrame) returns (stream SupervisorFrame);
+}
+
+service CellCertificateRecovery {
+  // Renew is the sole prior-epoch exception and yields only bootstrap polling material.
+  rpc Renew(RenewRequest) returns (RenewResponse);
+}

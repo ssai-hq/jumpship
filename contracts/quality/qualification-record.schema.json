@@ -1,0 +1,170 @@
+{
+  "$id": "https://jumpship.dev/contracts/quality/qualification-record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Independent bundle qualification binding exact eval inputs, results, and expiry.",
+  "properties": {
+    "agent_bundle_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "agent_bundle_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "application_adaptation_gates_passed": {
+      "type": "boolean"
+    },
+    "checker_set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "corpus_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "eval_report_ids": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "eval_report_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "grader_set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "hard_gates_passed": {
+      "type": "boolean"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:qualification_record:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "qualification_record_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "qualification_record_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "qualification_record",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualification_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualified_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "security_gates_passed": {
+      "type": "boolean"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "writer_cutover_gates_passed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "qualification_record_id",
+    "agent_bundle_id",
+    "agent_bundle_hash",
+    "eval_report_ids",
+    "eval_report_root",
+    "corpus_hash",
+    "checker_set_hash",
+    "grader_set_hash",
+    "environment_hash",
+    "hard_gates_passed",
+    "security_gates_passed",
+    "application_adaptation_gates_passed",
+    "writer_cutover_gates_passed",
+    "qualified_at",
+    "valid_until",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Agent Bundle Qualification Record",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

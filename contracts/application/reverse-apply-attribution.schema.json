@@ -1,0 +1,302 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/reverse-apply-attribution.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "cell_completion_root": {
+              "type": "null"
+            },
+            "change_stream_root": {
+              "type": "null"
+            },
+            "conflict_evidence_root": {
+              "type": "null"
+            },
+            "source_sentinel_root": {
+              "type": "null"
+            },
+            "state": {
+              "const": "reserved"
+            }
+          }
+        },
+        {
+          "properties": {
+            "cell_completion_root": {
+              "type": "null"
+            },
+            "change_stream_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "conflict_evidence_root": {
+              "type": "null"
+            },
+            "source_sentinel_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "state": {
+              "const": "reverse_attribution_pending"
+            }
+          }
+        },
+        {
+          "properties": {
+            "cell_completion_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "change_stream_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "conflict_evidence_root": {
+              "type": "null"
+            },
+            "source_sentinel_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "state": {
+              "const": "completed"
+            }
+          }
+        },
+        {
+          "properties": {
+            "cell_completion_root": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "change_stream_root": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "conflict_evidence_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "source_sentinel_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "state": {
+              "const": "authority_conflict_frozen"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "description": "Atomic source-write attribution bound to immutable pre-reservation bytes, A/W epochs, replay sequence/nonce, detached signature, and post-commit completion.",
+  "properties": {
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "attribution_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_completion_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "change_stream_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "conflict_evidence_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "deadline": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "effect_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "mac": {
+      "pattern": "^[A-Za-z0-9_-]{43,128}$",
+      "type": "string"
+    },
+    "mac_key_id": {
+      "maxLength": 255,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "namespace_key_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "post_state_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "replay_sequence": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "reservation_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reservation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_purpose": {
+      "const": "reverse_apply_attribution",
+      "type": "string"
+    },
+    "source_sentinel_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_transaction_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "reserved",
+        "reverse_attribution_pending",
+        "completed",
+        "authority_conflict_frozen"
+      ],
+      "type": "string"
+    },
+    "target_event_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "attribution_id",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "application_authority_epoch",
+    "cell_write_epoch",
+    "effect_id",
+    "reservation_id",
+    "reservation_hash",
+    "target_event_hash",
+    "source_transaction_hash",
+    "namespace_key_root",
+    "post_state_root",
+    "mac_key_id",
+    "mac",
+    "replay_sequence",
+    "nonce_hash",
+    "signature_purpose",
+    "signature_envelope_hash",
+    "source_sentinel_root",
+    "change_stream_root",
+    "cell_completion_root",
+    "conflict_evidence_root",
+    "state",
+    "deadline",
+    "created_at"
+  ],
+  "title": "Jumpship Reverse Apply Attribution Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F09",
+    "F13",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

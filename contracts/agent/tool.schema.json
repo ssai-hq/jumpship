@@ -1,0 +1,589 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/tool.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "consequence_class": {
+            "const": "reversible_effect"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reversibility_class": {
+            "enum": [
+              "free_until_cutover",
+              "expensive_after_cutover"
+            ]
+          },
+          "safe_failure": {
+            "const": "retain_current_authority"
+          },
+          "warning_rule": {
+            "enum": [
+              "none",
+              "before_first_effect"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "consequence_class": {
+            "const": "closing_door"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reversibility_class": {
+            "enum": [
+              "closes_on_first_external_exposure",
+              "closes_on_a_clock"
+            ]
+          },
+          "safe_failure": {
+            "enum": [
+              "block_effect",
+              "issue_no_external_capability"
+            ]
+          },
+          "warning_rule": {
+            "enum": [
+              "before_external_exposure",
+              "before_clock_closure"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "consequence_class": {
+            "const": "irreversible_effect"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reversibility_class": {
+            "const": "never_reversible"
+          },
+          "safe_failure": {
+            "const": "block_effect"
+          },
+          "warning_rule": {
+            "const": "before_irreversible_effect"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Versioned bounded tool descriptor with exact schemas, capability/gate/consent requirements, retry/idempotency, resource limits, data classes, receipt contract, and non-widening RunBrief inline authorization.",
+  "oneOf": [
+    {
+      "properties": {
+        "consent_requirement": {
+          "const": "none"
+        },
+        "consequence_class": {
+          "const": "observation"
+        },
+        "execution_mode": {
+          "const": "inline"
+        },
+        "idempotency_scope": {
+          "const": "none_read_only"
+        },
+        "input_data_class": {
+          "enum": [
+            "public",
+            "internal_operational",
+            "identity_tenant",
+            "shared_migration",
+            "restricted_customer"
+          ]
+        },
+        "limits": {
+          "properties": {
+            "network_mode": {
+              "const": "none"
+            }
+          }
+        },
+        "output_data_class": {
+          "enum": [
+            "public",
+            "internal_operational",
+            "identity_tenant",
+            "shared_migration",
+            "restricted_customer"
+          ]
+        },
+        "reversibility_class": {
+          "const": "not_applicable"
+        },
+        "run_brief_authorization": {
+          "properties": {
+            "inline_authorizable": {
+              "const": true
+            },
+            "may_widen_to_durable": {
+              "const": false
+            }
+          }
+        },
+        "safe_failure": {
+          "const": "grant_no_effect_authority"
+        },
+        "warning_rule": {
+          "const": "none"
+        }
+      }
+    },
+    {
+      "properties": {
+        "execution_mode": {
+          "const": "durable"
+        },
+        "run_brief_authorization": {
+          "properties": {
+            "inline_authorizable": {
+              "const": false
+            },
+            "may_widen_to_durable": {
+              "const": false
+            }
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "allowed_phases": {
+      "items": {
+        "enum": [
+          "connect",
+          "discovery",
+          "foundation",
+          "provision",
+          "snapshot",
+          "census",
+          "design",
+          "rehearsal",
+          "bulk_load",
+          "sync",
+          "verify",
+          "cutover",
+          "watch",
+          "decommission",
+          "complete"
+        ],
+        "type": "string"
+      },
+      "maxItems": 15,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "capability_requirements": {
+      "additionalProperties": false,
+      "properties": {
+        "capability_ids": {
+          "items": {
+            "pattern": "^MVP-CAP-[A-Z0-9][A-Z0-9-]+$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "grant_purposes": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "capability_ids",
+        "grant_purposes"
+      ],
+      "type": "object"
+    },
+    "consent_requirement": {
+      "enum": [
+        "none",
+        "cutover",
+        "decommission"
+      ],
+      "type": "string"
+    },
+    "consequence_class": {
+      "enum": [
+        "observation",
+        "reversible_effect",
+        "closing_door",
+        "irreversible_effect"
+      ],
+      "type": "string"
+    },
+    "display_summary": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "drilldown_description": {
+      "maxLength": 2048,
+      "minLength": 1,
+      "type": "string"
+    },
+    "execution_mode": {
+      "enum": [
+        "inline",
+        "durable"
+      ],
+      "type": "string"
+    },
+    "gate_requirements": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "idempotency_scope": {
+      "enum": [
+        "none_read_only",
+        "operation",
+        "operation_and_input",
+        "external_effect_identity"
+      ],
+      "type": "string"
+    },
+    "input_data_class": {
+      "enum": [
+        "public",
+        "internal_operational",
+        "identity_tenant",
+        "shared_migration",
+        "restricted_customer",
+        "credential_secret",
+        "security_material"
+      ],
+      "type": "string"
+    },
+    "input_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "limits": {
+      "additionalProperties": false,
+      "properties": {
+        "max_artifacts": {
+          "maximum": 256,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_cpu_millis": {
+          "maximum": 86400000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_input_bytes": {
+          "maximum": 16777216,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_memory_bytes": {
+          "maximum": 17179869184,
+          "minimum": 1048576,
+          "type": "integer"
+        },
+        "max_output_bytes": {
+          "maximum": 16777216,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_wall_clock_ms": {
+          "maximum": 86400000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "network_mode": {
+          "enum": [
+            "none",
+            "provider_allowlist",
+            "cell_internal"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "max_input_bytes",
+        "max_output_bytes",
+        "max_memory_bytes",
+        "max_cpu_millis",
+        "max_wall_clock_ms",
+        "network_mode",
+        "max_artifacts"
+      ],
+      "type": "object"
+    },
+    "output_data_class": {
+      "enum": [
+        "public",
+        "internal_operational",
+        "identity_tenant",
+        "shared_migration",
+        "restricted_customer",
+        "credential_secret",
+        "security_material"
+      ],
+      "type": "string"
+    },
+    "output_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "receipt_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "receipt_schema_id": {
+      "maxLength": 512,
+      "pattern": "^https://jumpship\\.dev/contracts/[A-Za-z0-9_./-]+\\.schema\\.json$",
+      "type": "string"
+    },
+    "retry_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "backoff_ms": {
+          "maximum": 3600000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_attempts": {
+          "maximum": 16,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "requires_reconciliation": {
+          "type": "boolean"
+        },
+        "retryable_error_codes": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "strategy": {
+          "enum": [
+            "never",
+            "same_identity_only",
+            "reconcile_then_retry"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "strategy",
+        "max_attempts",
+        "backoff_ms",
+        "retryable_error_codes",
+        "requires_reconciliation"
+      ],
+      "type": "object"
+    },
+    "reversibility_class": {
+      "enum": [
+        "not_applicable",
+        "free_until_cutover",
+        "expensive_after_cutover",
+        "closes_on_first_external_exposure",
+        "closes_on_a_clock",
+        "never_reversible"
+      ],
+      "type": "string"
+    },
+    "run_brief_authorization": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_data_classes": {
+          "items": {
+            "enum": [
+              "public",
+              "internal_operational",
+              "identity_tenant",
+              "shared_migration",
+              "restricted_customer"
+            ],
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "authorized_descriptor_set_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "descriptor_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "inline_authorizable": {
+          "type": "boolean"
+        },
+        "max_cumulative_cpu_millis": {
+          "maximum": 3600000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_cumulative_input_bytes": {
+          "maximum": 16777216,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_cumulative_invocations": {
+          "maximum": 1024,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_cumulative_output_bytes": {
+          "maximum": 104857600,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_cumulative_wall_clock_ms": {
+          "maximum": 3600000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_memory_bytes": {
+          "maximum": 4294967296,
+          "minimum": 1048576,
+          "type": "integer"
+        },
+        "max_rate_per_minute": {
+          "maximum": 120,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "may_widen_to_durable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "inline_authorizable",
+        "descriptor_hash",
+        "authorized_descriptor_set_hash",
+        "max_cumulative_input_bytes",
+        "max_cumulative_output_bytes",
+        "max_cumulative_invocations",
+        "max_cumulative_wall_clock_ms",
+        "max_cumulative_cpu_millis",
+        "max_memory_bytes",
+        "max_rate_per_minute",
+        "allowed_data_classes",
+        "may_widen_to_durable"
+      ],
+      "type": "object"
+    },
+    "safe_failure": {
+      "enum": [
+        "grant_no_effect_authority",
+        "retain_current_authority",
+        "block_effect",
+        "issue_no_external_capability"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "timeout_ms": {
+      "maximum": 86400000,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "tool_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "tool_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "warning_rule": {
+      "enum": [
+        "none",
+        "before_first_effect",
+        "before_external_exposure",
+        "before_clock_closure",
+        "before_irreversible_effect"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "tool_id",
+    "tool_version",
+    "display_summary",
+    "drilldown_description",
+    "allowed_phases",
+    "execution_mode",
+    "consequence_class",
+    "reversibility_class",
+    "warning_rule",
+    "safe_failure",
+    "input_schema_hash",
+    "output_schema_hash",
+    "receipt_schema_id",
+    "receipt_schema_hash",
+    "capability_requirements",
+    "gate_requirements",
+    "consent_requirement",
+    "idempotency_scope",
+    "timeout_ms",
+    "retry_policy",
+    "limits",
+    "input_data_class",
+    "output_data_class",
+    "run_brief_authorization"
+  ],
+  "title": "Agent Tool Descriptor Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F18"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

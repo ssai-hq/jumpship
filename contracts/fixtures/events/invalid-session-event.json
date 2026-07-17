@@ -1,0 +1,13 @@
+{
+  "expected_errors": [
+    "raw_payload_forbidden"
+  ],
+  "expected_valid": false,
+  "instance_patch": {
+    "event_type": "model.summary",
+    "raw_payload": {
+      "secret": "forbidden"
+    }
+  },
+  "schema_path": "contracts/events/session-event.schema.json"
+}

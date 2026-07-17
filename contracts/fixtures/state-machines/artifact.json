@@ -1,0 +1,408 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "declared",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "writing",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sealed",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verified",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "retained",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deletion_pending",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "deleted",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "writing"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "verified"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "retained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "deleted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "corrupt",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "declared"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "declared",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "artifact",
+  "schema_path": "contracts/workflow/artifact-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "declared",
+    "writing",
+    "sealed",
+    "verified",
+    "retained",
+    "deletion_pending",
+    "deleted",
+    "corrupt"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "declared",
+      "to_state": "writing"
+    },
+    {
+      "expected": "valid",
+      "from_state": "writing",
+      "to_state": "sealed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "writing",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "valid",
+      "from_state": "sealed",
+      "to_state": "verified"
+    },
+    {
+      "expected": "valid",
+      "from_state": "sealed",
+      "to_state": "corrupt"
+    },
+    {
+      "expected": "valid",
+      "from_state": "verified",
+      "to_state": "retained"
+    },
+    {
+      "expected": "valid",
+      "from_state": "retained",
+      "to_state": "deletion_pending"
+    },
+    {
+      "expected": "valid",
+      "from_state": "deletion_pending",
+      "to_state": "deleted"
+    }
+  ]
+}

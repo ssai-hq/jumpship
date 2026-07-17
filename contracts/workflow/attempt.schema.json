@@ -1,0 +1,488 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/attempt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "enum": [
+              "declared",
+              "queued"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_artifact_roots": {
+            "maxItems": 0
+          },
+          "final_metrics": {
+            "maxItems": 0
+          },
+          "final_reason_code": {
+            "type": "null"
+          },
+          "final_safe_summary": {
+            "type": "null"
+          },
+          "finished_at": {
+            "type": "null"
+          },
+          "started_at": {
+            "type": "null"
+          },
+          "wait_deadline": {
+            "type": "null"
+          },
+          "wait_kind": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "const": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "running"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_reason_code": {
+            "type": "null"
+          },
+          "final_safe_summary": {
+            "type": "null"
+          },
+          "finished_at": {
+            "type": "null"
+          },
+          "started_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "wait_deadline": {
+            "type": "null"
+          },
+          "wait_kind": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "const": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "waiting"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_reason_code": {
+            "type": "null"
+          },
+          "final_safe_summary": {
+            "type": "null"
+          },
+          "finished_at": {
+            "type": "null"
+          },
+          "started_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "wait_deadline": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "wait_kind": {
+            "enum": [
+              "human",
+              "provider",
+              "timer",
+              "resource"
+            ],
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "enum": [
+              "succeeded",
+              "failed_recoverable",
+              "failed_terminal",
+              "canceled"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "final_reason_code": {
+            "maxLength": 96,
+            "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+            "type": "string"
+          },
+          "final_safe_summary": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "finished_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "started_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "wait_deadline": {
+            "type": "null"
+          },
+          "wait_kind": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "const": "none"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "not": {
+          "properties": {
+            "retry_of_attempt_id": {
+              "type": "null"
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "ordinal": {
+            "minimum": 2
+          }
+        }
+      }
+    }
+  ],
+  "description": "Append-only attempt record. Retry always creates a new attempt identity; active, waiting, and terminal states have structurally distinct timing and result fields.",
+  "properties": {
+    "agent_bundle_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "attempt_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "attempt_kind": {
+      "enum": [
+        "snapshot",
+        "snapshot_restore",
+        "golden_self_proof",
+        "rehearsal",
+        "bulk_load",
+        "verification",
+        "rollback_rehearsal",
+        "cutover"
+      ],
+      "type": "string"
+    },
+    "build_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "concurrency_class": {
+      "enum": [
+        "read_only",
+        "resource_mutating"
+      ],
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "final_artifact_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "final_metrics": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "maxLength": 128,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          },
+          "unit": {
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "unit",
+          "value"
+        ],
+        "type": "object"
+      },
+      "maxItems": 128,
+      "minItems": 0,
+      "type": "array"
+    },
+    "final_reason_code": {
+      "anyOf": [
+        {
+          "maxLength": 96,
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "final_safe_summary": {
+      "anyOf": [
+        {
+          "maxLength": 2048,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "operation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "ordinal": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "parent_attempt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retry_of_attempt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rubric_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rubric_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "spec_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "spec_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "started_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "state": {
+      "enum": [
+        "declared",
+        "queued",
+        "running",
+        "waiting",
+        "succeeded",
+        "failed_recoverable",
+        "failed_terminal",
+        "canceled"
+      ],
+      "type": "string"
+    },
+    "wait_deadline": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "wait_kind": {
+      "anyOf": [
+        {
+          "enum": [
+            "human",
+            "provider",
+            "timer",
+            "resource",
+            "none"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "operation_id",
+    "attempt_id",
+    "attempt_kind",
+    "ordinal",
+    "parent_attempt_id",
+    "retry_of_attempt_id",
+    "state",
+    "concurrency_class",
+    "spec_version",
+    "spec_hash",
+    "rubric_version",
+    "rubric_hash",
+    "build_hash",
+    "agent_bundle_id",
+    "cell_write_epoch",
+    "started_at",
+    "finished_at",
+    "wait_kind",
+    "wait_deadline",
+    "final_reason_code",
+    "final_safe_summary",
+    "final_artifact_roots",
+    "final_metrics"
+  ],
+  "title": "Attempt",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03",
+    "F06",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

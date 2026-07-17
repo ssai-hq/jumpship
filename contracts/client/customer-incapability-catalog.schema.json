@@ -1,0 +1,255 @@
+{
+  "$id": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Release-bound capability disclosure resolved from the serving or migration-pinned ReleaseUnit with no newest-release fallback or independent signature.",
+  "properties": {
+    "catalog_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "catalog_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "capability_id": {
+            "maxLength": 128,
+            "pattern": "^MVP-CAP-[A-Z0-9][A-Z0-9-]+$",
+            "type": "string"
+          },
+          "coding_agent_denied": {
+            "const": true,
+            "type": "boolean"
+          },
+          "incapability_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "negative_test_receipt_hashes": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "operation_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "reason_code": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+            "type": "string"
+          },
+          "required_human_surface": {
+            "enum": [
+              "browser",
+              "human_cli",
+              "support",
+              "unavailable"
+            ],
+            "type": "string"
+          },
+          "safe_explanation": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "safe_remediation": {
+            "maxLength": 2048,
+            "minLength": 1,
+            "type": "string"
+          },
+          "structural_denial_contract_ids": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+              "type": "string"
+            },
+            "maxItems": 32,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "capability_id",
+          "incapability_id",
+          "operation_id",
+          "reason_code",
+          "safe_explanation",
+          "safe_remediation",
+          "required_human_surface",
+          "coding_agent_denied",
+          "structural_denial_contract_ids",
+          "negative_test_receipt_hashes"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2048,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:customer_incapability_catalog:1.0.0\u0000",
+          "type": "string"
+        },
+        "equivalent_digest_fields": {
+          "const": [
+            "catalog_hash"
+          ],
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        },
+        "excluded_fields": {
+          "const": [
+            "catalog_id",
+            "catalog_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "catalog_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "customer_incapability_catalog",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "equivalent_digest_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_evidence_chain": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "selection_mode": {
+      "enum": [
+        "new_admission_release",
+        "pinned_cell_release_binding"
+      ],
+      "type": "string"
+    },
+    "sort_order": {
+      "const": "capability_id_then_incapability_id",
+      "type": "string"
+    },
+    "source_registry_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "logical_payload_sha256",
+    "logical_payload_projection",
+    "selection_mode",
+    "release_unit_id",
+    "release_unit_hash",
+    "catalog_hash",
+    "source_registry_hash",
+    "sort_order",
+    "migration_id",
+    "release_evidence_chain",
+    "items",
+    "issued_at"
+  ],
+  "title": "Jumpship Release-Selected Customer Incapability Catalog Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "public",
+  "x-jumpship-flow-ids": [
+    "F01",
+    "F02",
+    "F23"
+  ],
+  "x-jumpship-max-bytes": 1048576
+}

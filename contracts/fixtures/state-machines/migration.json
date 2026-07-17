@@ -1,0 +1,4750 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "complete",
+      "state_dimension": "primary_phase",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "aborted",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "provision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "census"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "design"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "sync"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "verify"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "watch"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "cross_dimension_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "complete"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rolled_back",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "connect"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "connect",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "migration",
+  "schema_path": "contracts/workflow/migration-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "connect",
+    "discovery",
+    "foundation",
+    "provision",
+    "snapshot",
+    "census",
+    "design",
+    "rehearsal",
+    "bulk_load",
+    "sync",
+    "verify",
+    "cutover",
+    "watch",
+    "decommission",
+    "complete",
+    "pending",
+    "running",
+    "waiting_human",
+    "blocked",
+    "failed_recoverable",
+    "failed_terminal",
+    "succeeded",
+    "aborting",
+    "aborted",
+    "rolling_back",
+    "rolled_back"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "connect",
+      "state_dimension": "primary_phase",
+      "to_state": "discovery"
+    },
+    {
+      "expected": "valid",
+      "from_state": "discovery",
+      "state_dimension": "primary_phase",
+      "to_state": "foundation"
+    },
+    {
+      "expected": "valid",
+      "from_state": "foundation",
+      "state_dimension": "primary_phase",
+      "to_state": "provision"
+    },
+    {
+      "expected": "valid",
+      "from_state": "provision",
+      "state_dimension": "primary_phase",
+      "to_state": "snapshot"
+    },
+    {
+      "expected": "valid",
+      "from_state": "snapshot",
+      "state_dimension": "primary_phase",
+      "to_state": "census"
+    },
+    {
+      "expected": "valid",
+      "from_state": "census",
+      "state_dimension": "primary_phase",
+      "to_state": "design"
+    },
+    {
+      "expected": "valid",
+      "from_state": "design",
+      "state_dimension": "primary_phase",
+      "to_state": "rehearsal"
+    },
+    {
+      "expected": "valid",
+      "from_state": "rehearsal",
+      "state_dimension": "primary_phase",
+      "to_state": "bulk_load"
+    },
+    {
+      "expected": "valid",
+      "from_state": "bulk_load",
+      "state_dimension": "primary_phase",
+      "to_state": "sync"
+    },
+    {
+      "expected": "valid",
+      "from_state": "sync",
+      "state_dimension": "primary_phase",
+      "to_state": "verify"
+    },
+    {
+      "expected": "valid",
+      "from_state": "verify",
+      "state_dimension": "primary_phase",
+      "to_state": "cutover"
+    },
+    {
+      "expected": "valid",
+      "from_state": "cutover",
+      "state_dimension": "primary_phase",
+      "to_state": "watch"
+    },
+    {
+      "expected": "valid",
+      "from_state": "watch",
+      "state_dimension": "primary_phase",
+      "to_state": "decommission"
+    },
+    {
+      "expected": "valid",
+      "from_state": "decommission",
+      "state_dimension": "primary_phase",
+      "to_state": "complete"
+    },
+    {
+      "expected": "valid",
+      "from_state": "pending",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "waiting_human"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "failed_recoverable"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "state_dimension": "execution_status",
+      "to_state": "rolling_back"
+    },
+    {
+      "expected": "valid",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "blocked"
+    },
+    {
+      "expected": "valid",
+      "from_state": "waiting_human",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "valid",
+      "from_state": "blocked",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "pending"
+    },
+    {
+      "expected": "valid",
+      "from_state": "failed_recoverable",
+      "state_dimension": "execution_status",
+      "to_state": "aborting"
+    },
+    {
+      "expected": "valid",
+      "from_state": "aborting",
+      "state_dimension": "execution_status",
+      "to_state": "aborted"
+    },
+    {
+      "expected": "valid",
+      "from_state": "rolling_back",
+      "state_dimension": "execution_status",
+      "to_state": "rolled_back"
+    }
+  ]
+}

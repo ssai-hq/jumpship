@@ -1,0 +1,379 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/artifact-state-machine.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "from_state": {
+              "const": "declared"
+            },
+            "to_state": {
+              "const": "writing"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "writing"
+            },
+            "to_state": {
+              "const": "sealed"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "writing"
+            },
+            "to_state": {
+              "const": "corrupt"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "sealed"
+            },
+            "to_state": {
+              "const": "verified"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "sealed"
+            },
+            "to_state": {
+              "const": "corrupt"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "verified"
+            },
+            "to_state": {
+              "const": "retained"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "retained"
+            },
+            "to_state": {
+              "const": "deletion_pending"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "deletion_pending"
+            },
+            "to_state": {
+              "const": "deleted"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "enum": [
+              "retained",
+              "deletion_pending"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "retain_until": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "const": "deleted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "encryption_access_state": {
+            "const": "unreadable"
+          },
+          "lifecycle_receipt_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Closed artifact transition envelope. The schema enumerates every legal edge; unknown states, same-state rewrites, and unlisted edges are rejected.",
+  "properties": {
+    "actor_type": {
+      "enum": [
+        "human",
+        "service",
+        "provider",
+        "system"
+      ],
+      "type": "string"
+    },
+    "artifact_data_class": {
+      "enum": [
+        "public",
+        "internal_operational",
+        "identity_tenant",
+        "shared_migration",
+        "restricted_customer",
+        "credential_secret",
+        "security_material"
+      ],
+      "type": "string"
+    },
+    "artifact_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "artifact_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "artifact_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "authorization_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "encryption_access_state": {
+      "enum": [
+        "readable",
+        "access_disabled",
+        "key_deletion_scheduled",
+        "unreadable"
+      ],
+      "type": "string"
+    },
+    "evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expected_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "from_state": {
+      "enum": [
+        "declared",
+        "writing",
+        "sealed",
+        "verified",
+        "retained",
+        "deletion_pending",
+        "deleted",
+        "corrupt"
+      ],
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "lifecycle_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "machine": {
+      "const": "artifact",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "opaque_handle": {
+      "maxLength": 132,
+      "pattern": "^art_[A-Za-z0-9_-]{16,128}$",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+      "type": "string"
+    },
+    "resulting_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "retain_until": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "to_state": {
+      "enum": [
+        "declared",
+        "writing",
+        "sealed",
+        "verified",
+        "retained",
+        "deletion_pending",
+        "deleted",
+        "corrupt"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "version_increment": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "transition_id",
+    "machine",
+    "from_state",
+    "to_state",
+    "expected_version",
+    "resulting_version",
+    "version_increment",
+    "idempotency_key_hash",
+    "authorization_root_hash",
+    "evidence_roots",
+    "actor_type",
+    "reason_code",
+    "occurred_at",
+    "artifact_id",
+    "artifact_version",
+    "artifact_data_class",
+    "artifact_hash",
+    "opaque_handle",
+    "retain_until",
+    "encryption_access_state",
+    "lifecycle_receipt_hash"
+  ],
+  "title": "Artifact State Machine Transition",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

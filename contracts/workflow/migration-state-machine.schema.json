@@ -1,0 +1,944 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/migration-state-machine.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "from_state": {
+              "const": "connect"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "discovery"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "discovery"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "foundation"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "foundation"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "provision"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "provision"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "snapshot"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "snapshot"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "census"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "census"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "design"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "design"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "rehearsal"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "rehearsal"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "bulk_load"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "bulk_load"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "sync"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "sync"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "verify"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "verify"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "cutover"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "cutover"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "watch"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "watch"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "decommission"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "decommission"
+            },
+            "state_dimension": {
+              "const": "primary_phase"
+            },
+            "to_state": {
+              "const": "complete"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "pending"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "running"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "waiting_human"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "blocked"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "failed_recoverable"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "failed_terminal"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "succeeded"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "aborting"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "rolling_back"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "waiting_human"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "running"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "waiting_human"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "blocked"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "waiting_human"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "aborting"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "blocked"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "running"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "blocked"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "failed_terminal"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "blocked"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "aborting"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "failed_recoverable"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "pending"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "failed_recoverable"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "aborting"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "aborting"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "aborted"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "rolling_back"
+            },
+            "state_dimension": {
+              "const": "execution_status"
+            },
+            "to_state": {
+              "const": "rolled_back"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state",
+            "state_dimension"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "from_state": {
+            "const": "connect"
+          },
+          "state_dimension": {
+            "const": "primary_phase"
+          },
+          "to_state": {
+            "const": "discovery"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "actor_type": {
+            "const": "human"
+          },
+          "all_mandatory_connectors_proven": {
+            "const": true
+          },
+          "first_prompt_message_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "start_conversation_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "start_readiness_version": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "start_receipt_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "start_transaction_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "start_wakeup_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "enum": [
+              "rolling_back",
+              "rolled_back"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "rehearsed_rollback_reference_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Closed migration transition envelope. The schema enumerates every legal edge; unknown states, same-state rewrites, and unlisted edges are rejected.",
+  "properties": {
+    "actor_type": {
+      "enum": [
+        "human",
+        "service",
+        "provider",
+        "system"
+      ],
+      "type": "string"
+    },
+    "all_mandatory_connectors_proven": {
+      "type": "boolean"
+    },
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "authorization_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expected_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "first_prompt_message_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "from_state": {
+      "enum": [
+        "connect",
+        "discovery",
+        "foundation",
+        "provision",
+        "snapshot",
+        "census",
+        "design",
+        "rehearsal",
+        "bulk_load",
+        "sync",
+        "verify",
+        "cutover",
+        "watch",
+        "decommission",
+        "complete",
+        "pending",
+        "running",
+        "waiting_human",
+        "blocked",
+        "failed_recoverable",
+        "failed_terminal",
+        "succeeded",
+        "aborting",
+        "aborted",
+        "rolling_back",
+        "rolled_back"
+      ],
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "machine": {
+      "const": "migration",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+      "type": "string"
+    },
+    "rehearsed_rollback_reference_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resulting_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "start_conversation_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_readiness_version": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_transaction_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "start_wakeup_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "state_dimension": {
+      "enum": [
+        "execution_status",
+        "primary_phase"
+      ],
+      "type": "string"
+    },
+    "to_state": {
+      "enum": [
+        "connect",
+        "discovery",
+        "foundation",
+        "provision",
+        "snapshot",
+        "census",
+        "design",
+        "rehearsal",
+        "bulk_load",
+        "sync",
+        "verify",
+        "cutover",
+        "watch",
+        "decommission",
+        "complete",
+        "pending",
+        "running",
+        "waiting_human",
+        "blocked",
+        "failed_recoverable",
+        "failed_terminal",
+        "succeeded",
+        "aborting",
+        "aborted",
+        "rolling_back",
+        "rolled_back"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "version_increment": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "transition_id",
+    "machine",
+    "from_state",
+    "to_state",
+    "expected_version",
+    "resulting_version",
+    "version_increment",
+    "idempotency_key_hash",
+    "authorization_root_hash",
+    "evidence_roots",
+    "actor_type",
+    "reason_code",
+    "occurred_at",
+    "state_dimension",
+    "start_readiness_version",
+    "all_mandatory_connectors_proven",
+    "start_transaction_id",
+    "first_prompt_message_id",
+    "start_conversation_id",
+    "start_wakeup_id",
+    "start_receipt_hash",
+    "application_authority_epoch",
+    "cell_write_epoch",
+    "rehearsed_rollback_reference_hash"
+  ],
+  "title": "Migration State Machine Transition",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

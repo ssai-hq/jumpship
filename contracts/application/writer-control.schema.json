@@ -1,0 +1,412 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/writer-control.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "type": "null"
+            },
+            "authority": {
+              "const": "source"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "type": "null"
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "const": "source_enabled"
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "type": "null"
+            },
+            "authority": {
+              "const": "none"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "type": "null"
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "enum": [
+                "freezing",
+                "fenced"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "type": "null"
+            },
+            "authority": {
+              "const": "none"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reserved_cohort_generation": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "const": "target_pending"
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "authority": {
+              "const": "target"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "const": "target_enabled"
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "authority": {
+              "const": "none"
+            },
+            "denial_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "provider_gate_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "enum": [
+                "revoking",
+                "target_fenced",
+                "tombstoned"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "type": "null"
+            },
+            "authority": {
+              "const": "none"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reserved_cohort_generation": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "source_resume_stream_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "state": {
+              "const": "source_pending"
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "authority": {
+              "const": "source"
+            },
+            "denial_receipt_root": {
+              "type": "null"
+            },
+            "provider_gate_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "state": {
+              "const": "source_resumed"
+            }
+          }
+        },
+        {
+          "properties": {
+            "activation_receipt_root": {
+              "type": "null"
+            },
+            "authority": {
+              "const": "none"
+            },
+            "denial_receipt_root": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "provider_gate_receipt_root": {
+              "anyOf": [
+                {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reserved_cohort_generation": {
+              "type": "null"
+            },
+            "source_resume_stream_receipt_root": {
+              "type": "null"
+            },
+            "state": {
+              "const": "blocked"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "description": "Fail-closed writer cohort authority projection with distinct A, W, and G generations.",
+  "properties": {
+    "activation_receipt_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "authority": {
+      "enum": [
+        "source",
+        "none",
+        "target"
+      ],
+      "type": "string"
+    },
+    "build_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cohort_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "config_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "current_cohort_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "denial_receipt_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "deploy_unit_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "identity_proof_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "provider_gate_receipt_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reserved_cohort_generation": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_resume_stream_receipt_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "state": {
+      "enum": [
+        "source_enabled",
+        "freezing",
+        "fenced",
+        "target_pending",
+        "target_enabled",
+        "revoking",
+        "target_fenced",
+        "source_pending",
+        "source_resumed",
+        "tombstoned",
+        "blocked"
+      ],
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "writer_control_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "writer_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "writer_control_id",
+    "workspace_id",
+    "migration_id",
+    "writer_id",
+    "cohort_id",
+    "deploy_unit_id",
+    "authority",
+    "application_authority_epoch",
+    "cell_write_epoch",
+    "current_cohort_generation",
+    "reserved_cohort_generation",
+    "state",
+    "build_digest",
+    "config_digest",
+    "identity_proof_root",
+    "provider_gate_receipt_root",
+    "activation_receipt_root",
+    "source_resume_stream_receipt_root",
+    "denial_receipt_root",
+    "updated_at"
+  ],
+  "title": "Jumpship Application Writer Cohort Control Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F26",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

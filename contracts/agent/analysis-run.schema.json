@@ -1,0 +1,520 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/analysis-run.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "No-network, no-secret, rootless diagnostic run whose outputs cannot authorize effects or proof.",
+  "oneOf": [
+    {
+      "properties": {
+        "exit_reason": {
+          "const": null
+        },
+        "output_manifest_sha256": {
+          "const": null
+        },
+        "quarantine_root": {
+          "const": null
+        },
+        "status": {
+          "const": "accepted"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "exit_reason": {
+          "const": null
+        },
+        "output_manifest_sha256": {
+          "const": null
+        },
+        "quarantine_root": {
+          "const": null
+        },
+        "status": {
+          "const": "running"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "exit_reason": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "output_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "quarantine_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "const": "succeeded"
+        }
+      },
+      "required": [
+        "output_manifest_sha256",
+        "quarantine_root",
+        "exit_reason"
+      ]
+    },
+    {
+      "properties": {
+        "exit_reason": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "output_manifest_sha256": {
+          "const": null
+        },
+        "status": {
+          "const": "failed"
+        }
+      },
+      "required": [
+        "exit_reason"
+      ]
+    },
+    {
+      "properties": {
+        "exit_reason": {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        "quarantine_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "const": "quarantined"
+        }
+      },
+      "required": [
+        "quarantine_root",
+        "exit_reason"
+      ]
+    }
+  ],
+  "properties": {
+    "analysis_kind": {
+      "enum": [
+        "discovery",
+        "census",
+        "archaeology",
+        "design",
+        "rehearsal"
+      ],
+      "type": "string"
+    },
+    "analysis_run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "authority": {
+      "additionalProperties": false,
+      "properties": {
+        "advisory_only": {
+          "const": true,
+          "type": "boolean"
+        },
+        "automatic_shared_plane_export": {
+          "const": false,
+          "type": "boolean"
+        },
+        "may_supply_gate_or_consent_fact": {
+          "const": false,
+          "type": "boolean"
+        },
+        "may_supply_parity_or_verification_proof": {
+          "const": false,
+          "type": "boolean"
+        },
+        "may_supply_record_transform": {
+          "const": false,
+          "type": "boolean"
+        },
+        "may_supply_source_or_target_effect": {
+          "const": false,
+          "type": "boolean"
+        },
+        "may_supply_traffic_authority": {
+          "const": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "advisory_only",
+        "may_supply_record_transform",
+        "may_supply_source_or_target_effect",
+        "may_supply_gate_or_consent_fact",
+        "may_supply_parity_or_verification_proof",
+        "may_supply_traffic_authority",
+        "automatic_shared_plane_export"
+      ],
+      "type": "object"
+    },
+    "code_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "credentials_mounted": {
+      "const": false,
+      "type": "boolean"
+    },
+    "declared_inputs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "artifact_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "artifact_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "artifact_version": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "data_class": {
+            "enum": [
+              "restricted_customer",
+              "internal_operational"
+            ],
+            "type": "string"
+          },
+          "mount_path": {
+            "maxLength": 520,
+            "pattern": "^/inputs/[A-Za-z0-9][A-Za-z0-9._/-]{0,511}$",
+            "type": "string"
+          },
+          "read_only": {
+            "const": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "artifact_id",
+          "artifact_version",
+          "artifact_hash",
+          "mount_path",
+          "read_only",
+          "data_class"
+        ],
+        "type": "object"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "declared_output_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "exit_reason": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "image_digest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "network_enabled": {
+      "const": false,
+      "type": "boolean"
+    },
+    "output_manifest_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "phase": {
+      "enum": [
+        "discovery",
+        "census",
+        "design",
+        "rehearsal"
+      ],
+      "type": "string"
+    },
+    "quarantine_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resource_limits": {
+      "additionalProperties": false,
+      "properties": {
+        "cpu_millis": {
+          "maximum": 2000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "disk_bytes": {
+          "maximum": 1073741824,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "execution_count": {
+          "const": 1,
+          "type": "integer"
+        },
+        "max_output_bytes": {
+          "maximum": 104857600,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "memory_bytes": {
+          "maximum": 4294967296,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "processes": {
+          "maximum": 64,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "wall_seconds": {
+          "maximum": 60,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cpu_millis",
+        "memory_bytes",
+        "disk_bytes",
+        "wall_seconds",
+        "processes",
+        "max_output_bytes",
+        "execution_count"
+      ],
+      "type": "object"
+    },
+    "run_brief_authorization_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "sandbox": {
+      "additionalProperties": false,
+      "properties": {
+        "broker_socket_mounted": {
+          "const": false,
+          "type": "boolean"
+        },
+        "container_socket_mounted": {
+          "const": false,
+          "type": "boolean"
+        },
+        "dropped_capabilities": {
+          "const": [
+            "ALL"
+          ],
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        },
+        "dynamic_package_install_allowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "ephemeral_scratch_bytes": {
+          "maximum": 1073741824,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "ffi_allowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "iam_material_mounted": {
+          "const": false,
+          "type": "boolean"
+        },
+        "imds_access": {
+          "const": false,
+          "type": "boolean"
+        },
+        "network_mode": {
+          "const": "none",
+          "type": "string"
+        },
+        "no_new_privileges": {
+          "const": true,
+          "type": "boolean"
+        },
+        "provider_material_mounted": {
+          "const": false,
+          "type": "boolean"
+        },
+        "read_only_root_filesystem": {
+          "const": true,
+          "type": "boolean"
+        },
+        "rootless": {
+          "const": true,
+          "type": "boolean"
+        },
+        "seccomp_profile_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "secret_material_mounted": {
+          "const": false,
+          "type": "boolean"
+        },
+        "socket_syscalls_allowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "subprocess_allowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "unapproved_imports_allowed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "user_namespace_enabled": {
+          "const": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rootless",
+        "read_only_root_filesystem",
+        "no_new_privileges",
+        "dropped_capabilities",
+        "seccomp_profile_hash",
+        "user_namespace_enabled",
+        "network_mode",
+        "imds_access",
+        "broker_socket_mounted",
+        "container_socket_mounted",
+        "provider_material_mounted",
+        "iam_material_mounted",
+        "secret_material_mounted",
+        "ephemeral_scratch_bytes",
+        "subprocess_allowed",
+        "socket_syscalls_allowed",
+        "ffi_allowed",
+        "dynamic_package_install_allowed",
+        "unapproved_imports_allowed"
+      ],
+      "type": "object"
+    },
+    "sandbox_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sanitizer_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "accepted",
+        "running",
+        "succeeded",
+        "failed",
+        "quarantined"
+      ],
+      "type": "string"
+    },
+    "tool_descriptor_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tool_receipt_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "undeclared_artifacts_allowed": {
+      "const": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis_run_id",
+    "run_id",
+    "tool_receipt_id",
+    "code_sha256",
+    "image_digest_sha256",
+    "tool_descriptor_hash",
+    "sandbox_policy_hash",
+    "run_brief_authorization_hash",
+    "phase",
+    "analysis_kind",
+    "input_manifest_sha256",
+    "declared_inputs",
+    "output_schema_hash",
+    "declared_output_manifest_sha256",
+    "resource_limits",
+    "network_enabled",
+    "credentials_mounted",
+    "undeclared_artifacts_allowed",
+    "sandbox",
+    "authority",
+    "status",
+    "output_manifest_sha256",
+    "quarantine_root",
+    "sanitizer_version",
+    "exit_reason"
+  ],
+  "title": "Sealed Analysis Run Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

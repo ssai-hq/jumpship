@@ -1,0 +1,211 @@
+{
+  "$id": "https://jumpship.dev/contracts/proof/deletion-attestation-request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Complete component receipt inventory submitted to the isolated deletion attestor.",
+  "properties": {
+    "attestation_stage": {
+      "enum": [
+        "preliminary",
+        "final"
+      ],
+      "type": "string"
+    },
+    "component_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "component_inventory_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "components": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "component_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "component_kind": {
+            "enum": [
+              "credential",
+              "cell",
+              "ebs",
+              "s3_object",
+              "kms_key",
+              "provider_resource",
+              "monitoring"
+            ],
+            "type": "string"
+          },
+          "receipt_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "retain_until": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": [
+              "access_disabled",
+              "deletion_scheduled",
+              "deleted",
+              "retained_until"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "component_id",
+          "component_kind",
+          "state",
+          "receipt_hash",
+          "retain_until"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4096,
+      "minItems": 1,
+      "type": "array"
+    },
+    "decommission_consent_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "decommission_consent_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "deletion_attestation_request_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "kms_deletion_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:deletion_attestation_request:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "deletion_attestation_request_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "deletion_attestation_request_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "deletion_attestation_request",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "object_lock_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_deletion_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deletion_attestation_request_id",
+    "workspace_id",
+    "migration_id",
+    "decommission_consent_id",
+    "decommission_consent_hash",
+    "attestation_stage",
+    "component_inventory_version",
+    "components",
+    "component_inventory_root",
+    "object_lock_root",
+    "kms_deletion_root",
+    "provider_deletion_root",
+    "requested_at",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Deletion Attestation Request Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F20",
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

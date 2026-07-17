@@ -1,0 +1,473 @@
+{
+  "$id": "https://jumpship.dev/contracts/decisions/reversibility.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "clock_source": {
+              "const": "provider_receipt"
+            },
+            "closes_at": {
+              "type": "null"
+            },
+            "closure_predicate": {
+              "const": "successful_traffic_flip"
+            },
+            "cost_currency": {
+              "type": "null"
+            },
+            "cost_estimate_minor_units": {
+              "type": "null"
+            },
+            "exposure_subject_hash": {
+              "type": "null"
+            },
+            "required_operation_id": {
+              "maxLength": 128,
+              "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+              "type": "string"
+            },
+            "reversibility_class": {
+              "const": "free_until_cutover"
+            },
+            "warning_required": {
+              "const": true
+            },
+            "warning_threshold_seconds": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "clock_source": {
+              "const": "not_applicable"
+            },
+            "closes_at": {
+              "type": "null"
+            },
+            "closure_predicate": {
+              "const": "priced_rehearsed_operation"
+            },
+            "cost_currency": {
+              "maxLength": 3,
+              "pattern": "^[A-Z]{3}$",
+              "type": "string"
+            },
+            "cost_estimate_minor_units": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "exposure_subject_hash": {
+              "type": "null"
+            },
+            "required_operation_id": {
+              "maxLength": 128,
+              "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+              "type": "string"
+            },
+            "reversibility_class": {
+              "const": "expensive_after_cutover"
+            },
+            "viability_evidence_roots": {
+              "minItems": 1
+            },
+            "warning_required": {
+              "const": true
+            },
+            "warning_threshold_seconds": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "clock_source": {
+              "const": "provider_receipt"
+            },
+            "closes_at": {
+              "type": "null"
+            },
+            "closure_predicate": {
+              "const": "first_external_exposure"
+            },
+            "cost_currency": {
+              "type": "null"
+            },
+            "cost_estimate_minor_units": {
+              "type": "null"
+            },
+            "exposure_subject_hash": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "required_operation_id": {
+              "maxLength": 128,
+              "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+              "type": "string"
+            },
+            "reversibility_class": {
+              "const": "closes_on_first_external_exposure"
+            },
+            "warning_required": {
+              "const": true
+            },
+            "warning_threshold_seconds": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "clock_source": {
+              "const": "backend_utc"
+            },
+            "closes_at": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "closure_predicate": {
+              "const": "backend_deadline"
+            },
+            "cost_currency": {
+              "type": "null"
+            },
+            "cost_estimate_minor_units": {
+              "type": "null"
+            },
+            "exposure_subject_hash": {
+              "type": "null"
+            },
+            "required_operation_id": {
+              "maxLength": 128,
+              "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+              "type": "string"
+            },
+            "reversibility_class": {
+              "const": "closes_on_a_clock"
+            },
+            "warning_required": {
+              "const": true
+            },
+            "warning_threshold_seconds": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "clock_source": {
+              "const": "provider_receipt"
+            },
+            "closes_at": {
+              "type": "null"
+            },
+            "closure_predicate": {
+              "const": "first_effect"
+            },
+            "cost_currency": {
+              "type": "null"
+            },
+            "cost_estimate_minor_units": {
+              "type": "null"
+            },
+            "exposure_subject_hash": {
+              "type": "null"
+            },
+            "required_operation_id": {
+              "maxLength": 128,
+              "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+              "type": "string"
+            },
+            "reversibility_class": {
+              "const": "never_reversible"
+            },
+            "safe_failure": {
+              "enum": [
+                "block_effect",
+                "refuse_unknown"
+              ]
+            },
+            "warning_required": {
+              "const": true
+            },
+            "warning_threshold_seconds": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "else": {
+        "else": {
+          "properties": {
+            "closed_by_receipt_hash": {
+              "type": "null"
+            },
+            "superseded_by": {
+              "type": "null"
+            }
+          }
+        },
+        "if": {
+          "properties": {
+            "state": {
+              "const": "superseded"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "superseded_by": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "state": {
+            "const": "closed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "closed_by_receipt_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "superseded_by": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "warning"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "warning_required": {
+            "const": true
+          }
+        }
+      }
+    }
+  ],
+  "description": "Five-class reversibility taxonomy with authoritative closure, warning, evidence, cost, and safe-failure fields. Closed records never reopen.",
+  "properties": {
+    "clock_source": {
+      "enum": [
+        "backend_utc",
+        "provider_receipt",
+        "not_applicable"
+      ],
+      "type": "string"
+    },
+    "closed_by_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "closes_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "closure_predicate": {
+      "enum": [
+        "successful_traffic_flip",
+        "priced_rehearsed_operation",
+        "first_external_exposure",
+        "backend_deadline",
+        "first_effect"
+      ],
+      "type": "string"
+    },
+    "cost_currency": {
+      "anyOf": [
+        {
+          "maxLength": 3,
+          "pattern": "^[A-Z]{3}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cost_estimate_minor_units": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "decision_key": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "decision_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "exposure_subject_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "required_operation_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "pattern": "^[a-z][A-Za-z0-9_.-]{0,127}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reversibility_class": {
+      "enum": [
+        "free_until_cutover",
+        "expensive_after_cutover",
+        "closes_on_first_external_exposure",
+        "closes_on_a_clock",
+        "never_reversible"
+      ],
+      "type": "string"
+    },
+    "reversibility_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "safe_failure": {
+      "enum": [
+        "block_effect",
+        "retain_current_authority",
+        "escalate_human",
+        "refuse_unknown"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "state": {
+      "enum": [
+        "proposed",
+        "open",
+        "warning",
+        "closed",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "superseded_by": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "viability_evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "warning_required": {
+      "type": "boolean"
+    },
+    "warning_threshold_seconds": {
+      "items": {
+        "maximum": 31536000,
+        "minimum": 1,
+        "type": "integer"
+      },
+      "maxItems": 16,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "reversibility_id",
+    "decision_key",
+    "decision_version",
+    "reversibility_class",
+    "state",
+    "closure_predicate",
+    "closes_at",
+    "clock_source",
+    "warning_required",
+    "warning_threshold_seconds",
+    "safe_failure",
+    "required_operation_id",
+    "cost_estimate_minor_units",
+    "cost_currency",
+    "viability_evidence_roots",
+    "exposure_subject_hash",
+    "closed_by_receipt_hash",
+    "superseded_by"
+  ],
+  "title": "Reversibility Record",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03",
+    "F06",
+    "F16",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

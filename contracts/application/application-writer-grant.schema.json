@@ -1,0 +1,151 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/application-writer-grant.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Immutable short-lived exact-workload signed grant claims. This object is always signed_dormant; reservation and activation/revocation state live in the separate writer-control projection so signed bytes never mutate.",
+  "properties": {
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "artifact_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "audience": {
+      "const": "jumpship-application-writer",
+      "type": "string"
+    },
+    "build_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cohort_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "config_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "credential_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "deploy_unit_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "encrypted_credential_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "grant_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "nonce": {
+      "pattern": "^[A-Za-z0-9_-]{32,128}$",
+      "type": "string"
+    },
+    "not_before": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "payload_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "purpose": {
+      "const": "application_writer_grant",
+      "type": "string"
+    },
+    "reserved_cohort_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "state": {
+      "const": "signed_dormant",
+      "type": "string"
+    },
+    "store": {
+      "enum": [
+        "source",
+        "target"
+      ],
+      "type": "string"
+    },
+    "workload_identity_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "writer_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "grant_id",
+    "purpose",
+    "workspace_id",
+    "migration_id",
+    "writer_id",
+    "cohort_id",
+    "deploy_unit_id",
+    "workload_identity_hash",
+    "build_digest",
+    "artifact_digest",
+    "config_digest",
+    "environment",
+    "store",
+    "application_authority_epoch",
+    "reserved_cohort_generation",
+    "credential_generation",
+    "audience",
+    "state",
+    "encrypted_credential_envelope_hash",
+    "not_before",
+    "expires_at",
+    "nonce",
+    "payload_hash",
+    "signature_envelope_hash"
+  ],
+  "title": "Jumpship Signed Application Writer Grant Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F26",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

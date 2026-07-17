@@ -1,0 +1,284 @@
+{
+  "cases": [
+    {
+      "expectation": "invalid",
+      "payload": {
+        "accepted_status_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_sequence": 1,
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cell_generation": 1,
+        "cell_id": "00000000-0000-7000-8000-000000000003",
+        "cell_release_binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "control_epoch": 1,
+        "expires_at": "2026-07-18T00:01:01Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "lease_id": "00000000-0000-7000-8000-000000000001",
+        "no_unresolved_binding_hold": true,
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reservation_id": "00000000-0000-7000-8000-000000000002",
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_purpose": "provider_use_lease",
+        "ttl_seconds": 61
+      },
+      "reason": "lease exceeds maximum declared lifetime",
+      "schema_path": "contracts/agent/provider-use-lease.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "approvals": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-provider-legal",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "legal"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-provider-security",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "security"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-second-security",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "security"
+          }
+        ],
+        "distinct_approver_count": 3,
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:provider_data_use_review:1.0.0\u0000",
+          "excluded_fields": [
+            "review_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "payload_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "review_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "provider_data_use_review"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "payload_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "result": "approved",
+        "review_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "review_version": "1.0.0",
+        "reviewed_at": "2026-07-18T00:00:00Z",
+        "schema_version": "1.0.0",
+        "source_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "valid_until": "2026-07-18T00:05:00Z",
+        "validity_seconds": 300
+      },
+      "reason": "approved review cannot duplicate a role or omit product approval",
+      "schema_path": "contracts/agent/provider-data-use-review.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "binding_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "binding_inventory_version": 0,
+        "created_at": "2026-07-18T00:00:00Z",
+        "expected_review_head_hash": null,
+        "expected_review_head_id": null,
+        "expected_status_head_hash": null,
+        "expected_status_head_id": null,
+        "lease_cutoff_at": "2026-07-18T00:05:00Z",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:provider_evidence_transition:1.0.0\u0000",
+          "excluded_fields": [
+            "transition_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "transition_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "provider_evidence_transition"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "object_key_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "predecessor_transition_hash": null,
+        "predecessor_transition_id": null,
+        "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "request_id": "00000000-0000-7000-8000-000000000001",
+        "reservation_id": "00000000-0000-7000-8000-000000000002",
+        "review_payload": {
+          "approvals": [
+            {
+              "approved_at": "2026-07-18T00:00:00Z",
+              "approver_id": "fixture-provider-legal",
+              "decision": "approved",
+              "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "role": "legal"
+            },
+            {
+              "approved_at": "2026-07-18T00:00:00Z",
+              "approver_id": "fixture-provider-security",
+              "decision": "approved",
+              "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "role": "security"
+            },
+            {
+              "approved_at": "2026-07-18T00:00:00Z",
+              "approver_id": "fixture-provider-product",
+              "decision": "approved",
+              "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "role": "product"
+            }
+          ],
+          "distinct_approver_count": 3,
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:provider_data_use_review:1.0.0\u0000",
+            "excluded_fields": [
+              "review_id",
+              "content_sha256",
+              "logical_payload_sha256",
+              "logical_payload_projection",
+              "payload_hash"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "review_id",
+            "object_schema_version": "1.0.0",
+            "object_type": "provider_data_use_review"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "payload_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "result": "approved",
+          "review_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "review_version": "1.0.0",
+          "reviewed_at": "2026-07-18T00:00:00Z",
+          "schema_version": "1.0.0",
+          "source_snapshot_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "valid_until": "2026-07-18T00:05:00Z",
+          "validity_seconds": 300
+        },
+        "review_payload_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "route_hold_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "sequence": 1,
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_purpose": "provider_data_use_review",
+        "status_payload": {
+          "effective_at": "2026-07-18T00:00:00Z",
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:provider_data_use_status:1.0.0\u0000",
+            "excluded_fields": [
+              "status_id",
+              "content_sha256",
+              "logical_payload_sha256",
+              "logical_payload_projection",
+              "payload_hash"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "status_id",
+            "object_schema_version": "1.0.0",
+            "object_type": "provider_data_use_status"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "payload_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "reason_code": "manual_invalidation",
+          "schema_version": "1.0.0",
+          "source_check_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "status": "invalidated",
+          "status_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "status_payload_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "transition_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "transition_kind": "review"
+      },
+      "reason": "review transition cannot embed an invalidated status",
+      "schema_path": "contracts/agent/provider-evidence-transition.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "semantic_cases": [
+    {
+      "expectation": "invalid",
+      "payload": {
+        "accepted_status_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_sequence": 1,
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cell_generation": 1,
+        "cell_id": "00000000-0000-7000-8000-000000000003",
+        "cell_release_binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "control_epoch": 1,
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "lease_id": "00000000-0000-7000-8000-000000000001",
+        "no_unresolved_binding_hold": true,
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reservation_id": "00000000-0000-7000-8000-000000000002",
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_purpose": "provider_use_lease",
+        "ttl_seconds": 60
+      },
+      "reason": "declared TTL does not equal the signed lease interval"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "accepted_status_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "accepted_transition_sequence": 1,
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "cell_generation": 1,
+        "cell_id": "00000000-0000-7000-8000-000000000003",
+        "cell_release_binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "control_epoch": 1,
+        "expires_at": "2026-07-19T00:00:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "lease_id": "00000000-0000-7000-8000-000000000001",
+        "no_unresolved_binding_hold": true,
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "provider_data_use_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "reservation_id": "00000000-0000-7000-8000-000000000002",
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "signature_purpose": "provider_use_lease",
+        "ttl_seconds": 60
+      },
+      "reason": "signed lease interval exceeds the 60-second ceiling"
+    }
+  ]
+}

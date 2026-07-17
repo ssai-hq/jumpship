@@ -1,0 +1,1676 @@
+{
+  "map_version": "1.0.0",
+  "records": [
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R001",
+      "write_owner_packet": "P00"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R002",
+      "write_owner_packet": "P00"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R003",
+      "write_owner_packet": "P00"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P01"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R004",
+      "write_owner_packet": "P01"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R005",
+      "write_owner_packet": "P02"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P04",
+        "P05",
+        "P08",
+        "P12",
+        "P16",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R006",
+      "write_owner_packet": "P02"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00",
+        "P02"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R007",
+      "write_owner_packet": "P00"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P08"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R008",
+      "write_owner_packet": "P08"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R009",
+      "write_owner_packet": "P02"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P08",
+        "P15",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R010",
+      "write_owner_packet": "P02"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R011",
+      "write_owner_packet": "P00"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P01",
+        "P02",
+        "P03",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P19",
+        "P20",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R012",
+      "write_owner_packet": "P01"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P01",
+        "P03"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R013",
+      "write_owner_packet": "P03"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R014",
+      "write_owner_packet": "P04"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P05",
+        "P16"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R015",
+      "write_owner_packet": "P05"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R016",
+      "write_owner_packet": "P04"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P11",
+        "P13"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R017",
+      "write_owner_packet": "P07"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P13"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R018",
+      "write_owner_packet": "P13"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P13"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R019",
+      "write_owner_packet": "P13"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P15"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R020",
+      "write_owner_packet": "P15"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P15"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R021",
+      "write_owner_packet": "P15"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P16"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R022",
+      "write_owner_packet": "P16"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P16"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R023",
+      "write_owner_packet": "P16"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P13",
+        "P15",
+        "P16",
+        "P17",
+        "P18"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R024",
+      "write_owner_packet": "P16"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P17"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R025",
+      "write_owner_packet": "P17"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P12",
+        "P13",
+        "P17",
+        "P18"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R026",
+      "write_owner_packet": "P17"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P17",
+        "P18"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R027",
+      "write_owner_packet": "P18"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P11",
+        "P15",
+        "P18",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R028",
+      "write_owner_packet": "P11"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06",
+        "P10",
+        "P27",
+        "P28"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R029",
+      "write_owner_packet": "P06"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R030",
+      "write_owner_packet": "P06"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06",
+        "P10"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R031",
+      "write_owner_packet": "P06"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P11",
+        "P12",
+        "P19",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R032",
+      "write_owner_packet": "P07"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P06",
+        "P07",
+        "P08",
+        "P10",
+        "P12",
+        "P19",
+        "P20",
+        "P23"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R033",
+      "write_owner_packet": "P08"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R034",
+      "write_owner_packet": "P08"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P08",
+        "P10",
+        "P11",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R035",
+      "write_owner_packet": "P12"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P08",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R036",
+      "write_owner_packet": "P12"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P19"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R037",
+      "write_owner_packet": "P19"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P11",
+        "P14",
+        "P16",
+        "P23"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R038",
+      "write_owner_packet": "P14"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P12",
+        "P19",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R039",
+      "write_owner_packet": "P20"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R040",
+      "write_owner_packet": "P20"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P11",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R041",
+      "write_owner_packet": "P11"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P19",
+        "P20",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R042",
+      "write_owner_packet": "P21"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P08",
+        "P10",
+        "P11",
+        "P12",
+        "P14",
+        "P20",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R043",
+      "write_owner_packet": "P21"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P00",
+        "P02",
+        "P04",
+        "P06",
+        "P07",
+        "P08",
+        "P10",
+        "P22",
+        "P23",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R044",
+      "write_owner_packet": "P23"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P22",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R045",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P22",
+        "P24",
+        "P25"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R046",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P14",
+        "P15",
+        "P20",
+        "P22",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R047",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P14",
+        "P15",
+        "P20",
+        "P22",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R048",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P17",
+        "P22",
+        "P24",
+        "P25"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R049",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P22",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R050",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P22",
+        "P24",
+        "P25"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R051",
+      "write_owner_packet": "P24"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P14",
+        "P23",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R052",
+      "write_owner_packet": "P23"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06",
+        "P08",
+        "P25"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R053",
+      "write_owner_packet": "P25"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P22",
+        "P23",
+        "P24",
+        "P25"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R054",
+      "write_owner_packet": "P22"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P09"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R055",
+      "write_owner_packet": "P09"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P02",
+        "P09",
+        "P10",
+        "P11"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R056",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P08",
+        "P10",
+        "P11",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R057",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P10"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R058",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P05",
+        "P11",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R059",
+      "write_owner_packet": "P11"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P08",
+        "P11",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R060",
+      "write_owner_packet": "P11"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P11",
+        "P12",
+        "P19",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R061",
+      "write_owner_packet": "P11"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P03",
+        "P04",
+        "P08",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P19",
+        "P20",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R062",
+      "write_owner_packet": "P03"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P10",
+        "P11",
+        "P12",
+        "P17",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R063",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R064",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P10",
+        "P11",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R065",
+      "write_owner_packet": "P08"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R066",
+      "write_owner_packet": "P10"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06",
+        "P07",
+        "P08",
+        "P11",
+        "P14",
+        "P23"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R067",
+      "write_owner_packet": "P23"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P11",
+        "P13",
+        "P17"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R068",
+      "write_owner_packet": "P13"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P13",
+        "P14",
+        "P20",
+        "P21"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R069",
+      "write_owner_packet": "P14"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P14",
+        "P19",
+        "P20",
+        "P23"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R070",
+      "write_owner_packet": "P23"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P14",
+        "P15",
+        "P19",
+        "P20",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R071",
+      "write_owner_packet": "P15"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P16",
+        "P18",
+        "P24",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R072",
+      "write_owner_packet": "P16"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P15",
+        "P16",
+        "P24"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R073",
+      "write_owner_packet": "P16"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P08",
+        "P10",
+        "P12",
+        "P13",
+        "P14",
+        "P15",
+        "P16",
+        "P17",
+        "P18",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R074",
+      "write_owner_packet": "P17"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P15",
+        "P18",
+        "P20"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R075",
+      "write_owner_packet": "P18"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P10",
+        "P12",
+        "P14",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P24",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R076",
+      "write_owner_packet": "P26"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P10",
+        "P12",
+        "P13",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P24",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R077",
+      "write_owner_packet": "P26"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P04",
+        "P05",
+        "P07",
+        "P08",
+        "P12",
+        "P13",
+        "P16",
+        "P17",
+        "P18",
+        "P19",
+        "P20",
+        "P24",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R078",
+      "write_owner_packet": "P26"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P10",
+        "P17",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R079",
+      "write_owner_packet": "P26"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P06",
+        "P07",
+        "P08",
+        "P10",
+        "P11",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R080",
+      "write_owner_packet": "P26"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P07",
+        "P08",
+        "P10",
+        "P18",
+        "P20",
+        "P24",
+        "P25",
+        "P26"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28",
+        "staging": "P27"
+      },
+      "rubric_id": "JSMVP-R081",
+      "write_owner_packet": "P08"
+    },
+    {
+      "commands": [
+        "make release-qualify"
+      ],
+      "plan_refs": [
+        "acceptance-rubric.md"
+      ],
+      "producer_packets": [
+        "P27",
+        "P28"
+      ],
+      "qualifier_packets_by_stage": {
+        "production": "P28"
+      },
+      "rubric_id": "JSMVP-R082",
+      "write_owner_packet": "P28"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source_document": "acceptance-rubric.md"
+}

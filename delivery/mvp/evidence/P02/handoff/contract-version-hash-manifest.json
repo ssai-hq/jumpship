@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "p02-contract-version-hash-handoff",
+  "packet_id": "P02",
+  "contract_schema_version": "1.0.0",
+  "materialized_artifact_count": 159,
+  "manifest_bound_artifact_count": 158,
+  "json_schema_count": 93,
+  "canonicalization": "RFC8785-JCS",
+  "typed_digest_domain": "jumpship:<object-type>:<schema-version>\\u0000",
+  "contract_manifest": {
+    "path": "contracts/contract-manifest.json",
+    "sha256": "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9"
+  },
+  "compatibility_baseline": {
+    "path": "contracts/compatibility-baseline.json",
+    "sha256": "04715b75e9cc09785ec26ff17e5466b292c9d5175e9b1005d74c364239312953"
+  },
+  "compatibility_report": {
+    "path": "contracts/compatibility-report.json",
+    "sha256": "a1a48aa90ef579e610398f46786c8efae9c712c1ac8b972dd75de3c5107104ee",
+    "status": "compatible_unchanged",
+    "surface_sha256": "b23afaf641d6088ad8e6b9b07dcf9e4cffa4f6fa17cce629099dd3856da61eb1"
+  }
+}

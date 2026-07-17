@@ -1,0 +1,2207 @@
+{
+  "$id": "https://jumpship.dev/contracts/auth/deployed-auth-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Complete non-secret release-bound auth topology. Secret values and live JWKS key material have no representable field.",
+  "properties": {
+    "allowed_origins": {
+      "items": {
+        "maxLength": 512,
+        "pattern": "^https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?$",
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "api_host": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "application_host": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "auth_callback_host": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "body_inspection_exclusion_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cell_control_host": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "connector_callback_host": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "cookies": {
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "name": {
+                "const": "__Host-js_session"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "name": {
+                "const": "__Host-js_oauth_start"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "name": {
+                "const": "__Host-js_oauth_callback"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "name": {
+                "const": "__Secure-js_present"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "authoritative": {
+                    "const": true
+                  },
+                  "domain_scope": {
+                    "const": "host_only"
+                  },
+                  "host_role": {
+                    "const": "api"
+                  },
+                  "max_age_seconds": {
+                    "const": 604800
+                  },
+                  "name": {
+                    "const": "__Host-js_session"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "authoritative": {
+                    "const": false
+                  },
+                  "domain_scope": {
+                    "const": "host_only"
+                  },
+                  "host_role": {
+                    "const": "api"
+                  },
+                  "max_age_seconds": {
+                    "const": 600
+                  },
+                  "name": {
+                    "const": "__Host-js_oauth_start"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "authoritative": {
+                    "const": false
+                  },
+                  "domain_scope": {
+                    "const": "host_only"
+                  },
+                  "host_role": {
+                    "const": "auth_callback"
+                  },
+                  "max_age_seconds": {
+                    "const": 600
+                  },
+                  "name": {
+                    "const": "__Host-js_oauth_callback"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "authoritative": {
+                    "const": false
+                  },
+                  "domain_scope": {
+                    "const": "parent_domain"
+                  },
+                  "host_role": {
+                    "const": "presentation"
+                  },
+                  "max_age_seconds": {
+                    "const": 300
+                  },
+                  "name": {
+                    "const": "__Secure-js_present"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "authoritative": {
+            "type": "boolean"
+          },
+          "domain_scope": {
+            "enum": [
+              "host_only",
+              "parent_domain"
+            ],
+            "type": "string"
+          },
+          "host_role": {
+            "enum": [
+              "api",
+              "auth_callback",
+              "presentation"
+            ],
+            "type": "string"
+          },
+          "http_only": {
+            "const": true
+          },
+          "max_age_seconds": {
+            "maximum": 604800,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "name": {
+            "enum": [
+              "__Host-js_session",
+              "__Host-js_oauth_start",
+              "__Host-js_oauth_callback",
+              "__Secure-js_present"
+            ],
+            "type": "string"
+          },
+          "path": {
+            "const": "/",
+            "type": "string"
+          },
+          "same_site": {
+            "const": "Lax",
+            "type": "string"
+          },
+          "secure": {
+            "const": true
+          }
+        },
+        "required": [
+          "name",
+          "host_role",
+          "domain_scope",
+          "authoritative",
+          "secure",
+          "http_only",
+          "same_site",
+          "path",
+          "max_age_seconds"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "cors_allow_credentials": {
+      "const": true
+    },
+    "cors_headers": {
+      "allOf": [
+        {
+          "contains": {
+            "const": "Content-Type"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "X-CSRF-Token"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "Idempotency-Key"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "If-Match"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "X-Request-ID"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "traceparent"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "enum": [
+          "Content-Type",
+          "X-CSRF-Token",
+          "Idempotency-Key",
+          "If-Match",
+          "X-Request-ID",
+          "traceparent"
+        ],
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "cors_methods": {
+      "allOf": [
+        {
+          "contains": {
+            "const": "GET"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "POST"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "PUT"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "PATCH"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "DELETE"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "OPTIONS"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "enum": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+          "OPTIONS"
+        ],
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 6,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "cors_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "csrf_exempt_operation_ids": {
+      "allOf": [
+        {
+          "contains": {
+            "const": "startIdentityOAuth"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "prepareIdentityOAuthCallback"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "consumeIdentityOAuthCallback"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "completeIdentityOAuth"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "prepareConnectorOAuthCallback"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "consumeConnectorOAuthCallback"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "completeConnectorOAuth"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "enum": [
+          "startIdentityOAuth",
+          "prepareIdentityOAuthCallback",
+          "consumeIdentityOAuthCallback",
+          "completeIdentityOAuth",
+          "prepareConnectorOAuthCallback",
+          "consumeConnectorOAuthCallback",
+          "completeConnectorOAuth"
+        ],
+        "type": "string"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "csrf_header_name": {
+      "const": "X-CSRF-Token",
+      "type": "string"
+    },
+    "csrf_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "csrf_route_classes": {
+      "allOf": [
+        {
+          "contains": {
+            "const": "ordinary_mutation"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "security_sensitive_mutation"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "credential_intake"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "const": "consent_execution"
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "enum": [
+          "ordinary_mutation",
+          "security_sensitive_mutation",
+          "credential_intake",
+          "consent_execution"
+        ],
+        "type": "string"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "csrf_session_binding": {
+      "const": "session_id_and_route_class",
+      "type": "string"
+    },
+    "csrf_storage": {
+      "const": "page_memory_only",
+      "type": "string"
+    },
+    "csrf_token_transport": {
+      "const": "synchronizer_header",
+      "type": "string"
+    },
+    "domain_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "domain_policy_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "handler_compensation_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "handoff_binding_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "handoff_expiry_seconds": {
+      "maximum": 60,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "interstitial_csp_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "interstitial_form_action_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "interstitial_script_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "listener_rule_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "main_host_callback_denial_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "presentation_algorithms": {
+      "items": {
+        "enum": [
+          "ES256",
+          "EdDSA"
+        ],
+        "type": "string"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "presentation_audience": {
+      "const": "jumpship-presentation",
+      "type": "string"
+    },
+    "presentation_issuer_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "presentation_jwks_cache_max_seconds": {
+      "maximum": 300,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "presentation_jwks_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "presentation_jwks_url": {
+      "maxLength": 512,
+      "pattern": "^https://[A-Za-z0-9.-]+/v1/auth/jwks\\.json$",
+      "type": "string"
+    },
+    "presentation_key_overlap_seconds": {
+      "maximum": 2678400,
+      "minimum": 300,
+      "type": "integer"
+    },
+    "presentation_payload_max_age_seconds": {
+      "maximum": 300,
+      "minimum": 300,
+      "type": "integer"
+    },
+    "presentation_purpose": {
+      "const": "route_shaping_only",
+      "type": "string"
+    },
+    "presentation_rotation_cadence": {
+      "const": "monthly",
+      "type": "string"
+    },
+    "presentation_unknown_kid_behavior": {
+      "const": "fail_closed",
+      "type": "string"
+    },
+    "providers": {
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "provider": {
+                "const": "google"
+              }
+            },
+            "required": [
+              "provider"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "provider": {
+                "const": "github"
+              }
+            },
+            "required": [
+              "provider"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "client_id_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "discovery_url_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "pkce_method": {
+            "const": "S256",
+            "type": "string"
+          },
+          "provider": {
+            "enum": [
+              "google",
+              "github"
+            ],
+            "type": "string"
+          },
+          "redirect_uri_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "scope_set_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "client_id_hash",
+          "discovery_url_hash",
+          "scope_set_hash",
+          "redirect_uri_hash",
+          "pkce_method"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "referrer_policy": {
+      "const": "no-referrer",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "route_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "route_tuples": {
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/{provider}/start"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "auth_callback"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/{provider}/prepare"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "none"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "auth_callback"
+              },
+              "method": {
+                "const": "GET"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/{provider}/callback"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "connector_callback"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/connectors/{kind}/oauth/prepare"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "none"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "connector_callback"
+              },
+              "method": {
+                "const": "GET"
+              },
+              "path_template": {
+                "const": "/v1/connectors/{kind}/callback"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/connectors/oauth/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "suppressed_binary"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "cell_control"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/internal/cell-certificates/bootstrap/request"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "suppressed_binary"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "cell_control"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/internal/cell-certificates/bootstrap/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "csrf_exempt": {
+                  "const": true
+                }
+              },
+              "required": [
+                "csrf_exempt"
+              ]
+            },
+            "then": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "json"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/start"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "auth_callback"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/prepare"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "none"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "auth_callback"
+                    },
+                    "method": {
+                      "const": "GET"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/callback"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "connector_callback"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/{kind}/oauth/prepare"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "none"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "connector_callback"
+                    },
+                    "method": {
+                      "const": "GET"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/{kind}/callback"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/oauth/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "suppressed_binary"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "cell_control"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/internal/cell-certificates/bootstrap/request"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "suppressed_binary"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "cell_control"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/internal/cell-certificates/bootstrap/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "access_logs": {
+            "enum": [
+              "enabled_redacted",
+              "disabled"
+            ],
+            "type": "string"
+          },
+          "body_policy": {
+            "enum": [
+              "none",
+              "json",
+              "form_redacted",
+              "suppressed_binary"
+            ],
+            "type": "string"
+          },
+          "csrf_exempt": {
+            "type": "boolean"
+          },
+          "host_role": {
+            "enum": [
+              "api",
+              "auth_callback",
+              "connector_callback",
+              "cell_control"
+            ],
+            "type": "string"
+          },
+          "method": {
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ],
+            "type": "string"
+          },
+          "origin_policy_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "path_template": {
+            "maxLength": 512,
+            "pattern": "^/v1/[A-Za-z0-9_{}./-]+$",
+            "type": "string"
+          },
+          "route_build_digest": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "host_role",
+          "method",
+          "path_template",
+          "route_build_digest",
+          "body_policy",
+          "access_logs",
+          "csrf_exempt",
+          "origin_policy_hash"
+        ],
+        "type": "object"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "sensitive_body_routes": {
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "auth_callback"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/{provider}/prepare"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/oauth/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "connector_callback"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/connectors/{kind}/oauth/prepare"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "form_redacted"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/connectors/oauth/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "PUT"
+              },
+              "path_template": {
+                "const": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/connectors/mongodb/credential"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/invitations/accept"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/device/authorizations/approve"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/device/token"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/webauthn/registration/options"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/auth/webauthn/registration/verify"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/cli/browser-ceremonies/{ceremony_id}/decision"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "json"
+              },
+              "csrf_exempt": {
+                "const": false
+              },
+              "host_role": {
+                "const": "api"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/workspaces/{workspace_id}/migrations/{migration_id}/consents/{consent_kind}/confirm"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "suppressed_binary"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "cell_control"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/internal/cell-certificates/bootstrap/request"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "body_policy": {
+                "const": "suppressed_binary"
+              },
+              "csrf_exempt": {
+                "const": true
+              },
+              "host_role": {
+                "const": "cell_control"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path_template": {
+                "const": "/v1/internal/cell-certificates/bootstrap/complete"
+              }
+            },
+            "required": [
+              "host_role",
+              "method",
+              "path_template",
+              "body_policy",
+              "csrf_exempt"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      ],
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "csrf_exempt": {
+                  "const": true
+                }
+              },
+              "required": [
+                "csrf_exempt"
+              ]
+            },
+            "then": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "json"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/start"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "auth_callback"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/prepare"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "none"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "auth_callback"
+                    },
+                    "method": {
+                      "const": "GET"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/{provider}/callback"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/auth/oauth/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "connector_callback"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/{kind}/oauth/prepare"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "none"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "connector_callback"
+                    },
+                    "method": {
+                      "const": "GET"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/{kind}/callback"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "form_redacted"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "api"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/connectors/oauth/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "suppressed_binary"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "cell_control"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/internal/cell-certificates/bootstrap/request"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                },
+                {
+                  "properties": {
+                    "body_policy": {
+                      "const": "suppressed_binary"
+                    },
+                    "csrf_exempt": {
+                      "const": true
+                    },
+                    "host_role": {
+                      "const": "cell_control"
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "path_template": {
+                      "const": "/v1/internal/cell-certificates/bootstrap/complete"
+                    }
+                  },
+                  "required": [
+                    "host_role",
+                    "method",
+                    "path_template",
+                    "body_policy",
+                    "csrf_exempt"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "access_logs": {
+            "enum": [
+              "enabled_redacted",
+              "disabled"
+            ],
+            "type": "string"
+          },
+          "body_policy": {
+            "enum": [
+              "none",
+              "json",
+              "form_redacted",
+              "suppressed_binary"
+            ],
+            "type": "string"
+          },
+          "csrf_exempt": {
+            "type": "boolean"
+          },
+          "host_role": {
+            "enum": [
+              "api",
+              "auth_callback",
+              "connector_callback",
+              "cell_control"
+            ],
+            "type": "string"
+          },
+          "method": {
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "PATCH",
+              "DELETE"
+            ],
+            "type": "string"
+          },
+          "origin_policy_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "path_template": {
+            "maxLength": 512,
+            "pattern": "^/v1/[A-Za-z0-9_{}./-]+$",
+            "type": "string"
+          },
+          "route_build_digest": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "host_role",
+          "method",
+          "path_template",
+          "route_build_digest",
+          "body_policy",
+          "access_logs",
+          "csrf_exempt",
+          "origin_policy_hash"
+        ],
+        "type": "object"
+      },
+      "maxItems": 14,
+      "minItems": 14,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "session_absolute_seconds": {
+      "maximum": 604800,
+      "minimum": 604800,
+      "type": "integer"
+    },
+    "session_idle_seconds": {
+      "maximum": 43200,
+      "minimum": 43200,
+      "type": "integer"
+    },
+    "session_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "session_touch_interval_seconds": {
+      "maximum": 300,
+      "minimum": 300,
+      "type": "integer"
+    },
+    "telemetry_suppression_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "waf_redaction_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "webauthn_algorithm_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "webauthn_attestation": {
+      "const": "none",
+      "type": "string"
+    },
+    "webauthn_challenge_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "webauthn_origins": {
+      "items": {
+        "maxLength": 512,
+        "pattern": "^https://[A-Za-z0-9.-]+(?::[0-9]{1,5})?$",
+        "type": "string"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "webauthn_resident_key": {
+      "enum": [
+        "preferred",
+        "required"
+      ],
+      "type": "string"
+    },
+    "webauthn_rp_id": {
+      "maxLength": 253,
+      "pattern": "^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$",
+      "type": "string"
+    },
+    "webauthn_user_verification": {
+      "const": "required",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "environment",
+    "release_unit_id",
+    "domain_policy_version",
+    "domain_policy_hash",
+    "application_host",
+    "api_host",
+    "auth_callback_host",
+    "connector_callback_host",
+    "cell_control_host",
+    "allowed_origins",
+    "providers",
+    "route_tuples",
+    "route_digest",
+    "cookies",
+    "session_idle_seconds",
+    "session_absolute_seconds",
+    "session_touch_interval_seconds",
+    "cors_policy_hash",
+    "cors_allow_credentials",
+    "cors_methods",
+    "cors_headers",
+    "csrf_policy_hash",
+    "csrf_token_transport",
+    "csrf_header_name",
+    "csrf_session_binding",
+    "csrf_storage",
+    "csrf_route_classes",
+    "csrf_exempt_operation_ids",
+    "session_policy_hash",
+    "presentation_jwks_policy_hash",
+    "presentation_jwks_url",
+    "presentation_jwks_cache_max_seconds",
+    "presentation_rotation_cadence",
+    "presentation_key_overlap_seconds",
+    "presentation_issuer_hash",
+    "presentation_audience",
+    "presentation_purpose",
+    "presentation_algorithms",
+    "presentation_payload_max_age_seconds",
+    "presentation_unknown_kid_behavior",
+    "handoff_expiry_seconds",
+    "handoff_binding_schema_hash",
+    "interstitial_csp_hash",
+    "interstitial_script_hash",
+    "interstitial_form_action_hash",
+    "referrer_policy",
+    "webauthn_rp_id",
+    "webauthn_origins",
+    "webauthn_user_verification",
+    "webauthn_attestation",
+    "webauthn_resident_key",
+    "webauthn_algorithm_policy_hash",
+    "webauthn_challenge_policy_hash",
+    "listener_rule_digest",
+    "waf_redaction_policy_hash",
+    "telemetry_suppression_policy_hash",
+    "main_host_callback_denial_hash",
+    "sensitive_body_routes",
+    "body_inspection_exclusion_hash",
+    "handler_compensation_policy_hash",
+    "config_hash"
+  ],
+  "title": "Jumpship Complete Deployed Authentication Configuration Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F01",
+    "F02",
+    "F19",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 1048576
+}

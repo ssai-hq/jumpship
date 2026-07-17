@@ -1,0 +1,130 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Exact Bedrock model, region, route, data-use, and typed error seam; no body or credential fields.",
+  "properties": {
+    "aws_region": {
+      "pattern": "^[a-z]{2}-[a-z]+-[0-9]$",
+      "type": "string"
+    },
+    "contains_credentials": {
+      "const": false,
+      "type": "boolean"
+    },
+    "cross_region_inference_allowed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "error_codes": {
+      "items": {
+        "enum": [
+          "route_unavailable",
+          "provider_review_invalid",
+          "provider_hold_open",
+          "provider_lease_expired",
+          "budget_exhausted",
+          "context_rejected"
+        ],
+        "type": "string"
+      },
+      "maxItems": 16,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "max_input_bytes": {
+      "maximum": 8388608,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "max_output_bytes": {
+      "maximum": 2097152,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "model_id": {
+      "maxLength": 512,
+      "pattern": "^arn:aws(?:-us-gov)?:bedrock:[a-z]{2}(?:-gov)?-[a-z]+-[0-9]::foundation-model/anthropic\\.claude[A-Za-z0-9._:-]+$",
+      "type": "string"
+    },
+    "model_revision": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "provider_data_use_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "provider_kind": {
+      "enum": [
+        "amazon_bedrock"
+      ],
+      "type": "string"
+    },
+    "public_fallback_allowed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "request_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "result_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "route_config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "route_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "provider_id",
+    "provider_kind",
+    "model_id",
+    "model_revision",
+    "aws_region",
+    "route_id",
+    "route_config_hash",
+    "provider_data_use_record_id",
+    "provider_data_use_record_hash",
+    "request_schema_hash",
+    "result_schema_hash",
+    "error_codes",
+    "max_input_bytes",
+    "max_output_bytes",
+    "public_fallback_allowed",
+    "cross_region_inference_allowed",
+    "contains_credentials"
+  ],
+  "title": "Agent Provider Adapter Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 32768
+}

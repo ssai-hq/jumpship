@@ -1,0 +1,125 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/application-estate-safe-projection.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Browser/API projection containing counts and safe status only; repository names, refs, paths, symbols, content hashes, and raw findings remain cell-local.",
+  "properties": {
+    "application_estate_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "counts": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking_unknown_count": {
+          "maximum": 100000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "data_access_site_count": {
+          "maximum": 200000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "deploy_unit_count": {
+          "maximum": 8192,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "repository_count": {
+          "maximum": 4096,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unfenceable_writer_count": {
+          "maximum": 100000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "workload_count": {
+          "maximum": 32768,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "writer_count": {
+          "maximum": 100000,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "repository_count",
+        "deploy_unit_count",
+        "workload_count",
+        "data_access_site_count",
+        "writer_count",
+        "blocking_unknown_count",
+        "unfenceable_writer_count"
+      ],
+      "type": "object"
+    },
+    "coverage_complete": {
+      "type": "boolean"
+    },
+    "coverage_state": {
+      "enum": [
+        "incomplete",
+        "blocked",
+        "complete"
+      ],
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "projection_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "safe_summary": {
+      "maxLength": 2048,
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "application_estate_id",
+    "workspace_id",
+    "migration_id",
+    "revision",
+    "coverage_complete",
+    "counts",
+    "coverage_state",
+    "safe_summary",
+    "projection_root",
+    "updated_at"
+  ],
+  "title": "Jumpship Shared-Safe Application Estate Projection Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

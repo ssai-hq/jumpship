@@ -1,0 +1,10 @@
+{
+  "expected_client_behavior": "visible_unsupported_then_refetch",
+  "expected_valid": true,
+  "instance_patch": {
+    "event_type": "future.safe_projection",
+    "safe_summary": "Unsupported event type; refetch the canonical projection."
+  },
+  "instance_patch_from": "contracts/fixtures/events/valid-session-event.json",
+  "schema_path": "contracts/events/session-event.schema.json"
+}

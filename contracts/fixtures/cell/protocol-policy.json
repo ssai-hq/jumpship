@@ -1,0 +1,37 @@
+{
+  "fixture_version": "1.0.0",
+  "renew_allowed_response_fields": [
+    "context",
+    "request_id",
+    "poll_secret",
+    "poll_secret_hash",
+    "expires_at",
+    "recovery_receipt_root"
+  ],
+  "renew_forbidden_authority": [
+    "command",
+    "operation_grant",
+    "credential_lease",
+    "stream_token",
+    "traffic_authority"
+  ],
+  "required_context_fields": [
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "control_region_epoch",
+    "target_write_epoch",
+    "protocol_version",
+    "sequence",
+    "causation_id",
+    "correlation_id",
+    "trace_id",
+    "signature_envelope_hash",
+    "channel_binding_hash"
+  ],
+  "required_services": {
+    "CellCertificateRecovery.Renew": "unary_no_authority",
+    "SupervisorControl.Connect": "bidirectional_stream"
+  }
+}

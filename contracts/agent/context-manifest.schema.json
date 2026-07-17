@@ -1,0 +1,134 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/context-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Deterministically ordered context inventory with stable identities and hashes for each model call.",
+  "properties": {
+    "compiled_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "context_manifest_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "content_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "data_class": {
+            "enum": [
+              "public",
+              "internal_operational",
+              "identity_tenant",
+              "shared_migration",
+              "restricted_customer"
+            ],
+            "type": "string"
+          },
+          "item_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "item_kind": {
+            "enum": [
+              "projection",
+              "decision",
+              "artifact",
+              "evidence",
+              "memory",
+              "steering",
+              "policy"
+            ],
+            "type": "string"
+          },
+          "sequence": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "source_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "token_count": {
+            "maximum": 2000000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "item_id",
+          "item_kind",
+          "content_hash",
+          "data_class",
+          "source_root",
+          "sequence",
+          "token_count"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4096,
+      "minItems": 1,
+      "type": "array"
+    },
+    "iteration_sequence": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "manifest_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ordering_algorithm": {
+      "const": "priority-kind-stable-id-v1",
+      "type": "string"
+    },
+    "posture": {
+      "enum": [
+        "design",
+        "migration_ops"
+      ],
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "task_kind": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "context_manifest_id",
+    "run_id",
+    "iteration_sequence",
+    "posture",
+    "task_kind",
+    "items",
+    "ordering_algorithm",
+    "manifest_root",
+    "compiled_at"
+  ],
+  "title": "Agent Context Manifest Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

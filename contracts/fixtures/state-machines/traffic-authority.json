@@ -1,0 +1,2176 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "freezing_source",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_cohorts_activating",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "watching_target",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rollback_draining",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_restore_arming",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_cohorts_activating",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_primary_resynced",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "reverify_for_cutover",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "target_primary_irreversible",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "source_retired",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "incident_recovery_decision",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "rebaseline_required",
+      "to_state": "rebaseline_required"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "source_primary"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "source_primary",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "traffic_authority",
+  "schema_path": "contracts/workflow/traffic-authority-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "source_primary",
+    "source_compatibility_deployed",
+    "freezing_source",
+    "source_fenced_and_drained",
+    "target_primary_reverse_armed",
+    "target_cohorts_activating",
+    "watching_target",
+    "rollback_draining",
+    "target_fenced_and_reverse_drained",
+    "source_restore_arming",
+    "source_resume_stream_armed",
+    "source_cohorts_activating",
+    "source_primary_resynced",
+    "reverify_for_cutover",
+    "target_primary_irreversible",
+    "source_retired",
+    "authority_conflict_frozen",
+    "incident_recovery_decision",
+    "rebaseline_required"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "source_primary",
+      "to_state": "source_compatibility_deployed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_compatibility_deployed",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "valid",
+      "from_state": "freezing_source",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "valid",
+      "from_state": "freezing_source",
+      "to_state": "source_fenced_and_drained"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_restore_arming",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "source_cohorts_activating"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_cohorts_activating",
+      "to_state": "source_primary_resynced"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "source_restore_arming"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "target_primary_reverse_armed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "target_cohorts_activating"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_cohorts_activating",
+      "to_state": "watching_target"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_cohorts_activating",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "valid",
+      "from_state": "watching_target",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "valid",
+      "from_state": "watching_target",
+      "to_state": "target_primary_irreversible"
+    },
+    {
+      "expected": "valid",
+      "from_state": "rollback_draining",
+      "to_state": "target_fenced_and_reverse_drained"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "source_resume_stream_armed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_primary_irreversible",
+      "to_state": "source_retired"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_primary_resynced",
+      "to_state": "reverify_for_cutover"
+    },
+    {
+      "expected": "valid",
+      "from_state": "reverify_for_cutover",
+      "to_state": "freezing_source"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_fenced_and_drained",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_primary_reverse_armed",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_cohorts_activating",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "watching_target",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "rollback_draining",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_fenced_and_reverse_drained",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_restore_arming",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_resume_stream_armed",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "source_cohorts_activating",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "target_primary_irreversible",
+      "to_state": "authority_conflict_frozen"
+    },
+    {
+      "expected": "valid",
+      "from_state": "authority_conflict_frozen",
+      "to_state": "incident_recovery_decision"
+    },
+    {
+      "expected": "valid",
+      "from_state": "incident_recovery_decision",
+      "to_state": "rollback_draining"
+    },
+    {
+      "expected": "valid",
+      "from_state": "incident_recovery_decision",
+      "to_state": "rebaseline_required"
+    }
+  ]
+}

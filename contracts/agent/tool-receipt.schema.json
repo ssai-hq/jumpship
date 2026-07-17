@@ -1,0 +1,316 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/tool-receipt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Append-only terminal receipt for one exact capability grant and tool request.",
+  "oneOf": [
+    {
+      "properties": {
+        "consequence_class": {
+          "const": "observation"
+        },
+        "effect_identity": {
+          "const": null
+        },
+        "execution_mode": {
+          "const": "inline"
+        },
+        "no_authority_conferred": {
+          "const": true
+        },
+        "target_commit_hash": {
+          "const": null
+        },
+        "write_epoch_receipt_hash": {
+          "const": null
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "execution_mode": {
+          "const": "durable"
+        },
+        "no_authority_conferred": {
+          "const": true
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "consequence_class": {
+      "enum": [
+        "observation",
+        "reversible_effect",
+        "closing_door",
+        "irreversible_effect"
+      ],
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "effect_identity": {
+      "anyOf": [
+        {
+          "maxLength": 256,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "execution_mode": {
+      "enum": [
+        "inline",
+        "durable"
+      ],
+      "type": "string"
+    },
+    "executor_image_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "executor_tool_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "finished_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "grant_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "grant_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "grant_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:tool_receipt:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "receipt_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "receipt_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "tool_receipt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "no_authority_conferred": {
+      "const": true,
+      "type": "boolean"
+    },
+    "operation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "output_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "previous_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "receipt_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "request_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "safe_summary": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "succeeded",
+        "failed",
+        "denied",
+        "timed_out",
+        "reconciled"
+      ],
+      "type": "string"
+    },
+    "target_commit_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tool_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "tool_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "trace_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "write_epoch_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "grant_id",
+    "grant_hash",
+    "run_id",
+    "operation_id",
+    "tool_id",
+    "tool_version",
+    "execution_mode",
+    "consequence_class",
+    "status",
+    "request_hash",
+    "output_hash",
+    "effect_identity",
+    "grant_policy_hash",
+    "executor_image_digest",
+    "executor_tool_digest",
+    "safe_summary",
+    "retryable",
+    "target_commit_hash",
+    "write_epoch_receipt_hash",
+    "causation_id",
+    "correlation_id",
+    "trace_id",
+    "no_authority_conferred",
+    "started_at",
+    "finished_at",
+    "previous_receipt_hash",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Agent Tool Receipt Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F18"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

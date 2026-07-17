@@ -1,0 +1,135 @@
+{
+  "$id": "https://jumpship.dev/contracts/quality/decision-policy-learning-record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Allowlisted reviewed aggregate for decision policy learning; customer identities and raw evidence are forbidden.",
+  "properties": {
+    "contains_migration_identity": {
+      "const": false,
+      "type": "boolean"
+    },
+    "contains_raw_evidence": {
+      "const": false,
+      "type": "boolean"
+    },
+    "contains_user_identity": {
+      "const": false,
+      "type": "boolean"
+    },
+    "contains_workspace_identity": {
+      "const": false,
+      "type": "boolean"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "decision_key": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "confidence_lower_bound": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "feature_key": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "support_count": {
+            "maximum": 1000000000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "value_bucket": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "feature_key",
+          "value_bucket",
+          "support_count",
+          "confidence_lower_bound"
+        ],
+        "type": "object"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array"
+    },
+    "learning_record_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "outcome_class": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "policy_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "provenance_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "record_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "review_approval_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sanitizer_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sanitizer_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "learning_record_id",
+    "record_version",
+    "policy_version",
+    "features",
+    "provenance_root",
+    "sanitizer_version",
+    "sanitizer_policy_hash",
+    "review_approval_root",
+    "contains_workspace_identity",
+    "contains_user_identity",
+    "contains_migration_identity",
+    "contains_raw_evidence",
+    "created_at",
+    "decision_key",
+    "outcome_class"
+  ],
+  "title": "Privacy Safe Decision Policy Learning Record",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

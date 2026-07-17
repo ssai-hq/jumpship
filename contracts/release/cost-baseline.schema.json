@@ -1,0 +1,297 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/cost-baseline.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Content-addressed profile, plan, inventory, price-source, fixed-input, and variance-policy cost baseline.",
+  "oneOf": [
+    {
+      "properties": {
+        "deployment_profile_id": {
+          "const": "local"
+        },
+        "environment": {
+          "const": "local"
+        },
+        "stage": {
+          "const": "local"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "deployment_profile_id": {
+          "const": "ephemeral-nonprod"
+        },
+        "environment": {
+          "const": "nonprod"
+        },
+        "stage": {
+          "const": "ephemeral"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "deployment_profile_id": {
+          "const": "persistent-nonprod"
+        },
+        "environment": {
+          "const": "staging"
+        },
+        "stage": {
+          "const": "persistent"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "deployment_profile_id": {
+          "const": "paid-production"
+        },
+        "environment": {
+          "const": "production"
+        },
+        "stage": {
+          "const": "paid"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "assumptions": {
+      "items": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "aws_price_list_offer": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "aws_price_list_source_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "aws_price_list_version": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "cell_cost_maximum": {
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "cell_cost_minimum": {
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cost_baseline_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "currency": {
+      "pattern": "^[A-Z]{3}$",
+      "type": "string"
+    },
+    "deployment_profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_profile_id": {
+      "enum": [
+        "local",
+        "ephemeral-nonprod",
+        "persistent-nonprod",
+        "paid-production"
+      ],
+      "type": "string"
+    },
+    "deployment_profile_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "nonprod",
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "exclusions": {
+      "items": {
+        "maxLength": 512,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 128,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "fixed_cost_input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "fixed_cost_input_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "fixed_floor_amount": {
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "generated_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:cost_baseline:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "cost_baseline_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "cost_baseline_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "cost_baseline",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "materialized_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "opentofu_plan_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "resource_graph_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "stage": {
+      "enum": [
+        "local",
+        "ephemeral",
+        "persistent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "variance_policy_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "cost_baseline_id",
+    "environment",
+    "stage",
+    "deployment_profile_id",
+    "deployment_profile_version",
+    "deployment_profile_hash",
+    "opentofu_plan_root",
+    "resource_graph_root",
+    "materialized_inventory_root",
+    "aws_price_list_offer",
+    "aws_price_list_version",
+    "aws_price_list_source_root",
+    "fixed_cost_input_id",
+    "fixed_cost_input_hash",
+    "currency",
+    "fixed_floor_amount",
+    "cell_cost_minimum",
+    "cell_cost_maximum",
+    "assumptions",
+    "exclusions",
+    "variance_policy_id",
+    "generated_at",
+    "expires_at",
+    "content_sha256",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Environment Cost Baseline Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 524288
+}

@@ -1,0 +1,11 @@
+{
+  "expected_errors": [
+    "coding_agent_ceremony_denied"
+  ],
+  "expected_valid": false,
+  "instance_patch": {
+    "method": "browser_ceremony.create"
+  },
+  "instance_patch_from": "contracts/fixtures/client/valid-local-broker-frame.json",
+  "schema_path": "contracts/client/local-broker.schema.json"
+}

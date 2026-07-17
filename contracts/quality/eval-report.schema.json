@@ -1,0 +1,176 @@
+{
+  "$id": "https://jumpship.dev/contracts/quality/eval-report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Sanitized bundle/corpus/checker/grader/environment-bound evaluation result.",
+  "properties": {
+    "agent_bundle_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "agent_bundle_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "case_count": {
+      "maximum": 100000,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "checker_set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "completed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "contains_raw_customer_evidence": {
+      "const": false,
+      "type": "boolean"
+    },
+    "corpus_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "corpus_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "environment_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "eval_report_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "grader_set_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "hard_gate_fail_count": {
+      "maximum": 100000,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "hard_gate_pass_count": {
+      "maximum": 100000,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:eval_report:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "eval_report_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "eval_report_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "eval_report",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualitative_score": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "type": "number"
+    },
+    "result_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sanitizer_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "eval_report_id",
+    "agent_bundle_id",
+    "agent_bundle_hash",
+    "corpus_version",
+    "corpus_hash",
+    "checker_set_hash",
+    "grader_set_hash",
+    "environment_hash",
+    "case_count",
+    "hard_gate_pass_count",
+    "hard_gate_fail_count",
+    "qualitative_score",
+    "result_root",
+    "sanitizer_version",
+    "contains_raw_customer_evidence",
+    "completed_at",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Sanitized Agent Evaluation Report Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

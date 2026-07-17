@@ -1,0 +1,564 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/deployment-profile.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Exact ADR-027 composition profile; unknown IDs and ad-hoc feature flags are invalid.",
+  "oneOf": [
+    {
+      "properties": {
+        "allows_customer_cells": {
+          "const": false
+        },
+        "allows_cutover": {
+          "const": false
+        },
+        "data_eligibility": {
+          "const": "synthetic_only"
+        },
+        "evidence_requirements": {
+          "const": [
+            "local-contract-and-unit-evidence"
+          ]
+        },
+        "forbidden_combinations": {
+          "const": [
+            "unknown profile IDs or undeclared module overrides",
+            "evidence substitution from a weaker profile",
+            "ad-hoc feature flags that alter authority or recovery guarantees",
+            "customer data or provider credentials",
+            "release qualification or cutover"
+          ]
+        },
+        "implementation_default": {
+          "const": false
+        },
+        "modules": {
+          "const": [
+            "local-compose",
+            "synthetic-provider-fixtures"
+          ]
+        },
+        "persistent_inventory": {
+          "const": [
+            {
+              "class_id": "developer-state",
+              "maximum_count": 1,
+              "minimum_count": 0
+            }
+          ]
+        },
+        "profile_hash": {
+          "const": "f1d6ad84021f14544c56404e4d23e9d2408b59d56c4e82d44d16dc5a024b8b03"
+        },
+        "profile_id": {
+          "const": "local"
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "requires_ha_recovery_support": {
+          "const": false
+        },
+        "roots": {
+          "const": [
+            "infra/local"
+          ]
+        },
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "windowed_inventory": {
+          "const": [
+            {
+              "class_id": "synthetic-cell",
+              "maximum_count": 8,
+              "minimum_count": 0
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "profile_id",
+        "profile_version",
+        "profile_hash",
+        "implementation_default",
+        "roots",
+        "modules",
+        "persistent_inventory",
+        "windowed_inventory",
+        "data_eligibility",
+        "evidence_requirements",
+        "forbidden_combinations",
+        "allows_customer_cells",
+        "allows_cutover",
+        "requires_ha_recovery_support"
+      ]
+    },
+    {
+      "properties": {
+        "allows_customer_cells": {
+          "const": false
+        },
+        "allows_cutover": {
+          "const": false
+        },
+        "data_eligibility": {
+          "const": "sanitized_non_customer"
+        },
+        "evidence_requirements": {
+          "const": [
+            "materialize-smoke-drain-destroy",
+            "zero-windowed-inventory-receipt"
+          ]
+        },
+        "forbidden_combinations": {
+          "const": [
+            "unknown profile IDs or undeclared module overrides",
+            "evidence substitution from a weaker profile",
+            "ad-hoc feature flags that alter authority or recovery guarantees",
+            "customer data, production activation, or cutover",
+            "windowed resources retained after the declared run"
+          ]
+        },
+        "implementation_default": {
+          "const": true
+        },
+        "modules": {
+          "const": [
+            "state-lock",
+            "oidc-deploy",
+            "windowed-shared",
+            "synthetic-cell"
+          ]
+        },
+        "persistent_inventory": {
+          "const": [
+            {
+              "class_id": "state-and-security-logs",
+              "maximum_count": 8,
+              "minimum_count": 1
+            }
+          ]
+        },
+        "profile_hash": {
+          "const": "a3bd2e7f4825b8f78af45128836004806090c503729ee7785544872a9c998540"
+        },
+        "profile_id": {
+          "const": "ephemeral-nonprod"
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "requires_ha_recovery_support": {
+          "const": false
+        },
+        "roots": {
+          "const": [
+            "infra/live/nonprod-foundation",
+            "infra/live/nonprod-windowed"
+          ]
+        },
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "windowed_inventory": {
+          "const": [
+            {
+              "class_id": "nonprod-shared-and-cell",
+              "maximum_count": 64,
+              "minimum_count": 0
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "profile_id",
+        "profile_version",
+        "profile_hash",
+        "implementation_default",
+        "roots",
+        "modules",
+        "persistent_inventory",
+        "windowed_inventory",
+        "data_eligibility",
+        "evidence_requirements",
+        "forbidden_combinations",
+        "allows_customer_cells",
+        "allows_cutover",
+        "requires_ha_recovery_support"
+      ]
+    },
+    {
+      "properties": {
+        "allows_customer_cells": {
+          "const": false
+        },
+        "allows_cutover": {
+          "const": false
+        },
+        "data_eligibility": {
+          "const": "provider_backed_nonprod"
+        },
+        "evidence_requirements": {
+          "const": [
+            "staging-readiness",
+            "provider-backed-corridor",
+            "restore-and-rollback-drill"
+          ]
+        },
+        "forbidden_combinations": {
+          "const": [
+            "unknown profile IDs or undeclared module overrides",
+            "evidence substitution from a weaker profile",
+            "ad-hoc feature flags that alter authority or recovery guarantees",
+            "customer production data or paid cutover",
+            "production readiness claims"
+          ]
+        },
+        "implementation_default": {
+          "const": false
+        },
+        "modules": {
+          "const": [
+            "shared-control",
+            "mothership",
+            "provider-backed-nonprod",
+            "recovery-drill"
+          ]
+        },
+        "persistent_inventory": {
+          "const": [
+            {
+              "class_id": "nonprod-shared-platform",
+              "maximum_count": 64,
+              "minimum_count": 1
+            }
+          ]
+        },
+        "profile_hash": {
+          "const": "0aec2215f87de6ca6a11369ff461067e1f8e8f84478051ebbb1565f8ab88e57e"
+        },
+        "profile_id": {
+          "const": "persistent-nonprod"
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "requires_ha_recovery_support": {
+          "const": true
+        },
+        "roots": {
+          "const": [
+            "infra/live/nonprod-persistent"
+          ]
+        },
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "windowed_inventory": {
+          "const": [
+            {
+              "class_id": "qualification-cell",
+              "maximum_count": 128,
+              "minimum_count": 0
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "profile_id",
+        "profile_version",
+        "profile_hash",
+        "implementation_default",
+        "roots",
+        "modules",
+        "persistent_inventory",
+        "windowed_inventory",
+        "data_eligibility",
+        "evidence_requirements",
+        "forbidden_combinations",
+        "allows_customer_cells",
+        "allows_cutover",
+        "requires_ha_recovery_support"
+      ]
+    },
+    {
+      "properties": {
+        "allows_customer_cells": {
+          "const": true
+        },
+        "allows_cutover": {
+          "const": true
+        },
+        "data_eligibility": {
+          "const": "customer_data"
+        },
+        "evidence_requirements": {
+          "const": [
+            "production-readiness",
+            "paid-support-and-recovery",
+            "fresh-cost-baseline",
+            "production-release-approval"
+          ]
+        },
+        "forbidden_combinations": {
+          "const": [
+            "unknown profile IDs or undeclared module overrides",
+            "evidence substitution from a weaker profile",
+            "ad-hoc feature flags that alter authority or recovery guarantees",
+            "weaker-profile readiness import",
+            "customer cell without complete ReleaseUnit"
+          ]
+        },
+        "implementation_default": {
+          "const": false
+        },
+        "modules": {
+          "const": [
+            "multi-az-control",
+            "cross-account-backup",
+            "purpose-bound-signers",
+            "customer-cell",
+            "support-and-monitoring"
+          ]
+        },
+        "persistent_inventory": {
+          "const": [
+            {
+              "class_id": "production-shared-and-recovery",
+              "maximum_count": 256,
+              "minimum_count": 1
+            }
+          ]
+        },
+        "profile_hash": {
+          "const": "565c0b4eb9d7a9914a1c639313c2550a62aeb748dd1ad795100ca23bd40ba7e6"
+        },
+        "profile_id": {
+          "const": "paid-production"
+        },
+        "profile_version": {
+          "const": "1.0.0"
+        },
+        "requires_ha_recovery_support": {
+          "const": true
+        },
+        "roots": {
+          "const": [
+            "infra/live/prod-control",
+            "infra/live/prod-mothership",
+            "infra/live/prod-cells"
+          ]
+        },
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "windowed_inventory": {
+          "const": [
+            {
+              "class_id": "customer-cell",
+              "maximum_count": 10000,
+              "minimum_count": 0
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "profile_id",
+        "profile_version",
+        "profile_hash",
+        "implementation_default",
+        "roots",
+        "modules",
+        "persistent_inventory",
+        "windowed_inventory",
+        "data_eligibility",
+        "evidence_requirements",
+        "forbidden_combinations",
+        "allows_customer_cells",
+        "allows_cutover",
+        "requires_ha_recovery_support"
+      ]
+    }
+  ],
+  "properties": {
+    "allows_customer_cells": {
+      "type": "boolean"
+    },
+    "allows_cutover": {
+      "type": "boolean"
+    },
+    "data_eligibility": {
+      "enum": [
+        "synthetic_only",
+        "sanitized_non_customer",
+        "provider_backed_nonprod",
+        "customer_data"
+      ],
+      "type": "string"
+    },
+    "evidence_requirements": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "forbidden_combinations": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "implementation_default": {
+      "type": "boolean"
+    },
+    "modules": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "persistent_inventory": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "class_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maximum_count": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "minimum_count": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "class_id",
+          "minimum_count",
+          "maximum_count"
+        ],
+        "type": "object"
+      },
+      "maxItems": 128,
+      "minItems": 0,
+      "type": "array"
+    },
+    "profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "profile_id": {
+      "enum": [
+        "local",
+        "ephemeral-nonprod",
+        "persistent-nonprod",
+        "paid-production"
+      ],
+      "type": "string"
+    },
+    "profile_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "requires_ha_recovery_support": {
+      "type": "boolean"
+    },
+    "roots": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "windowed_inventory": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "class_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maximum_count": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "minimum_count": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "class_id",
+          "minimum_count",
+          "maximum_count"
+        ],
+        "type": "object"
+      },
+      "maxItems": 128,
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile_id",
+    "profile_version",
+    "profile_hash",
+    "implementation_default",
+    "roots",
+    "modules",
+    "persistent_inventory",
+    "windowed_inventory",
+    "data_eligibility",
+    "evidence_requirements",
+    "forbidden_combinations",
+    "allows_customer_cells",
+    "allows_cutover",
+    "requires_ha_recovery_support"
+  ],
+  "title": "Closed Deployment Profile Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

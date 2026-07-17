@@ -1,0 +1,462 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/operation-state-machine.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "from_state": {
+              "const": "requested"
+            },
+            "to_state": {
+              "const": "authorized"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "requested"
+            },
+            "to_state": {
+              "const": "denied"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "requested"
+            },
+            "to_state": {
+              "const": "canceled"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "authorized"
+            },
+            "to_state": {
+              "const": "leased"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "authorized"
+            },
+            "to_state": {
+              "const": "denied"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "authorized"
+            },
+            "to_state": {
+              "const": "canceled"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "leased"
+            },
+            "to_state": {
+              "const": "running"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "leased"
+            },
+            "to_state": {
+              "const": "lease_expired"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "to_state": {
+              "const": "succeeded"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "to_state": {
+              "const": "failed_retryable"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "running"
+            },
+            "to_state": {
+              "const": "failed_terminal"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "failed_retryable"
+            },
+            "to_state": {
+              "const": "authorized"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "const": "leased"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "lease_expires_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "enum": [
+              "succeeded",
+              "failed_terminal",
+              "denied",
+              "canceled"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "terminal_receipt_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Closed operation transition envelope. The schema enumerates every legal edge; unknown states, same-state rewrites, and unlisted edges are rejected.",
+  "properties": {
+    "actor_type": {
+      "enum": [
+        "human",
+        "service",
+        "provider",
+        "system"
+      ],
+      "type": "string"
+    },
+    "attempt_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authorization_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "consequence_class": {
+      "enum": [
+        "observation",
+        "advisory_analysis",
+        "proposal",
+        "deterministic_effect",
+        "irreversible_boundary"
+      ],
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expected_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "from_state": {
+      "enum": [
+        "requested",
+        "authorized",
+        "leased",
+        "running",
+        "succeeded",
+        "failed_retryable",
+        "failed_terminal",
+        "lease_expired",
+        "denied",
+        "canceled"
+      ],
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "lease_expires_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "machine": {
+      "const": "operation",
+      "type": "string"
+    },
+    "mapping_spec_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "migration_phase": {
+      "enum": [
+        "connect",
+        "discovery",
+        "foundation",
+        "provision",
+        "snapshot",
+        "census",
+        "design",
+        "rehearsal",
+        "bulk_load",
+        "sync",
+        "verify",
+        "cutover",
+        "watch",
+        "decommission"
+      ],
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "operation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+      "type": "string"
+    },
+    "resulting_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "terminal_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "to_state": {
+      "enum": [
+        "requested",
+        "authorized",
+        "leased",
+        "running",
+        "succeeded",
+        "failed_retryable",
+        "failed_terminal",
+        "lease_expired",
+        "denied",
+        "canceled"
+      ],
+      "type": "string"
+    },
+    "tool_descriptor_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "version_increment": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "transition_id",
+    "machine",
+    "from_state",
+    "to_state",
+    "expected_version",
+    "resulting_version",
+    "version_increment",
+    "idempotency_key_hash",
+    "authorization_root_hash",
+    "evidence_roots",
+    "actor_type",
+    "reason_code",
+    "occurred_at",
+    "operation_id",
+    "attempt_id",
+    "input_hash",
+    "migration_phase",
+    "mapping_spec_hash",
+    "tool_descriptor_hash",
+    "cell_write_epoch",
+    "consequence_class",
+    "lease_expires_at",
+    "terminal_receipt_hash"
+  ],
+  "title": "Operation State Machine Transition",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

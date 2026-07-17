@@ -1,0 +1,189 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-data-use-status.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Fail-closed provider availability status embedded in the authoritative transition.",
+  "oneOf": [
+    {
+      "properties": {
+        "reason_code": {
+          "const": "review_accepted"
+        },
+        "status": {
+          "const": "review_valid"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "reason_code": {
+          "const": "review_expired"
+        },
+        "status": {
+          "const": "expired"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "reason_code": {
+          "enum": [
+            "provider_terms_changed",
+            "model_or_route_changed",
+            "manual_invalidation"
+          ]
+        },
+        "status": {
+          "const": "invalidated"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "reason_code": {
+          "const": "source_unavailable"
+        },
+        "status": {
+          "const": "unavailable"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "effective_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:provider_data_use_status:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "status_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "payload_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "status_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "provider_data_use_status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "payload_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reason_code": {
+      "enum": [
+        "review_accepted",
+        "review_expired",
+        "provider_terms_changed",
+        "model_or_route_changed",
+        "source_unavailable",
+        "manual_invalidation"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_check_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "review_valid",
+        "expired",
+        "invalidated",
+        "unavailable"
+      ],
+      "type": "string"
+    },
+    "status_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "status_id",
+    "provider_data_use_record_id",
+    "provider_data_use_record_hash",
+    "status",
+    "reason_code",
+    "source_check_hash",
+    "effective_at",
+    "payload_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Provider Data Use Status Payload Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

@@ -1,0 +1,326 @@
+{
+  "$id": "https://jumpship.dev/contracts/quality/activation-receipt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "environment": {
+              "const": "isolated-quality"
+            },
+            "evidence_class": {
+              "const": "boundary_fixture"
+            },
+            "stage": {
+              "const": "ephemeral"
+            },
+            "synthetic": {
+              "const": true
+            }
+          },
+          "required": []
+        },
+        {
+          "properties": {
+            "environment": {
+              "const": "staging"
+            },
+            "evidence_class": {
+              "const": "release"
+            },
+            "stage": {
+              "const": "persistent"
+            },
+            "synthetic": {
+              "const": false
+            }
+          },
+          "required": []
+        },
+        {
+          "properties": {
+            "environment": {
+              "const": "production"
+            },
+            "evidence_class": {
+              "const": "release"
+            },
+            "stage": {
+              "const": "paid"
+            },
+            "synthetic": {
+              "const": false
+            }
+          },
+          "required": []
+        }
+      ]
+    }
+  ],
+  "description": "Post-transaction detached-signed terminal receipt for activation, rollback, or emergency stop.",
+  "properties": {
+    "activation_receipt_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "activator_identity": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "committed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "nonprod",
+        "staging",
+        "production",
+        "isolated-quality"
+      ],
+      "type": "string"
+    },
+    "evidence_class": {
+      "enum": [
+        "release",
+        "boundary_fixture"
+      ],
+      "type": "string"
+    },
+    "fence_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "kind": {
+      "enum": [
+        "activate",
+        "rollback",
+        "emergency_stop"
+      ],
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:activation_receipt:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "activation_receipt_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "activation_receipt_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "activation_receipt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "ordinary",
+        "ordinary_rollback_takeover",
+        "genesis",
+        "bootstrap_recovery",
+        "emergency_recovery",
+        "emergency_stop_supported",
+        "emergency_stop_current_active_not_serving"
+      ],
+      "type": "string"
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "outcome": {
+      "enum": [
+        "activated",
+        "rolled_back",
+        "emergency_stopped",
+        "denied"
+      ],
+      "type": "string"
+    },
+    "pointer_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "prior_pointer_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "promotion_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "promotion_envelope_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualification_record_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "qualification_record_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "resulting_pointer_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "local",
+        "ephemeral",
+        "persistent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "support_state": {
+      "enum": [
+        "supported",
+        "emergency_revoked"
+      ],
+      "type": "string"
+    },
+    "synthetic": {
+      "type": "boolean"
+    },
+    "transaction_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "activation_receipt_id",
+    "promotion_envelope_id",
+    "promotion_envelope_hash",
+    "kind",
+    "mode",
+    "evidence_class",
+    "synthetic",
+    "environment",
+    "stage",
+    "release_unit_id",
+    "release_unit_hash",
+    "qualification_record_id",
+    "qualification_record_hash",
+    "prior_pointer_id",
+    "resulting_pointer_id",
+    "pointer_version",
+    "support_state",
+    "transaction_id",
+    "fence_generation",
+    "nonce_hash",
+    "activator_identity",
+    "outcome",
+    "committed_at",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Bundle Activation Terminal Receipt",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

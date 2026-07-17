@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "P02",
+  "evidence_sha256": {
+    "acceptance/rubric-map.md": "fa50ad741100327954eec849c83bd2147945488cd7e6b096e3f942207b6f59eb",
+    "commands/acceptance.md": "916b85dbccacbc1e64a8763088517e6624d78ca2a1adf90dbb03a51f778c15bc",
+    "commands/preflight.md": "e7ff8838e72eaa2e5fded43248bee8b707a350345a87dad8c102b302a5d66596",
+    "commands/supplemental.md": "e23f3951a916322f1b7ee77b8a3e1f056721935746de3346ba399c64c8855a79",
+    "handoff/application-profile-inventory.md": "6573f45f622d4406e0387668cbfd639d558f3068c3ef5e072b47d8e1238b4077",
+    "handoff/change-request-procedure.md": "b394a372489b532a646baba4b226ef312518e6e5eb99f595d0b9b09a9f952c8a",
+    "handoff/contract-version-hash-manifest.json": "3137298046f847c9719df9e1c9d9ad6a4a9c47d0b1d63ed4efe1da47cb13dfa7",
+    "handoff/generated-client-hashes.json": "2d00611a1e817f8c9143e6168bd8836c6b4d0c9db03e3f6356cf3b34665e794f",
+    "reviews/pre-close-review.md": "1c3b2bb866384ca75ab246e210bbb3cda894d27f758c8c4472850e65303643f3",
+    "summary.md": "c743d0e7f256a08798c5f918de3010f48b413c6d38a184f57792fed245f8cc8f"
+  },
+  "contract_sha256": {
+    "contracts/client/customer-incapability-catalog.schema.json": "63ed86f4ccd8c87453e7f4d8314d97d5b9734ad438c2491b4d49a610e6994e84",
+    "contracts/compatibility-baseline.json": "04715b75e9cc09785ec26ff17e5466b292c9d5175e9b1005d74c364239312953",
+    "contracts/compatibility-report.json": "a1a48aa90ef579e610398f46786c8efae9c712c1ac8b972dd75de3c5107104ee",
+    "contracts/contract-manifest.json": "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9",
+    "contracts/openapi/openapi.yaml": "f3d73a628a21d2927e5cca4da14ae8f58bdc117b232aeaabafaa007000117f50",
+    "contracts/proto/jumpship/cell/v1/cell.proto": "86047eb03f7c068a951d08879dea0f09529b60d112b3d8970bac50c35e1a6c3d"
+  }
+}

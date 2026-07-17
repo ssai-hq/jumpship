@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "expectation": "invalid",
+      "payload": {
+        "allows_customer_cells": false,
+        "allows_cutover": false,
+        "data_eligibility": "sanitized_non_customer",
+        "evidence_requirements": [
+          "materialize-smoke-drain-destroy",
+          "zero-windowed-inventory-receipt"
+        ],
+        "forbidden_combinations": [
+          "unknown profile IDs or undeclared module overrides",
+          "evidence substitution from a weaker profile",
+          "ad-hoc feature flags that alter authority or recovery guarantees",
+          "customer data, production activation, or cutover",
+          "windowed resources retained after the declared run"
+        ],
+        "implementation_default": true,
+        "modules": [
+          "state-lock",
+          "oidc-deploy",
+          "windowed-shared",
+          "synthetic-cell"
+        ],
+        "persistent_inventory": [
+          {
+            "class_id": "state-and-security-logs",
+            "maximum_count": 8,
+            "minimum_count": 1
+          }
+        ],
+        "profile_hash": "a3bd2e7f4825b8f78af45128836004806090c503729ee7785544872a9c998540",
+        "profile_id": "cheap-production",
+        "profile_version": "1.0.0",
+        "requires_ha_recovery_support": false,
+        "roots": [
+          "infra/live/nonprod-foundation",
+          "infra/live/nonprod-windowed"
+        ],
+        "schema_version": "1.0.0",
+        "windowed_inventory": [
+          {
+            "class_id": "nonprod-shared-and-cell",
+            "maximum_count": 64,
+            "minimum_count": 0
+          }
+        ]
+      },
+      "reason": "unknown ad-hoc profile ID",
+      "schema_path": "contracts/release/deployment-profile.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "allows_customer_cells": true,
+        "allows_cutover": true,
+        "data_eligibility": "customer_data",
+        "evidence_requirements": [
+          "production-readiness",
+          "paid-support-and-recovery",
+          "fresh-cost-baseline",
+          "production-release-approval"
+        ],
+        "forbidden_combinations": [
+          "unknown profile IDs or undeclared module overrides",
+          "evidence substitution from a weaker profile",
+          "ad-hoc feature flags that alter authority or recovery guarantees",
+          "weaker-profile readiness import",
+          "customer cell without complete ReleaseUnit"
+        ],
+        "implementation_default": false,
+        "modules": [
+          "multi-az-control",
+          "cross-account-backup",
+          "purpose-bound-signers",
+          "customer-cell",
+          "support-and-monitoring"
+        ],
+        "persistent_inventory": [
+          {
+            "class_id": "production-shared-and-recovery",
+            "maximum_count": 256,
+            "minimum_count": 1
+          }
+        ],
+        "profile_hash": "565c0b4eb9d7a9914a1c639313c2550a62aeb748dd1ad795100ca23bd40ba7e6",
+        "profile_id": "local",
+        "profile_version": "1.0.0",
+        "requires_ha_recovery_support": true,
+        "roots": [
+          "infra/live/prod-control",
+          "infra/live/prod-mothership",
+          "infra/live/prod-cells"
+        ],
+        "schema_version": "1.0.0",
+        "windowed_inventory": [
+          {
+            "class_id": "customer-cell",
+            "maximum_count": 10000,
+            "minimum_count": 0
+          }
+        ]
+      },
+      "reason": "weaker profile cannot substitute paid-production composition",
+      "schema_path": "contracts/release/deployment-profile.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

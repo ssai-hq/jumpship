@@ -1,0 +1,206 @@
+{
+  "$id": "https://jumpship.dev/contracts/proof/deletion-attestation-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Dedicated surviving-key preliminary or final deletion attestation; it cannot claim deletion before retention ends.",
+  "oneOf": [
+    {
+      "properties": {
+        "attestation_stage": {
+          "const": "preliminary"
+        },
+        "result": {
+          "const": "access_disabled_and_scheduled"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "attestation_stage": {
+          "const": "final"
+        },
+        "earliest_remaining_retain_until": {
+          "const": null
+        },
+        "kms_waiting_count": {
+          "const": 0
+        },
+        "remaining_retention_count": {
+          "const": 0
+        },
+        "result": {
+          "const": "fully_deleted"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "result": {
+          "const": "blocked"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "attestation_stage": {
+      "enum": [
+        "preliminary",
+        "final"
+      ],
+      "type": "string"
+    },
+    "component_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deletion_attestation_envelope_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deletion_attestation_request_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deletion_attestation_request_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "earliest_remaining_retain_until": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "kms_waiting_count": {
+      "maximum": 4096,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:deletion_attestation_envelope:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "deletion_attestation_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "deletion_attestation_envelope_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "deletion_attestation_envelope",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "remaining_retention_count": {
+      "maximum": 4096,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "result": {
+      "enum": [
+        "access_disabled_and_scheduled",
+        "fully_deleted",
+        "blocked"
+      ],
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_purpose": {
+      "const": "deletion_attestation",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deletion_attestation_envelope_id",
+    "deletion_attestation_request_id",
+    "deletion_attestation_request_hash",
+    "attestation_stage",
+    "result",
+    "component_inventory_root",
+    "remaining_retention_count",
+    "earliest_remaining_retain_until",
+    "kms_waiting_count",
+    "issued_at",
+    "signature_purpose",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Deletion Attestation Envelope Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F20",
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

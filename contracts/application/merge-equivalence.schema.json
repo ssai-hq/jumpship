@@ -1,0 +1,99 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/merge-equivalence.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Deterministic inclusion proof that the customer-merged tree preserves the validated patch effect.",
+  "properties": {
+    "actual_merge_base_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "canonical_patch_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "equivalent": {
+      "type": "boolean"
+    },
+    "merge_commit_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "merge_equivalence_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "merge_method": {
+      "enum": [
+        "merge",
+        "squash",
+        "rebase",
+        "merge_queue"
+      ],
+      "type": "string"
+    },
+    "merged_tree_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "path_inclusion_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "pr_binding_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "proof_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "validated_head_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "merge_equivalence_id",
+    "workspace_id",
+    "migration_id",
+    "pr_binding_id",
+    "merge_method",
+    "actual_merge_base_sha",
+    "validated_head_sha",
+    "merge_commit_sha",
+    "merged_tree_hash",
+    "canonical_patch_hash",
+    "path_inclusion_root",
+    "equivalent",
+    "proof_root",
+    "observed_at"
+  ],
+  "title": "Jumpship Merge Equivalence Proof Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F11",
+    "F28"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

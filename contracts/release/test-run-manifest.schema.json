@@ -1,0 +1,386 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/test-run-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One immutable environment/stage qualification manifest; outcomes never rewrite it.",
+  "oneOf": [
+    {
+      "properties": {
+        "cost_baseline_environment": {
+          "const": "staging"
+        },
+        "cost_baseline_stage": {
+          "const": "persistent"
+        },
+        "deployment_profile_id": {
+          "const": "persistent-nonprod"
+        },
+        "environment": {
+          "const": "staging"
+        },
+        "stage": {
+          "const": "persistent"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "cost_baseline_environment": {
+          "const": "production"
+        },
+        "cost_baseline_stage": {
+          "const": "paid"
+        },
+        "deployment_profile_id": {
+          "const": "paid-production"
+        },
+        "environment": {
+          "const": "production"
+        },
+        "stage": {
+          "const": "paid"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "activation_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "aws_price_list_source_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "corpus_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cost_baseline_environment": {
+      "enum": [
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "cost_baseline_expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "cost_baseline_generated_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "cost_baseline_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cost_baseline_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cost_baseline_stage": {
+      "enum": [
+        "persistent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "crl_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "dataset_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "deployment_profile_id": {
+      "enum": [
+        "persistent-nonprod",
+        "paid-production"
+      ],
+      "type": "string"
+    },
+    "deployment_profile_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "deployment_readiness_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "fixed_cost_input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "lane_runs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "command": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "input_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "lane_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "window_end": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "window_start": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lane_id",
+          "command",
+          "window_start",
+          "window_end",
+          "input_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 256,
+      "minItems": 1,
+      "type": "array"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:test_run_manifest:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "test_run_manifest_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "manifest_root",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 6,
+          "minItems": 6,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "test_run_manifest_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "test_run_manifest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "manifest_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "materialized_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "opentofu_plan_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "presentation_key_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "promotion_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_data_use_review_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_evidence_transition_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualification_run_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "registry_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "resource_graph_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rubric_ownership_expanded_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rubric_ownership_source_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "selected_auth_config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "selected_environment_config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "selected_web_deployment_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "persistent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "test_run_manifest_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "variance_policy_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "test_run_manifest_id",
+    "qualification_run_id",
+    "environment",
+    "stage",
+    "release_unit_id",
+    "release_unit_hash",
+    "deployment_profile_id",
+    "deployment_profile_version",
+    "deployment_profile_hash",
+    "materialized_inventory_root",
+    "rubric_ownership_source_hash",
+    "rubric_ownership_expanded_hash",
+    "deployment_readiness_receipt_hash",
+    "promotion_envelope_hash",
+    "activation_receipt_hash",
+    "selected_web_deployment_hash",
+    "selected_auth_config_hash",
+    "selected_environment_config_hash",
+    "provider_data_use_review_hash",
+    "provider_evidence_transition_hash",
+    "registry_inventory_root",
+    "crl_inventory_root",
+    "presentation_key_inventory_root",
+    "cost_baseline_id",
+    "cost_baseline_hash",
+    "cost_baseline_environment",
+    "cost_baseline_stage",
+    "cost_baseline_generated_at",
+    "cost_baseline_expires_at",
+    "opentofu_plan_root",
+    "resource_graph_root",
+    "aws_price_list_source_root",
+    "fixed_cost_input_hash",
+    "variance_policy_id",
+    "dataset_root",
+    "corpus_root",
+    "lane_runs",
+    "manifest_root",
+    "created_at",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Immutable Qualification Test Run Manifest",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

@@ -1,0 +1,394 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/decision-state-machine.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "from_state": {
+              "const": "draft"
+            },
+            "to_state": {
+              "const": "computing"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "computing"
+            },
+            "to_state": {
+              "const": "awaiting_human"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "awaiting_human"
+            },
+            "to_state": {
+              "const": "discussing"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "discussing"
+            },
+            "to_state": {
+              "const": "awaiting_human"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "awaiting_human"
+            },
+            "to_state": {
+              "const": "delegated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "discussing"
+            },
+            "to_state": {
+              "const": "delegated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "awaiting_human"
+            },
+            "to_state": {
+              "const": "resolved"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "discussing"
+            },
+            "to_state": {
+              "const": "resolved"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "delegated"
+            },
+            "to_state": {
+              "const": "resolved"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "resolved"
+            },
+            "to_state": {
+              "const": "superseded"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "const": "resolved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "computation_current": {
+            "const": false
+          },
+          "resolution_kind": {
+            "enum": [
+              "approve",
+              "override",
+              "reject",
+              "postpone"
+            ],
+            "type": "string"
+          },
+          "unresolved_user_message_count": {
+            "const": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "foundation_decision": {
+            "const": true
+          },
+          "to_state": {
+            "const": "resolved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "unknown_assumption": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "description": "Closed decision transition envelope. The schema enumerates every legal edge; unknown states, same-state rewrites, and unlisted edges are rejected.",
+  "properties": {
+    "actor_type": {
+      "enum": [
+        "human",
+        "service",
+        "provider",
+        "system"
+      ],
+      "type": "string"
+    },
+    "authorization_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "computation_current": {
+      "type": "boolean"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "decision_key": {
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+      "type": "string"
+    },
+    "evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expected_card_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "expected_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "foundation_decision": {
+      "type": "boolean"
+    },
+    "from_state": {
+      "enum": [
+        "draft",
+        "computing",
+        "awaiting_human",
+        "discussing",
+        "delegated",
+        "resolved",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "machine": {
+      "const": "decision",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+      "type": "string"
+    },
+    "resolution_kind": {
+      "anyOf": [
+        {
+          "enum": [
+            "approve",
+            "override",
+            "reject",
+            "postpone",
+            "delegate"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resulting_card_version": {
+      "minimum": 2,
+      "type": "integer"
+    },
+    "resulting_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "to_state": {
+      "enum": [
+        "draft",
+        "computing",
+        "awaiting_human",
+        "discussing",
+        "delegated",
+        "resolved",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "unknown_assumption": {
+      "type": "boolean"
+    },
+    "unresolved_user_message_count": {
+      "maximum": 10000,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "version_increment": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "transition_id",
+    "machine",
+    "from_state",
+    "to_state",
+    "expected_version",
+    "resulting_version",
+    "version_increment",
+    "idempotency_key_hash",
+    "authorization_root_hash",
+    "evidence_roots",
+    "actor_type",
+    "reason_code",
+    "occurred_at",
+    "decision_key",
+    "expected_card_version",
+    "resulting_card_version",
+    "resolution_kind",
+    "computation_current",
+    "unresolved_user_message_count",
+    "foundation_decision",
+    "unknown_assumption"
+  ],
+  "title": "Decision State Machine Transition",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F06"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

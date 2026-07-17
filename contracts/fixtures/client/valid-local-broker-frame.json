@@ -1,0 +1,20 @@
+{
+  "expected_valid": true,
+  "instance": {
+    "capability_handle": "jlc_abcdefghijklmnopqrstuvwxyzABCDEF0123456789_-",
+    "client_audience": "jumpship-coding-agent",
+    "error_code": null,
+    "expires_at": "2026-07-18T00:05:00Z",
+    "frame_type": "request",
+    "method": "api.read",
+    "peer_uid": 501,
+    "protocol_version": "1.0.0",
+    "receipt_id": null,
+    "request_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+    "request_payload_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+    "safe_response_hash": null,
+    "schema_version": "1.0.0",
+    "scope_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "schema_path": "contracts/client/local-broker.schema.json"
+}

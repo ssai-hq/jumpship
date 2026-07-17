@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "expectation": "invalid",
+      "payload": {
+        "allowed_phases": [
+          "discovery",
+          "design"
+        ],
+        "capability_requirements": {
+          "capability_ids": [
+            "MVP-CAP-ARCHAEOLOGY"
+          ],
+          "grant_purposes": [
+            "repository_inspection"
+          ]
+        },
+        "consent_requirement": "none",
+        "consequence_class": "observation",
+        "display_summary": "Inspect repository metadata",
+        "drilldown_description": "Read-only bounded repository inspection with no durable authority.",
+        "execution_mode": "unrestricted",
+        "gate_requirements": [],
+        "idempotency_scope": "none_read_only",
+        "input_data_class": "internal_operational",
+        "input_schema_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "limits": {
+          "max_artifacts": 0,
+          "max_cpu_millis": 30000,
+          "max_input_bytes": 4096,
+          "max_memory_bytes": 67108864,
+          "max_output_bytes": 4096,
+          "max_wall_clock_ms": 30000,
+          "network_mode": "none"
+        },
+        "output_data_class": "internal_operational",
+        "output_schema_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "receipt_schema_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "receipt_schema_id": "https://jumpship.dev/contracts/agent/tool-receipt.schema.json",
+        "retry_policy": {
+          "backoff_ms": 0,
+          "max_attempts": 1,
+          "requires_reconciliation": false,
+          "retryable_error_codes": [],
+          "strategy": "same_identity_only"
+        },
+        "reversibility_class": "not_applicable",
+        "run_brief_authorization": {
+          "allowed_data_classes": [
+            "internal_operational"
+          ],
+          "authorized_descriptor_set_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "descriptor_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "inline_authorizable": true,
+          "max_cumulative_cpu_millis": 60000,
+          "max_cumulative_input_bytes": 16384,
+          "max_cumulative_invocations": 4,
+          "max_cumulative_output_bytes": 16384,
+          "max_cumulative_wall_clock_ms": 60000,
+          "max_memory_bytes": 67108864,
+          "max_rate_per_minute": 4,
+          "may_widen_to_durable": false
+        },
+        "safe_failure": "grant_no_effect_authority",
+        "schema_version": "1.0.0",
+        "timeout_ms": 30000,
+        "tool_id": "repo.inspect.v1",
+        "tool_version": "1.0.0",
+        "warning_rule": "none"
+      },
+      "reason": "undeclared unrestricted mode",
+      "schema_path": "contracts/agent/tool.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

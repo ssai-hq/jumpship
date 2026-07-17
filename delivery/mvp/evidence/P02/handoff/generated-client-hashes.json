@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "p02-generated-client-hashes",
+  "packet_id": "P02",
+  "artifacts": [
+    {"path": "internal/contracts/generated/types.gen.go", "sha256": "badec62ae524d950841a15bc6d619b72046cd585dd7a45586e24cdc50a3afffd"},
+    {"path": "internal/contracts/api/openapi.gen.go", "sha256": "6d9aeb020e270acb39a689c5dbad428b5a5ec69aae997c345bc051cf16d66265"},
+    {"path": "internal/contracts/cell/v1/cell.types.gen.go", "sha256": "84427a2c2ecd5ee13abd1c08f422afdcf758bcac4077ab5210afcece90d47ec2"},
+    {"path": "internal/contracts/cell/v1/cell.connect.gen.go", "sha256": "73628f15f2876a5e41dd85406fcd2d7d56515d4e5a3098e17dead11d27d5dbf1"},
+    {"path": "internal/contracts/cell/v1/cell.connect.gen_test.go", "sha256": "354d0b9e82d3548808c9b8e2cf1fe9bf068b5225415ee28b339b0a558876f8a8"},
+    {"path": "internal/contracts/quality/sanitizedtrajectory/types.gen.go", "sha256": "62526d1390558ade7eff03f0774f996a609bf00398272752a097be56915f27b0"},
+    {"path": "web/src/lib/api/generated/contracts.gen.ts", "sha256": "f05c19ec6ded2ee5330fa205df64a7261aa487ff96b06b2b2446f382bdd938ea"},
+    {"path": "web/src/lib/api/generated/openapi.gen.ts", "sha256": "64901b829cd22e518f461e10f289d20f08be9c800af9c57da9626805df47567f"},
+    {"path": "web/src/lib/api/generated/canonical.gen.ts", "sha256": "31fa995295ec3e00e51a0450aa960d04491fc9c75192dfd789ec33203cb22e18"},
+    {"path": "web/src/lib/api/generated/canonical.test.ts", "sha256": "3de5089146a886a83d518991438d582d77f10982b0fb783402f34627cc86ef47"},
+    {"path": "web/src/lib/api/generated/index.ts", "sha256": "e2adeb1237bece90bb53eb3fa7768a94b8c376a53e52c43dcf2efb66289a5810"}
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "proposed",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "proposed",
+      "to_state": "warning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "proposed",
+      "to_state": "closed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "proposed",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "open",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "open",
+      "to_state": "open"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "open",
+      "to_state": "closed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "warning",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "warning",
+      "to_state": "open"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "warning",
+      "to_state": "warning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "closed",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "closed",
+      "to_state": "open"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "closed",
+      "to_state": "warning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "closed",
+      "to_state": "closed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "closed",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "open"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "warning"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "closed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "superseded",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "proposed"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "proposed",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "reversibility",
+  "schema_path": "contracts/decisions/reversibility-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "proposed",
+    "open",
+    "warning",
+    "closed",
+    "superseded"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "proposed",
+      "to_state": "open"
+    },
+    {
+      "expected": "valid",
+      "from_state": "open",
+      "to_state": "warning"
+    },
+    {
+      "expected": "valid",
+      "from_state": "open",
+      "to_state": "superseded"
+    },
+    {
+      "expected": "valid",
+      "from_state": "warning",
+      "to_state": "closed"
+    },
+    {
+      "expected": "valid",
+      "from_state": "warning",
+      "to_state": "superseded"
+    }
+  ]
+}

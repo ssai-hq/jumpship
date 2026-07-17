@@ -1,0 +1,1660 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/rubric-ownership.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R001"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R002"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R003"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R004"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R005"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R006"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R007"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R008"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R009"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R010"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R011"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R012"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R013"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R014"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R015"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R016"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R017"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R018"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R019"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R020"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R021"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R022"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R023"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R024"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R025"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R026"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R027"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R028"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R029"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R030"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R031"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R032"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R033"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R034"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R035"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R036"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R037"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R038"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R039"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R040"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R041"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R042"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R043"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R044"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R045"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R046"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R047"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R048"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R049"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R050"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R051"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R052"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R053"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R054"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R055"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R056"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R057"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R058"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R059"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R060"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R061"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R062"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R063"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R064"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R065"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R066"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R067"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R068"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R069"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R070"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R071"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R072"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R073"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R074"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R075"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R076"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R077"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R078"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R079"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R080"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R081"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "records": {
+          "contains": {
+            "properties": {
+              "rubric_id": {
+                "const": "JSMVP-R082"
+              }
+            },
+            "required": [
+              "rubric_id"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    }
+  ],
+  "description": "Exact 82-row producer, stage qualifier, and sole remediation-owner routing map.",
+  "properties": {
+    "map_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "records": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "commands": {
+                "items": {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 64,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "plan_refs": {
+                "items": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 32,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "producer_packets": {
+                "items": {
+                  "pattern": "^P(?:0[0-9]|1[0-9]|2[0-8])$",
+                  "type": "string"
+                },
+                "maxItems": 29,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "qualifier_packets_by_stage": {
+                "additionalProperties": false,
+                "properties": {
+                  "production": {
+                    "const": "P28",
+                    "type": "string"
+                  },
+                  "staging": {
+                    "const": "P27",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "staging",
+                  "production"
+                ],
+                "type": "object"
+              },
+              "rubric_id": {
+                "pattern": "^JSMVP-R(?:00[1-9]|0[1-7][0-9]|080|081)$",
+                "type": "string"
+              },
+              "write_owner_packet": {
+                "pattern": "^P(?:0[0-9]|1[0-9]|2[0-8])$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "rubric_id",
+              "producer_packets",
+              "write_owner_packet",
+              "plan_refs",
+              "commands",
+              "qualifier_packets_by_stage"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "commands": {
+                "items": {
+                  "maxLength": 512,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 64,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "plan_refs": {
+                "items": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 32,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "producer_packets": {
+                "items": {
+                  "pattern": "^P(?:0[0-9]|1[0-9]|2[0-8])$",
+                  "type": "string"
+                },
+                "maxItems": 29,
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "qualifier_packets_by_stage": {
+                "additionalProperties": false,
+                "properties": {
+                  "production": {
+                    "const": "P28",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "production"
+                ],
+                "type": "object"
+              },
+              "rubric_id": {
+                "const": "JSMVP-R082",
+                "type": "string"
+              },
+              "write_owner_packet": {
+                "pattern": "^P(?:0[0-9]|1[0-9]|2[0-8])$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "rubric_id",
+              "producer_packets",
+              "write_owner_packet",
+              "plan_refs",
+              "commands",
+              "qualifier_packets_by_stage"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "maxItems": 82,
+      "minItems": 82,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_document": {
+      "const": "acceptance-rubric.md",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "map_version",
+    "source_document",
+    "records"
+  ],
+  "title": "MVP Rubric Ownership Map Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

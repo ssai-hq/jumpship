@@ -1,0 +1,20 @@
+{
+  "case_id": "mutation-missing-audience-and-idempotency",
+  "expected_errors": [
+    "missing_allowed_audiences",
+    "missing_idempotency",
+    "audit_required",
+    "missing_concurrency",
+    "missing_stable_errors"
+  ],
+  "expected_valid": false,
+  "fixture_version": "1.0.0",
+  "operation": {
+    "operationId": "unsafeMutation",
+    "x-jumpship-policy": {
+      "audit": {
+        "required": false
+      }
+    }
+  }
+}

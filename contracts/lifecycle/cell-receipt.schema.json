@@ -1,0 +1,201 @@
+{
+  "$id": "https://jumpship.dev/contracts/lifecycle/cell-receipt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Append-only infrastructure reconciliation receipt. It carries inventory/effect hashes and liveness only, never migration semantics or customer data.",
+  "properties": {
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_command_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_receipt_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "effects": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "after_hash": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "before_hash": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "effect_kind": {
+            "enum": [
+              "created",
+              "updated",
+              "started",
+              "stopped",
+              "revoked",
+              "destroyed",
+              "no_op"
+            ],
+            "type": "string"
+          },
+          "resource_id_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "resource_type": {
+            "maxLength": 128,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "effect_kind",
+          "resource_type",
+          "resource_id_hash",
+          "before_hash",
+          "after_hash"
+        ],
+        "type": "object"
+      },
+      "maxItems": 1024,
+      "minItems": 0,
+      "type": "array"
+    },
+    "inventory_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "observed_state": {
+      "enum": [
+        "planned",
+        "provisioning",
+        "bootstrapping",
+        "ready",
+        "active",
+        "degraded",
+        "restarting",
+        "failed",
+        "revoking",
+        "destroying",
+        "destroyed"
+      ],
+      "type": "string"
+    },
+    "outcome": {
+      "enum": [
+        "converged",
+        "retryable",
+        "failed_terminal",
+        "quarantined"
+      ],
+      "type": "string"
+    },
+    "plan_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "previous_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "safe_reason_code": {
+      "anyOf": [
+        {
+          "maxLength": 96,
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "tofu_state_version_id": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "cell_receipt_id",
+    "cell_command_id",
+    "previous_receipt_hash",
+    "observed_state",
+    "inventory_root_hash",
+    "tofu_state_version_id",
+    "plan_hash",
+    "effects",
+    "outcome",
+    "safe_reason_code",
+    "observed_at"
+  ],
+  "title": "Cell Lifecycle Receipt",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F05",
+    "F07",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

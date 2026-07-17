@@ -1,0 +1,128 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/pull-request-binding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Safe exact-head binding for an automatically published same-repository draft pull request.",
+  "properties": {
+    "base_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "canonical_patch_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "change_set_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "change_set_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "head_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "type": "string"
+    },
+    "head_tree_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "installation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "namespaced_ref": {
+      "maxLength": 255,
+      "pattern": "^jumpship/mig-[A-Za-z0-9_-]+/app-r[1-9][0-9]*-[A-Za-z0-9_-]+$",
+      "type": "string"
+    },
+    "patch_set_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "pr_binding_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "provider_observation_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_pr_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "publication_idempotency_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "repository_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "state": {
+      "enum": [
+        "opening",
+        "open",
+        "changes_requested",
+        "customer_validated",
+        "merged",
+        "deployed",
+        "runtime_proven",
+        "stale_head",
+        "stale_base",
+        "closed_unmerged"
+      ],
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "pr_binding_id",
+    "workspace_id",
+    "migration_id",
+    "change_set_id",
+    "change_set_version",
+    "patch_set_id",
+    "repository_id",
+    "installation_id",
+    "provider_pr_id",
+    "namespaced_ref",
+    "base_sha",
+    "head_sha",
+    "head_tree_hash",
+    "canonical_patch_hash",
+    "state",
+    "publication_idempotency_hash",
+    "provider_observation_root",
+    "updated_at"
+  ],
+  "title": "Jumpship Draft Pull Request Binding Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F11"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

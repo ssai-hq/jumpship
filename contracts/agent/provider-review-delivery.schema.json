@@ -1,0 +1,291 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-review-delivery.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Crash-recoverable local-then-shared provider transition delivery; partial completion remains blocked.",
+  "oneOf": [
+    {
+      "properties": {
+        "ack_receipt_hash": {
+          "const": null
+        },
+        "completed_at": {
+          "const": null
+        },
+        "hold_supersession_root": {
+          "const": null
+        },
+        "local_head_hash": {
+          "const": null
+        },
+        "shared_head_hash": {
+          "const": null
+        },
+        "status": {
+          "const": "pending"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "ack_receipt_hash": {
+          "const": null
+        },
+        "completed_at": {
+          "const": null
+        },
+        "hold_supersession_root": {
+          "const": null
+        },
+        "local_head_hash": {
+          "const": null
+        },
+        "shared_head_hash": {
+          "const": null
+        },
+        "status": {
+          "const": "delivered"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "ack_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "completed_at": {
+          "const": null
+        },
+        "hold_supersession_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "local_head_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "shared_head_hash": {
+          "const": null
+        },
+        "status": {
+          "const": "cell_committed"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "ack_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "hold_supersession_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "local_head_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "shared_head_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "const": "shared_committed"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "ack_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "hold_supersession_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "local_head_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "shared_head_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "status": {
+          "const": "superseded"
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "completed_at": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "status": {
+          "const": "failed"
+        }
+      },
+      "required": []
+    }
+  ],
+  "properties": {
+    "ack_receipt_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "attempt_count": {
+      "maximum": 128,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "binding_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "completed_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "delivery_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "hold_supersession_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "last_attempt_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "local_head_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "shared_head_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "delivered",
+        "cell_committed",
+        "shared_committed",
+        "superseded",
+        "failed"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "transition_sequence": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "transition_id",
+    "transition_sequence",
+    "binding_id",
+    "cell_id",
+    "cell_generation",
+    "status",
+    "attempt_count",
+    "local_head_hash",
+    "shared_head_hash",
+    "hold_supersession_root",
+    "ack_receipt_hash",
+    "last_attempt_at",
+    "completed_at"
+  ],
+  "title": "Provider Review Delivery and Acknowledgement Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

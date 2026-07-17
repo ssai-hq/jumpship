@@ -1,0 +1,1243 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/release-unit.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Canonical content-addressed release composition; any member change creates a new unit.",
+  "oneOf": [
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "environment_artifacts"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "environment_scope": {
+          "const": [
+            "isolated-quality"
+          ]
+        },
+        "evidence_class": {
+          "const": "boundary_fixture"
+        },
+        "members": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "source"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "source_plan"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "capability_registry"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "contract"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "generated_client"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "runtime_image"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "tool"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "agent_bundle"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "provider_data_use_record"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "qualification_record"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "proof_verifier"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "corpus"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "checker"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "grader"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "customer_incapability_catalog"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "rubric_ownership"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "signature_purpose": {
+          "const": "boundary_fixture"
+        },
+        "synthetic": {
+          "const": true
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "environment_artifacts": {
+          "additionalProperties": false,
+          "properties": {
+            "production": {
+              "additionalProperties": false,
+              "properties": {
+                "auth_config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "environment": {
+                      "const": "production",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "const": "auth_config",
+                      "type": "string"
+                    },
+                    "object_id": {
+                      "maxLength": 256,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sha256": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "version": {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "environment",
+                    "object_id",
+                    "version",
+                    "sha256"
+                  ],
+                  "type": "object"
+                },
+                "web_deployment": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "environment": {
+                      "const": "production",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "const": "web_deployment",
+                      "type": "string"
+                    },
+                    "object_id": {
+                      "maxLength": 256,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sha256": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "version": {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "environment",
+                    "object_id",
+                    "version",
+                    "sha256"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "web_deployment",
+                "auth_config"
+              ],
+              "type": "object"
+            },
+            "staging": {
+              "additionalProperties": false,
+              "properties": {
+                "auth_config": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "environment": {
+                      "const": "staging",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "const": "auth_config",
+                      "type": "string"
+                    },
+                    "object_id": {
+                      "maxLength": 256,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sha256": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "version": {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "environment",
+                    "object_id",
+                    "version",
+                    "sha256"
+                  ],
+                  "type": "object"
+                },
+                "web_deployment": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "environment": {
+                      "const": "staging",
+                      "type": "string"
+                    },
+                    "kind": {
+                      "const": "web_deployment",
+                      "type": "string"
+                    },
+                    "object_id": {
+                      "maxLength": 256,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "sha256": {
+                      "pattern": "^[0-9a-f]{64}$",
+                      "type": "string"
+                    },
+                    "version": {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "environment",
+                    "object_id",
+                    "version",
+                    "sha256"
+                  ],
+                  "type": "object"
+                }
+              },
+              "required": [
+                "web_deployment",
+                "auth_config"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "staging",
+            "production"
+          ],
+          "type": "object"
+        },
+        "environment_scope": {
+          "const": [
+            "staging",
+            "production"
+          ]
+        },
+        "evidence_class": {
+          "const": "release"
+        },
+        "members": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "source"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "source_plan"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "capability_registry"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "contract"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "generated_client"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "runtime_image"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "ami"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "tool"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "web_deployment"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "auth_config"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "composition_gate"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "agent_bundle"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "provider_data_use_record"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "qualification_record"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "cli"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "skill"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "proof_verifier"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "corpus"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "checker"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "grader"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "infrastructure_module"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "infrastructure_provider_lock"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "signer_policy"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "trust_anchor"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "crl_profile"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "customer_incapability_catalog"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "kind": {
+                    "const": "rubric_ownership"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "signature_purpose": {
+          "const": "release_evidence"
+        },
+        "synthetic": {
+          "const": false
+        }
+      },
+      "required": [
+        "environment_artifacts"
+      ]
+    }
+  ],
+  "properties": {
+    "capability_registry_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "contract_manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "customer_incapability_catalog_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "customer_incapability_source_registry_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "environment_artifacts": {
+      "additionalProperties": false,
+      "properties": {
+        "production": {
+          "additionalProperties": false,
+          "properties": {
+            "auth_config": {
+              "additionalProperties": false,
+              "properties": {
+                "environment": {
+                  "const": "production",
+                  "type": "string"
+                },
+                "kind": {
+                  "const": "auth_config",
+                  "type": "string"
+                },
+                "object_id": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "version": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "environment",
+                "object_id",
+                "version",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "web_deployment": {
+              "additionalProperties": false,
+              "properties": {
+                "environment": {
+                  "const": "production",
+                  "type": "string"
+                },
+                "kind": {
+                  "const": "web_deployment",
+                  "type": "string"
+                },
+                "object_id": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "version": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "environment",
+                "object_id",
+                "version",
+                "sha256"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "web_deployment",
+            "auth_config"
+          ],
+          "type": "object"
+        },
+        "staging": {
+          "additionalProperties": false,
+          "properties": {
+            "auth_config": {
+              "additionalProperties": false,
+              "properties": {
+                "environment": {
+                  "const": "staging",
+                  "type": "string"
+                },
+                "kind": {
+                  "const": "auth_config",
+                  "type": "string"
+                },
+                "object_id": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "version": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "environment",
+                "object_id",
+                "version",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "web_deployment": {
+              "additionalProperties": false,
+              "properties": {
+                "environment": {
+                  "const": "staging",
+                  "type": "string"
+                },
+                "kind": {
+                  "const": "web_deployment",
+                  "type": "string"
+                },
+                "object_id": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "version": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "environment",
+                "object_id",
+                "version",
+                "sha256"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "web_deployment",
+            "auth_config"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "staging",
+        "production"
+      ],
+      "type": "object"
+    },
+    "environment_scope": {
+      "items": {
+        "enum": [
+          "isolated-quality",
+          "staging",
+          "production"
+        ],
+        "type": "string"
+      },
+      "maxItems": 2,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evidence_class": {
+      "enum": [
+        "release",
+        "boundary_fixture"
+      ],
+      "type": "string"
+    },
+    "j13_composition_gate_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "j19_composition_gate_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:release_unit:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "release_unit_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "release_unit_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "release_unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "members": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "source",
+              "source_plan",
+              "capability_registry",
+              "contract",
+              "generated_client",
+              "runtime_image",
+              "ami",
+              "tool",
+              "web_deployment",
+              "auth_config",
+              "composition_gate",
+              "agent_bundle",
+              "provider_data_use_record",
+              "qualification_record",
+              "cli",
+              "skill",
+              "proof_verifier",
+              "corpus",
+              "checker",
+              "grader",
+              "infrastructure_module",
+              "infrastructure_provider_lock",
+              "signer_policy",
+              "trust_anchor",
+              "crl_profile",
+              "customer_incapability_catalog",
+              "rubric_ownership"
+            ],
+            "type": "string"
+          },
+          "object_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "version": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "object_id",
+          "version",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 512,
+      "minItems": 16,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "rubric_ownership_expanded_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rubric_ownership_schema_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rubric_ownership_source_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "signature_purpose": {
+      "enum": [
+        "release_evidence",
+        "boundary_fixture"
+      ],
+      "type": "string"
+    },
+    "source_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "source_plan_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "synthetic": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "release_unit_id",
+    "release_unit_version",
+    "evidence_class",
+    "synthetic",
+    "environment_scope",
+    "source_commit",
+    "source_plan_hash",
+    "capability_registry_hash",
+    "contract_manifest_hash",
+    "rubric_ownership_schema_hash",
+    "rubric_ownership_source_hash",
+    "rubric_ownership_expanded_hash",
+    "customer_incapability_catalog_hash",
+    "customer_incapability_source_registry_hash",
+    "j13_composition_gate_hash",
+    "j19_composition_gate_hash",
+    "members",
+    "content_sha256",
+    "created_at",
+    "signature_purpose",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Immutable Release Unit Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

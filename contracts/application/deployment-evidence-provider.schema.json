@@ -1,0 +1,234 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/deployment-evidence-provider.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Versioned non-secret trust bootstrap for independent artifact-to-runtime deployment proof.",
+  "properties": {
+    "account_scope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "allowed_algorithms": {
+      "items": {
+        "enum": [
+          "ES256",
+          "ES384",
+          "EdDSA"
+        ],
+        "type": "string"
+      },
+      "maxItems": 3,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "allowed_key_ids": {
+      "items": {
+        "maxLength": 255,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+        "type": "string"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "artifact_claim_source": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "audience": {
+      "maxLength": 255,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "challenge_issuer": {
+      "maxLength": 255,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "challenge_key_id": {
+      "maxLength": 255,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "challenge_ttl_seconds": {
+      "maximum": 300,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "deploy_unit_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "environment": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "evidence_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issuer": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "controller",
+        "runtime_challenge",
+        "customer_ci_joined_runtime"
+      ],
+      "type": "string"
+    },
+    "predecessor_provider_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "provider_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "provider_proof_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "read_only_permission_proof_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "resource_scope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "revocation_state": {
+      "enum": [
+        "active",
+        "overlap",
+        "revoked",
+        "expired"
+      ],
+      "type": "string"
+    },
+    "rollout_runtime_binding_method": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "runtime_evidence_max_age_seconds": {
+      "maximum": 600,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "subject_pattern_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "successor_provider_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "trust_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "valid_from": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workload_identity_profile": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "provider_id",
+    "version",
+    "workspace_id",
+    "migration_id",
+    "deploy_unit_id",
+    "mode",
+    "account_scope_hash",
+    "resource_scope_hash",
+    "environment",
+    "read_only_permission_proof_root",
+    "issuer",
+    "subject_pattern_hash",
+    "audience",
+    "workload_identity_profile",
+    "allowed_algorithms",
+    "allowed_key_ids",
+    "trust_root_hash",
+    "valid_from",
+    "valid_until",
+    "predecessor_provider_id",
+    "successor_provider_id",
+    "revocation_state",
+    "artifact_claim_source",
+    "rollout_runtime_binding_method",
+    "challenge_issuer",
+    "challenge_key_id",
+    "challenge_ttl_seconds",
+    "runtime_evidence_max_age_seconds",
+    "provider_proof_version",
+    "evidence_root"
+  ],
+  "title": "Jumpship Deployment Evidence Provider Trust Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F03",
+    "F28"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

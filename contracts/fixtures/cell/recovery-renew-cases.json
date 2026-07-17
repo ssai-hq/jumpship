@@ -1,0 +1,36 @@
+{
+  "fixture_version": "1.0.0",
+  "invalid": [
+    {
+      "case_id": "expired-leaf",
+      "expected": "prior_leaf_invalid",
+      "leaf_state": "expired"
+    },
+    {
+      "case_id": "replayed-serial",
+      "expected": "recovery_replayed",
+      "old_serial_use": "consumed"
+    },
+    {
+      "case_id": "changed-csr-retry",
+      "csr_changed": true,
+      "expected": "recovery_binding_mismatch",
+      "same_request": true
+    },
+    {
+      "case_id": "stream-with-prior-epoch",
+      "certificate_epoch": 8,
+      "current_epoch": 9,
+      "expected": "control_epoch_stale",
+      "rpc": "SupervisorControl.Connect"
+    }
+  ],
+  "valid": {
+    "current_epoch": 9,
+    "leaf_state": "unexpired_unrevoked",
+    "manifest_state": "activated",
+    "old_serial_use": "unused",
+    "prior_epoch": 8,
+    "response_authority": "poll_only"
+  }
+}

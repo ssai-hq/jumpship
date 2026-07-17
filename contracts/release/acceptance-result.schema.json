@@ -1,0 +1,477 @@
+{
+  "$id": "https://jumpship.dev/contracts/release/acceptance-result.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "else": {
+        "properties": {
+          "applicability_evidence_root": {
+            "type": "null"
+          },
+          "applicability_rule_hash": {
+            "type": "null"
+          },
+          "applicability_rule_signature_envelope_hash": {
+            "type": "null"
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "not_applicable"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "applicability_evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "applicability_rule_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "applicability_rule_signature_envelope_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Fresh environment-manifest-bound result; not-applicable and reused evidence require explicit provenance.",
+  "oneOf": [
+    {
+      "properties": {
+        "environment": {
+          "const": "staging"
+        },
+        "evidence_mode": {
+          "const": "fresh"
+        },
+        "qualifier_packet": {
+          "const": "P27"
+        },
+        "reuse_policy_id": {
+          "const": null
+        },
+        "source_environment": {
+          "const": null
+        },
+        "source_evidence_index_hash": {
+          "const": null
+        },
+        "source_manifest_hash": {
+          "const": null
+        },
+        "source_result_hash": {
+          "const": null
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "environment": {
+          "const": "production"
+        },
+        "evidence_mode": {
+          "const": "fresh"
+        },
+        "qualifier_packet": {
+          "const": "P28"
+        },
+        "reuse_policy_id": {
+          "const": null
+        },
+        "source_environment": {
+          "const": null
+        },
+        "source_evidence_index_hash": {
+          "const": null
+        },
+        "source_manifest_hash": {
+          "const": null
+        },
+        "source_result_hash": {
+          "const": null
+        }
+      },
+      "required": []
+    },
+    {
+      "properties": {
+        "environment": {
+          "const": "production"
+        },
+        "evidence_mode": {
+          "const": "reused"
+        },
+        "qualifier_packet": {
+          "const": "P28"
+        },
+        "reuse_policy_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "rubric_id": {
+          "enum": [
+            "JSMVP-R001",
+            "JSMVP-R002",
+            "JSMVP-R003",
+            "JSMVP-R004",
+            "JSMVP-R005",
+            "JSMVP-R006",
+            "JSMVP-R007",
+            "JSMVP-R008",
+            "JSMVP-R009",
+            "JSMVP-R010",
+            "JSMVP-R011",
+            "JSMVP-R012",
+            "JSMVP-R013",
+            "JSMVP-R014",
+            "JSMVP-R015",
+            "JSMVP-R016",
+            "JSMVP-R017",
+            "JSMVP-R018",
+            "JSMVP-R019",
+            "JSMVP-R020",
+            "JSMVP-R021",
+            "JSMVP-R022",
+            "JSMVP-R023",
+            "JSMVP-R024",
+            "JSMVP-R025",
+            "JSMVP-R026",
+            "JSMVP-R027",
+            "JSMVP-R028",
+            "JSMVP-R035",
+            "JSMVP-R036",
+            "JSMVP-R037",
+            "JSMVP-R038",
+            "JSMVP-R039",
+            "JSMVP-R040",
+            "JSMVP-R041",
+            "JSMVP-R042",
+            "JSMVP-R045",
+            "JSMVP-R046",
+            "JSMVP-R047",
+            "JSMVP-R048",
+            "JSMVP-R049",
+            "JSMVP-R050",
+            "JSMVP-R051",
+            "JSMVP-R052",
+            "JSMVP-R053",
+            "JSMVP-R068",
+            "JSMVP-R069",
+            "JSMVP-R070",
+            "JSMVP-R071",
+            "JSMVP-R072",
+            "JSMVP-R073",
+            "JSMVP-R074",
+            "JSMVP-R075",
+            "JSMVP-R076",
+            "JSMVP-R077",
+            "JSMVP-R078",
+            "JSMVP-R079",
+            "JSMVP-R080",
+            "JSMVP-R081"
+          ]
+        },
+        "source_environment": {
+          "const": "staging"
+        },
+        "source_evidence_index_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_manifest_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_result_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_result_hash",
+        "source_manifest_hash",
+        "source_evidence_index_hash",
+        "source_environment",
+        "reuse_policy_id"
+      ]
+    }
+  ],
+  "properties": {
+    "acceptance_result_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "applicability_evidence_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "applicability_rule_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "applicability_rule_signature_envelope_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "artifact_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "completed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "staging",
+        "production"
+      ],
+      "type": "string"
+    },
+    "evidence_mode": {
+      "enum": [
+        "fresh",
+        "reused"
+      ],
+      "type": "string"
+    },
+    "lane_run_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:acceptance_result:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "acceptance_result_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "applicability_rule_signature_envelope_hash",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 6,
+          "minItems": 6,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "acceptance_result_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "acceptance_result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualifier_packet": {
+      "enum": [
+        "P27",
+        "P28"
+      ],
+      "type": "string"
+    },
+    "result_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "reuse_policy_id": {
+      "anyOf": [
+        {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reviewer_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "type": "string"
+    },
+    "rubric_id": {
+      "pattern": "^JSMVP-R(?:00[1-9]|0[1-7][0-9]|08[0-2])$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "source_environment": {
+      "anyOf": [
+        {
+          "enum": [
+            "staging"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_evidence_index_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_manifest_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_result_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "fail",
+        "blocked",
+        "not_applicable"
+      ],
+      "type": "string"
+    },
+    "test_run_manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "test_run_manifest_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "acceptance_result_id",
+    "rubric_id",
+    "test_run_manifest_id",
+    "test_run_manifest_hash",
+    "qualifier_packet",
+    "environment",
+    "status",
+    "evidence_mode",
+    "lane_run_root",
+    "artifact_root",
+    "source_result_hash",
+    "source_manifest_hash",
+    "source_evidence_index_hash",
+    "source_environment",
+    "reuse_policy_id",
+    "applicability_rule_hash",
+    "applicability_rule_signature_envelope_hash",
+    "applicability_evidence_root",
+    "reviewer_id",
+    "result_root",
+    "completed_at",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Manifest Bound Acceptance Result",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

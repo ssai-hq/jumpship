@@ -1,0 +1,277 @@
+{
+  "$id": "https://jumpship.dev/contracts/mapping/mapping-spec.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Immutable, evidence-linked MongoDB-to-PostgreSQL semantic mapping. Field paths are shared-safe; examples and customer values are prohibited.",
+  "properties": {
+    "assumption_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "business_invariant_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "compiler_version": {
+      "maxLength": 64,
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "corridor_profile_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "corridor_profile_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "decision_ledger_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "decision_ledger_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "domain_ownership_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "evolution_trigger_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "field_mappings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "nullable": {
+            "type": "boolean"
+          },
+          "on_missing": {
+            "enum": [
+              "reject",
+              "quarantine",
+              "typed_default"
+            ],
+            "type": "string"
+          },
+          "source_path": {
+            "maxLength": 512,
+            "minLength": 1,
+            "type": "string"
+          },
+          "target_column": {
+            "maxLength": 128,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          },
+          "target_relation": {
+            "maxLength": 128,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          },
+          "transform_id": {
+            "maxLength": 128,
+            "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_path",
+          "target_relation",
+          "target_column",
+          "transform_id",
+          "nullable",
+          "on_missing",
+          "evidence_root"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4096,
+      "minItems": 1,
+      "type": "array"
+    },
+    "intentional_debt_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "lifecycle_history_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mapping_spec_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "parent_mapping_spec_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "planning_horizon_months": {
+      "maximum": 120,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "rejected_alternative_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "confirmed",
+        "superseded"
+      ],
+      "type": "string"
+    },
+    "target_model_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "target_model_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "tenancy_security_retention_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "unknown_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "workload_index_rationale_refs": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "mapping_spec_id",
+    "parent_mapping_spec_hash",
+    "status",
+    "corridor_profile_id",
+    "corridor_profile_hash",
+    "planning_horizon_months",
+    "target_model_version",
+    "target_model_hash",
+    "decision_ledger_version",
+    "decision_ledger_hash",
+    "compiler_version",
+    "domain_ownership_refs",
+    "business_invariant_refs",
+    "lifecycle_history_refs",
+    "tenancy_security_retention_refs",
+    "workload_index_rationale_refs",
+    "assumption_refs",
+    "unknown_refs",
+    "rejected_alternative_refs",
+    "intentional_debt_refs",
+    "evolution_trigger_refs",
+    "source_evidence_roots",
+    "field_mappings",
+    "created_at"
+  ],
+  "title": "Mapping Specification",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "shared_migration",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03",
+    "F06",
+    "F10"
+  ],
+  "x-jumpship-max-bytes": 2097152
+}

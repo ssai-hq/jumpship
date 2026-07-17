@@ -1,0 +1,157 @@
+{
+  "$id": "https://jumpship.dev/contracts/client/browser-ceremony.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Five-minute create-only human-CLI request completed atomically only by a current stepped-up browser session.",
+  "properties": {
+    "action": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "app_path": {
+      "maxLength": 128,
+      "pattern": "^/cli/ceremonies/[0-9a-f-]{36}$",
+      "type": "string"
+    },
+    "canonical_input_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ceremony_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "evidence_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "expected_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "human_cli_principal_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "operation_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$",
+      "type": "string"
+    },
+    "receipt_root": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resource_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "reversibility": {
+      "enum": [
+        "ordinary",
+        "conditional",
+        "foundation",
+        "never_reversible",
+        "external_exposure"
+      ],
+      "type": "string"
+    },
+    "rubric_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "spec_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "state": {
+      "enum": [
+        "requested",
+        "browser_pending",
+        "completed",
+        "declined",
+        "expired",
+        "invalidated"
+      ],
+      "type": "string"
+    },
+    "state_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "token_family_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "ceremony_id",
+    "human_cli_principal_id",
+    "token_family_id",
+    "workspace_id",
+    "migration_id",
+    "operation_id",
+    "action",
+    "resource_id",
+    "canonical_input_hash",
+    "evidence_root",
+    "spec_version",
+    "rubric_version",
+    "state_version",
+    "reversibility",
+    "expected_version",
+    "nonce_hash",
+    "state",
+    "app_path",
+    "expires_at",
+    "receipt_root"
+  ],
+  "title": "Jumpship Exact Browser Ceremony Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "identity_tenant",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F23"
+  ],
+  "x-jumpship-max-bytes": 65536
+}

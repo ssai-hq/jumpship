@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "case_id": "secret-material",
+      "expected": "unknown_property",
+      "extra_property": "client_secret"
+    },
+    {
+      "case_id": "live-jwks",
+      "expected": "unknown_property",
+      "extra_property": "jwks"
+    },
+    {
+      "case_id": "incomplete-route-set",
+      "expected": "required_property",
+      "remove": "route_tuples"
+    },
+    {
+      "case_id": "handoff-too-long",
+      "expected": "maximum",
+      "patch": {
+        "handoff_expiry_seconds": 61
+      }
+    }
+  ],
+  "fixture_version": "1.0.0",
+  "schema_path": "contracts/auth/deployed-auth-config.schema.json"
+}

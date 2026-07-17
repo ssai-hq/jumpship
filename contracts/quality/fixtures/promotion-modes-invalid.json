@@ -1,0 +1,910 @@
+{
+  "cases": [
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": false,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "ordinary activation omits rollback target",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000002",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": null,
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": false,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "ordinary activation cannot omit its predecessor",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "denied",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000002",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": false,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "promotion cannot carry a denied approval",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000002",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 0,
+        "expected_prior_pointer_id": null,
+        "expires_at": "2026-07-18T00:05:00Z",
+        "genesis_transaction_id": "00000000-0000-7000-8000-000000000001",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "genesis",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": null,
+        "observed_current_pointer_version": 0,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false,
+        "zero_binding_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "reason": "genesis carries a rollback target",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000003",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_failed_activation_transaction_id": "00000000-0000-7000-8000-000000000004",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "rollback",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary_rollback_takeover",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": true,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "rollback takeover omits failed fence",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          }
+        ],
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_candidate_emergency_revoked": true,
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 1,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "genesis_transaction_id": "00000000-0000-7000-8000-000000000001",
+        "immediate_activation_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "immediate_emergency_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "bootstrap_recovery",
+        "no_serving_history": true,
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "recovery_chain_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false,
+        "zero_binding_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "reason": "bootstrap recovery is under-approved",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "all_affected_bindings_stopped": true,
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-security_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "security_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-incident_commander",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "incident_commander"
+          }
+        ],
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_candidate_emergency_revoked": true,
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 3,
+        "eligible_supported_rollback_count": 1,
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "immediate_emergency_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "incident_recovery_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "emergency_recovery",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "recovery_chain_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_candidate_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_candidate_inventory_version": 2,
+        "rollback_support_policy_version": "support-policy-v1",
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "emergency recovery has an eligible supported rollback",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-security_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "security_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-incident_commander",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "incident_commander"
+          }
+        ],
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 3,
+        "emergency_target_mode": "current_active_not_serving",
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expires_at": "2026-07-18T00:05:00Z",
+        "incident_id": "00000000-0000-7000-8000-000000000002",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "emergency_stop",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "emergency_stop_current_active_not_serving",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "release_emergency_stop",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "synthetic": false,
+        "target_activation_transaction_id": "00000000-0000-7000-8000-000000000001",
+        "target_open_fence_generation": 1
+      },
+      "reason": "emergency stop attempts to carry readiness",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-security_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "security_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-incident_commander",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "incident_commander"
+          }
+        ],
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "distinct_approver_count": 3,
+        "emergency_target_mode": "supported",
+        "environment": "staging",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expires_at": "2026-07-18T00:05:00Z",
+        "incident_id": "00000000-0000-7000-8000-000000000002",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "emergency_stop",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "emergency_stop_supported",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "release_emergency_stop",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "synthetic": false,
+        "target_open_fence_generation": 3,
+        "target_support_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "reason": "supported emergency stop carries active-fence authority",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000002",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "staging",
+        "evidence_class": "boundary_fixture",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": false,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "persistent",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": true
+      },
+      "reason": "boundary fixture cannot target staging",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    },
+    {
+      "expectation": "invalid",
+      "payload": {
+        "agent_bundle_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "agent_bundle_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approval_records": [
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-release_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "release_owner"
+          },
+          {
+            "approved_at": "2026-07-18T00:00:00Z",
+            "approver_id": "fixture-quality_owner",
+            "decision": "approved",
+            "evidence_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "role": "quality_owner"
+          }
+        ],
+        "approved_rollback_target_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "approved_rollback_target_id": "00000000-0000-7000-8000-000000000002",
+        "candidate_deployment_id": "00000000-0000-7000-8000-000000000004",
+        "current_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "current_inventory_version": 1,
+        "current_live_binding_count": 0,
+        "deployment_generation": 1,
+        "deployment_readiness_receipt_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "distinct_approver_count": 2,
+        "environment": "isolated-quality",
+        "evidence_class": "release",
+        "expected_pointer_version": 1,
+        "expected_prior_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "expires_at": "2026-07-18T00:05:00Z",
+        "issued_at": "2026-07-18T00:00:00Z",
+        "kind": "activate",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:promotion_envelope:1.0.0\u0000",
+          "excluded_fields": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "promotion_envelope_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "promotion_envelope"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "mode": "ordinary",
+        "nonce_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observed_current_pointer_id": "00000000-0000-7000-8000-000000000002",
+        "observed_current_pointer_version": 1,
+        "promotion_envelope_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "purpose": "bundle_promotion",
+        "qualification_record_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "qualification_record_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_root": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "readiness_inventory_version": 1,
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "rollback_takeover": false,
+        "rollout_bounds": {
+          "deadline": "2026-07-18T00:05:00Z",
+          "maximum_concurrent_bindings": 1,
+          "maximum_percent": 10
+        },
+        "schema_version": "1.0.0",
+        "signature_envelope_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "stage": "ephemeral",
+        "stop_conditions": [
+          "any readiness or inventory drift"
+        ],
+        "synthetic": false
+      },
+      "reason": "release envelope cannot target isolated quality",
+      "schema_path": "contracts/quality/promotion-envelope.schema.json"
+    }
+  ],
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,82 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-evidence-journal-checkpoint.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Replicated append-only provider transition head used for deterministic regional recovery.",
+  "properties": {
+    "audit_checkpoint_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "checkpoint_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "journal_object_count": {
+      "maximum": 1000000,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "journal_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "maximum_transition_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "maximum_transition_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "maximum_transition_sequence": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "registry_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "registry_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "checkpoint_id",
+    "provider_data_use_record_id",
+    "maximum_transition_sequence",
+    "maximum_transition_id",
+    "maximum_transition_hash",
+    "journal_object_count",
+    "journal_root",
+    "registry_version",
+    "registry_root",
+    "audit_checkpoint_hash",
+    "created_at"
+  ],
+  "title": "Provider Evidence Journal Checkpoint Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24",
+    "F27"
+  ],
+  "x-jumpship-max-bytes": 131072
+}

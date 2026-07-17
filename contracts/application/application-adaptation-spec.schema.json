@@ -1,0 +1,208 @@
+{
+  "$id": "https://jumpship.dev/contracts/application/application-adaptation-spec.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Versioned target-semantics binding for every discovered call site and writer.",
+  "properties": {
+    "adaptation_spec_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "application_estate_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "blocker_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 100000,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "coverage_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "dependency_order": {
+      "items": {
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+        "type": "string"
+      },
+      "maxItems": 200000,
+      "minItems": 1,
+      "type": "array"
+    },
+    "mapping_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "query_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "sealed_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "site_adaptations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "activation_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "change_requirement_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "dependency_ids": {
+            "items": {
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+              "type": "string"
+            },
+            "maxItems": 256,
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "dormant_rollout_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "proof_obligation_roots": {
+            "items": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "maxItems": 64,
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "query_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "rollback_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "site_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "smoke_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "patched_and_tested",
+              "already_target_compatible_with_evidence",
+              "customer_validated",
+              "explicitly_retired_by_customer",
+              "external_unmanaged_writer_with_proven_fence",
+              "blocked_manual",
+              "blocking_unknown"
+            ],
+            "type": "string"
+          },
+          "target_semantics_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "workload_id": {
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            "type": "string"
+          },
+          "writer_id": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "site_id",
+          "query_id",
+          "workload_id",
+          "writer_id",
+          "target_semantics_root",
+          "state",
+          "dependency_ids",
+          "change_requirement_root",
+          "dormant_rollout_root",
+          "activation_root",
+          "smoke_root",
+          "rollback_root",
+          "proof_obligation_roots"
+        ],
+        "type": "object"
+      },
+      "maxItems": 200000,
+      "minItems": 1,
+      "type": "array"
+    },
+    "target_profile_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "writer_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "adaptation_spec_id",
+    "workspace_id",
+    "migration_id",
+    "version",
+    "application_estate_root",
+    "target_profile_root",
+    "mapping_root",
+    "query_root",
+    "writer_root",
+    "dependency_order",
+    "site_adaptations",
+    "blocker_roots",
+    "coverage_root",
+    "sealed_at"
+  ],
+  "title": "Jumpship Application Adaptation Specification Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "restricted_customer",
+  "x-jumpship-flow-ids": [
+    "F10",
+    "F11",
+    "F13"
+  ],
+  "x-jumpship-max-bytes": 67108864
+}

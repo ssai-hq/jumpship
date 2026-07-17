@@ -1,0 +1,2577 @@
+{
+  "$id": "https://jumpship.dev/contracts/quality/promotion-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "environment": {
+              "const": "isolated-quality"
+            },
+            "evidence_class": {
+              "const": "boundary_fixture"
+            },
+            "stage": {
+              "const": "ephemeral"
+            },
+            "synthetic": {
+              "const": true
+            }
+          },
+          "required": []
+        },
+        {
+          "properties": {
+            "environment": {
+              "const": "staging"
+            },
+            "evidence_class": {
+              "const": "release"
+            },
+            "stage": {
+              "const": "persistent"
+            },
+            "synthetic": {
+              "const": false
+            }
+          },
+          "required": []
+        },
+        {
+          "properties": {
+            "environment": {
+              "const": "production"
+            },
+            "evidence_class": {
+              "const": "release"
+            },
+            "stage": {
+              "const": "paid"
+            },
+            "synthetic": {
+              "const": false
+            }
+          },
+          "required": []
+        }
+      ]
+    }
+  ],
+  "description": "One-use, kind-conditional promotion or emergency-stop authorization with disjoint recovery shapes.",
+  "oneOf": [
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "quality_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "approved_rollback_target_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "approved_rollback_target_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 2,
+          "type": "integer"
+        },
+        "expected_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_prior_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "activate"
+        },
+        "mode": {
+          "const": "ordinary"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rollback_takeover": {
+          "const": false
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "approved_rollback_target_id",
+        "approved_rollback_target_hash",
+        "expected_prior_pointer_id",
+        "rollback_takeover"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "quality_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "approved_rollback_target_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "approved_rollback_target_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 2,
+          "type": "integer"
+        },
+        "expected_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_prior_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "rollback"
+        },
+        "mode": {
+          "const": "ordinary"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rollback_takeover": {
+          "const": false
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "approved_rollback_target_id",
+        "approved_rollback_target_hash",
+        "expected_prior_pointer_id",
+        "rollback_takeover"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "quality_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "approved_rollback_target_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "approved_rollback_target_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 2,
+          "type": "integer"
+        },
+        "expected_failed_activation_fence_generation": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_failed_activation_transaction_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "expected_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_prior_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "rollback"
+        },
+        "mode": {
+          "const": "ordinary_rollback_takeover"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rollback_takeover": {
+          "const": true
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "approved_rollback_target_id",
+        "approved_rollback_target_hash",
+        "expected_prior_pointer_id",
+        "rollback_takeover",
+        "expected_failed_activation_transaction_id",
+        "expected_failed_activation_fence_generation"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "approved_rollback_target_id"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_hash"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          },
+          {
+            "required": [
+              "rollback_takeover"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "quality_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "current_live_binding_count": {
+          "const": 0
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 2,
+          "type": "integer"
+        },
+        "expected_pointer_version": {
+          "const": 0
+        },
+        "expected_prior_pointer_id": {
+          "const": null
+        },
+        "genesis_transaction_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "activate"
+        },
+        "mode": {
+          "const": "genesis"
+        },
+        "observed_current_pointer_id": {
+          "type": "null"
+        },
+        "observed_current_pointer_version": {
+          "const": 0,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "zero_binding_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "expected_prior_pointer_id",
+        "genesis_transaction_id",
+        "zero_binding_inventory_root"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "approved_rollback_target_id"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_hash"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          },
+          {
+            "required": [
+              "rollback_takeover"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "security_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "incident_commander"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "current_candidate_emergency_revoked": {
+          "const": true
+        },
+        "current_live_binding_count": {
+          "const": 0
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 3,
+          "type": "integer"
+        },
+        "expected_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_prior_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "genesis_transaction_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "immediate_activation_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "immediate_emergency_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "activate"
+        },
+        "mode": {
+          "const": "bootstrap_recovery"
+        },
+        "no_serving_history": {
+          "const": true
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "recovery_chain_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "zero_binding_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "expected_prior_pointer_id",
+        "genesis_transaction_id",
+        "zero_binding_inventory_root",
+        "current_candidate_emergency_revoked",
+        "no_serving_history",
+        "immediate_activation_receipt_hash",
+        "immediate_emergency_receipt_hash",
+        "recovery_chain_root"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "approved_rollback_target_id"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_hash"
+            ]
+          },
+          {
+            "required": [
+              "emergency_target_mode"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "incident_id"
+            ]
+          },
+          {
+            "required": [
+              "rollback_takeover"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "all_affected_bindings_stopped": {
+          "const": true
+        },
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "security_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "incident_commander"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "current_candidate_emergency_revoked": {
+          "const": true
+        },
+        "deployment_readiness_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "distinct_approver_count": {
+          "const": 3,
+          "type": "integer"
+        },
+        "eligible_supported_rollback_count": {
+          "const": 0
+        },
+        "expected_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "expected_prior_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "immediate_emergency_receipt_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "incident_recovery_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "activate"
+        },
+        "mode": {
+          "const": "emergency_recovery"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "bundle_promotion"
+        },
+        "qualification_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "qualification_record_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "readiness_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "recovery_chain_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rollback_candidate_inventory_root": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rollback_candidate_inventory_version": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rollback_support_policy_version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": "string"
+        },
+        "rollout_bounds": {
+          "additionalProperties": false,
+          "properties": {
+            "deadline": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+              "type": "string"
+            },
+            "maximum_concurrent_bindings": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "maximum_percent": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "maximum_percent",
+            "maximum_concurrent_bindings",
+            "deadline"
+          ],
+          "type": "object"
+        },
+        "stop_conditions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "qualification_record_id",
+        "qualification_record_hash",
+        "deployment_readiness_receipt_hash",
+        "readiness_inventory_version",
+        "readiness_inventory_root",
+        "rollout_bounds",
+        "stop_conditions",
+        "expected_prior_pointer_id",
+        "current_candidate_emergency_revoked",
+        "all_affected_bindings_stopped",
+        "rollback_candidate_inventory_version",
+        "rollback_candidate_inventory_root",
+        "rollback_support_policy_version",
+        "eligible_supported_rollback_count",
+        "immediate_emergency_receipt_hash",
+        "recovery_chain_root",
+        "incident_recovery_root"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "qualification_record_id"
+            ]
+          },
+          {
+            "required": [
+              "qualification_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "deployment_readiness_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "readiness_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "readiness_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollout_bounds"
+            ]
+          },
+          {
+            "required": [
+              "stop_conditions"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_id"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_hash"
+            ]
+          },
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_takeover"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "target_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "target_open_fence_generation"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "security_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "incident_commander"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "distinct_approver_count": {
+          "const": 3,
+          "type": "integer"
+        },
+        "emergency_target_mode": {
+          "const": "supported"
+        },
+        "incident_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "emergency_stop"
+        },
+        "mode": {
+          "const": "emergency_stop_supported"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "release_emergency_stop"
+        },
+        "target_support_record_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "emergency_target_mode",
+        "target_support_record_hash",
+        "incident_id"
+      ]
+    },
+    {
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "qualification_record_id"
+            ]
+          },
+          {
+            "required": [
+              "qualification_record_hash"
+            ]
+          },
+          {
+            "required": [
+              "deployment_readiness_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "readiness_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "readiness_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollout_bounds"
+            ]
+          },
+          {
+            "required": [
+              "stop_conditions"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_id"
+            ]
+          },
+          {
+            "required": [
+              "approved_rollback_target_hash"
+            ]
+          },
+          {
+            "required": [
+              "genesis_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "zero_binding_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "current_candidate_emergency_revoked"
+            ]
+          },
+          {
+            "required": [
+              "no_serving_history"
+            ]
+          },
+          {
+            "required": [
+              "immediate_activation_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "immediate_emergency_receipt_hash"
+            ]
+          },
+          {
+            "required": [
+              "recovery_chain_root"
+            ]
+          },
+          {
+            "required": [
+              "all_affected_bindings_stopped"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_version"
+            ]
+          },
+          {
+            "required": [
+              "rollback_candidate_inventory_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_support_policy_version"
+            ]
+          },
+          {
+            "required": [
+              "eligible_supported_rollback_count"
+            ]
+          },
+          {
+            "required": [
+              "incident_recovery_root"
+            ]
+          },
+          {
+            "required": [
+              "rollback_takeover"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_transaction_id"
+            ]
+          },
+          {
+            "required": [
+              "expected_failed_activation_fence_generation"
+            ]
+          },
+          {
+            "required": [
+              "target_support_record_hash"
+            ]
+          }
+        ]
+      },
+      "properties": {
+        "approval_records": {
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "release_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "security_owner"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "properties": {
+                  "decision": {
+                    "const": "approved"
+                  },
+                  "role": {
+                    "const": "incident_commander"
+                  }
+                },
+                "required": [
+                  "role",
+                  "decision"
+                ]
+              },
+              "maxContains": 1,
+              "minContains": 1
+            }
+          ]
+        },
+        "distinct_approver_count": {
+          "const": 3,
+          "type": "integer"
+        },
+        "emergency_target_mode": {
+          "const": "current_active_not_serving"
+        },
+        "incident_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "emergency_stop"
+        },
+        "mode": {
+          "const": "emergency_stop_current_active_not_serving"
+        },
+        "observed_current_pointer_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "observed_current_pointer_version": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "purpose": {
+          "const": "release_emergency_stop"
+        },
+        "target_activation_transaction_id": {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        "target_open_fence_generation": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "emergency_target_mode",
+        "target_activation_transaction_id",
+        "target_open_fence_generation",
+        "incident_id"
+      ]
+    }
+  ],
+  "properties": {
+    "agent_bundle_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "agent_bundle_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "all_affected_bindings_stopped": {
+      "type": "boolean"
+    },
+    "approval_records": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "approved_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "approver_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "decision": {
+            "const": "approved",
+            "type": "string"
+          },
+          "evidence_root": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "release_owner",
+              "quality_owner",
+              "security_owner",
+              "incident_commander"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "approver_id",
+          "decision",
+          "evidence_root",
+          "approved_at"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "approved_rollback_target_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "approved_rollback_target_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "candidate_deployment_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "current_candidate_emergency_revoked": {
+      "type": "boolean"
+    },
+    "current_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "current_inventory_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "current_live_binding_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "deployment_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "deployment_readiness_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "distinct_approver_count": {
+      "maximum": 4,
+      "minimum": 2,
+      "type": "integer"
+    },
+    "eligible_supported_rollback_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "emergency_target_mode": {
+      "enum": [
+        "supported",
+        "current_active_not_serving"
+      ],
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "local",
+        "nonprod",
+        "staging",
+        "production",
+        "isolated-quality"
+      ],
+      "type": "string"
+    },
+    "evidence_class": {
+      "enum": [
+        "release",
+        "boundary_fixture"
+      ],
+      "type": "string"
+    },
+    "expected_failed_activation_fence_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "expected_failed_activation_transaction_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "expected_pointer_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "expected_prior_pointer_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "expires_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "genesis_transaction_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "immediate_activation_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "immediate_emergency_receipt_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "incident_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "incident_recovery_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "activate",
+        "rollback",
+        "emergency_stop"
+      ],
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:promotion_envelope:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "promotion_envelope_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "signature_envelope_hash"
+          ],
+          "maxItems": 5,
+          "minItems": 5,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "promotion_envelope_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "promotion_envelope",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "ordinary",
+        "ordinary_rollback_takeover",
+        "genesis",
+        "bootstrap_recovery",
+        "emergency_recovery",
+        "emergency_stop_supported",
+        "emergency_stop_current_active_not_serving"
+      ],
+      "type": "string"
+    },
+    "no_serving_history": {
+      "type": "boolean"
+    },
+    "nonce_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "observed_current_pointer_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "observed_current_pointer_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "promotion_envelope_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "bundle_promotion",
+        "release_emergency_stop"
+      ],
+      "type": "string"
+    },
+    "qualification_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "qualification_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "readiness_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "readiness_inventory_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "recovery_chain_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rollback_candidate_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "rollback_candidate_inventory_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "rollback_support_policy_version": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "rollback_takeover": {
+      "type": "boolean"
+    },
+    "rollout_bounds": {
+      "additionalProperties": false,
+      "properties": {
+        "deadline": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        "maximum_concurrent_bindings": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "maximum_percent": {
+          "maximum": 100,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "maximum_percent",
+        "maximum_concurrent_bindings",
+        "deadline"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "signature_envelope_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "stage": {
+      "enum": [
+        "local",
+        "ephemeral",
+        "persistent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "stop_conditions": {
+      "items": {
+        "maxLength": 256,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "synthetic": {
+      "type": "boolean"
+    },
+    "target_activation_transaction_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "target_open_fence_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "target_support_record_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "zero_binding_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "promotion_envelope_id",
+    "kind",
+    "mode",
+    "purpose",
+    "evidence_class",
+    "synthetic",
+    "environment",
+    "stage",
+    "release_unit_id",
+    "release_unit_hash",
+    "agent_bundle_id",
+    "agent_bundle_hash",
+    "candidate_deployment_id",
+    "deployment_generation",
+    "expected_pointer_version",
+    "observed_current_pointer_id",
+    "observed_current_pointer_version",
+    "current_inventory_version",
+    "current_inventory_root",
+    "current_live_binding_count",
+    "approval_records",
+    "distinct_approver_count",
+    "issued_at",
+    "expires_at",
+    "nonce_hash",
+    "signature_envelope_hash",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Bundle Promotion Envelope",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "security_material",
+  "x-jumpship-flow-ids": [
+    "F22",
+    "F24"
+  ],
+  "x-jumpship-max-bytes": 524288
+}

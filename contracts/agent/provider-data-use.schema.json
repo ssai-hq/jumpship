@@ -1,0 +1,492 @@
+{
+  "$id": "https://jumpship.dev/contracts/agent/provider-data-use.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "properties": {
+        "model_agreements": {
+          "contains": {
+            "properties": {
+              "agreement_kind": {
+                "const": "model_agreement"
+              }
+            },
+            "required": [
+              "agreement_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "model_agreements": {
+          "contains": {
+            "properties": {
+              "agreement_kind": {
+                "const": "model_eula"
+              }
+            },
+            "required": [
+              "agreement_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "official_sources": {
+          "contains": {
+            "properties": {
+              "source_kind": {
+                "const": "aws_privacy"
+              }
+            },
+            "required": [
+              "source_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "official_sources": {
+          "contains": {
+            "properties": {
+              "source_kind": {
+                "const": "aws_data_protection"
+              }
+            },
+            "required": [
+              "source_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "official_sources": {
+          "contains": {
+            "properties": {
+              "source_kind": {
+                "const": "aws_data_retention"
+              }
+            },
+            "required": [
+              "source_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "properties": {
+        "official_sources": {
+          "contains": {
+            "properties": {
+              "source_kind": {
+                "const": "aws_service_terms"
+              }
+            },
+            "required": [
+              "source_kind"
+            ]
+          },
+          "maxContains": 1,
+          "minContains": 1
+        }
+      }
+    },
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "configured_retention_max_days": {
+              "const": 0
+            },
+            "configured_retention_mode": {
+              "const": "no_provider_retention"
+            }
+          },
+          "required": []
+        },
+        {
+          "properties": {
+            "configured_retention_max_days": {
+              "maximum": 3650,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "configured_retention_mode": {
+              "const": "provider_operational_retention"
+            }
+          },
+          "required": []
+        }
+      ]
+    }
+  ],
+  "description": "Immutable exact AWS account/region/Bedrock Runtime/Claude route, agreement, official-source, sharing, no-training, retention, and abuse-disclosure binding. Reviewers and review expiry are deliberately outside executable identity.",
+  "properties": {
+    "abuse_detection_disclosure": {
+      "additionalProperties": false,
+      "properties": {
+        "disclosure_source_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "maximum_retention_days": {
+          "maximum": 3650,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "mode": {
+          "enum": [
+            "standard_automated_abuse_detection",
+            "provider_approved_opt_out"
+          ],
+          "type": "string"
+        },
+        "retention_mode": {
+          "enum": [
+            "none",
+            "provider_operational_retention"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "retention_mode",
+        "maximum_retention_days",
+        "disclosure_source_hash"
+      ],
+      "type": "object"
+    },
+    "api_surface": {
+      "const": "bedrock-runtime",
+      "type": "string"
+    },
+    "aws_account_id": {
+      "pattern": "^[0-9]{12}$",
+      "type": "string"
+    },
+    "configured_retention_max_days": {
+      "maximum": 3650,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "configured_retention_mode": {
+      "enum": [
+        "no_provider_retention",
+        "provider_operational_retention"
+      ],
+      "type": "string"
+    },
+    "configured_retention_source_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cross_region_allowed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "data_use_policy_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "effective_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:provider_data_use_record:1.0.0\u0000",
+          "type": "string"
+        },
+        "excluded_fields": {
+          "const": [
+            "provider_data_use_record_id",
+            "content_sha256",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "provider_data_use_record_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "provider_data_use_record",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "model_agreements": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "agreement_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "agreement_kind": {
+            "enum": [
+              "model_agreement",
+              "model_eula"
+            ],
+            "type": "string"
+          },
+          "agreement_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "agreement_version": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          },
+          "effective_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "source_content_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "source_url": {
+            "format": "uri",
+            "maxLength": 2048,
+            "minLength": 8,
+            "type": "string"
+          }
+        },
+        "required": [
+          "agreement_kind",
+          "agreement_id",
+          "agreement_version",
+          "agreement_sha256",
+          "source_url",
+          "source_content_sha256",
+          "effective_at"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "model_family": {
+      "const": "anthropic.claude",
+      "type": "string"
+    },
+    "model_id": {
+      "maxLength": 512,
+      "pattern": "^arn:aws(?:-us-gov)?:bedrock:[a-z]{2}(?:-gov)?-[a-z]+-[0-9]::foundation-model/anthropic\\.claude[A-Za-z0-9._:-]+$",
+      "type": "string"
+    },
+    "model_revision": {
+      "maxLength": 128,
+      "minLength": 1,
+      "type": "string"
+    },
+    "no_training_basis": {
+      "const": "aws_service_terms_and_model_eula",
+      "type": "string"
+    },
+    "no_training_basis_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "official_source_inventory_root": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "official_sources": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "content_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "retrieved_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "source_kind": {
+            "enum": [
+              "aws_privacy",
+              "aws_data_protection",
+              "aws_data_retention",
+              "aws_service_terms"
+            ],
+            "type": "string"
+          },
+          "source_url": {
+            "format": "uri",
+            "maxLength": 2048,
+            "minLength": 8,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_kind",
+          "source_url",
+          "content_sha256",
+          "retrieved_at"
+        ],
+        "type": "object"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "provider": {
+      "const": "amazon_bedrock",
+      "type": "string"
+    },
+    "provider_data_sharing_allowed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "provider_data_use_record_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "provider_sharing_mode": {
+      "const": "disabled",
+      "type": "string"
+    },
+    "public_endpoint_allowed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "record_version": {
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$",
+      "type": "string"
+    },
+    "region": {
+      "pattern": "^[a-z]{2}-[a-z]+-[0-9]$",
+      "type": "string"
+    },
+    "route_config_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "terms_source_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "training_use": {
+      "const": "prohibited",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "provider_data_use_record_id",
+    "record_version",
+    "provider",
+    "aws_account_id",
+    "region",
+    "api_surface",
+    "model_family",
+    "model_id",
+    "model_revision",
+    "route_config_hash",
+    "model_agreements",
+    "official_sources",
+    "official_source_inventory_root",
+    "terms_source_hash",
+    "data_use_policy_hash",
+    "configured_retention_mode",
+    "configured_retention_max_days",
+    "configured_retention_source_hash",
+    "provider_sharing_mode",
+    "no_training_basis",
+    "no_training_basis_root",
+    "abuse_detection_disclosure",
+    "training_use",
+    "cross_region_allowed",
+    "public_endpoint_allowed",
+    "provider_data_sharing_allowed",
+    "effective_at",
+    "content_sha256",
+    "logical_payload_sha256",
+    "logical_payload_projection"
+  ],
+  "title": "Immutable Provider Data Use Record Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "internal_operational",
+  "x-jumpship-flow-ids": [
+    "F17",
+    "F22"
+  ],
+  "x-jumpship-max-bytes": 262144
+}

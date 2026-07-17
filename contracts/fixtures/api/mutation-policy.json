@@ -1,0 +1,44 @@
+{
+  "browser_only_denials": [
+    {
+      "audience": "jumpship-coding-agent",
+      "expected_code": "browser_interaction_required",
+      "operation_id": "confirmConsent"
+    },
+    {
+      "audience": "jumpship-application-writer",
+      "expected_code": "browser_interaction_required",
+      "operation_id": "recordCustomerValidation"
+    },
+    {
+      "audience": "jumpship-cli-human",
+      "expected_code": "browser_interaction_required",
+      "operation_id": "putMongoDBCredential"
+    },
+    {
+      "audience": "jumpship-browser",
+      "expected_code": "audience_not_allowed",
+      "operation_id": "requestApplicationWriterGrant"
+    }
+  ],
+  "fixture_version": "1.0.0",
+  "forbidden_operation_ids": [
+    "mergePullRequest",
+    "deployApplication",
+    "setTrafficAuthority",
+    "activateRelease"
+  ],
+  "required_extension": "x-jumpship-policy",
+  "required_mutation_fields": [
+    "authorization",
+    "allowed_audiences",
+    "browser_only",
+    "coding_agent_denied",
+    "idempotency",
+    "audit",
+    "concurrency",
+    "stable_errors",
+    "data_class",
+    "max_request_bytes"
+  ]
+}

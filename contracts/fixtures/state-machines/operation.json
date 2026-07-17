@@ -1,0 +1,622 @@
+{
+  "invalid_transitions": [
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "requested",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "authorized",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "leased",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "running",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "succeeded",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_retryable",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "failed_terminal",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "lease_expired",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "denied",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "leased"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "running"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "denied"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "illegal_transition",
+      "from_state": "canceled",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_from_state",
+      "from_state": "unknown_state",
+      "to_state": "requested"
+    },
+    {
+      "expected": "invalid",
+      "expected_error": "unknown_to_state",
+      "from_state": "requested",
+      "to_state": "unknown_state"
+    }
+  ],
+  "kind": "exhaustive-state-machine-transition-fixture-set",
+  "machine": "operation",
+  "schema_path": "contracts/workflow/operation-state-machine.schema.json",
+  "schema_version": "1.0.0",
+  "states": [
+    "requested",
+    "authorized",
+    "leased",
+    "running",
+    "succeeded",
+    "failed_retryable",
+    "failed_terminal",
+    "lease_expired",
+    "denied",
+    "canceled"
+  ],
+  "valid_transitions": [
+    {
+      "expected": "valid",
+      "from_state": "requested",
+      "to_state": "authorized"
+    },
+    {
+      "expected": "valid",
+      "from_state": "requested",
+      "to_state": "denied"
+    },
+    {
+      "expected": "valid",
+      "from_state": "requested",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "valid",
+      "from_state": "authorized",
+      "to_state": "leased"
+    },
+    {
+      "expected": "valid",
+      "from_state": "authorized",
+      "to_state": "denied"
+    },
+    {
+      "expected": "valid",
+      "from_state": "authorized",
+      "to_state": "canceled"
+    },
+    {
+      "expected": "valid",
+      "from_state": "leased",
+      "to_state": "running"
+    },
+    {
+      "expected": "valid",
+      "from_state": "leased",
+      "to_state": "lease_expired"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "succeeded"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "failed_retryable"
+    },
+    {
+      "expected": "valid",
+      "from_state": "running",
+      "to_state": "failed_terminal"
+    },
+    {
+      "expected": "valid",
+      "from_state": "failed_retryable",
+      "to_state": "authorized"
+    }
+  ]
+}

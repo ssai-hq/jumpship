@@ -1,0 +1,480 @@
+{
+  "$id": "https://jumpship.dev/contracts/workflow/consent-state-machine.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "from_state": {
+              "const": "closed"
+            },
+            "to_state": {
+              "const": "ready"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "ready"
+            },
+            "to_state": {
+              "const": "challenge_issued"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "ready"
+            },
+            "to_state": {
+              "const": "invalidated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "challenge_issued"
+            },
+            "to_state": {
+              "const": "pending_typed_consent"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "challenge_issued"
+            },
+            "to_state": {
+              "const": "declined"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "challenge_issued"
+            },
+            "to_state": {
+              "const": "expired"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "challenge_issued"
+            },
+            "to_state": {
+              "const": "invalidated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "pending_typed_consent"
+            },
+            "to_state": {
+              "const": "consented"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "pending_typed_consent"
+            },
+            "to_state": {
+              "const": "declined"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "pending_typed_consent"
+            },
+            "to_state": {
+              "const": "expired"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "pending_typed_consent"
+            },
+            "to_state": {
+              "const": "invalidated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "consented"
+            },
+            "to_state": {
+              "const": "executing"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "consented"
+            },
+            "to_state": {
+              "const": "invalidated"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        },
+        {
+          "properties": {
+            "from_state": {
+              "const": "executing"
+            },
+            "to_state": {
+              "const": "executed"
+            }
+          },
+          "required": [
+            "from_state",
+            "to_state"
+          ]
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "to_state": {
+            "enum": [
+              "consented",
+              "executing",
+              "executed"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "challenge_expires_at": {
+            "format": "date-time",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+            "type": "string"
+          },
+          "challenge_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "typed_phrase_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "webauthn_assertion_hash": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Closed consent transition envelope. The schema enumerates every legal edge; unknown states, same-state rewrites, and unlisted edges are rejected.",
+  "properties": {
+    "actor_type": {
+      "enum": [
+        "human",
+        "service",
+        "provider",
+        "system"
+      ],
+      "type": "string"
+    },
+    "application_authority_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "authorization_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "causation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_generation": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "cell_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "cell_write_epoch": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "challenge_expires_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "challenge_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cohort_grant_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "consent_kind": {
+      "enum": [
+        "cutover",
+        "decommission"
+      ],
+      "type": "string"
+    },
+    "consent_request_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "correlation_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "evidence_root_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "evidence_roots": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "expected_version": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "from_state": {
+      "enum": [
+        "closed",
+        "ready",
+        "challenge_issued",
+        "pending_typed_consent",
+        "consented",
+        "executing",
+        "executed",
+        "declined",
+        "expired",
+        "invalidated"
+      ],
+      "type": "string"
+    },
+    "idempotency_key_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "machine": {
+      "const": "consent",
+      "type": "string"
+    },
+    "migration_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "named_approver_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    },
+    "reason_code": {
+      "maxLength": 96,
+      "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+      "type": "string"
+    },
+    "resulting_version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "to_state": {
+      "enum": [
+        "closed",
+        "ready",
+        "challenge_issued",
+        "pending_typed_consent",
+        "consented",
+        "executing",
+        "executed",
+        "declined",
+        "expired",
+        "invalidated"
+      ],
+      "type": "string"
+    },
+    "transition_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "typed_phrase_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "version_increment": {
+      "maximum": 1,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "webauthn_assertion_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "workspace_id": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "workspace_id",
+    "migration_id",
+    "cell_id",
+    "cell_generation",
+    "causation_id",
+    "correlation_id",
+    "transition_id",
+    "machine",
+    "from_state",
+    "to_state",
+    "expected_version",
+    "resulting_version",
+    "version_increment",
+    "idempotency_key_hash",
+    "authorization_root_hash",
+    "evidence_roots",
+    "actor_type",
+    "reason_code",
+    "occurred_at",
+    "consent_request_id",
+    "consent_kind",
+    "named_approver_id",
+    "evidence_root_hash",
+    "application_authority_epoch",
+    "cell_write_epoch",
+    "cohort_grant_root_hash",
+    "challenge_hash",
+    "webauthn_assertion_hash",
+    "typed_phrase_hash",
+    "challenge_expires_at"
+  ],
+  "title": "Consent State Machine Transition",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "identity_tenant",
+  "x-jumpship-flow-ids": [
+    "F02",
+    "F03",
+    "F16",
+    "F17"
+  ],
+  "x-jumpship-max-bytes": 131072
+}
