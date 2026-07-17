@@ -1,5 +1,6 @@
 {
   "codeowners_sha256": "32bbee6ff6b76ddcc13449fd963d723458f5dcd355c0dec891cdccd10b0e3016",
+  "clean_clone_report_sha256": "9fce775afbb32ebdae685769e8a0b0a4c08cde4afce421acfa24b5f7e658fc6c",
   "command_contract_sha256": "2457bc4c7049011792f7d10d9a8e56c5817878d9191a226f9625ef7ce286442a",
   "dependency_request_schema_sha256": "c67da02c5615ad3517c1ff6a63f3ee1e706c85de8f337ff992cda7d1958ea0d2",
   "generated_packet_manifest_sha256": "080a954e740e5914750ec97cdbadb14ab6069a95aaee336579d36780d0b940e4",

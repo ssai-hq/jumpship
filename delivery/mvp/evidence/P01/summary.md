@@ -23,4 +23,4 @@ The current solo-founder CODEOWNERS map assigns both required repository-contrac
 
 `sqlc` and DuckDB provenance is verified for the recorded artifact, but activation is deliberately blocked until checksum-bound artifacts exist for all four supported platforms. The validator rejects attempts to represent either tool as install-ready before that condition is met.
 
-The isolated clean-clone report is added only after the implementation/evidence snapshot is committed, so the report can bind a real source commit without inventing a future hash.
+The isolated clean-clone report binds source snapshot `47ce31097878966d55a5a6d7bd7a0895498b5e43`. It passed in 64 seconds from a no-hardlink local clone with an isolated HOME and no forwarded cloud credentials. The final implementation/evidence commit adds only this report, the authorized memory milestone, and their closeout metadata over that tested snapshot.

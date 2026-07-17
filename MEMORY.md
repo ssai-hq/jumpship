@@ -2,6 +2,14 @@
 
 Running log of durable decisions and build state. Newest first. Keep entries dated; prune when superseded.
 
+## 2026-07-17 — P01 scaffold and clean-clone contract validated
+
+- The include-only root dispatcher, packet-owned Make fragments, public packet/command catalogs, import-boundary and documentation checks, serialized dependency-update workflow, and pinned repository-local toolchain now form the production monolith scaffold.
+- The one-package pnpm workspace contains only `web`; root locks and `tools/manifest.yaml` pin the reviewed runtime/tool inputs.
+- Evidence: the isolated clean-clone rehearsal at `delivery/mvp/evidence/P01/commands/clean-clone.json` passed without forwarding cloud credentials; `JSMVP-R004` and P01-owned portions of `JSMVP-R012` and `JSMVP-R013` are mapped under the same evidence root.
+- Supersedes: P00's pre-scaffold status; P00 capability and ADR truth remains unchanged.
+- Next durable gate: commit the final implementation/evidence snapshot, validate and commit the separate P01 receipt, then rerun `planctl ready` for downstream packets.
+
 ## 2026-07-17 — P00 architecture and capability baseline implemented
 
 - The public repository now carries all 34 frozen ADRs, public architecture/security summaries, and the accepted Apache-2.0 license record.

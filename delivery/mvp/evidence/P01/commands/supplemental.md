@@ -11,6 +11,7 @@ All results are from 2026-07-17. Absolute worktree paths and network locations a
 | direct P00 capability command versus `make --no-print-directory capability-check` | both exit `0`; normalized output byte-identical; 3 lines |
 | `make test-unit SUITE=local-stack` | expected exit `2`; selected P03 hook denied because lifecycle is `planned` |
 | `make REQUIRE_COMPLETE=1 test-unit` | expected exit `2`; five planned hooks listed; message states local coverage is not acceptance/readiness |
+| `scripts/dev/clean-clone --output delivery/mvp/evidence/P01/commands/clean-clone.json` | exit `0`; 64 seconds; isolated HOME; no hardlinks; no cloud credentials forwarded; source snapshot bound |
 | `scripts/dependency-locks/check` | exit `0`; manifest, runtime pins, workspace, root locks, and request lifecycle valid |
 | `git diff --check` | exit `0` |
 

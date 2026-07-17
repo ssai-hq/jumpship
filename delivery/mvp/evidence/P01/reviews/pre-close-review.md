@@ -34,4 +34,11 @@ The implementation, tests, generated outputs, evidence, security/data boundaries
 1. The staged Git whitespace check found one extra EOF blank line in six root configuration files. The blank lines were removed and the staged check then passed.
 2. A post-extraction Go version probe exceeded the original 20-second bound once on macOS. The probe remains bounded but now allows 60 seconds so a clean bootstrap does not depend on a warmed executable-verification cache; the complete acceptance command was rerun after the change.
 
-Result before the clean-clone/receipt delta: no unresolved P01-owned diff, test, evidence, security, custody, approval, or forbidden-path finding remains. The final clean-clone report, memory milestone, implementation hash, and receipt are reviewed separately after they exist.
+## Clean-clone and final evidence delta
+
+- The committed snapshot `47ce31097878966d55a5a6d7bd7a0895498b5e43` passed the complete acceptance vector in an isolated no-hardlink clone with an isolated HOME and no forwarded cloud credentials.
+- The report is a regular redacted JSON file whose SHA-256 is `9fce775afbb32ebdae685769e8a0b0a4c08cde4afce421acfa24b5f7e658fc6c`.
+- The authorized newest-first P01 memory entry records only the durable scaffold/clean-clone milestone and preserves P00 truth.
+- The final start-to-ending-commit diff contains 171 P01-authorized regular files and no forbidden path. The last two added paths are the clean-clone report and `MEMORY.md`; updates to existing evidence describe that result.
+
+Result: no unresolved P01-owned diff, test, evidence, security, custody, approval, or forbidden-path finding remains. Receipt generation/validation is the separate next step and cannot be claimed by this implementation evidence.
