@@ -1,0 +1,358 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "P00",
+  "outcome": "complete",
+  "starting_commit": "399e4f55f91c3f43e3dd7153700a77f345a0932b",
+  "ending_commit": "540299849278d71ae142da4a8ae25c97d31127b4",
+  "dependencies": [],
+  "changed_paths": [
+    "AGENTS.md",
+    "DESIGN.md",
+    "MEMORY.md",
+    "PRODUCT.md",
+    "README.md",
+    "SECURITY.md",
+    "contracts/capabilities/README.md",
+    "contracts/capabilities/mvp-source-anchors.schema.json",
+    "contracts/capabilities/mvp-source-anchors.yaml",
+    "contracts/capabilities/mvp.schema.json",
+    "contracts/capabilities/mvp.yaml",
+    "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+    "delivery/mvp/evidence/P00/commands/acceptance.md",
+    "delivery/mvp/evidence/P00/commands/preflight.md",
+    "delivery/mvp/evidence/P00/commands/private-source.md",
+    "delivery/mvp/evidence/P00/commands/static-scans.md",
+    "delivery/mvp/evidence/P00/commands/tests.md",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.json",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.md",
+    "delivery/mvp/evidence/P00/handoff/p02-inputs.md",
+    "delivery/mvp/evidence/P00/manifests/hashes.json",
+    "delivery/mvp/evidence/P00/manual-gates/p00-r007-owner-signoff.md",
+    "delivery/mvp/evidence/P00/reviews/architecture-review.md",
+    "delivery/mvp/evidence/P00/reviews/pre-close-review.md",
+    "delivery/mvp/evidence/P00/summary.md",
+    "docs/adr/0000-template.md",
+    "docs/adr/0001-modular-monolith-boundaries.md",
+    "docs/adr/0002-source-precedence-and-product-scope.md",
+    "docs/adr/0003-go-runtime-language.md",
+    "docs/adr/0004-postgresql-storage-baseline.md",
+    "docs/adr/0005-public-and-cell-protocols.md",
+    "docs/adr/0006-canonical-rds-postgresql.md",
+    "docs/adr/0007-shared-and-cell-compute.md",
+    "docs/adr/0008-vercel-presentation-boundary.md",
+    "docs/adr/0009-opentofu-state-and-oidc.md",
+    "docs/adr/0010-outbox-sqs-delivery-boundary.md",
+    "docs/adr/0011-region-placement-solver.md",
+    "docs/adr/0012-data-diode-and-evidence-access.md",
+    "docs/adr/0013-cell-local-runtime-state.md",
+    "docs/adr/0014-agent-runtime-bakeoff.md",
+    "docs/adr/0015-auth-and-webauthn-step-up.md",
+    "docs/adr/0016-retention-and-deletion-attestation.md",
+    "docs/adr/0017-encryption-and-proof-key-separation.md",
+    "docs/adr/0018-editorial-font-license-policy.md",
+    "docs/adr/0019-public-license.md",
+    "docs/adr/0020-sealed-analysis-runner-boundary.md",
+    "docs/adr/0021-mvp-dual-write-deferral.md",
+    "docs/adr/0022-regional-control-plane-recovery.md",
+    "docs/adr/0023-bedrock-route-and-provider-data-use.md",
+    "docs/adr/0024-durable-outer-loop-and-bounded-inner-loop.md",
+    "docs/adr/0025-existing-run-event-checkpoint-state.md",
+    "docs/adr/0026-customer-rehearsal-warranty-and-decommission-policy.md",
+    "docs/adr/0027-closed-deployment-profiles.md",
+    "docs/adr/0028-migration-thread-inline-setup-and-start.md",
+    "docs/adr/0029-customer-application-pr-delivery-boundary.md",
+    "docs/adr/0030-single-application-write-authority.md",
+    "docs/adr/0031-mongodb-postgres-corridor-family.md",
+    "docs/adr/0032-advisory-coding-agent-review-boundary.md",
+    "docs/adr/0033-semantic-agent-artifact-release-gate.md",
+    "docs/adr/0034-application-change-ux-state-truth.md",
+    "docs/adr/README.md",
+    "docs/architecture/README.md",
+    "docs/architecture/contract-versioning.md",
+    "docs/architecture/system-boundaries.md",
+    "docs/history/2026-07-17-p00-architecture-baseline.md",
+    "docs/security/data-classification-and-flows.md",
+    "docs/security/threat-model.md",
+    "mk/packets/P00.mk",
+    "scripts/capabilities/capability_lib.py",
+    "scripts/capabilities/check",
+    "scripts/capabilities/check-private-source",
+    "scripts/capabilities/tests/test_architecture_truth.py",
+    "scripts/capabilities/tests/test_registry.py"
+  ],
+  "generated_paths": [
+    "contracts/capabilities/mvp-source-anchors.yaml",
+    "contracts/capabilities/mvp.yaml",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.json",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.md"
+  ],
+  "contract_versions": [
+    {
+      "name": "mvp-capability-registry",
+      "version": "jumpship-mvp-capabilities-v1-2026-07-17",
+      "sha256": "2ee442183304a538b47ee3da7e76d587e3f792538ff46eec2187ebec7a5a61bc"
+    },
+    {
+      "name": "mvp-source-anchor-manifest",
+      "version": "jumpship-mvp-source-v1-2026-07-17",
+      "sha256": "f40fa3e49a9bff54b5d0db5904d0695ff333b77e06e382bbfa226a859b56f72b"
+    },
+    {
+      "name": "mvp-capability-registry-schema",
+      "version": "1.0.0",
+      "sha256": "e668acd8c76190c59782d8f3145975dad867063be28048e9374558cd3ad0b0db"
+    },
+    {
+      "name": "mvp-source-anchor-schema",
+      "version": "1.0.0",
+      "sha256": "b5ef7c11146579ea157c136e81e245066cb1afebdf59a0fcc22ea74fc3d95550"
+    }
+  ],
+  "commands": [
+    {
+      "command": "./scripts/capabilities/check --registry --source-manifest contracts/capabilities/mvp-source-anchors.yaml",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/acceptance.md",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.json",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.md"
+      ],
+      "reason": null
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/capabilities/tests -p 'test_*.py' -v",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/tests.md"
+      ],
+      "reason": null
+    },
+    {
+      "command": "./scripts/capabilities/check-private-source --source <mounted-absolute-living-source>",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/private-source.md"
+      ],
+      "reason": "The private absolute source path is intentionally redacted from public evidence."
+    },
+    {
+      "command": "./scripts/capabilities/check-private-source --source <tampered-private-source> --candidate <temporary-review-candidate>",
+      "status": "pass",
+      "exit_code": 1,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/private-source.md"
+      ],
+      "reason": "Expected negative test: changed source bytes and anchor content were rejected."
+    },
+    {
+      "command": "./scripts/capabilities/check-private-source --source <tampered-private-source> --candidate contracts/capabilities/mvp.yaml",
+      "status": "pass",
+      "exit_code": 2,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/private-source.md"
+      ],
+      "reason": "Expected negative test: repository-local candidate overwrite outside the review directory was denied."
+    },
+    {
+      "command": "git diff --cached --check",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/reviews/pre-close-review.md"
+      ],
+      "reason": null
+    },
+    {
+      "command": "scripts/planctl check --strict --target-repo <target-repo>",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/commands/preflight.md"
+      ],
+      "reason": "Strict validation passed with five documented future-gate warnings and no P00 blocker."
+    }
+  ],
+  "manual_gate_results": [
+    {
+      "gate_id": "p00-r007-owner-signoff",
+      "status": "pass",
+      "approver": "Avinier",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/manual-gates/p00-r007-owner-signoff.md"
+      ],
+      "reason": null
+    }
+  ],
+  "acceptance_contributions": [
+    {
+      "rubric_id": "JSMVP-R001",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/commands/acceptance.md",
+        "delivery/mvp/evidence/P00/reviews/architecture-review.md"
+      ],
+      "reason": "P00 establishes the root truth, ADR, hash, and direct-checker contribution; P01 owns dispatcher parity."
+    },
+    {
+      "rubric_id": "JSMVP-R002",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.json",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.md"
+      ],
+      "reason": "All 253 frozen anchors are covered by the closed 69-ID registry; later packets bind qualified implementations."
+    },
+    {
+      "rubric_id": "JSMVP-R003",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.json"
+      ],
+      "reason": "Reused displays 124, 125, and 126 retain distinct semantic anchors and have no bare repository references."
+    },
+    {
+      "rubric_id": "JSMVP-R007",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/manual-gates/p00-r007-owner-signoff.md",
+        "delivery/mvp/evidence/P00/reviews/architecture-review.md"
+      ],
+      "reason": "The seven-class and F01-F28 P00 contribution is supplied and owner-approved; P02 and later packets own executable enforcement."
+    },
+    {
+      "rubric_id": "JSMVP-R011",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/commands/static-scans.md",
+        "delivery/mvp/evidence/P00/reviews/pre-close-review.md"
+      ],
+      "reason": "Public root truth is reconciled and stale/narrow architecture claims have zero scan findings."
+    },
+    {
+      "rubric_id": "JSMVP-R044",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P00/generated/capability-coverage.json"
+      ],
+      "reason": "P00 supplies the stable customer-visible incapability source; downstream schema, store, API, UI, and release bindings remain explicit."
+    }
+  ],
+  "capability_ids": [
+    "MVP-CAP-ACCESS-MANIFEST",
+    "MVP-CAP-AGENT-INCAPABILITY-DISCLOSURE",
+    "MVP-CAP-AGENT-RUNTIME",
+    "MVP-CAP-APPLICATION-PR-DELIVERY",
+    "MVP-CAP-ARCH-TRUST-DOMAINS",
+    "MVP-CAP-ARCHAEOLOGY",
+    "MVP-CAP-ATTEMPT-TIMELINE",
+    "MVP-CAP-AUTOMATION-SURFACE",
+    "MVP-CAP-AWS-CELL",
+    "MVP-CAP-BILLING-RATCHET",
+    "MVP-CAP-CDC-APPLY",
+    "MVP-CAP-CENSUS",
+    "MVP-CAP-CONNECT-CHANNELS",
+    "MVP-CAP-CONNECT-DETECTION",
+    "MVP-CAP-CONNECT-GITHUB",
+    "MVP-CAP-CONNECT-MONGODB",
+    "MVP-CAP-CONNECT-POSTGRES-TARGET",
+    "MVP-CAP-CONNECT-STAGED",
+    "MVP-CAP-CONSENT-STEPUP",
+    "MVP-CAP-CORRIDOR-CONTRACT",
+    "MVP-CAP-CREDENTIAL-CUSTODY",
+    "MVP-CAP-CROSS-MIGRATION-LEARNING",
+    "MVP-CAP-CUTOVER-CHOREOGRAPHY",
+    "MVP-CAP-CUTOVER-RUNBOOK",
+    "MVP-CAP-DECISION-PROVENANCE",
+    "MVP-CAP-DECOMMISSION",
+    "MVP-CAP-DESIGN-BRIEF",
+    "MVP-CAP-DOSSIER",
+    "MVP-CAP-DRIFT-SENTINEL",
+    "MVP-CAP-DUAL-WRITE",
+    "MVP-CAP-ENGINE-STACK",
+    "MVP-CAP-EXTERNAL-PR-REVIEW",
+    "MVP-CAP-FANOUT-COST",
+    "MVP-CAP-FOUNDATION-DECISIONS",
+    "MVP-CAP-GATED-APPROVAL",
+    "MVP-CAP-GOLDEN-PROOF",
+    "MVP-CAP-HANDOVER-WARRANTY",
+    "MVP-CAP-IDENTITY-LOGIN",
+    "MVP-CAP-IDMAP-RESUME",
+    "MVP-CAP-INCIDENT-BRIEF",
+    "MVP-CAP-INTERROGATION",
+    "MVP-CAP-MAPPING-TOTALITY",
+    "MVP-CAP-NONCHOICES",
+    "MVP-CAP-NORMALIZATION",
+    "MVP-CAP-PLACEMENT-SOLVER",
+    "MVP-CAP-POSTCUTOVER-WATCH",
+    "MVP-CAP-PRIME-DIRECTIVE",
+    "MVP-CAP-QUARANTINE",
+    "MVP-CAP-READINESS",
+    "MVP-CAP-RECOMMENDED-DEFAULT",
+    "MVP-CAP-RECONCILIATION",
+    "MVP-CAP-REHEARSAL",
+    "MVP-CAP-REVERSE-ROLLBACK",
+    "MVP-CAP-REVERSIBILITY",
+    "MVP-CAP-SEALED-ANALYSIS-RUNNER",
+    "MVP-CAP-SEMANTIC-TRANSLATION",
+    "MVP-CAP-SESSION-SHELL",
+    "MVP-CAP-SIGNED-INTEGRITY",
+    "MVP-CAP-SNAPSHOT-LADDER",
+    "MVP-CAP-STAGED-LOAD",
+    "MVP-CAP-SYNC-HEALTH",
+    "MVP-CAP-TARGET-PROBE",
+    "MVP-CAP-TOKEN-LOSS",
+    "MVP-CAP-TRANSFORM-PARITY",
+    "MVP-CAP-VERIFICATION-RUBRIC",
+    "MVP-CAP-VERIFY-LAYERS",
+    "MVP-CAP-WORKSPACE-RBAC",
+    "MVP-CAP-WRITER-AUTHORITY-FENCING",
+    "MVP-CAP-WRITER-CENSUS"
+  ],
+  "owner_continuity": {
+    "mode": "initial",
+    "prior_executor_id": null,
+    "new_executor_id": "codex:/root",
+    "reason": "Initial P00 execution; no prior same-packet receipt or dependency receipt exists.",
+    "source_receipt": null,
+    "dependency_receipts": [],
+    "scope_unchanged": true,
+    "approval": null
+  },
+  "scope_exceptions": [],
+  "evidence_refs": [
+    "delivery/mvp/evidence/P00/acceptance/rubric-map.md",
+    "delivery/mvp/evidence/P00/commands/acceptance.md",
+    "delivery/mvp/evidence/P00/commands/preflight.md",
+    "delivery/mvp/evidence/P00/commands/private-source.md",
+    "delivery/mvp/evidence/P00/commands/static-scans.md",
+    "delivery/mvp/evidence/P00/commands/tests.md",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.json",
+    "delivery/mvp/evidence/P00/generated/capability-coverage.md",
+    "delivery/mvp/evidence/P00/handoff/p02-inputs.md",
+    "delivery/mvp/evidence/P00/manifests/hashes.json",
+    "delivery/mvp/evidence/P00/manual-gates/p00-r007-owner-signoff.md",
+    "delivery/mvp/evidence/P00/reviews/architecture-review.md",
+    "delivery/mvp/evidence/P00/reviews/pre-close-review.md",
+    "delivery/mvp/evidence/P00/summary.md"
+  ],
+  "external_evidence_refs": [],
+  "security_custody_impact": "P00 adds public architecture, classification, threat, ADR, capability, and checker contracts only. It introduces no runtime, credential, network, database, cloud, customer-data, or private-source custody path; the mounted private source is compared explicitly and never copied into the public repository.",
+  "skipped_checks": [],
+  "mocks": [],
+  "defects": [],
+  "downstream_consumers": [
+    "P01",
+    "P02",
+    "P09"
+  ],
+  "created_at": "2026-07-17T14:38:39Z"
+}
