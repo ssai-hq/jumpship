@@ -1,0 +1,2608 @@
+{
+  "$schema": "./mvp.schema.json",
+  "capabilities": [
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-access-manifest"
+      ],
+      "id": "MVP-CAP-ACCESS-MANIFEST",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "01",
+        "04",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Access Manifest is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:1:tiered-access-manifest-every-grant-jumpship-requests-is"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Access Manifest"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-029",
+        "adr:ADR-032"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-agent-incapability-disclosure"
+      ],
+      "id": "MVP-CAP-AGENT-INCAPABILITY-DISCLOSURE",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05b",
+        "07",
+        "security",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Agent Incapability Disclosure is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R044"
+      ],
+      "source_anchors": [
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself",
+        "numbered-list:154:two-constitutions-enforced-at-the-correct-layer-the",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Agent Incapability Disclosure"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-014",
+        "adr:ADR-023",
+        "adr:ADR-024",
+        "adr:ADR-025",
+        "adr:ADR-033"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-agent-runtime"
+      ],
+      "id": "MVP-CAP-AGENT-RUNTIME",
+      "owners": [
+        "internal/agent"
+      ],
+      "plans": [
+        "02",
+        "05",
+        "05b",
+        "06"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Agent Runtime is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:addendum-agent-architecture-and-source-target-generality-july-11-2026",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--agentcore-verdict",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--context-compiler-contract",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--cost-latency-controls-that-are-architectural-not-model-specific",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--minimal-cell-memory-schema",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--recovery-sequence",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--research-anchors",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--selected-now",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--tiger-data-agentic-postgres-verdict",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--what-memory-means-here",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--where-the-agent-lives-july-11-2026-agent-placement-session",
+        "numbered-list:142:agent-as-conductor-one-jumpship-agent-orchestrates-the",
+        "numbered-list:163:model-provider-seam-bedrock-first-production-inference-goes",
+        "numbered-list:164:task-tier-routing-rather-than-one-model-for",
+        "numbered-list:165:four-stores-one-authority-rule-canonical-migration-state",
+        "numbered-list:166:unified-postgres-memory-substrate-use-ordinary-postgres-in",
+        "numbered-list:167:cheapest-durable-deployment-for-the-first-corridors-run",
+        "numbered-list:168:explicit-memory-classes-a-read-only-constitutional-memory",
+        "numbered-list:169:deterministic-context-compiler-before-every-model-call-backend",
+        "numbered-list:170:retrieval-ladder-exact-identifiers-relational-filters-phase-spec",
+        "numbered-list:171:structured-compaction-never-lossy-authority-the-raw-event",
+        "numbered-list:172:prompt-cache-friendly-context-layout-the-stable-prefix",
+        "numbered-list:173:evidence-and-embedding-discipline-large-artifacts-remain-in",
+        "numbered-list:174:agentcore-decision-do-not-use-agentcore-runtime-harness",
+        "numbered-list:175:runtime-framework-decision-deliberately-parked-the-agent-loop",
+        "numbered-list:176:cheap-fast-good-operating-method-the-agent-wakes"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Agent Runtime"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-029"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-application-pr-delivery"
+      ],
+      "id": "MVP-CAP-APPLICATION-PR-DELIVERY",
+      "owners": [
+        "internal/application"
+      ],
+      "plans": [
+        "02",
+        "04",
+        "05",
+        "05b",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Application Pr Delivery is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Application Pr Delivery"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-001"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-arch-trust-domains"
+      ],
+      "id": "MVP-CAP-ARCH-TRUST-DOMAINS",
+      "owners": [
+        "docs/architecture"
+      ],
+      "plans": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "05a",
+        "security"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Arch Trust Domains is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:addendum-mothership-jumpship-backend-and-migration-cells-july-11-2026-corrected",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--boundary-note",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--ownership-map",
+        "numbered-list:146:worker-as-generic-substrate-the-per-migration-worker",
+        "numbered-list:149:three-part-topology-mothership-deterministic-deployment-and-supervision",
+        "numbered-list:150:mothership-scope-deliberately-narrow-maintain-the-cell-template",
+        "numbered-list:151:mothership-iam-authority-without-standing-keys-the-mothership",
+        "numbered-list:152:jumpship-backend-ownership-snapshot-and-golden-copy-custody",
+        "numbered-list:153:corridor-architecture-split-the-backend-owns-the-source",
+        "numbered-list:154:two-constitutions-enforced-at-the-correct-layer-the",
+        "numbered-list:155:supervision-split-the-mothership-watches-infrastructure-facts-only",
+        "numbered-list:156:boundary-traffic-mothership-cell-carries-only-deployment-material",
+        "numbered-list:157:efficient-mvp-and-evolution-begin-with-a-small",
+        "numbered-list:158:aws-residency-is-not-the-authorization-boundary-the",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local",
+        "numbered-list:160:typed-inventory-instead-of-aws-exploration-the-backend",
+        "numbered-list:161:production-account-topology-use-aws-organizations-with-separate",
+        "numbered-list:162:single-account-mvp-containment-early-cells-may-share"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Arch Trust Domains"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-archaeology"
+      ],
+      "id": "MVP-CAP-ARCHAEOLOGY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Archaeology is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--3-repository-and-workload-archaeology",
+        "numbered-list:180:code-archaeology-toolchain-ripgrep-for-fast-fingerprint-exact",
+        "numbered-list:23:code-archaeology-scan-app-repo-s-for-orm"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Archaeology"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-attempt-timeline"
+      ],
+      "id": "MVP-CAP-ATTEMPT-TIMELINE",
+      "owners": [
+        "web/src/app/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Attempt Timeline is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:124:session-timeline-execution-surface-attempt-shaped-runs-rehearsal",
+        "numbered-list:125:attempt-lifecycle-in-the-timeline-on-failure-the"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Attempt Timeline"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-automation-surface"
+      ],
+      "id": "MVP-CAP-AUTOMATION-SURFACE",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "01",
+        "04"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Automation Surface is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R008",
+        "JSMVP-R033"
+      ],
+      "source_anchors": [
+        "numbered-list:14:skills-cli-surface-so-coding-agents-claude-code"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Automation Surface"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-007",
+        "adr:ADR-009",
+        "adr:ADR-013",
+        "adr:ADR-017"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-aws-cell"
+      ],
+      "id": "MVP-CAP-AWS-CELL",
+      "owners": [
+        "infra/cell"
+      ],
+      "plans": [
+        "02",
+        "03",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Aws Cell is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--agentcore-verdict",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--context-compiler-contract",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--cost-latency-controls-that-are-architectural-not-model-specific",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--minimal-cell-memory-schema",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--recovery-sequence",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--research-anchors",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--selected-now",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--tiger-data-agentic-postgres-verdict",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--what-memory-means-here",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--boundary-note",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--cost-shape-cartful-scale-2-tb-6-weeks",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deliberate-non-choices",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--1-snapshot-and-golden-copy-acquisition",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--10-reverse-sync-and-rollback-window",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--11-observability-and-operations",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--12-testing-chaos-and-release-gates",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--2-worker-restore-census-and-profiling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--3-repository-and-workload-archaeology",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--4-mapping-artifact-and-compiler",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--5-target-preparation-and-bulk-load",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--6-rehearsal-environments",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--7-mongodb-cdc-tailer-and-apply",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--8-quarantine",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--9-verification-and-signed-integrity-proof",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--adopt-build-and-reject",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--migration-engine-research-anchors",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--stack-at-a-glance",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--ownership-map",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--phase-services-map",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--the-nine-services",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--where-the-agent-lives-july-11-2026-agent-placement-session",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--why-aws-and-not-hetzner-class-bare-metal",
+        "numbered-list:146:worker-as-generic-substrate-the-per-migration-worker",
+        "numbered-list:149:three-part-topology-mothership-deterministic-deployment-and-supervision",
+        "numbered-list:150:mothership-scope-deliberately-narrow-maintain-the-cell-template",
+        "numbered-list:151:mothership-iam-authority-without-standing-keys-the-mothership",
+        "numbered-list:152:jumpship-backend-ownership-snapshot-and-golden-copy-custody",
+        "numbered-list:153:corridor-architecture-split-the-backend-owns-the-source",
+        "numbered-list:154:two-constitutions-enforced-at-the-correct-layer-the",
+        "numbered-list:155:supervision-split-the-mothership-watches-infrastructure-facts-only",
+        "numbered-list:156:boundary-traffic-mothership-cell-carries-only-deployment-material",
+        "numbered-list:157:efficient-mvp-and-evolution-begin-with-a-small",
+        "numbered-list:158:aws-residency-is-not-the-authorization-boundary-the",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local",
+        "numbered-list:160:typed-inventory-instead-of-aws-exploration-the-backend",
+        "numbered-list:161:production-account-topology-use-aws-organizations-with-separate",
+        "numbered-list:162:single-account-mvp-containment-early-cells-may-share"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Aws Cell"
+    },
+    {
+      "applicability": {
+        "fallback": "no_ratchet_warning_when_action_is_not_applicable",
+        "fallback_test": "test/contract/capabilities/billing-ratchet-applicability_test.go",
+        "predicate": "provider_action_has_irreversible_cost"
+      },
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-billing-ratchet"
+      ],
+      "id": "MVP-CAP-BILLING-RATCHET",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "conditional",
+      "requirement_detail": "The capability is mandatory whenever its declared applicability predicate is true; otherwise the tested fallback is explicit.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:137:billing-ratchet-warnings-any-platform-action-with-irreversible",
+        "numbered-list:69:platform-capability-profiles-as-data-operational-scar-tissue",
+        "numbered-list:70:load-planner-that-consumes-probe-profile-fan-out"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Billing Ratchet"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-cdc-apply"
+      ],
+      "id": "MVP-CAP-CDC-APPLY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Cdc Apply is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--7-mongodb-cdc-tailer-and-apply",
+        "numbered-list:179:mongodb-access-substrate-all-census-batch-cursor-and",
+        "numbered-list:186:native-mongo-cdc-build-a-narrow-go-tailer",
+        "numbered-list:187:cdc-delivery-semantics-derive-immutable-event-id-sha",
+        "numbered-list:75:cdc-tailer-with-full-document-state-capture-pre",
+        "numbered-list:76:idempotent-versioned-apply-upserts-keyed-on-mongo-id",
+        "numbered-list:77:deletes-as-first-class-tombstones-apply-as-deletes",
+        "numbered-list:78:cross-collection-ordering-via-transactional-micro-batches-with",
+        "numbered-list:79:resume-token-durable-checkpointing-continuous-oplog-headroom-monitor"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Cdc Apply"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-census"
+      ],
+      "id": "MVP-CAP-CENSUS",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Census is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--2-worker-restore-census-and-profiling",
+        "numbered-list:179:mongodb-access-substrate-all-census-batch-cursor-and",
+        "numbered-list:20:full-schema-census-on-the-worker-copy-never",
+        "numbered-list:21:fan-out-projection-compute-documentrow-multiplication-and-target",
+        "numbered-list:22:census-re-runnable-on-a-schedule-the-same"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Census"
+    },
+    {
+      "applicability": {
+        "fallback": "console_only_notifications_and_approvals",
+        "fallback_test": "test/contract/capabilities/connect-channels-degraded_test.go",
+        "predicate": "customer_selected_optional_channel"
+      },
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-connect-channels"
+      ],
+      "id": "MVP-CAP-CONNECT-CHANNELS",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "04",
+        "07",
+        "09"
+      ],
+      "requirement": "conditional",
+      "requirement_detail": "The capability is mandatory whenever its declared applicability predicate is true; otherwise the tested fallback is explicit.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:10:email-integration-for-notifications-reminders-digests-and-approval",
+        "numbered-list:11:observability-integrations-datadog-honeycomb-sentry-class-for-writer",
+        "numbered-list:12:on-call-uptime-integrations-pagerduty-opsgenie-class-so",
+        "numbered-list:13c:optional-but-recommended-channels-slack-email-presented-as",
+        "numbered-list:9:chat-integration-e-g-slack-bot-that-both"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Channels"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-connect-detection"
+      ],
+      "id": "MVP-CAP-CONNECT-DETECTION",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "05",
+        "05a",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Connect Detection is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:13:connector-need-detection-once-the-mandatory-three-are",
+        "numbered-list:13a:connector-recommendation-cards-each-detected-integration-becomes-a"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Detection"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-029",
+        "adr:ADR-032"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-connect-github"
+      ],
+      "id": "MVP-CAP-CONNECT-GITHUB",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "04",
+        "05b",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Connect Github is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:8:github-connect-as-a-github-app-installation-not"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Github"
+    },
+    {
+      "applicability": {
+        "fallback": "highest_supported_snapshot_and_cdc_rung_or_typed_refusal",
+        "fallback_test": "test/contract/capabilities/connect-mongodb-fallback_test.go",
+        "predicate": "source_topology_and_provider_capabilities"
+      },
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-connect-mongodb"
+      ],
+      "id": "MVP-CAP-CONNECT-MONGODB",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "03",
+        "04",
+        "05a",
+        "09"
+      ],
+      "requirement": "conditional",
+      "requirement_detail": "The capability is mandatory whenever its declared applicability predicate is true; otherwise the tested fallback is explicit.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:3:mongodb-connection-string-intake-with-helper-guidance-for"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Mongodb"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-031"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-connect-postgres-target"
+      ],
+      "id": "MVP-CAP-CONNECT-POSTGRES-TARGET",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Connect Postgres Target is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:4:supabase-connect-via-a-published-supabase-oauth-integration",
+        "numbered-list:4a:post-connect-target-verification-immediately-after-the-supabase"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Postgres Target"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-connect-staged"
+      ],
+      "id": "MVP-CAP-CONNECT-STAGED",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "04",
+        "07",
+        "08",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Connect Staged is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R044",
+        "JSMVP-R045"
+      ],
+      "source_anchors": [
+        "numbered-list:13b:guarantee-coverage-meter-a-single-meter-on-the",
+        "numbered-list:13c:optional-but-recommended-channels-slack-email-presented-as",
+        "numbered-list:2:connect-screen-as-a-staged-flow-not-an"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Connect Staged"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-015"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-consent-stepup"
+      ],
+      "id": "MVP-CAP-CONSENT-STEPUP",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "02",
+        "04",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Consent Stepup is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:104:named-approvers-declared-in-advance-and-ledgered-the",
+        "numbered-list:106:consent-happens-only-in-the-authenticated-console-on",
+        "numbered-list:107:consent-gate-screen-showing-exactly-four-things-integrity",
+        "numbered-list:108:consent-timeout-defaults-to-no-no-response-by",
+        "numbered-list:120:decommission-consent-the-second-and-final-human-gate",
+        "numbered-list:1d:step-up-re-authentication-at-the-two-consent"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Consent Stepup"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-031"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-corridor-contract"
+      ],
+      "id": "MVP-CAP-CORRIDOR-CONTRACT",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "01",
+        "04",
+        "05",
+        "05a",
+        "05b"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Corridor Contract is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:addendum-agent-architecture-and-source-target-generality-july-11-2026",
+        "numbered-list:145:source-target-generality-via-capability-contracts-every-source",
+        "numbered-list:148:guarantee-tier-discipline-a-pair-whose-verification-cannot",
+        "numbered-list:153:corridor-architecture-split-the-backend-owns-the-source"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Corridor Contract"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-012",
+        "adr:ADR-013",
+        "adr:ADR-017"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-credential-custody"
+      ],
+      "id": "MVP-CAP-CREDENTIAL-CUSTODY",
+      "owners": [
+        "internal/connectors"
+      ],
+      "plans": [
+        "02",
+        "03",
+        "04",
+        "security"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Credential Custody is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:5:source-credentials-are-read-only-by-construction-jumpship",
+        "numbered-list:6:credential-custody-encrypted-at-rest-held-only-for",
+        "numbered-list:7:single-tenant-isolated-worker-per-migration-customer-data"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Credential Custody"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-cross-migration-learning"
+      ],
+      "governance": "reviewed-candidate-only",
+      "id": "MVP-CAP-CROSS-MIGRATION-LEARNING",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Only sanitized, schema-valid learning records may form immutable reviewed candidates; no customer identity/raw data crosses and no candidate self-activates.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R043"
+      ],
+      "source_anchors": [
+        "numbered-list:147:new-pair-economics-as-operational-memory-extends-42",
+        "numbered-list:42:bucket-boundaries-tuned-by-cross-migration-operational-memory"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Cross Migration Learning"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-030"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-cutover-choreography"
+      ],
+      "id": "MVP-CAP-CUTOVER-CHOREOGRAPHY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Cutover Choreography is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:101:t-1d-writer-census-re-run-the-long",
+        "numbered-list:104:named-approvers-declared-in-advance-and-ledgered-the",
+        "numbered-list:105:channel-choreography-t-7d-t-1d-readiness-digests",
+        "numbered-list:106:consent-happens-only-in-the-authenticated-console-on",
+        "numbered-list:107:consent-gate-screen-showing-exactly-four-things-integrity",
+        "numbered-list:108:consent-timeout-defaults-to-no-no-response-by",
+        "numbered-list:24:connection-census-writer-inventory-continuous-monitoring-of-client"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Cutover Choreography"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-cutover-runbook"
+      ],
+      "id": "MVP-CAP-CUTOVER-RUNBOOK",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Cutover Runbook is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:100:cutover-periphery-smoke-coverage-in-rehearsal-maintenance-page",
+        "numbered-list:101:t-1d-writer-census-re-run-the-long",
+        "numbered-list:102:deploy-config-audit-distinct-from-the-writer-census",
+        "numbered-list:103:app-team-pre-cutover-checklist-generated-from-the",
+        "numbered-list:98:generated-versioned-cutover-runbook-freeze-drain-verify-flip",
+        "numbered-list:99:rehearsal-timing-profiles-feed-the-freeze-drain-estimate"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Cutover Runbook"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-decision-provenance"
+      ],
+      "id": "MVP-CAP-DECISION-PROVENANCE",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Decision Provenance is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:34:answers-compile-directly-into-the-mapping-spec-with",
+        "numbered-list:35:high-stakes-decision-pattern-the-agent-performs-the",
+        "numbered-list:41:decision-triage-into-three-buckets-auto-decided-and",
+        "numbered-list:43:decision-ledger-every-decision-recorded-with-its-basis",
+        "numbered-list:44:spec-viewer-two-pane-surface-plain-language-rendering",
+        "numbered-list:45:spec-versioning-with-human-readable-diffs-e-g"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Decision Provenance"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-016"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-decommission"
+      ],
+      "id": "MVP-CAP-DECOMMISSION",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Decommission is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:120:decommission-consent-the-second-and-final-human-gate"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Decommission"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-design-brief"
+      ],
+      "id": "MVP-CAP-DESIGN-BRIEF",
+      "owners": [
+        "web/src/app/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Design Brief is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:124:design-brief-popup-when-phase-1-synthesis-completes",
+        "numbered-list:125:design-brief-first-render-carries-the-design-confirm",
+        "numbered-list:126:after-first-render-the-design-brief-persists-as",
+        "numbered-list:127:design-brief-summons-when-the-popup-first-arrives"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Design Brief"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-dossier"
+      ],
+      "id": "MVP-CAP-DOSSIER",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Dossier is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:121:migration-dossier-as-the-final-artifact-readiness-report"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Dossier"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-drift-sentinel"
+      ],
+      "id": "MVP-CAP-DRIFT-SENTINEL",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Drift Sentinel is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:81:drift-sentinel-scheduled-census-re-runs-against-the"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Drift Sentinel"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-021"
+      ],
+      "deferral": {
+        "applicability_class": "explicitly_deferred",
+        "public_selectable": false,
+        "reason": "not_implemented_in_mvp",
+        "result": "not_applicable"
+      },
+      "evidence": [
+        "capabilities/mvp-cap-dual-write"
+      ],
+      "id": "MVP-CAP-DUAL-WRITE",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "explicitly-deferred",
+      "requirement_detail": "Automatic no-freeze dual write is outside the MVP sellable guarantee and cannot be selected or advertised.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:85:dual-write-tier-for-truly-no-window-customers"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Dual Write"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-003"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-engine-stack"
+      ],
+      "id": "MVP-CAP-ENGINE-STACK",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "01",
+        "05a",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Engine Stack is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--1-snapshot-and-golden-copy-acquisition",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--10-reverse-sync-and-rollback-window",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--11-observability-and-operations",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--12-testing-chaos-and-release-gates",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--2-worker-restore-census-and-profiling",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--3-repository-and-workload-archaeology",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--4-mapping-artifact-and-compiler",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--5-target-preparation-and-bulk-load",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--6-rehearsal-environments",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--7-mongodb-cdc-tailer-and-apply",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--8-quarantine",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--9-verification-and-signed-integrity-proof",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--adopt-build-and-reject",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--migration-engine-research-anchors",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--stack-at-a-glance",
+        "numbered-list:177:engine-language-and-dependency-rule-the-deterministic-migration",
+        "numbered-list:178:snapshot-implementation-ladder-atlas-dedicated-cluster-migrations-prefer",
+        "numbered-list:179:mongodb-access-substrate-all-census-batch-cursor-and",
+        "numbered-list:180:code-archaeology-toolchain-ripgrep-for-fast-fingerprint-exact",
+        "numbered-list:181:mapping-artifact-and-safe-expression-stack-the-signed",
+        "numbered-list:182:shared-transform-plan-the-compiler-lowers-the-mapping",
+        "numbered-list:183:target-load-stack-use-jackc-pgx-v5-through",
+        "numbered-list:184:identity-map-minimization-preserve-mongo-id-derive-deterministic",
+        "numbered-list:185:rehearsal-adapter-use-supabase-branching-through-its-management",
+        "numbered-list:186:native-mongo-cdc-build-a-narrow-go-tailer",
+        "numbered-list:187:cdc-delivery-semantics-derive-immutable-event-id-sha",
+        "numbered-list:188:generic-cdc-platforms-rejected-for-the-baseline-debezium",
+        "numbered-list:189:quarantine-persistence-authoritative-quarantine-lives-in-typed-postgres",
+        "numbered-list:190:verification-data-stack-source-and-target-values-lower",
+        "numbered-list:191:verification-signature-the-final-manifest-root-and-verdict",
+        "numbered-list:192:query-semantic-runner-a-jumpship-go-runner-executes",
+        "numbered-list:193:reverse-sync-stack-where-rollback-tier-requires-it",
+        "numbered-list:194:observability-implementation-opentelemetry-go-instruments-every-engine-tool",
+        "numbered-list:195:reliability-test-stack-testcontainers-for-go-runs-pinned",
+        "numbered-list:196:supply-chain-stack-every-engine-tool-image-is",
+        "numbered-list:197:build-versus-buy-boundary-adopt-established-mechanics-mongodb",
+        "numbered-list:198:explicit-baseline-non-choices-no-spark-flink-kafka"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Engine Stack"
+    },
+    {
+      "applicability": {
+        "fallback": "manual_exact_head_review_handoff",
+        "fallback_test": "test/contract/capabilities/external-review-manual-handoff_test.go",
+        "predicate": "customer_authorized_supported_reviewer"
+      },
+      "authority_anchors": [
+        "adr:ADR-032"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-external-pr-review"
+      ],
+      "id": "MVP-CAP-EXTERNAL-PR-REVIEW",
+      "owners": [
+        "internal/application"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05b",
+        "07",
+        "09"
+      ],
+      "requirement": "conditional",
+      "requirement_detail": "The capability is mandatory whenever its declared applicability predicate is true; otherwise the tested fallback is explicit.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "External Pr Review"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-fanout-cost"
+      ],
+      "id": "MVP-CAP-FANOUT-COST",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Fanout Cost is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:126:transfer-cost-honesty-when-source-and-target-live",
+        "numbered-list:21:fan-out-projection-compute-documentrow-multiplication-and-target",
+        "numbered-list:48:per-stop-consequence-computation-from-the-customer-s",
+        "numbered-list:50:per-stop-write-physics-update-frequency-per-subtree"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Fanout Cost"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-foundation-decisions"
+      ],
+      "id": "MVP-CAP-FOUNDATION-DECISIONS",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Foundation Decisions is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:125:target-region-as-a-day-1-decision-card",
+        "numbered-list:130:foundation-decisions-packet-the-one-way-doors-set",
+        "numbered-list:131:foundation-decisions-exception-to-the-assumption-rule-on",
+        "numbered-list:132:foundation-decisions-screen-a-dedicated-full-evidence-surface"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Foundation Decisions"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-gated-approval"
+      ],
+      "id": "MVP-CAP-GATED-APPROVAL",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Gated Approval is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R050"
+      ],
+      "source_anchors": [
+        "numbered-list:124:gated-approve-on-every-decision-card-the-approve"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Gated Approval"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-golden-proof"
+      ],
+      "id": "MVP-CAP-GOLDEN-PROOF",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Golden Proof is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:18:snapshot-self-proof-restore-to-worker-counts-and",
+        "numbered-list:19:golden-copy-stored-in-immutable-write-locked-per",
+        "numbered-list:72:snapshot-provenance-line-permanently-visible-in-the-ui"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Golden Proof"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-026"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-handover-warranty"
+      ],
+      "id": "MVP-CAP-HANDOVER-WARRANTY",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Handover Warranty is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:117:ci-gate-handover-shadow-read-corpus-golden-transform",
+        "numbered-list:118:bounded-warranty-scope-stated-explicitly-in-product-jumpship",
+        "numbered-list:119:weekly-digest-via-email-chat-instead-of-a"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Handover Warranty"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-015"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-identity-login"
+      ],
+      "id": "MVP-CAP-IDENTITY-LOGIN",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "02",
+        "04",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Identity Login is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:1a:sign-in-with-github-sign-in-with-google",
+        "numbered-list:1b:login-identity-pre-seeds-the-connect-flow-google"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Identity Login"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-idmap-resume"
+      ],
+      "id": "MVP-CAP-IDMAP-RESUME",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Idmap Resume is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:184:identity-map-minimization-preserve-mongo-id-derive-deterministic",
+        "numbered-list:195:reliability-test-stack-testcontainers-for-go-runs-pinned",
+        "numbered-list:57:deterministic-child-identity-parent-mongo-id-array-index",
+        "numbered-list:66:disk-backed-source-idtarget-id-map-crash-safe",
+        "numbered-list:67:kill-testing-as-an-acceptance-criterion-the-engine"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Idmap Resume"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-incident-brief"
+      ],
+      "id": "MVP-CAP-INCIDENT-BRIEF",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Incident Brief is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:111:incident-decision-brief-the-3-40am-screen-on",
+        "numbered-list:112:incident-brief-rendering-the-responder-opens-to-evidence"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Incident Brief"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-interrogation"
+      ],
+      "id": "MVP-CAP-INTERROGATION",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Interrogation is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:27:evidence-anchored-interrogation-every-question-generated-from-a",
+        "numbered-list:28:mom-test-question-discipline-concrete-past-facts-never",
+        "numbered-list:29:every-interrogation-card-carries-options-with-computed-consequences",
+        "numbered-list:30:i-don-t-know-as-a-first-class",
+        "numbered-list:31:question-batching-into-same-day-answerable-packets-one",
+        "numbered-list:32:card-routing-to-the-right-human-data-semantics",
+        "numbered-list:33:interrogation-card-ui-each-card-is-a-self"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Interrogation"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-mapping-totality"
+      ],
+      "id": "MVP-CAP-MAPPING-TOTALITY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Mapping Totality is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--4-mapping-artifact-and-compiler",
+        "numbered-list:181:mapping-artifact-and-safe-expression-stack-the-signed",
+        "numbered-list:36:mandatory-mongo-id-source-identity-column-on-every",
+        "numbered-list:38:mapping-spec-every-field-s-type-coercion-default",
+        "numbered-list:39:spec-totality-enforcement-the-compiler-rejects-any-spec",
+        "numbered-list:40:agent-synthesis-of-target-ddl-mapping-spec-from"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Mapping Totality"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-001"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-nonchoices"
+      ],
+      "id": "MVP-CAP-NONCHOICES",
+      "owners": [
+        "docs/architecture"
+      ],
+      "plans": [
+        "01",
+        "03",
+        "05"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Nonchoices is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deliberate-non-choices",
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--adopt-build-and-reject",
+        "numbered-list:188:generic-cdc-platforms-rejected-for-the-baseline-debezium",
+        "numbered-list:196:supply-chain-stack-every-engine-tool-image-is",
+        "numbered-list:198:explicit-baseline-non-choices-no-spark-flink-kafka"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Nonchoices"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-normalization"
+      ],
+      "id": "MVP-CAP-NORMALIZATION",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Normalization is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:46:normalization-dial-discrete-stops-from-full-3nf-to",
+        "numbered-list:47:judgment-effort-gradient-behind-the-dial-standardized-shapes",
+        "numbered-list:48:per-stop-consequence-computation-from-the-customer-s",
+        "numbered-list:49:per-stop-query-pattern-fit-every-captured-query",
+        "numbered-list:50:per-stop-write-physics-update-frequency-per-subtree",
+        "numbered-list:51:bridge-accounting-any-jsonb-stop-on-structured-data",
+        "numbered-list:52:dial-ui-inside-the-interrogation-card-consequence-panels"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Normalization"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-011"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-placement-solver"
+      ],
+      "id": "MVP-CAP-PLACEMENT-SOLVER",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Placement Solver is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:124:region-aware-worker-placement-the-source-s-cloud",
+        "numbered-list:140:region-placement-solver-given-the-detected-source-region",
+        "numbered-list:141:private-connectivity-ladder-the-platform-capability-profile-69"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Placement Solver"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-postcutover-watch"
+      ],
+      "id": "MVP-CAP-POSTCUTOVER-WATCH",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Postcutover Watch is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:113:post-cutover-parity-watch-reconciliation-stays-live-in",
+        "numbered-list:114:migration-created-db-health-checks-sequence-health-vs",
+        "numbered-list:115:query-performance-regression-watch-the-shadow-read-corpus",
+        "numbered-list:116:log-pattern-watch-read-only-for-known-post"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Postcutover Watch"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-024"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-prime-directive"
+      ],
+      "id": "MVP-CAP-PRIME-DIRECTIVE",
+      "owners": [
+        "internal/agent"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Prime Directive is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:122:harness-prime-directive-enforced-product-wide-no-silent",
+        "numbered-list:123:division-of-labor-rule-enforced-product-wide-jumpship"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Prime Directive"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-quarantine"
+      ],
+      "id": "MVP-CAP-QUARANTINE",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Quarantine is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--8-quarantine",
+        "numbered-list:189:quarantine-persistence-authoritative-quarantine-lives-in-typed-postgres",
+        "numbered-list:55:quarantine-instead-of-abort-every-would-be-fatal",
+        "numbered-list:59:triage-board-quarantine-rendered-as-enumerated-decisions-with",
+        "numbered-list:60:quarantine-clustering-by-shared-signature-collapsing-row-counts",
+        "numbered-list:61:cluster-rulings-with-recommendations-attached-ddl-options-and",
+        "numbered-list:62:merge-policy-asked-once-per-field-semantics-not",
+        "numbered-list:63:sampling-ui-for-no-pattern-clusters-view-n",
+        "numbered-list:64:ruling-spec-recompile-incremental-re-rehearsal-loop-iteration",
+        "numbered-list:65:phase-gating-that-fails-closed-unruled-unexplained-quarantine"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Quarantine"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-readiness"
+      ],
+      "id": "MVP-CAP-READINESS",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Readiness is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above",
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--per-phase-re-mapping-of-former-report-artifact-surfaces",
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--the-six-primitives",
+        "numbered-list:25:migration-readiness-report-the-first-artifact-scale-reality",
+        "numbered-list:26:readiness-report-rendering-every-number-clickable-drilling-into"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Readiness"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-recommended-default"
+      ],
+      "id": "MVP-CAP-RECOMMENDED-DEFAULT",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Recommended Default is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:138:recommended-default-pattern-enforced-product-wide-jumpship-never",
+        "numbered-list:139:recommendation-basis-disclosure-every-recommendation-names-what-it"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Recommended Default"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-reconciliation"
+      ],
+      "id": "MVP-CAP-RECONCILIATION",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Reconciliation is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:82:continuous-windowed-reconciliation-throughout-the-sync-window-canonical"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Reconciliation"
+    },
+    {
+      "applicability": {
+        "fallback": "disposable_target_instance_or_local_early_test_only",
+        "fallback_test": "test/contract/capabilities/rehearsal-target-fallback_test.go",
+        "predicate": "selected_target_branch_capability"
+      },
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-rehearsal"
+      ],
+      "id": "MVP-CAP-REHEARSAL",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "conditional",
+      "requirement_detail": "The capability is mandatory whenever its declared applicability predicate is true; otherwise the tested fallback is explicit.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--6-rehearsal-environments",
+        "numbered-list:185:rehearsal-adapter-use-supabase-branching-through-its-management",
+        "numbered-list:53:rehearsal-branches-disposable-copy-on-write-instances-of",
+        "numbered-list:64:ruling-spec-recompile-incremental-re-rehearsal-loop-iteration"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Rehearsal"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-030"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-reverse-rollback"
+      ],
+      "id": "MVP-CAP-REVERSE-ROLLBACK",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Reverse Rollback is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--10-reverse-sync-and-rollback-window",
+        "numbered-list:109:reverse-sync-window-post-flip-72h-default-extendable",
+        "numbered-list:110:one-command-rollback-armed-and-already-rehearsed-on",
+        "numbered-list:136:rollback-viability-watch-during-the-reverse-sync-and",
+        "numbered-list:193:reverse-sync-stack-where-rollback-tier-requires-it"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Reverse Rollback"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-reversibility"
+      ],
+      "id": "MVP-CAP-REVERSIBILITY",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05a",
+        "06",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Reversibility is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:128:graded-reversibility-taxonomy-the-reversibility-line-37-upgraded",
+        "numbered-list:129:reversibility-badge-on-every-decision-card-and-spec",
+        "numbered-list:133:reversibility-timeline-a-live-lifecycle-visualization-of-the",
+        "numbered-list:134:external-exposure-detector-repo-and-traffic-scan-flags",
+        "numbered-list:135:clock-bound-doors-as-countdowns-oplog-retention-headroom",
+        "numbered-list:136:rollback-viability-watch-during-the-reverse-sync-and",
+        "numbered-list:137:billing-ratchet-warnings-any-platform-action-with-irreversible",
+        "numbered-list:37:reversibility-line-on-every-decision-card-what-s"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Reversibility"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-020"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-sealed-analysis-runner"
+      ],
+      "id": "MVP-CAP-SEALED-ANALYSIS-RUNNER",
+      "owners": [
+        "internal/agent"
+      ],
+      "plans": [
+        "05",
+        "06",
+        "security",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Sealed Analysis Runner is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002",
+        "JSMVP-R039",
+        "JSMVP-R042",
+        "JSMVP-R062"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--where-the-agent-lives-july-11-2026-agent-placement-session"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Sealed Analysis Runner"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-semantic-translation"
+      ],
+      "id": "MVP-CAP-SEMANTIC-TRANSLATION",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Semantic Translation is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:192:query-semantic-runner-a-jumpship-go-runner-executes",
+        "numbered-list:93:verification-layer-5-shadow-reads-captured-real-query",
+        "numbered-list:97:semantic-translation-table-every-behavior-difference-at-the"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Semantic Translation"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-028",
+        "adr:ADR-034"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-session-shell"
+      ],
+      "id": "MVP-CAP-SESSION-SHELL",
+      "owners": [
+        "web/src/app/migrations"
+      ],
+      "plans": [
+        "04",
+        "05",
+        "05b",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Session Shell is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above",
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--per-phase-re-mapping-of-former-report-artifact-surfaces",
+        "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--the-six-primitives"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Session Shell"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-signed-integrity"
+      ],
+      "id": "MVP-CAP-SIGNED-INTEGRITY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Signed Integrity is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--9-verification-and-signed-integrity-proof",
+        "numbered-list:148:guarantee-tier-discipline-a-pair-whose-verification-cannot",
+        "numbered-list:191:verification-signature-the-final-manifest-root-and-verdict",
+        "numbered-list:96:signed-integrity-report-one-document-two-renderings-a"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Signed Integrity"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-snapshot-ladder"
+      ],
+      "id": "MVP-CAP-SNAPSHOT-LADDER",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Snapshot Ladder is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--1-snapshot-and-golden-copy-acquisition",
+        "numbered-list:15:snapshot-capability-ladder-use-provider-point-in-time",
+        "numbered-list:16:self-service-snapshot-feature-for-customers-without-provider",
+        "numbered-list:178:snapshot-implementation-ladder-atlas-dedicated-cluster-migrations-prefer",
+        "numbered-list:17:golden-snapshot-immutable-checksummed-point-in-time-consistent"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Snapshot Ladder"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-staged-load"
+      ],
+      "id": "MVP-CAP-STAGED-LOAD",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Staged Load is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--5-target-preparation-and-bulk-load",
+        "numbered-list:183:target-load-stack-use-jackc-pgx-v5-through",
+        "numbered-list:54:staged-constraint-load-protocol-load-bare-constraints-not",
+        "numbered-list:56:topological-load-ordering-derived-from-the-fk-graph",
+        "numbered-list:57:deterministic-child-identity-parent-mongo-id-array-index",
+        "numbered-list:58:in-load-sanitization-as-spec-rules-null-byte"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Staged Load"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-sync-health"
+      ],
+      "id": "MVP-CAP-SYNC-HEALTH",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Sync Health is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:126:pinned-sync-widget-the-sync-health-dashboard-83",
+        "numbered-list:135:clock-bound-doors-as-countdowns-oplog-retention-headroom",
+        "numbered-list:194:observability-implementation-opentelemetry-go-instruments-every-engine-tool",
+        "numbered-list:83:sync-health-dashboard-the-one-screen-that-stays",
+        "numbered-list:84:freeze-drain-estimate-as-the-honest-form-of"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Sync Health"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-target-probe"
+      ],
+      "id": "MVP-CAP-TARGET-PROBE",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Target Probe is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:183:target-load-stack-use-jackc-pgx-v5-through",
+        "numbered-list:68:platform-probe-read-only-interrogation-of-the-target",
+        "numbered-list:69:platform-capability-profiles-as-data-operational-scar-tissue",
+        "numbered-list:70:load-planner-that-consumes-probe-profile-fan-out",
+        "numbered-list:71:target-preflight-checklist-every-probed-fact-and-planned"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Target Probe"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-token-loss"
+      ],
+      "id": "MVP-CAP-TOKEN-LOSS",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Token Loss is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:80:honest-token-loss-recovery-automatic-re-baseline-from"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Token Loss"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-transform-parity"
+      ],
+      "id": "MVP-CAP-TRANSFORM-PARITY",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Transform Parity is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:143:deterministic-within-call-semantics-every-data-touching-tool",
+        "numbered-list:182:shared-transform-plan-the-compiler-lowers-the-mapping",
+        "numbered-list:73:one-transform-library-two-thin-drivers-batch-cursor",
+        "numbered-list:74:golden-corpus-ci-gate-a-corpus-of-nasty"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Transform Parity"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-verification-rubric"
+      ],
+      "id": "MVP-CAP-VERIFICATION-RUBRIC",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Verification Rubric is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:86:verification-rubric-generation-a-declarative-artifact-sibling-to",
+        "numbered-list:87:business-invariants-proposed-by-the-agent-from-the",
+        "numbered-list:88:rubric-versioning-and-ledgering-once-confirmed-the-integrity"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Verification Rubric"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-verify-layers"
+      ],
+      "id": "MVP-CAP-VERIFY-LAYERS",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Verify Layers is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--9-verification-and-signed-integrity-proof",
+        "numbered-list:148:guarantee-tier-discipline-a-pair-whose-verification-cannot",
+        "numbered-list:190:verification-data-stack-source-and-target-values-lower",
+        "numbered-list:89:verification-layer-1-counts-against-rubric-expected-values",
+        "numbered-list:90:verification-layer-2-aggregate-business-invariants-the-class",
+        "numbered-list:91:verification-layer-3-canonical-form-block-hashing-of",
+        "numbered-list:92:verification-layer-4-both-direction-set-difference-reverse",
+        "numbered-list:93:verification-layer-5-shadow-reads-captured-real-query",
+        "numbered-list:94:tail-weighted-sampling-everywhere-old-cohorts-where-drift",
+        "numbered-list:95:verifier-epistemics-trusts-nothing-but-its-own-manifests"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Verify Layers"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-workspace-rbac"
+      ],
+      "id": "MVP-CAP-WORKSPACE-RBAC",
+      "owners": [
+        "internal/migrations"
+      ],
+      "plans": [
+        "02",
+        "04",
+        "07"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Workspace Rbac is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:1c:workspace-team-model-a-migration-belongs-to-a"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Workspace Rbac"
+    },
+    {
+      "authority_anchors": [
+        "adr:ADR-030"
+      ],
+      "evidence": [
+        "capabilities/mvp-cap-writer-authority-fencing"
+      ],
+      "id": "MVP-CAP-WRITER-AUTHORITY-FENCING",
+      "owners": [
+        "internal/application"
+      ],
+      "plans": [
+        "03",
+        "04",
+        "05a",
+        "05b",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Writer Authority Fencing is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:101:t-1d-writer-census-re-run-the-long",
+        "numbered-list:104:named-approvers-declared-in-advance-and-ledgered-the",
+        "numbered-list:24:connection-census-writer-inventory-continuous-monitoring-of-client"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Writer Authority Fencing"
+    },
+    {
+      "authority_anchors": [],
+      "evidence": [
+        "capabilities/mvp-cap-writer-census"
+      ],
+      "id": "MVP-CAP-WRITER-CENSUS",
+      "owners": [
+        "internal/engine"
+      ],
+      "plans": [
+        "04",
+        "05a",
+        "07",
+        "09"
+      ],
+      "requirement": "required",
+      "requirement_detail": "Writer Census is part of the closed MVP baseline and fails closed where its preconditions are not met.",
+      "rubric_ids": [
+        "JSMVP-R002"
+      ],
+      "source_anchors": [
+        "numbered-list:101:t-1d-writer-census-re-run-the-long",
+        "numbered-list:24:connection-census-writer-inventory-continuous-monitoring-of-client"
+      ],
+      "status": "planned",
+      "tests": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "title": "Writer Census"
+    }
+  ],
+  "incapabilities": [
+    {
+      "capability_ids": [
+        "MVP-CAP-CREDENTIAL-CUSTODY",
+        "MVP-CAP-REVERSE-ROLLBACK"
+      ],
+      "effect": "The conductor cannot write to the customer's source with the baseline migration credential.",
+      "id": "MVP-INCAP-SOURCE-WRITE",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Source credentials and network/tool grants are read-only by construction.",
+      "remediation": "A separately authorized, time-bounded reverse-sync operation uses a distinct credential after the rollback gate approves it.",
+      "remediation_source": "jumpship_backend",
+      "source_anchors": [
+        "numbered-list:5:source-credentials-are-read-only-by-construction-jumpship",
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-MAPPING-TOTALITY",
+        "MVP-CAP-TRANSFORM-PARITY"
+      ],
+      "effect": "The conductor cannot improvise transformations for individual records.",
+      "id": "MVP-INCAP-PER-RECORD-IMPROVISATION",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Batch and change paths execute one immutable compiled transform plan.",
+      "remediation": "Revise and approve the versioned mapping specification, then rebuild and requalify both drivers.",
+      "remediation_source": "jumpship_backend",
+      "source_anchors": [
+        "numbered-list:143:deterministic-within-call-semantics-every-data-touching-tool",
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-CONSENT-STEPUP",
+        "MVP-CAP-QUARANTINE",
+        "MVP-CAP-VERIFY-LAYERS"
+      ],
+      "effect": "The conductor cannot bypass quarantine, verification, cutover, consent, or deletion gates.",
+      "id": "MVP-INCAP-GATE-BYPASS",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "The backend state machine and scoped grants own every consequential transition.",
+      "remediation": "Resolve the named blocker or have the bound named approver complete the exact authenticated gate.",
+      "remediation_source": "named_approver",
+      "source_anchors": [
+        "numbered-list:65:phase-gating-that-fails-closed-unruled-unexplained-quarantine",
+        "numbered-list:106:consent-happens-only-in-the-authenticated-console-on",
+        "numbered-list:120:decommission-consent-the-second-and-final-human-gate",
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-APPLICATION-PR-DELIVERY"
+      ],
+      "effect": "Jumpship cannot customer-validate, merge, or deploy application changes.",
+      "id": "MVP-INCAP-CUSTOMER-VALIDATE-MERGE-DEPLOY",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Draft pull requests are customer-owned and application delivery authority remains outside Jumpship.",
+      "remediation": "The customer validates, merges, and deploys the exact reviewed revision; Jumpship verifies the resulting runtime evidence.",
+      "remediation_source": "customer",
+      "source_anchors": [
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-EXTERNAL-PR-REVIEW",
+        "MVP-CAP-CONSENT-STEPUP"
+      ],
+      "effect": "A coding-agent reviewer cannot approve migration decisions, merge, deploy, consent, or change traffic authority.",
+      "id": "MVP-INCAP-REVIEWER-AUTHORITY",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "External review is optional, exact-head-bound, and advisory.",
+      "remediation": "A customer-owned actor handles validation and delivery; a named approver handles consent.",
+      "remediation_source": "customer",
+      "source_anchors": [
+        "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-ARCH-TRUST-DOMAINS",
+        "MVP-CAP-AWS-CELL"
+      ],
+      "effect": "The conductor cannot provision, widen, restart, replicate, or destroy its own migration cell.",
+      "id": "MVP-INCAP-SELF-INFRASTRUCTURE-LIFECYCLE",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Mothership and backend-authorized lifecycle commands are separate from the cell runtime identity.",
+      "remediation": "The backend authorizes a signed lifecycle command and Mothership reconciles it under its narrow deployment role.",
+      "remediation_source": "jumpship_backend",
+      "source_anchors": [
+        "numbered-list:150:mothership-scope-deliberately-narrow-maintain-the-cell-template",
+        "numbered-list:154:two-constitutions-enforced-at-the-correct-layer-the",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-ARCH-TRUST-DOMAINS",
+        "MVP-CAP-CREDENTIAL-CUSTODY"
+      ],
+      "effect": "A cell agent cannot access another cell, shared canonical state, or Mothership deployment authority.",
+      "id": "MVP-INCAP-CROSS-CELL-OR-SHARED-AUTHORITY",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Cell identity, IAM, network, KMS, store, and protocol boundaries deny ambient reach.",
+      "remediation": "Use a typed backend projection or authorized cell-local capability; cross-cell raw access is unavailable.",
+      "remediation_source": "not_available_in_mvp",
+      "source_anchors": [
+        "numbered-list:156:boundary-traffic-mothership-cell-carries-only-deployment-material",
+        "numbered-list:158:aws-residency-is-not-the-authorization-boundary-the",
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-SEALED-ANALYSIS-RUNNER",
+        "MVP-CAP-AGENT-RUNTIME"
+      ],
+      "effect": "The conductor cannot invoke arbitrary shell, SQL, MCP, AWS, or IAM operations.",
+      "id": "MVP-INCAP-ARBITRARY-SHELL-SQL-MCP",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "Only named, typed, capability-scoped tools and the sealed diagnostic runner are available.",
+      "remediation": "Use an authorized typed capability or request a reviewed contract/packet change; diagnostics remain sealed and no-effect.",
+      "remediation_source": "release_owner",
+      "source_anchors": [
+        "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local",
+        "numbered-list:160:typed-inventory-instead-of-aws-exploration-the-backend",
+        "numbered-list:174:agentcore-decision-do-not-use-agentcore-runtime-harness"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-ARCH-TRUST-DOMAINS",
+        "MVP-CAP-CROSS-MIGRATION-LEARNING"
+      ],
+      "effect": "The conductor cannot export raw customer records, code, prompts, or unrestricted tool output into shared services or learning.",
+      "id": "MVP-INCAP-RAW-EVIDENCE-EXPORT",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "The data diode permits only typed, classified, sanitized projections.",
+      "remediation": "Keep the artifact cell-local or use a one-artifact, short-lived customer access capability.",
+      "remediation_source": "jumpship_backend",
+      "source_anchors": [
+        "numbered-list:156:boundary-traffic-mothership-cell-carries-only-deployment-material",
+        "numbered-list:173:evidence-and-embedding-discipline-large-artifacts-remain-in"
+      ]
+    },
+    {
+      "capability_ids": [
+        "MVP-CAP-DUAL-WRITE"
+      ],
+      "effect": "The MVP cannot offer or activate an automatic no-freeze dual-write tier.",
+      "id": "MVP-INCAP-AUTOMATIC-DUAL-WRITE",
+      "negative_test_refs": [
+        "scripts/capabilities/tests/test_registry.py"
+      ],
+      "reason": "ADR-021 explicitly defers the tier outside the closed MVP guarantee.",
+      "remediation": "Use the measured freeze plus mandatory reverse-sync path; reopening requires an owned packet, threat model, and full qualification.",
+      "remediation_source": "not_available_in_mvp",
+      "source_anchors": [
+        "numbered-list:85:dual-write-tier-for-truly-no-window-customers"
+      ]
+    }
+  ],
+  "logical_source_version": "jumpship-mvp-source-v1-2026-07-17",
+  "registry_version": "jumpship-mvp-capabilities-v1-2026-07-17",
+  "schema_version": "1.0.0",
+  "source_manifest_path": "contracts/capabilities/mvp-source-anchors.yaml",
+  "source_manifest_sha256": "f40fa3e49a9bff54b5d0db5904d0695ff333b77e06e382bbfa226a859b56f72b",
+  "source_plan_sha256": "e05e983565007d751e08a950e9d533645e08191b034bb2540287021e2adf95f3"
+}

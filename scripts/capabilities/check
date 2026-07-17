@@ -1,0 +1,387 @@
+#!/usr/bin/env python3
+"""Validate the accepted public MVP capability registry and source manifest."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Any
+
+sys.dont_write_bytecode = True
+
+from capability_lib import (
+    ADDENDUM_ANCHOR_RE,
+    ANCHOR_ALGORITHM,
+    AUTHORITY_ANCHOR_RE,
+    CAPABILITY_ID_RE,
+    INCAPABILITY_ID_RE,
+    NUMBERED_ANCHOR_RE,
+    canonical_json_bytes,
+    git_value,
+    iter_truth_files,
+    load_json_yaml,
+    rubric_id_is_known,
+    sha256_file,
+    source_plan_sha256,
+    validate_schema,
+)
+
+
+ROOT = Path(__file__).resolve().parents[2]
+REGISTRY_PATH = ROOT / "contracts/capabilities/mvp.yaml"
+REGISTRY_SCHEMA_PATH = ROOT / "contracts/capabilities/mvp.schema.json"
+SOURCE_SCHEMA_PATH = ROOT / "contracts/capabilities/mvp-source-anchors.schema.json"
+EXPECTED_DUPLICATES = {"124": 4, "125": 3, "126": 3}
+EXPECTED_SOURCE_COUNTS = {"numbered-list": 213, "addendum": 40}
+PLAN_IDS = {"01", "02", "03", "04", "05", "05a", "05b", "06", "07", "08", "09", "security"}
+REQUIREMENTS = {"required", "conditional", "explicitly-deferred"}
+STATUSES = {"planned", "contracted", "implemented", "qualified", "waived", "retired"}
+P00_METADATA_TEST = "scripts/capabilities/tests/test_registry.py"
+
+
+def _unique(values: list[str], label: str, errors: list[str]) -> None:
+    if len(values) != len(set(values)):
+        errors.append(f"{label} contains duplicates")
+
+
+def _load(path: Path, errors: list[str]) -> Any | None:
+    try:
+        return load_json_yaml(path)
+    except ValueError as exc:
+        errors.append(str(exc))
+        return None
+
+
+def _metadata_contains(root: Path, relative: str, identifier: str) -> bool:
+    path = root / relative
+    if not path.is_file():
+        return False
+    try:
+        return identifier in path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        return False
+
+
+def _check_registry(
+    registry: dict[str, Any],
+    manifest: dict[str, Any],
+    registry_schema: dict[str, Any],
+    manifest_path: Path,
+    release_mode: bool,
+) -> tuple[list[str], dict[str, Any]]:
+    errors: list[str] = []
+    manifest_anchors = manifest["anchors"]
+    manifest_ids = [entry["anchor_id"] for entry in manifest_anchors]
+    manifest_by_id = {entry["anchor_id"]: entry for entry in manifest_anchors}
+    _unique(manifest_ids, "source manifest anchors", errors)
+
+    if manifest.get("anchor_algorithm") != ANCHOR_ALGORITHM:
+        errors.append("source manifest anchor_algorithm is not the accepted algorithm")
+    if manifest.get("source", {}).get("path") != "featurelist-and-techstack/00-baseline-cartful-atlas-to-supabase-cdc.md":
+        errors.append("source manifest path is not the accepted historical living-source path")
+    recomputed_source_plan = source_plan_sha256(
+        manifest["logical_source_version"],
+        manifest["source"]["sha256"],
+        manifest["planning_inputs"],
+    )
+    if recomputed_source_plan != manifest.get("source_plan_sha256"):
+        errors.append("source manifest source_plan_sha256 does not match its canonical inputs")
+    if registry.get("logical_source_version") != manifest.get("logical_source_version"):
+        errors.append("registry and source manifest bind different logical source versions")
+    if registry.get("source_manifest_sha256") != sha256_file(manifest_path):
+        errors.append("registry source_manifest_sha256 does not equal the checked-in manifest bytes")
+    if registry.get("source_plan_sha256") != manifest.get("source_plan_sha256"):
+        errors.append("registry and source manifest bind different source_plan_sha256 values")
+
+    authorized_ids = set(
+        registry_schema["properties"]["capabilities"]["items"]["properties"]["id"]["enum"]
+    )
+    records = registry["capabilities"]
+    record_ids = [entry["id"] for entry in records]
+    _unique(record_ids, "capability IDs", errors)
+    unknown_ids = sorted(set(record_ids) - authorized_ids)
+    missing_ids = sorted(authorized_ids - set(record_ids))
+    if unknown_ids:
+        errors.append(f"registry has section-4-unknown capability IDs: {unknown_ids}")
+    if missing_ids:
+        errors.append(f"registry is missing authorized capability IDs: {missing_ids}")
+
+    referenced: set[str] = set()
+    untestable: list[str] = []
+    for record in records:
+        capability_id = record["id"]
+        if CAPABILITY_ID_RE.fullmatch(capability_id) is None:
+            errors.append(f"invalid capability ID: {capability_id}")
+        if record["requirement"] not in REQUIREMENTS:
+            errors.append(f"{capability_id}: invalid requirement {record['requirement']!r}")
+        if record["status"] not in STATUSES:
+            errors.append(f"{capability_id}: invalid status {record['status']!r}")
+        source_anchors = record["source_anchors"]
+        _unique(source_anchors, f"{capability_id} source_anchors", errors)
+        for anchor in source_anchors:
+            if anchor not in manifest_by_id:
+                errors.append(f"{capability_id}: orphaned source anchor {anchor}")
+            referenced.add(anchor)
+        authority_anchors = record["authority_anchors"]
+        _unique(authority_anchors, f"{capability_id} authority_anchors", errors)
+        for anchor in authority_anchors:
+            if AUTHORITY_ANCHOR_RE.fullmatch(anchor) is None:
+                errors.append(f"{capability_id}: noncanonical authority anchor {anchor}")
+        unknown_plans = sorted(set(record["plans"]) - PLAN_IDS)
+        if unknown_plans:
+            errors.append(f"{capability_id}: unknown plan IDs {unknown_plans}")
+        unknown_rubrics = sorted(item for item in record["rubric_ids"] if not rubric_id_is_known(item))
+        if unknown_rubrics:
+            errors.append(f"{capability_id}: unknown rubric IDs {unknown_rubrics}")
+        if record["requirement"] in {"required", "conditional"}:
+            for field in ("owners", "plans", "rubric_ids", "tests", "evidence"):
+                if not record[field]:
+                    errors.append(f"{capability_id}: {field} is required")
+        for test_path in record["tests"]:
+            if not _metadata_contains(ROOT, test_path, capability_id):
+                untestable.append(f"{capability_id}:{test_path}")
+        if record["status"] in {"implemented", "qualified"} and set(record["tests"]) <= {P00_METADATA_TEST}:
+            errors.append(
+                f"{capability_id}: {record['status']} status requires capability-specific executable tests"
+            )
+        if release_mode and record["requirement"] != "explicitly-deferred" and record["status"] != "qualified":
+            errors.append(f"{capability_id}: release mode requires qualified status")
+        if record["requirement"] == "conditional":
+            applicability = record.get("applicability")
+            if not applicability or not applicability.get("predicate") or not applicability.get("fallback_test"):
+                errors.append(f"{capability_id}: conditional record lacks executable applicability/fallback")
+
+    if untestable:
+        errors.append(f"capability test metadata is missing: {sorted(untestable)}")
+
+    uncovered = sorted(set(manifest_ids) - referenced)
+    orphaned = sorted(referenced - set(manifest_ids))
+    if uncovered:
+        errors.append(f"uncovered source anchors: {uncovered}")
+    if orphaned:
+        errors.append(f"orphaned source anchors: {orphaned}")
+
+    for kind, expected_count in EXPECTED_SOURCE_COUNTS.items():
+        observed_count = sum(1 for entry in manifest_anchors if entry["kind"] == kind)
+        if observed_count != expected_count:
+            errors.append(f"source manifest has {observed_count} {kind} anchors; expected {expected_count}")
+
+    duplicate_report: dict[str, Any] = {}
+    for label, expected_count in EXPECTED_DUPLICATES.items():
+        entries = [entry for entry in manifest_anchors if entry.get("display") == label]
+        anchor_ids = [entry["anchor_id"] for entry in entries]
+        duplicate_report[label] = {"anchor_ids": anchor_ids, "count": len(entries), "expected": expected_count}
+        if len(entries) != expected_count:
+            errors.append(f"legacy display {label} has {len(entries)} anchors; expected {expected_count}")
+        if len(anchor_ids) != len(set(anchor_ids)):
+            errors.append(f"legacy display {label} collapsed duplicate anchor IDs")
+
+    for entry in manifest_anchors:
+        anchor = entry["anchor_id"]
+        if entry["kind"] == "numbered-list":
+            if NUMBERED_ANCHOR_RE.fullmatch(anchor) is None:
+                errors.append(f"noncanonical numbered anchor: {anchor}")
+        elif entry["kind"] == "addendum":
+            if ADDENDUM_ANCHOR_RE.fullmatch(anchor) is None:
+                errors.append(f"noncanonical addendum anchor: {anchor}")
+        else:
+            errors.append(f"unknown source anchor kind: {entry['kind']}")
+
+    incapability_ids: list[str] = []
+    for entry in registry["incapabilities"]:
+        incapability_id = entry["id"]
+        incapability_ids.append(incapability_id)
+        if INCAPABILITY_ID_RE.fullmatch(incapability_id) is None:
+            errors.append(f"invalid incapability ID: {incapability_id}")
+        for capability_id in entry["capability_ids"]:
+            if capability_id not in set(record_ids):
+                errors.append(f"{incapability_id}: unknown capability linkage {capability_id}")
+        for anchor in entry["source_anchors"]:
+            if anchor not in manifest_by_id:
+                errors.append(f"{incapability_id}: unknown source anchor {anchor}")
+        for test_path in entry["negative_test_refs"]:
+            if not _metadata_contains(ROOT, test_path, incapability_id):
+                errors.append(f"{incapability_id}: negative-test metadata missing from {test_path}")
+    _unique(incapability_ids, "incapability IDs", errors)
+
+    record_by_id = {entry["id"]: entry for entry in records}
+    dual_write = record_by_id.get("MVP-CAP-DUAL-WRITE", {})
+    expected_deferral = {
+        "applicability_class": "explicitly_deferred",
+        "public_selectable": False,
+        "reason": "not_implemented_in_mvp",
+        "result": "not_applicable",
+    }
+    if dual_write.get("requirement") != "explicitly-deferred" or dual_write.get("deferral") != expected_deferral:
+        errors.append("MVP-CAP-DUAL-WRITE does not carry the exact accepted deferral/applicability record")
+    if "adr:ADR-021" not in dual_write.get("authority_anchors", []):
+        errors.append("MVP-CAP-DUAL-WRITE is not bound to ADR-021")
+
+    gated = record_by_id.get("MVP-CAP-GATED-APPROVAL", {})
+    gated_anchors = [manifest_by_id.get(item, {}) for item in gated.get("source_anchors", [])]
+    if not any(entry.get("display") == "124" and "gated approve" in entry.get("title", "").lower() for entry in gated_anchors):
+        errors.append("MVP-CAP-GATED-APPROVAL does not own the distinct gated-approve occurrence")
+    learning = record_by_id.get("MVP-CAP-CROSS-MIGRATION-LEARNING", {})
+    if learning.get("governance") != "reviewed-candidate-only":
+        errors.append("cross-migration learning is not constrained to reviewed candidates")
+    disclosure = record_by_id.get("MVP-CAP-AGENT-INCAPABILITY-DISCLOSURE", {})
+    if not disclosure or not registry["incapabilities"]:
+        errors.append("agent-incapability disclosure source is incomplete")
+
+    bare_pattern = re.compile(r"(?<![A-Za-z0-9])#(?:124|125|126)(?![0-9])")
+    bare_violations: list[str] = []
+    for path in iter_truth_files(ROOT):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for line_number, line in enumerate(text.splitlines(), start=1):
+            if bare_pattern.search(line):
+                bare_violations.append(f"{path.relative_to(ROOT)}:{line_number}")
+    if bare_violations:
+        errors.append(f"bare ambiguous legacy references found: {bare_violations}")
+
+    report = {
+        "anchor_algorithm": manifest["anchor_algorithm"],
+        "bare_duplicate_reference_violations": bare_violations,
+        "capabilities": [
+            {
+                "id": entry["id"],
+                "requirement": entry["requirement"],
+                "source_anchor_count": len(entry["source_anchors"]),
+                "status": entry["status"],
+            }
+            for entry in records
+        ],
+        "capability_count": len(records),
+        "duplicate_anchors": duplicate_report,
+        "incapability_count": len(registry["incapabilities"]),
+        "logical_source_version": manifest["logical_source_version"],
+        "orphaned_anchor_count": len(orphaned),
+        "registry_sha256": sha256_file(REGISTRY_PATH),
+        "release_context": {
+            "agent_bundle_id": None,
+            "engine_digest": None,
+            "qualification_mode": release_mode,
+            "repository_head_at_check": git_value(ROOT, "rev-parse", "HEAD"),
+            "repository_index_tree_at_check": git_value(ROOT, "write-tree"),
+            "worktree_clean_at_check": not bool(git_value(ROOT, "status", "--porcelain")),
+            "web_deployment": None,
+        },
+        "schema_version": "1.0.0",
+        "source_anchor_count": len(manifest_ids),
+        "source_manifest_sha256": sha256_file(manifest_path),
+        "source_plan_sha256": manifest["source_plan_sha256"],
+        "source_sha256": manifest["source"]["sha256"],
+        "uncovered_anchor_count": len(uncovered),
+        "untestable_record_count": len(untestable),
+    }
+    return errors, report
+
+
+def _markdown_report(report: dict[str, Any]) -> str:
+    lines = [
+        "# MVP capability coverage",
+        "",
+        f"- Logical source version: `{report['logical_source_version']}`",
+        f"- Source SHA-256: `{report['source_sha256']}`",
+        f"- Source-plan SHA-256: `{report['source_plan_sha256']}`",
+        f"- Registry SHA-256: `{report['registry_sha256']}`",
+        f"- Capabilities: {report['capability_count']}",
+        f"- Source anchors: {report['source_anchor_count']}",
+        f"- Uncovered anchors: {report['uncovered_anchor_count']}",
+        f"- Orphaned anchors: {report['orphaned_anchor_count']}",
+        f"- Untestable records: {report['untestable_record_count']}",
+        f"- Bare duplicate-reference violations: {len(report['bare_duplicate_reference_violations'])}",
+        "",
+        "## Reused display numbers",
+        "",
+        "| Display | Count | Expected | Stable anchors |",
+        "|---|---:|---:|---|",
+    ]
+    for display, details in sorted(report["duplicate_anchors"].items()):
+        lines.append(
+            f"| {display} | {details['count']} | {details['expected']} | "
+            + "<br>".join(f"`{item}`" for item in details["anchor_ids"])
+            + " |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Registry",
+            "",
+            "| Capability | Requirement | Status | Source anchors |",
+            "|---|---|---|---:|",
+        ]
+    )
+    for entry in report["capabilities"]:
+        lines.append(
+            f"| `{entry['id']}` | {entry['requirement']} | {entry['status']} | {entry['source_anchor_count']} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--registry", action="store_true", help="validate the accepted MVP registry")
+    parser.add_argument("--source-manifest", required=True, type=Path)
+    parser.add_argument("--output-dir", default=Path("build"), type=Path)
+    parser.add_argument("--release", action="store_true", help="enforce production qualification status")
+    args = parser.parse_args()
+    if not args.registry:
+        parser.error("--registry is required")
+
+    manifest_path = args.source_manifest
+    if not manifest_path.is_absolute():
+        manifest_path = ROOT / manifest_path
+    errors: list[str] = []
+    registry = _load(REGISTRY_PATH, errors)
+    manifest = _load(manifest_path, errors)
+    registry_schema = _load(REGISTRY_SCHEMA_PATH, errors)
+    source_schema = _load(SOURCE_SCHEMA_PATH, errors)
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+    assert isinstance(registry, dict) and isinstance(manifest, dict)
+    assert isinstance(registry_schema, dict) and isinstance(source_schema, dict)
+    errors.extend(f"registry schema: {item}" for item in validate_schema(registry, registry_schema))
+    errors.extend(f"source manifest schema: {item}" for item in validate_schema(manifest, source_schema))
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+
+    semantic_errors, report = _check_registry(
+        registry,
+        manifest,
+        registry_schema,
+        manifest_path,
+        args.release,
+    )
+    output_dir = args.output_dir
+    if not output_dir.is_absolute():
+        output_dir = ROOT / output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "capability-coverage.json").write_bytes(canonical_json_bytes(report))
+    (output_dir / "capability-coverage.md").write_text(_markdown_report(report), encoding="utf-8")
+    if semantic_errors:
+        for error in semantic_errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        print(f"capability registry check: FAIL ({len(semantic_errors)} error(s))", file=sys.stderr)
+        return 1
+    print(
+        "capability registry check: PASS "
+        f"capabilities={report['capability_count']} anchors={report['source_anchor_count']} "
+        "uncovered=0 orphaned=0 untestable=0 bare-duplicates=0"
+    )
+    print(f"coverage-json={output_dir / 'capability-coverage.json'}")
+    print(f"coverage-markdown={output_dir / 'capability-coverage.md'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

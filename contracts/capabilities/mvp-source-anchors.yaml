@@ -1,0 +1,2677 @@
+{
+  "$schema": "./mvp-source-anchors.schema.json",
+  "anchor_algorithm": "jumpship-capability-anchors-v1",
+  "anchors": [
+    {
+      "anchor_id": "numbered-list:1:tiered-access-manifest-every-grant-jumpship-requests-is",
+      "content_sha256": "2adb41c7eb64697956597085010b3b8e8da80667ff1fcc9c14d13ca9684b45a5",
+      "display": "1",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 18,
+      "title": "Tiered access manifest — every grant Jumpship requests is classified (required / strongly recommended / optional), mapped to the exact pipeline stage that uses it, and annotated with what degrades without it; nothing is requested that isn't traceable to a stage. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:1a:sign-in-with-github-sign-in-with-google",
+      "content_sha256": "5ce11bcbae244aaf3a4c53c524fb745ba219ce315025eed7ccb8002c5b1269eb",
+      "display": "1a",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 19,
+      "title": "Sign-in with GitHub / sign-in with Google (OIDC), requesting identity-only scopes (name, verified email, avatar) — never repo or mailbox scopes at login; identity and integration grants are deliberately separate OAuth moments, so the first screen is never a permissions wall. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:1b:login-identity-pre-seeds-the-connect-flow-google",
+      "content_sha256": "f422ed68b5368cc0bf11999f0921d1b9daecd78516756215c5091743e6a47766",
+      "display": "1b",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 20,
+      "title": "Login identity pre-seeds the connect flow: Google sign-in yields the verified email address that becomes the default digest/approval-summons destination (no Gmail access needed or wanted — #10 stays outbound-only); GitHub sign-in pins the user identity so the later GitHub App install is a one-click continuation instead of a second login. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:1c:workspace-team-model-a-migration-belongs-to-a",
+      "content_sha256": "49ac2452920128ced628fb40a5a41e356ab69701fa7df8d71444f332df9e9155",
+      "display": "1c",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 21,
+      "title": "Workspace/team model: a migration belongs to a workspace, not a person — teammate invites, roles aligned to card routing (engineer for data semantics, revenue owner for business rulings), delegation of interrogation cards, and named-approver designation all hang off workspace membership. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:1d:step-up-re-authentication-at-the-two-consent",
+      "content_sha256": "8532f8cb95c72116398bbb95cfde24ae87a90b77341aa7bb9e302137ac7355e0",
+      "display": "1d",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 22,
+      "title": "Step-up re-authentication at the two consent gates (cutover flip, decommission): fresh credential + MFA challenge inside the authenticated console session, bound to the ledgered named approver — session cookies alone can never flip a database. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:2:connect-screen-as-a-staged-flow-not-an",
+      "content_sha256": "c2003d93cff92bf2effdbe80bb8d6dbc99f23d26d805baac207403d5fa392944",
+      "display": "2",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 23,
+      "title": "Connect screen as a staged flow, not an exhaustive grant wall: step 1 shows exactly three mandatory connections (source MongoDB, target Supabase, GitHub) and nothing else; every further connector is deferred until Jumpship has scanned the repo and can ask for it by name, with evidence. Per-grant one-line \"used for\", live status (connected / degraded / missing), and a single screenshot-able security statement for the CTO's diligence. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:3:mongodb-connection-string-intake-with-helper-guidance-for",
+      "content_sha256": "a64a2b161da54834f59d1153f866fa7c50d3c8a24990b6605f705dfbfd8e5960",
+      "display": "3",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 24,
+      "title": "MongoDB connection-string intake with helper guidance for users who don't know where to find their URI (links, walkthrough); optional Atlas service-account grant (OAuth2 client-credentials against the Atlas Admin API) that unlocks provider backup/snapshot access for the snapshot capability ladder — offered inline, skippable, with the degradation stated. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:4:supabase-connect-via-a-published-supabase-oauth-integration",
+      "content_sha256": "dfc8d0f371523dbd28cee03a3f7ec38097344e63b43566a52f50c77e93145b9e",
+      "display": "4",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 25,
+      "title": "Supabase connect via a published Supabase OAuth integration: one \"Connect Supabase\" click → org/project consent screen → Jumpship receives scoped, refreshable Management API tokens and programmatically retrieves the project's API keys and database connection info (and rotates/relinquishes them at offboarding) — admin-level handoff with zero manual key copy-paste. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:4a:post-connect-target-verification-immediately-after-the-supabase",
+      "content_sha256": "347d413a4134683f5827301a4895fe759f857e410c1385c7f5788b168b1197ed",
+      "display": "4a",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 26,
+      "title": "Post-connect target verification: immediately after the Supabase grant, Jumpship confirms what it actually got (project ref, plan, region, privilege ceiling) and renders it back — the grant is proven, not assumed. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:5:source-credentials-are-read-only-by-construction-jumpship",
+      "content_sha256": "b9dca1315559e95a6bce9e917160fe2a141016c6e37bda55e3ec123823773db4",
+      "display": "5",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 27,
+      "title": "Source credentials are read-only by construction — Jumpship structurally cannot write to the source database. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:6:credential-custody-encrypted-at-rest-held-only-for",
+      "content_sha256": "9d07d95650457ef1dc584054afddd5a3c63e612f45fcbdddeeccfa0c944da45e",
+      "display": "6",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 28,
+      "title": "Credential custody: encrypted at rest, held only for the engagement, deleted at the end with a deletion attestation included in the final report. (AWS Secrets Manager under the per-customer KMS key; the key's scheduled deletion at decommission is what makes the attestation a cryptographic fact.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:7:single-tenant-isolated-worker-per-migration-customer-data",
+      "content_sha256": "721d17b50050421b9f6d77bb60155d3624ab5a02fab123e1fcafd7467e068bd7",
+      "display": "7",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 29,
+      "title": "Single-tenant isolated worker per migration; customer data never enters the control plane — only hashes, counts, specs, and decisions cross that boundary. (One ephemeral AMI-baked EC2 worker per migration in its own VPC with egress-restricted security groups; IAM instance role scoped to this customer's S3 prefix and KMS key only — cross-tenant access structurally impossible, not policy-promised.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:8:github-connect-as-a-github-app-installation-not",
+      "content_sha256": "3f80ce9f45fbf901db543ef672baa66aa32d034db8a28d872443b996e1052a15",
+      "display": "8",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 30,
+      "title": "GitHub connect as a GitHub App installation (not raw OAuth): read-only contents + metadata permissions, GitHub's native install-time repo picker (selected repos or whole org), short-lived installation tokens — powering code archaeology and shadow-read corpus capture. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:9:chat-integration-e-g-slack-bot-that-both",
+      "content_sha256": "01410848111f0c2196325960be70736aa5d53cf11bde67f4cc5577ae050e6367",
+      "display": "9",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 31,
+      "title": "Chat integration (e.g., Slack bot) that both delivers (cards, alerts, digests, cutover choreography) and reads replies/answers in-channel; installed via Slack OAuth v2 with minimal bot scopes (post + read history only in channels it's invited to), never workspace-wide read. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:10:email-integration-for-notifications-reminders-digests-and-approval",
+      "content_sha256": "950e9fd4aaf1c9d4bccca59263cca5c36e14126814ff1a2bb26e14ee64f7c176",
+      "display": "10",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 32,
+      "title": "Email integration for notifications, reminders, digests, and approval summons — outbound only, never reading the customer's inbox. (Amazon SES.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:11:observability-integrations-datadog-honeycomb-sentry-class-for-writer",
+      "content_sha256": "193fccc2501cb539fa2521c6e0edee7bf1aabf7021fe27b1a951a7be3e20638e",
+      "display": "11",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 33,
+      "title": "Observability integrations (Datadog, Honeycomb, Sentry class) for writer cross-checks, log-pattern watch, and incident correlation. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:12:on-call-uptime-integrations-pagerduty-opsgenie-class-so",
+      "content_sha256": "81bd7d204440708852cd6040e10c3b172b5e7e5780ea7e674e34079f5c381569",
+      "display": "12",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 34,
+      "title": "On-call/uptime integrations (PagerDuty, Opsgenie class) so cutover-night status and incident briefs land where humans already are. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:13:connector-need-detection-once-the-mandatory-three-are",
+      "content_sha256": "49cae41999a6e32e63dbdd9c003d1d3fd0abf806e1510caca5930a74feba5b5e",
+      "display": "13",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 35,
+      "title": "Connector-need detection: once the mandatory three are live, scan the selected repo(s) and observed DB traffic for integration fingerprints (observability SDKs/agents, on-call config, CI, queue clients) to determine which additional connectors *this* customer's migration will actually use — recommendations are evidence-derived, never a generic catalog. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:13a:connector-recommendation-cards-each-detected-integration-becomes-a",
+      "content_sha256": "dfb89751d326230c1a47fdf23c18a02def6920dd931236d466e523ad4feaa081",
+      "display": "13a",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 36,
+      "title": "Connector recommendation cards: each detected integration becomes a card citing its evidence (\"Sentry SDK in package.json\", \"Datadog agent in docker-compose\"), the pipeline stage it powers, what degrades without it, and a one-click connect using that service's native grant flow (Datadog OAuth2 integration, Sentry OAuth/integration token, PagerDuty OAuth app). [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:13b:guarantee-coverage-meter-a-single-meter-on-the",
+      "content_sha256": "1dfd7cc760d074f06df35018ce78e822c04fdcf31254e1df23a94691884ae867",
+      "display": "13b",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 37,
+      "title": "Guarantee-coverage meter: a single meter on the connect screen that fills as connectors are granted — each grant shows its increment and the named guarantee surface it strengthens (writer-census confidence, incident triage speed, deploy-config audit reach); honest by construction: the meter maps to real degradations from the access manifest, never a vanity score, and the mandatory three alone still yield a complete migration. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:13c:optional-but-recommended-channels-slack-email-presented-as",
+      "content_sha256": "f87eb1c01aa46a7675c4bc5086430cb9857e668c91da344a8746103bfa13d5cb",
+      "display": "13c",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 38,
+      "title": "Optional-but-recommended channels (Slack, email) presented as a collapsed secondary list/dropdown below the recommendations, each with a one-line \"what you'll miss\" (approvals land in-console only, no digests) — connectable at any later point, not just onboarding. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:14:skills-cli-surface-so-coding-agents-claude-code",
+      "content_sha256": "d2834b84f4d3c183c37de5299ebdf6f4909d0fb525b630dcc328949bc3a3ea3e",
+      "display": "14",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 39,
+      "title": "Skills/CLI surface so coding agents (Claude Code, Codex class) can invoke Jumpship capabilities programmatically. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:15:snapshot-capability-ladder-use-provider-point-in-time",
+      "content_sha256": "484e7ae87a259441f006d568c3fcbedbe8fdbfec6c95426b0fd94c345dce1e16",
+      "display": "15",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 40,
+      "title": "Snapshot capability ladder: use provider point-in-time backup/export when available; else dump from a secondary with the oplog window captured and replay to a chosen timestamp; else (standalone source, no consistent-online-snapshot possible) decline and switch to a freeze-window strategy rather than pretend. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:16:self-service-snapshot-feature-for-customers-without-provider",
+      "content_sha256": "03b92e6c76eda89145c0799dac7f8fa140ff2cbc16343b125b800d37eada3609",
+      "display": "16",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 41,
+      "title": "Self-service snapshot feature for customers without provider backup access — Jumpship takes the oplog-anchored snapshot itself. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:17:golden-snapshot-immutable-checksummed-point-in-time-consistent",
+      "content_sha256": "bced59759a3e8de5eddce861147e723876068bae6d0962c1c7fa57e140309aeb",
+      "display": "17",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 42,
+      "title": "Golden snapshot: immutable, checksummed, point-in-time-consistent copy with a recorded consistency token T₀; everything downstream is defined relative to T₀; overlap-never-gap invariant with the CDC tail. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:18:snapshot-self-proof-restore-to-worker-counts-and",
+      "content_sha256": "275eaf08798a77e5cf23c32d97aedb15d70e1262a8cfd257734a5b5a9bbb5df4",
+      "display": "18",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 43,
+      "title": "Snapshot self-proof: restore to worker → counts and per-collection checksums verified against the source's own manifest before anything reads it. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:19:golden-copy-stored-in-immutable-write-locked-per",
+      "content_sha256": "6086a07fd09ecca90c3bcab4a1ab63a452a0ef0132ede568301c46b751abf93b",
+      "display": "19",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 44,
+      "title": "Golden copy stored in immutable, write-locked, per-customer-encrypted object storage, retained until decommission consent — the \"nothing can ever be lost\" floor and final rollback backstop. (S3 with Object Lock in compliance mode — no one, including Jumpship, can delete before the retention gate — encrypted under the per-customer KMS key; stored as an inert mongodump archive, not a live system.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:20:full-schema-census-on-the-worker-copy-never",
+      "content_sha256": "f65599aba8f3ee22fc5ceb53a9ac1767c33f0daaaad6ca709202a6d365f350c8",
+      "display": "20",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 45,
+      "title": "Full schema census on the worker copy (never prod): 100% type-frequency scan per field path (no sampling), age-stratified via ObjectId timestamps, dirty-data scans (null bytes, invalid UTF-8, NaN/Inf, out-of-range dates), array-cardinality histograms, cross-collection reference detection (candidate FK graph), TTL-index inventory, identifier-collision precheck. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:21:fan-out-projection-compute-documentrow-multiplication-and-target",
+      "content_sha256": "54148758ac824aaf93bce778f3f8d739d42fcf11645ff460138fd1396f9c3902",
+      "display": "21",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 46,
+      "title": "Fan-out projection: compute document→row multiplication and target-size estimates before anyone plans anything. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:22:census-re-runnable-on-a-schedule-the-same",
+      "content_sha256": "f146347788c56ea60556ef3065589c5e6b950fb5d98c816a61b4652bde0d8f82",
+      "display": "22",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 47,
+      "title": "Census re-runnable on a schedule — the same machinery later serves as the drift sentinel. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:23:code-archaeology-scan-app-repo-s-for-orm",
+      "content_sha256": "9a29499545d4a062675effae5cc638dcd495f22c07d3dbff889641d5d6e12ea6",
+      "display": "23",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 48,
+      "title": "Code archaeology: scan app repo(s) for ORM schema defaults diffed against actual data histograms (read-time fictions), lifecycle hooks, `_id`-ordering and pagination dependence, direct-DB access patterns, and capture the production query-shape corpus. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:24:connection-census-writer-inventory-continuous-monitoring-of-client",
+      "content_sha256": "b612f1d69a39679a7fcf437555ee3e44d8efe6105177e9e09d4a4230309fdffc",
+      "display": "24",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 49,
+      "title": "Connection census / writer inventory: continuous monitoring of client connections and write sources from day 1; discovered writers get human labels and live on a tracked list that must be empty or accounted-for before cutover. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:25:migration-readiness-report-the-first-artifact-scale-reality",
+      "content_sha256": "521a9912c623bbed84b92f705aeca6646b4c646e8b753b13120cb2abe1acd4dd",
+      "display": "25",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 50,
+      "title": "Migration Readiness Report — the first artifact: scale reality, schema health, hard blockers, graph reality, writers found, reference-class timeline comparison, and the count of questions only the customer can answer. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:26:readiness-report-rendering-every-number-clickable-drilling-into",
+      "content_sha256": "21622d6768b75fa90cc01e04b9944018e0c63f3385871602a5b7f9791139701c",
+      "display": "26",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 51,
+      "title": "Readiness report rendering: every number clickable, drilling into evidence (sample documents, histograms); deliberately shaped to be forwardable to a CEO. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:27:evidence-anchored-interrogation-every-question-generated-from-a",
+      "content_sha256": "13d85ab156a8217cd2312985ab807a3a63f82f93a55d9b6c338192bf65dbbea7",
+      "display": "27",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 52,
+      "title": "Evidence-anchored interrogation: every question generated from a specific artifact of the customer's own data, with the artifact attached — never abstract policy questions. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:28:mom-test-question-discipline-concrete-past-facts-never",
+      "content_sha256": "cf626f48fc9cde5ea4fa675ae5dd9a59bb073ea9f7e1a4937e89ed784ea5dc03",
+      "display": "28",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 53,
+      "title": "Mom-Test question discipline: concrete past facts, never hypotheticals, never approval-seeking. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:29:every-interrogation-card-carries-options-with-computed-consequences",
+      "content_sha256": "75d2dd1ce9295a52776f4f1ccee77260f4dedd5593b345d27f1dc7af5cbf772f",
+      "display": "29",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 54,
+      "title": "Every interrogation card carries options with computed consequences (counts, affected features, blast radius), Jumpship's recommended ruling, and the undo path. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:30:i-don-t-know-as-a-first-class",
+      "content_sha256": "ff9e8560378ed35494483c2bba6116189cf5249932a7b66640af0b9a891a67e7",
+      "display": "30",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 55,
+      "title": "\"I don't know\" as a first-class answer: converts the question into a ledgered, reversible assumption (the recommendation, marked as assumption), with hints about who might know. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:31:question-batching-into-same-day-answerable-packets-one",
+      "content_sha256": "12366ee02311f6344c1f3f936d6cc4a23269973fec6e1c7f9a51960fa5ee6980",
+      "display": "31",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 56,
+      "title": "Question batching into same-day-answerable packets, one per round — human answer latency is treated as the critical path. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:32:card-routing-to-the-right-human-data-semantics",
+      "content_sha256": "94f836d82d3598d13c97ca553d60e50ed2302336b460aa9604ac6483f17ef7ca",
+      "display": "32",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 57,
+      "title": "Card routing to the right human: data semantics to engineers, business rulings to whoever owns revenue. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:33:interrogation-card-ui-each-card-is-a-self",
+      "content_sha256": "f879f9f5572c74378b1ee96dc6bd879b5112f5c71cd76acb5f59eae8e05c943b",
+      "display": "33",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 58,
+      "title": "Interrogation card UI: each card is a self-contained decision workspace (popup in the console, mirrored into chat/email with deep links) — evidence, options, recommendation, reversibility line, plus a free-text input where the user can ask anything, add context, override, or counter-propose; the agent works visibly inside the card (recomputing consequences, re-rendering doc→row examples, revising its recommendation) in response, so the popup is the entire conversation for that decision; delegate-to-teammate supported. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:34:answers-compile-directly-into-the-mapping-spec-with",
+      "content_sha256": "fa2c8242cbbfad7213b105d2cf38c1be446bf2e9ae65dbb0382387a18ece3b75",
+      "display": "34",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 59,
+      "title": "Answers compile directly into the mapping spec with provenance (`decided_by: qN`); the Q&A transcript is retained as operational memory and audit trail. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:35:high-stakes-decision-pattern-the-agent-performs-the",
+      "content_sha256": "d2cbcc074bc96434c65039495b1b85acb9686c095673db8944faf0d1c6f318a0",
+      "display": "35",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 60,
+      "title": "High-stakes decision pattern: the agent performs the full analysis (index-size projections at actual scale, repo dependence scans, external-reference leak scan, pagination scan) and the human confirms a recommendation — the human is never asked to perform the analysis. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:36:mandatory-mongo-id-source-identity-column-on-every",
+      "content_sha256": "4c1f6a33de5c48dd710b3325792e2541f9add5a77febab664be29a5f8cfa5e91",
+      "display": "36",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 61,
+      "title": "Mandatory `mongo_id` source-identity column on every table — non-negotiable structural spine for verification, orphan repair, and rollback; the product says so explicitly. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:37:reversibility-line-on-every-decision-card-what-s",
+      "content_sha256": "f23cfe790987f7524d4744b6f76d531f5bb15a67a59f83cbb5e016462d5b4c87",
+      "display": "37",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 62,
+      "title": "Reversibility line on every decision card — what's undoable, until when, and at what cost — so the user learns that yes is safe until the one clearly marked moment it isn't. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:38:mapping-spec-every-field-s-type-coercion-default",
+      "content_sha256": "f0d85c9230b478efb9f24286a297f77eb90e10e8b8faadd6ea7a0b61d4c3bee5",
+      "display": "38",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 63,
+      "title": "Mapping spec: every field's type, coercion, default, null policy, dedup rule, adjudication as one total, versioned, machine-readable artifact. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:39:spec-totality-enforcement-the-compiler-rejects-any-spec",
+      "content_sha256": "8c7c623a7f63278396273ad6180c30c8d1cc19b60398e7b968d8dc26cb3e778f",
+      "display": "39",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 64,
+      "title": "Spec totality enforcement: the compiler rejects any spec that omits a field path the census saw — even `drop` and `passthrough` must be explicit. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:40:agent-synthesis-of-target-ddl-mapping-spec-from",
+      "content_sha256": "cd9c792a1d717c242f9e89958f4605dfbdbd9fc86f9940538b2d87b02c6a1bb2",
+      "display": "40",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 65,
+      "title": "Agent synthesis of target DDL + mapping spec from profile, answers, and code archaeology. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:41:decision-triage-into-three-buckets-auto-decided-and",
+      "content_sha256": "d9cb937d75c2fecb0fe15e1fbc6661aec8f7d65641e76028541145caf26a9b7c",
+      "display": "41",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 66,
+      "title": "Decision triage into three buckets: auto-decided-and-ledgered (~85/120), recommended-one-click-confirm (~25), undecidable→interrogation (~10). [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:42:bucket-boundaries-tuned-by-cross-migration-operational-memory",
+      "content_sha256": "4f3ddaa8d05b68ba985086f8cf6741392a87c78ff138e8c1f43b25a5d7201e4c",
+      "display": "42",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 67,
+      "title": "Bucket boundaries tuned by cross-migration operational memory: rulings customers always confirm migrate toward auto; rulings ever overridden migrate toward confirm. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:43:decision-ledger-every-decision-recorded-with-its-basis",
+      "content_sha256": "1ee896c8300a77ddd20e8590189ebd2e47b6c59e0d27a301a207df276902a975",
+      "display": "43",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 68,
+      "title": "Decision ledger: every decision recorded with its basis and its undo path, including all auto-decisions. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:44:spec-viewer-two-pane-surface-plain-language-rendering",
+      "content_sha256": "f59eae9f2b802ea9a02d29c41048e8bc7a17c3f5ac111c0704734d0dd965ce02",
+      "display": "44",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 69,
+      "title": "Spec viewer: two-pane surface (plain-language rendering with affected-row counts | raw versioned spec), queue chip (`auto ✓ / to confirm / awaiting`), batched confirmation sessions instead of modals, every line linked to evidence and ledger. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:45:spec-versioning-with-human-readable-diffs-e-g",
+      "content_sha256": "05d12b5cbbfaf92ce5efc505503e7e04d371a2286d33ce2e0084d845c141b4a7",
+      "display": "45",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 70,
+      "title": "Spec versioning with human-readable diffs (e.g., \"v3 → v4: + orders.gift_note TEXT\"). [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:46:normalization-dial-discrete-stops-from-full-3nf-to",
+      "content_sha256": "3212eddc8a5d5ca7d3a0cabc2ad363112a4c0384ee137e62c13608fab18d1e71",
+      "display": "46",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 71,
+      "title": "Normalization dial: discrete stops from full 3NF to single JSONB blob per collection/embedded subtree; the agent picks and ledgers the stop for standard shapes, one-click-confirms notable ones, and only surfaces an adjustable dial — as the body of an interrogation card — for the few collections where its confidence is genuinely low; every collection's stop remains inspectable read-only in the spec viewer. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:47:judgment-effort-gradient-behind-the-dial-standardized-shapes",
+      "content_sha256": "6df14b4ef90b4d3df1e9cd596a63e6f52db75b5456fa53b8e86223e04f9d51cf",
+      "display": "47",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 72,
+      "title": "Judgment-effort gradient behind the dial: standardized shapes (users/auth) get standard designs; company-unique data gets more creativity and judgment; low-confidence rulings escalate to human-in-the-loop. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:48:per-stop-consequence-computation-from-the-customer-s",
+      "content_sha256": "fa7369554a7cd4117c79f26ca0f1bb7978f969d01142dd8ef2f56d3f2d24110f",
+      "display": "48",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 73,
+      "title": "Per-stop consequence computation from the customer's actual data: row fan-out and disk estimates from cardinality histograms. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:49:per-stop-query-pattern-fit-every-captured-query",
+      "content_sha256": "4bf858602b1747f0f574f8151bea5e1949506c9d22106049bcc6696bf048c1c2",
+      "display": "49",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 74,
+      "title": "Per-stop query-pattern fit: every captured query shape classified as native / needs-JOIN / needs-JSONB-op / impossible — including the migration's trigger query (e.g., the CEO's analytics), rendered at each stop. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:50:per-stop-write-physics-update-frequency-per-subtree",
+      "content_sha256": "719d78fab3345ba30a277f4e1cdc29b4c8ddffff2257b473044ce558c90860fa",
+      "display": "50",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 75,
+      "title": "Per-stop write physics: update frequency per subtree × JSONB full-row-rewrite tax = projected write amplification. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:51:bridge-accounting-any-jsonb-stop-on-structured-data",
+      "content_sha256": "16b48c132582ed7f5ad9dbeeedb0ed8637f23b72bfe545e40b288081023b5d78",
+      "display": "51",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 76,
+      "title": "Bridge accounting: any JSONB stop on structured data is labeled a loan, not a gift, with an estimated pay-down cost — a conscious strategy, never a default. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:52:dial-ui-inside-the-interrogation-card-consequence-panels",
+      "content_sha256": "aaa8a8c9a6da3a41aa4253610f6d4b62fdbd9a15909a663b3d355f2a40592d50",
+      "display": "52",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 77,
+      "title": "Dial UI (inside the interrogation card): consequence panels that live-update as the dial moves, DDL diff re-render, example document shown as its resulting row(s) — the user watches their own workload react to a design choice without leaving the popup. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:53:rehearsal-branches-disposable-copy-on-write-instances-of",
+      "content_sha256": "f97b105412612f3394cb3f0f8a1fb6c167c21ac0ff14772f696736799a003b06",
+      "display": "53",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 78,
+      "title": "Rehearsal branches: disposable copy-on-write instances of the target so design changes and re-loads are experiments measured in minutes-to-hours, not re-migrations. (Neon or Supabase branches, per-migration project — the target platform's own branching, not Jumpship-hosted infrastructure.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:54:staged-constraint-load-protocol-load-bare-constraints-not",
+      "content_sha256": "8b30ce43b168f5f3fb3f79079ab05d1f7407fc2b1d778caac7587d56e8a18725",
+      "display": "54",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 79,
+      "title": "Staged-constraint load protocol: load bare → constraints `NOT VALID` → triage → `VALIDATE` only after rulings. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:55:quarantine-instead-of-abort-every-would-be-fatal",
+      "content_sha256": "88c062e5f6b2b3a0843046f7c167dce51d502224cde34611b7febaa6a49c5bce",
+      "display": "55",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 80,
+      "title": "Quarantine-instead-of-abort: every would-be-fatal row diverted to a per-collection quarantine table with a machine-readable reason; never batch-abort, never silent drop. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:56:topological-load-ordering-derived-from-the-fk-graph",
+      "content_sha256": "81f652381c660dd5cbe3b5594e0519d3789a42cb74b67189c20bc4a4e90675c6",
+      "display": "56",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 81,
+      "title": "Topological load ordering derived from the FK graph, with deferred constraints for self-referencing FKs so hierarchies load in one pass. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:57:deterministic-child-identity-parent-mongo-id-array-index",
+      "content_sha256": "3b35676dd4577d5e7c4bbb29eb4507b2447d93189cd79573d860cee416e9509d",
+      "display": "57",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 82,
+      "title": "Deterministic child identity (`parent_mongo_id, array_index`) + idempotent upserts + checkpoint-after-durable-write, so any interruption resumes cleanly. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:58:in-load-sanitization-as-spec-rules-null-byte",
+      "content_sha256": "7504b31cf2d75483edca3c0a29551545d3a18653a275332bb985c4f28675184a",
+      "display": "58",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 83,
+      "title": "In-load sanitization as spec rules (null-byte stripping, date coercion thresholds, NaN→quarantine), each application ledgered. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:59:triage-board-quarantine-rendered-as-enumerated-decisions-with",
+      "content_sha256": "2b1f89cde90ee4af24bef4afcdda31f1de9f288d4d60c9947cbf1b66291a70b9",
+      "display": "59",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 84,
+      "title": "Triage board: quarantine rendered as enumerated decisions with categories, counts, and owners; visible burn-down to \"accounted for\". [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:60:quarantine-clustering-by-shared-signature-collapsing-row-counts",
+      "content_sha256": "ffb8e59abdf90c19138703041c3873977e3fa2e5cf1d77bcdd275428ef6dd9e7",
+      "display": "60",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 85,
+      "title": "Quarantine clustering by shared signature, collapsing row counts into the smallest honest number of human decisions (41K orphans → 3 cards). [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:61:cluster-rulings-with-recommendations-attached-ddl-options-and",
+      "content_sha256": "cc96aeb45ff2574ce43f8a7c250e8c575a6f9d7f60848d9c3b98f1ab8559f557",
+      "display": "61",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 86,
+      "title": "Cluster rulings with recommendations, attached DDL/options, and narrated blast radius (keep-with-stub-parents / drop-documented-reversible / quarantine-and-sample). [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:62:merge-policy-asked-once-per-field-semantics-not",
+      "content_sha256": "49d416fce7ca4f5758e06f2625b9f853e34f409dab24c5f028ccaa7c267c5a71",
+      "display": "62",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 87,
+      "title": "Merge policy asked once per field-semantics, not once per cluster, with the largest divergences shown; genuinely different blast radii split into their own cards. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:63:sampling-ui-for-no-pattern-clusters-view-n",
+      "content_sha256": "dae098cbd784cfeb4a708e121fa956a4c91a051030fd5352aae3525fbf549730",
+      "display": "63",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 88,
+      "title": "Sampling UI for no-pattern clusters: view N random records with full document context; rule on the cluster or split it. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:64:ruling-spec-recompile-incremental-re-rehearsal-loop-iteration",
+      "content_sha256": "e417fdfeb39870a2e822800b0e30a6b682e15b95bf254e01ede14926ad292199",
+      "display": "64",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 89,
+      "title": "Ruling → spec recompile → incremental re-rehearsal loop; iteration cost is the product. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:65:phase-gating-that-fails-closed-unruled-unexplained-quarantine",
+      "content_sha256": "642b3d1c80be16377a7c04530713df72a89c99f1c4fae454b86882a245c448c9",
+      "display": "65",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 90,
+      "title": "Phase gating that fails closed: unruled/unexplained quarantine blocks progression to bulk load. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:66:disk-backed-source-idtarget-id-map-crash-safe",
+      "content_sha256": "2436b30bbf25d2c094713d415d3f9b9ec0b4a17eb63f0eb269d74e5ab3166cb5",
+      "display": "66",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 91,
+      "title": "Disk-backed source-ID→target-ID map, crash-safe by design (no in-RAM map that can OOM at scale). (Lives on the worker's gp3 EBS volume — sized from the census fan-out projection, covers up to 16 TB, the whole ICP range; EBS snapshots give worker-side point-in-time recovery mid-engagement.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:67:kill-testing-as-an-acceptance-criterion-the-engine",
+      "content_sha256": "b133247a9145d45339e8dedff4bf3c99c53956e25f41efb1cabe782f283bcd32",
+      "display": "67",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 92,
+      "title": "Kill-testing as an acceptance criterion: the engine murdered at random points mid-load must resume to a hash-identical result. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:68:platform-probe-read-only-interrogation-of-the-target",
+      "content_sha256": "59b37d8295d5bcf7718f4806d82b915222d390102f21ed96c3b82d9eb0f05f97",
+      "display": "68",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 93,
+      "title": "Platform probe: read-only interrogation of the target's physics on connect — privilege ceiling, session-overridable vs locked settings, endpoint modes (direct vs pooled and their semantics), network path, disk provisioning behavior, compute/burst, extension allowlist, timeout defaults. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:69:platform-capability-profiles-as-data-operational-scar-tissue",
+      "content_sha256": "90e3734cbaf1ab46477053c9c95f8a7d15a2121de0d49961d5443a96b8e4778b",
+      "display": "69",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 94,
+      "title": "Platform capability profiles as data: operational scar tissue (pooler prepared-statement hazards, v6-only paths, ratcheting autoscale) encoded per platform, accreting with every migration so platform surprises are never re-learned — operational memory as architecture. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:70:load-planner-that-consumes-probe-profile-fan-out",
+      "content_sha256": "5ef1482124606da869f6618804ce86595cabdf9a6aad1c90b3494cc5f0f7816f",
+      "display": "70",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 95,
+      "title": "Load planner that consumes probe + profile + fan-out projection and emits a plan that fits the envelope (pre-sized disk with cost note, compute resize scheduled, COPY bare → indexes after → ANALYZE, session timeout overrides, direct-endpoint routing) — and refuses plans that don't fit. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:71:target-preflight-checklist-every-probed-fact-and-planned",
+      "content_sha256": "084ced2a1eaf4e7906165bdfcf1a4e71113160cf26409f9b8f1e7209ed2af660",
+      "display": "71",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 96,
+      "title": "Target preflight checklist: every probed fact and planned mitigation green-checked before a byte moves, with plan and time estimate. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:72:snapshot-provenance-line-permanently-visible-in-the-ui",
+      "content_sha256": "78862bad82e7e1245da47cb4b969ee8d71ac67bf749e6499252462dbddb31a98",
+      "display": "72",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 97,
+      "title": "Snapshot provenance line permanently visible in the UI (T₀, verification status, custody chain) — the epistemic root every later claim cites. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:73:one-transform-library-two-thin-drivers-batch-cursor",
+      "content_sha256": "f5a19e012771c55c370a117a21960451322c54db1fcb78bbcd46927c054a99f6",
+      "display": "73",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 98,
+      "title": "One transform library, two thin drivers (batch cursor / change event), both compiled from the mapping spec — transform drift between bulk and CDC paths is structurally impossible. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:74:golden-corpus-ci-gate-a-corpus-of-nasty",
+      "content_sha256": "d066aef248734b43ef28e6e62046bb2c4ce0322d503980b528751380bb16000c",
+      "display": "74",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 99,
+      "title": "Golden-corpus CI gate: a corpus of nasty documents (corruption-injector seeded + every quarantine class ever seen) runs through both drivers on every change; byte-identical output is a merge gate; spec bumps rebuild both drivers atomically. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:75:cdc-tailer-with-full-document-state-capture-pre",
+      "content_sha256": "da97caf54d8dd497c674660f72676690213d67635050e556bbb116fd6549c38a",
+      "display": "75",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 100,
+      "title": "CDC tailer with full-document state capture (pre/post-images where supported); apply is state-based, never operation-replay, so redelivery can't double-count. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:76:idempotent-versioned-apply-upserts-keyed-on-mongo-id",
+      "content_sha256": "f481607da4efc93e909b637f57c0c27e13cbf97f62eaa94c154a83b7d8969e22",
+      "display": "76",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 101,
+      "title": "Idempotent versioned apply: upserts keyed on `mongo_id`, guarded by source version, so stale/redelivered events no-op — the same property that makes snapshot overlap safe. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:77:deletes-as-first-class-tombstones-apply-as-deletes",
+      "content_sha256": "9f26962620d2965941cca65eaec505a496d83df193813359449bc6c6bc74b603",
+      "display": "77",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 102,
+      "title": "Deletes as first-class: tombstones apply as deletes; TTL collections get windowed verification or ledgered exclusion so expected drift never fires false alarms. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:78:cross-collection-ordering-via-transactional-micro-batches-with",
+      "content_sha256": "6cd84f26f9b983a727e4151ade4d3dd78f4fd1fe6b39e91b8879d6a5c1d9d35d",
+      "display": "78",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 103,
+      "title": "Cross-collection ordering via transactional micro-batches with deferred constraints; violations go to a bounded-retry dead-letter lane with alerting on exhaustion. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:79:resume-token-durable-checkpointing-continuous-oplog-headroom-monitor",
+      "content_sha256": "9ea7bdfec3e84cc81d9e4c9ab9259e482bd904a0ef92c5acad6024a321f6f6b5",
+      "display": "79",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 104,
+      "title": "Resume-token durable checkpointing + continuous oplog-headroom monitor that pages when consumer lag vs retention window degrades. (CloudWatch alarms on the worker's lag/headroom metrics, fanned out via SNS to the customer's PagerDuty/Opsgenie.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:80:honest-token-loss-recovery-automatic-re-baseline-from",
+      "content_sha256": "09ff0c2865f59972cb841aa7819e33e88d7ba65d41524b7b6312d11b5979bb14",
+      "display": "80",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 105,
+      "title": "Honest token-loss recovery: automatic re-baseline from a fresh resumable snapshot + full re-verify — never resume-and-hope. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:81:drift-sentinel-scheduled-census-re-runs-against-the",
+      "content_sha256": "f3dda2c03985e8c33b5ab7a201ae40bcc71622db209a5cf0c50d443c2a7af25e",
+      "display": "81",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 106,
+      "title": "Drift sentinel: scheduled census re-runs against the live source; a new field triggers census diff → spec version proposal → interrogation card if ambiguous → atomic driver rebuild → backfill of pre-bump rows; the user experiences a schema change mid-migration as a \"handled\" notification. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:82:continuous-windowed-reconciliation-throughout-the-sync-window-canonical",
+      "content_sha256": "d9901a52472542d1b6c37ee0b67ea908d019a16b083ecd26ebd841e308579672",
+      "display": "82",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 107,
+      "title": "Continuous windowed reconciliation throughout the sync window: canonical-form hashes compared source↔target in rolling blocks, both directions, watermarked to quiescent keys; mismatches auto-repair from source and land in the ledger; repeat offenders escalate. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:83:sync-health-dashboard-the-one-screen-that-stays",
+      "content_sha256": "07767dfc61d06854c9820e7c85353560fcc6ad122e95e3acb35edbd3ead0a128",
+      "display": "83",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 108,
+      "title": "Sync health dashboard — the one screen that stays open: lag, oplog headroom, rolling parity %, auto-repair ledger, dead-letter status, drift-sentinel absorptions, live freeze-drain estimate, and enumerated cutover-readiness blockers. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:84:freeze-drain-estimate-as-the-honest-form-of",
+      "content_sha256": "f3a69cc61487a435411a4267f7c2a9085fd887ebfee46b1cff2bc9aefff08226",
+      "display": "84",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 109,
+      "title": "Freeze-drain estimate as the honest form of \"zero downtime\": continuously re-estimated from rehearsals, displayed, never promised. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:85:dual-write-tier-for-truly-no-window-customers",
+      "content_sha256": "c6f1ca0f7277ce2923237c85fa26f3ca84c3fa2bdb7782e00d0231b574459d04",
+      "display": "85",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 110,
+      "title": "Dual-write tier for truly no-window customers (100% write comparison, freeze estimate ≈ 0) — same guarantee surface, priced separately. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:86:verification-rubric-generation-a-declarative-artifact-sibling-to",
+      "content_sha256": "e1fc870659518fc2b68b0a482514e767b1de875fac68c056fac9087e89e23ab7",
+      "display": "86",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 111,
+      "title": "Verification rubric generation: a declarative artifact, sibling to the spec, stating in advance every check, its expected result, and why that result is correct for this migration — pre-registered expectations, not post-hoc explanations. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:87:business-invariants-proposed-by-the-agent-from-the",
+      "content_sha256": "e2e626a2394f29fc5aeff748b413212b2678d04faff1ac3b065431899e0a0140",
+      "display": "87",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 112,
+      "title": "Business invariants proposed by the agent from the profile (e.g., Σ revenue per merchant-month to the cent) and explicitly confirmed by the human before the rubric becomes binding. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:88:rubric-versioning-and-ledgering-once-confirmed-the-integrity",
+      "content_sha256": "10fd15aef11027a31c0cb1ff04a54d66a62058f22f6c536b164ed495354c7ba6",
+      "display": "88",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 113,
+      "title": "Rubric versioning and ledgering; once confirmed, the integrity report is the rubric executed, with receipts. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:89:verification-layer-1-counts-against-rubric-expected-values",
+      "content_sha256": "5949a1bb50aa79d624847653f17c2747cfacd0e6a5c1f656b02cb854cf341220",
+      "display": "89",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 114,
+      "title": "Verification layer 1 — counts against rubric-expected values (including derived child-table counts); fast alarm, never the proof. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:90:verification-layer-2-aggregate-business-invariants-the-class",
+      "content_sha256": "1d2a0da14b4cc4a550c60738b0a9cff55b824000d5eace292ea26edbe83c1656",
+      "display": "90",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 115,
+      "title": "Verification layer 2 — aggregate/business invariants (the class that catches money-precision bugs in week-2 rehearsal instead of production). [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:91:verification-layer-3-canonical-form-block-hashing-of",
+      "content_sha256": "64a38fd64f1f6a6098536b721c455bbdcc86db972a9805dcc6374844a956ed6d",
+      "display": "91",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 116,
+      "title": "Verification layer 3 — canonical-form block hashing of 100% of records: source rendered to canonical form, target reverse-transformed through the spec into the same space, hashed, compared as sorted manifests with block bisection to localize mismatches to the row. (Manifests stored as sorted Parquet in S3, merge-joined; the raw material behind \"every number in the integrity report links to its manifest\".) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:92:verification-layer-4-both-direction-set-difference-reverse",
+      "content_sha256": "8a5fb4989b7c35bf0fa239db01e285044e6adb80100deffa3f0eebdd272bafd3",
+      "display": "92",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 117,
+      "title": "Verification layer 4 — both-direction set difference (reverse catches ghost rows) + full quarantine-ledger enumeration + FK-graph recheck post-VALIDATE. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:93:verification-layer-5-shadow-reads-captured-real-query",
+      "content_sha256": "47b97de2ab6a96391e83c011e13fd08e7d94f91724ab4e085a050ee25de8755f",
+      "display": "93",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 118,
+      "title": "Verification layer 5 — shadow reads: captured real query shapes replayed against both stores through the semantic translation table, results diffed, catching ordering/collation/case/pagination regressions before cutover. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:94:tail-weighted-sampling-everywhere-old-cohorts-where-drift",
+      "content_sha256": "6a377e5d1764fefa1dee0274538cc457bdefd21dd13f7ee62c8ac9956937387b",
+      "display": "94",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 119,
+      "title": "Tail-weighted sampling everywhere: old cohorts (where drift variants live) over-sampled ~10×. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:95:verifier-epistemics-trusts-nothing-but-its-own-manifests",
+      "content_sha256": "85125670655cec691737af66305fb1574dd573dbd868d45d7a926b59dcfb6a24",
+      "display": "95",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 120,
+      "title": "Verifier epistemics: trusts nothing but its own manifests, never a tool exit code; acceptance test is deliberately breaking the pipeline and requiring the verifier to catch it anyway. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:96:signed-integrity-report-one-document-two-renderings-a",
+      "content_sha256": "b1305accf9f93072c2fda72e7813674777690e257902f0da6232c3d96bd1edad",
+      "display": "96",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 121,
+      "title": "Signed integrity report: one document, two renderings — a cover a CFO/auditor reads and a machine appendix an engineer can re-derive; every number links to its manifest; signed with engine build + rubric hash + T₀ chain. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:97:semantic-translation-table-every-behavior-difference-at-the",
+      "content_sha256": "834aec8679e0fc3cf4868c85a3d0e7a8beb83bdafc97669e2443573be3974903",
+      "display": "97",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 122,
+      "title": "Semantic translation table: every behavior difference at the data-access seam (atomicity, ordering, case-sensitivity, pagination) enumerated with call sites and prescribed fixes, delivered as a checklist. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:98:generated-versioned-cutover-runbook-freeze-drain-verify-flip",
+      "content_sha256": "ff193ead481613c4efe85e9c7e95860099e4d6a3dfdb55a419fb2e210d5a7712",
+      "display": "98",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 123,
+      "title": "Generated, versioned cutover runbook — freeze → drain → verify → flip → smoke → unfreeze — rehearsed at least twice on branches with production-shaped traffic replay before the real night, including the rollback (an untested rollback is a prayer). [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:99:rehearsal-timing-profiles-feed-the-freeze-drain-estimate",
+      "content_sha256": "58dc73efe45aea817d277448deadd35e9361b4d36fe992fe4cd7f56e0cba4f1b",
+      "display": "99",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 124,
+      "title": "Rehearsal timing profiles feed the freeze-drain estimate; each rehearsal produces a baseline integrity diff, and the real night's gate is \"tonight's report == rehearsal baseline\" — approval becomes a comparison, not a judgment call. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:100:cutover-periphery-smoke-coverage-in-rehearsal-maintenance-page",
+      "content_sha256": "55cfbccfd0a5e19792809201ed78bb1b6a72ec10c936cc523e2026e21e54bc20",
+      "display": "100",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 125,
+      "title": "Cutover-periphery smoke coverage in rehearsal: maintenance page, feature flags, env config, sequence-advance as a permanent runbook line — because what breaks on cutover night is rarely the database. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:101:t-1d-writer-census-re-run-the-long",
+      "content_sha256": "297f59013848096b82abe21b77db259bef4d9936a137477f2543dd828fde6571",
+      "display": "101",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 126,
+      "title": "T-1d writer-census re-run: the long-tail writer list must be empty or explicitly accounted before the window opens. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:102:deploy-config-audit-distinct-from-the-writer-census",
+      "content_sha256": "046ee114e0fa31d987078159ed025c6a683d85f4903cbf7f0260b5f96a27a3ae",
+      "display": "102",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 127,
+      "title": "Deploy-config audit, distinct from the writer census: enumerate every running service instance and background worker and compare its effective connection config against the flip plan — catching the stale deploy still carrying the old URI before the window. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:103:app-team-pre-cutover-checklist-generated-from-the",
+      "content_sha256": "73fa37528c7e042969618021fbeee90bae84429c4ba4262a590cb537f40e4f2f",
+      "display": "103",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 128,
+      "title": "App-team pre-cutover checklist generated from the platform profile (pooled endpoint sizing, ORM prepared-statement settings, translation-table items), confirmed done before the window. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:104:named-approvers-declared-in-advance-and-ledgered-the",
+      "content_sha256": "2797be0f08ac379e4f459c3b3b638f0c26aa7da24d4211554f3036acb82af9ac",
+      "display": "104",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 129,
+      "title": "Named approvers declared in advance and ledgered; the consent gate accepts no one else. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:105:channel-choreography-t-7d-t-1d-readiness-digests",
+      "content_sha256": "ae748a6f5c723481261403cb74189f7fa1d7f091ddeef9577f2c9edcd15a4d4d",
+      "display": "105",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 130,
+      "title": "Channel choreography: T-7d/T-1d readiness digests, freeze-start notices, live status pings, and the approval summons with deep link delivered over chat/email — but notification channels summon, they cannot approve. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:106:consent-happens-only-in-the-authenticated-console-on",
+      "content_sha256": "853f4909b5d8ce07806590c67e4cb5b0389823ff3ca9c7488b86116e9e4ce0f4",
+      "display": "106",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 131,
+      "title": "Consent happens only in the authenticated console, on the full evidence screen — deliberate friction; while abort/postpone is one click from anywhere, because backing out must always be easier than going forward. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:107:consent-gate-screen-showing-exactly-four-things-integrity",
+      "content_sha256": "cd590fa02750bb443774af5c530e54c9c69129935022eee97e938641289dbfd5",
+      "display": "107",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 132,
+      "title": "Consent gate screen showing exactly four things: integrity (tonight vs rehearsal diff), readiness (lag/writers/smoke/drain timing), the door (what the flip means, reverse-sync armed, rollback's rehearsal date and duration, when it becomes irreversible), and typed-sentence consent. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:108:consent-timeout-defaults-to-no-no-response-by",
+      "content_sha256": "36c145872f0e7ce23c9b1921558a5d1f18fc13ee0aaaf9afa60dc3b391979e7d",
+      "display": "108",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 133,
+      "title": "Consent timeout defaults to no: no response by the deadline → auto-unfreeze, resync, reschedule; silence never advances the migration. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:109:reverse-sync-window-post-flip-72h-default-extendable",
+      "content_sha256": "f335dbb2be2e5e5b8ed939e2944902464a1e437b00b67304d6586e5b5e77fbd5",
+      "display": "109",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 134,
+      "title": "Reverse-sync window post-flip (72h default, extendable): every target write mirrors back to the source through the inverted-per-spec transform, keeping the old store current. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:110:one-command-rollback-armed-and-already-rehearsed-on",
+      "content_sha256": "e8230545e6e010001c87deaec6930f1348deb0d15205038a52cf0437590788d1",
+      "display": "110",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 135,
+      "title": "One-command rollback, armed and already rehearsed on a branch with its own timing and mini integrity check; the reverse tail reuses the forward tail's idempotence, versioned apply, and reconciliation, proving `source = f⁻¹(target)` for the window. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:111:incident-decision-brief-the-3-40am-screen-on",
+      "content_sha256": "99641e8028b65d252d31074b2afd284e2dba43911e55205ca507511909f6d346",
+      "display": "111",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 136,
+      "title": "Incident decision brief (the 3:40am screen): on an incident page, correlate evidence, use live parity status to pre-sort data-layer vs app-layer, match against translation-table items with call sites, and present stay-and-forward-fix vs roll-back options with a recommendation. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:112:incident-brief-rendering-the-responder-opens-to-evidence",
+      "content_sha256": "71d864cbf9828d8a9f0305dc258a5fb9e6b0f188a85c642ec6da0ef402e72055",
+      "display": "112",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 137,
+      "title": "Incident brief rendering: the responder opens to evidence + options + recommendation, with rollback currency timestamp — never a blank terminal. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:113:post-cutover-parity-watch-reconciliation-stays-live-in",
+      "content_sha256": "5cee31b658bd57e56d30485418ada0d956c3aacd5f81fbcf46b997f6e30bd0f8",
+      "display": "113",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 138,
+      "title": "Post-cutover parity watch: reconciliation stays live in check mode through the reverse-sync window and watch period; weekly parity attestations land in the ledger, making decommission evidence-based. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:114:migration-created-db-health-checks-sequence-health-vs",
+      "content_sha256": "e36898236b09885aec164342ccb8b72d2b73dd0b3cb78b87e7265ee520649ff9",
+      "display": "114",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 139,
+      "title": "Migration-created DB health checks: sequence health vs table maxima, forecast-and-pre-tuned autovacuum/anti-wraparound debt from the bulk load, bloat on loaded tables, index-usage audit after real traffic, connection-pool saturation vs platform-profile ceilings. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:115:query-performance-regression-watch-the-shadow-read-corpus",
+      "content_sha256": "3d36a1783a81b9cd1142a571058f02b402308bbd49e5a0367846425c40cf31a1",
+      "display": "115",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 140,
+      "title": "Query-performance regression watch: the shadow-read corpus doubles as a latency baseline; regressed hot paths (document-read → N+1 fan-out) flagged from live query stats with the JOIN/index prescription attached — turning the \"Postgres is slower\" morale fight into a burn-down chart. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:116:log-pattern-watch-read-only-for-known-post",
+      "content_sha256": "e988a2ab34652d72fd041f34a75f8b26b05c2fe849d570c1b6b038c50bee489b",
+      "display": "116",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 141,
+      "title": "Log-pattern watch (read-only) for known post-cutover signatures — serialization/deadlock errors, lost updates, case-sensitivity misses — each alert arriving with its specific translation-table fix attached; Jumpship flags, the app team fixes. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:117:ci-gate-handover-shadow-read-corpus-golden-transform",
+      "content_sha256": "183992f0f3ed71775e9223062bc42089c33fa86fa6a1c99cdf1b80716fa18f7e",
+      "display": "117",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 142,
+      "title": "CI gate handover: shadow-read corpus + golden transform tests packaged as an artifact the team runs against PRs (\"does this PR's query behavior match the migration-verified corpus?\") — delivered, then theirs. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:118:bounded-warranty-scope-stated-explicitly-in-product-jumpship",
+      "content_sha256": "5bfa94f4f18e652a4c6a2b492331f938895640f592ea5698838ea6000ae395b3",
+      "display": "118",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 143,
+      "title": "Bounded warranty scope, stated explicitly in-product: Jumpship owns parity attestation, migration-created DB health, regression detection, and offboarding — not the app rewrite, general APM, or becoming the customer's ops team. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:119:weekly-digest-via-email-chat-instead-of-a",
+      "content_sha256": "2ddd7f4a57d714358bc39ec0bce24bc7ed5eb219411e5124b5af1941f85b7bca",
+      "display": "119",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 144,
+      "title": "Weekly digest via email/chat instead of a dashboard demanding attention: parity attestation, health deltas, fired signatures with prescriptions, countdown to decommission. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:120:decommission-consent-the-second-and-final-human-gate",
+      "content_sha256": "e33d1fff709e5c6aee24f36f3f06837989df8b82b3ae94c55a76369f50101bba",
+      "display": "120",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 145,
+      "title": "Decommission consent — the second and final human gate, symmetric with cutover: retire the old store, golden snapshot retained per terms, deletion attestation issued; gated on the watch record, never on vibes. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:121:migration-dossier-as-the-final-artifact-readiness-report",
+      "content_sha256": "440d17612c10b773f5cb54e5ab718f2dbbb6e0d4b85a435219ef966137389e1e",
+      "display": "121",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 146,
+      "title": "Migration dossier as the final artifact: readiness report, interrogation transcript, all spec versions, rubric, integrity report, runbooks with timings, decision ledger, parity attestations, deletion attestation — the evidence pack for auditors, acquirers, and the next engineer. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:122:harness-prime-directive-enforced-product-wide-no-silent",
+      "content_sha256": "b50bbf844d3aa0f2985f8b4c4b3c4940f17502d43116334dad349b56c4859f19",
+      "display": "122",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 147,
+      "title": "Harness prime directive enforced product-wide: no silent guesses — every ambiguity terminates in either a human answer or a ledgered, reversible assumption. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:123:division-of-labor-rule-enforced-product-wide-jumpship",
+      "content_sha256": "338dc349d64a03d4613da2b62fdd94d15a6d06d10b3010c549aa7f15b92dbefa",
+      "display": "123",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 148,
+      "title": "Division-of-labor rule enforced product-wide: Jumpship autonomously does everything cheaply undoable and never asks permission for reversible work; the human supplies tacit knowledge and exactly two consents (flip, decommission). [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:124:region-aware-worker-placement-the-source-s-cloud",
+      "content_sha256": "2ec35506d91510f6b70223ba31e0812a9f3d6d2c19c5bc450566b32665915d37",
+      "display": "124",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 4,
+      "source_line": 149,
+      "title": "Region-aware worker placement: the source's cloud region is auto-detected from the connection string, and the migration worker is provisioned in that same region — customer data rides the provider's private backbone (peering/private endpoints where granted) instead of the public internet; the connect screen states the placement and its consequence (near-zero source-side transfer fees, lower CDC lag) as part of the security statement. (EC2 worker launched in the source's AWS region; VPC peering / PrivateLink to Atlas where granted — same-region transfer $0.00–0.01/GB vs $0.09+/GB internet egress billed to the customer's Atlas account.) [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:125:target-region-as-a-day-1-decision-card",
+      "content_sha256": "7dad168d1224736db4f3040316d588fa423063fe89e5c476bbae37b3a5522fc6",
+      "display": "125",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 3,
+      "source_line": 150,
+      "title": "Target region as a day-1 decision card: target platforms fix a project's region permanently at creation, so region choice is surfaced as an early interrogation card with computed consequences (latency to app servers, transfer cost, freeze-drain impact) and a recommended ruling — never an irreversible default discovered at cutover. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:126:transfer-cost-honesty-when-source-and-target-live",
+      "content_sha256": "57d145a7ff2be1b36ac0a2ffd8e606c4f17953a717dc38afd2c93c26ba82087a",
+      "display": "126",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 3,
+      "source_line": 151,
+      "title": "Transfer-cost honesty: when source and target live on different clouds or regions and egress physics can't be optimized away, the readiness report quotes the expected data-transfer line-item with its cause — the same pre-registered honesty as the freeze-drain estimate. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:124:session-timeline-execution-surface-attempt-shaped-runs-rehearsal",
+      "content_sha256": "59a4356135fa90275875d102aa94e94f3c85af408cf26f06b2c89696253f6fa1",
+      "display": "124",
+      "kind": "numbered-list",
+      "occurrence": 2,
+      "occurrence_count": 4,
+      "source_line": 152,
+      "title": "Session-timeline execution surface: attempt-shaped runs (rehearsal loads, snapshot restore/self-proof, verification passes, kill-tests) render as inline live widgets in the main session — the agent narrates in text, then the widget mounts below it streaming live state (progress, quarantine counts, throughput). [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:125:attempt-lifecycle-in-the-timeline-on-failure-the",
+      "content_sha256": "5fa9a9d47a16edd2bcb25ddcb3f2bc3a0bb286ae4ad0c91416e0092dbdd77b09",
+      "display": "125",
+      "kind": "numbered-list",
+      "occurrence": 2,
+      "occurrence_count": 3,
+      "source_line": 153,
+      "title": "Attempt lifecycle in the timeline: on failure the live widget freezes at its final state and collapses into a minimized, darkened stub with a one-line epitaph (\"Attempt 1 — failed: 41K orphan rows quarantined · 14 min\"), expandable via dropdown for the post-mortem; failure reason and retry narration follow in text, and a fresh widget mounts for the next attempt — the stacked stubs read as a burn-down narrative and are the decision/repair ledger rendered visually. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:126:pinned-sync-widget-the-sync-health-dashboard-83",
+      "content_sha256": "2ca1bdf519890a3638faef5b8100587e5a0a131c8549238f8556dfeeebf39d0e",
+      "display": "126",
+      "kind": "numbered-list",
+      "occurrence": 2,
+      "occurrence_count": 3,
+      "source_line": 154,
+      "title": "Pinned sync widget: the sync health dashboard (#83) is deliberately not attempt-shaped — once CDC starts it docks into a persistent pinned slot (sticky header/side panel) that cannot be scrolled away or buried by later session activity, showing degradation health states (lag spike, dead-letter growth) rather than pass/fail, and stays docked until cutover. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:124:gated-approve-on-every-decision-card-the-approve",
+      "content_sha256": "c351b0847de4900a14f183241c6818c7e40ab6ce2e7192ff68ce75e82153d88f",
+      "display": "124",
+      "kind": "numbered-list",
+      "occurrence": 3,
+      "occurrence_count": 4,
+      "source_line": 155,
+      "title": "Gated approve on every decision card: the approve button is disabled while any agent computation is running or any user message in the card is unresolved, and enables itself only when every consequence panel is current and every thread is settled — approval is always of a fully-rendered, stable state; reject/override/postpone remain available at all times. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:124:design-brief-popup-when-phase-1-synthesis-completes",
+      "content_sha256": "99dfb9aae66cbc8ce07fdb9f090ce0b918f1f29f9b63c110a9825453bf1343b7",
+      "display": "124",
+      "kind": "numbered-list",
+      "occurrence": 4,
+      "occurrence_count": 4,
+      "source_line": 156,
+      "title": "Design brief popup — when Phase-1 synthesis completes, a popup renders the migration's before/after in one glance: source shape (collections, embedded subtrees, candidate FK edges from the census) beside target design (tables, FK graph, dial positions), explained in a few sparse sentences; visual first, text minimal; every element in the picture is a deep link — a table opens its spec lines and dial widget, an FK edge opens the census evidence or ruling that proposed it — so a wrong edge is one click from the decision that created it (the brief stays a viewer, never an editor). [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:125:design-brief-first-render-carries-the-design-confirm",
+      "content_sha256": "e04050296fc1181d5946ae481be8a6f72d96cf173bf56eb79b041dc657a2bcdb",
+      "display": "125",
+      "kind": "numbered-list",
+      "occurrence": 3,
+      "occurrence_count": 3,
+      "source_line": 157,
+      "title": "Design brief first render carries the design confirm — one big Approve button that accepts the recommended design and unblocks rehearsal loading; a reversible confirm, not a consent (the design stays recompilable on rehearsal branches until cutover, per #123), ledgered like any ruling with its undo path stated on the button. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:126:after-first-render-the-design-brief-persists-as",
+      "content_sha256": "702e2644d01055766006605479634172994f0f67b72e409e2b7a839555ffff61",
+      "display": "126",
+      "kind": "numbered-list",
+      "occurrence": 3,
+      "occurrence_count": 3,
+      "source_line": 158,
+      "title": "After first render the design brief persists as a click-to-open item in the right-hand panel, docked adjacent to the mapping spec; it re-renders from the current spec version, so it is always the live before/after picture, never a stale screenshot. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:127:design-brief-summons-when-the-popup-first-arrives",
+      "content_sha256": "c9f05cac336ba7ba068a85d285e3a02072ba078498e668cd2c06988b3c6c4c63",
+      "display": "127",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 159,
+      "title": "Design brief summons: when the popup first arrives (and on any spec bump that materially changes the picture), a notification with deep link goes out over the user's chosen channel (chat or email); channels summon, they cannot approve — the confirm happens only in the console (per #105). [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:128:graded-reversibility-taxonomy-the-reversibility-line-37-upgraded",
+      "content_sha256": "33627db3d1f405db613e01df221992d54ae724dd11a6d8293d367298a6647767",
+      "display": "128",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 160,
+      "title": "Graded reversibility taxonomy: the reversibility line (#37) upgraded from binary to five classes — free-until-cutover / expensive-after-cutover / closes-on-first-external-exposure / closes-on-a-clock / never-reversible — recorded in the ledger on every decision, auto and human alike. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:129:reversibility-badge-on-every-decision-card-and-spec",
+      "content_sha256": "b7e882f922e9022d55f847c8f7dceb9417af167b7cef5d1d3d8a70f9e2ce4a27",
+      "display": "129",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 161,
+      "title": "Reversibility badge on every decision card and spec line: one consistent visual grammar for the five classes (color + door iconography), so the user learns the reversibility *topology* of the migration — a wall of one-way doors at target creation, a valley of cheap iteration, a second wall at cutover — not just per-card facts. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:130:foundation-decisions-packet-the-one-way-doors-set",
+      "content_sha256": "20d3a8b605f50067ac1ccaaed4e9df50cab1715ec7fc9af44d3c5442d441bbae",
+      "display": "130",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 162,
+      "title": "Foundation-decisions packet: the one-way doors set at target creation (target platform, region, Postgres major version, cluster collation/encoding/locale, primary-key exposure strategy) isolated into a distinct day-1 interrogation packet that must be fully answered before any target resource is created. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:131:foundation-decisions-exception-to-the-assumption-rule-on",
+      "content_sha256": "f8d34ca11f8c502608157ecde4a0190b9fae6e37e466045136c5e4359f20f254",
+      "display": "131",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 163,
+      "title": "Foundation-decisions exception to the assumption rule: on foundation cards only, \"I don't know\" (#30) cannot convert to a ledgered assumption — because the assumption would not be reversible — so the packet fails closed until a human answers; the prime directive's reversible-assumption escape hatch (#122) is structurally unavailable here. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:132:foundation-decisions-screen-a-dedicated-full-evidence-surface",
+      "content_sha256": "7ee92e35d7092bf58d5d640b5e276037c03733c0c1a14ee7d3ea46d33b5324f2",
+      "display": "132",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 164,
+      "title": "Foundation-decisions screen: a dedicated full-evidence surface (consent-gate-grade, not a modal) where every one-way door arrives pre-set to Jumpship's recommended option — region pre-set from the placement solver (#140), collation pre-set from the query corpus, PK strategy pre-set from the exposure scan — with the full option set beside it, each option carrying its computed consequences (collation → case-sensitivity/ordering semantics against the captured query corpus, region → transfer cost/latency/freeze-drain deltas, PK strategy → external-exposure blast radius) and explicit \"cannot be changed later without a re-migration\" copy; confirming the recommendation is one click, overriding to any alternative is the same click. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:133:reversibility-timeline-a-live-lifecycle-visualization-of-the",
+      "content_sha256": "7cbcf3b53a98b971c4824603e73a673656d11d728c5d4d18a8aad3d897326ab9",
+      "display": "133",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 165,
+      "title": "Reversibility timeline: a live lifecycle visualization of the doors — which are already closed, which are open, which closes next and what closes it (a decision, an exposure, or a clock) — updated as the migration proceeds; the valley between the two walls is where the product tells the user to iterate freely. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:134:external-exposure-detector-repo-and-traffic-scan-flags",
+      "content_sha256": "791f0a5ad7f9427c2d708abc2f350245488874eb5b4694b513a6936f6d11ee29",
+      "display": "134",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 166,
+      "title": "External-exposure detector: repo and traffic scan flags when target-generated values (new IDs, sequence values) are about to leak to external parties (URLs, webhooks, emails, partner APIs); first exposure flips the affected decision's reversibility class to closed in the ledger, with a pre-exposure warning card. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:135:clock-bound-doors-as-countdowns-oplog-retention-headroom",
+      "content_sha256": "1c2155834bba1015737e2c31863d0a7ddccb0916dc46c373b7bca5307c922d02",
+      "display": "135",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 167,
+      "title": "Clock-bound doors as countdowns: oplog retention headroom, reverse-sync window expiry, and consent deadlines rendered as always-visible countdown chips with paging thresholds — irreversibility-by-neglect made impossible to miss. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:136:rollback-viability-watch-during-the-reverse-sync-and",
+      "content_sha256": "5262a23ecc89ffc220d858d8aa9b4b7b91cc9c541f02f4761613002efe0eaef0",
+      "display": "136",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 168,
+      "title": "Rollback-viability watch: during the reverse-sync and watch periods, detect app-side one-way commitments (Mongo driver paths deleted from the repo, PG-only features or columns in live use) and downgrade the ledgered rollback status accordingly — notifying before, not after, rollback silently stops being real. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:137:billing-ratchet-warnings-any-platform-action-with-irreversible",
+      "content_sha256": "1597ad6086ebb6c44e76daddbe7a12376e72c87ea0c472478c2730961ff1cf71",
+      "display": "137",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 169,
+      "title": "Billing-ratchet warnings: any platform action with irreversible cost consequences (disk autoscale ratchets, compute-tier floors) badged with the projected permanent monthly delta before execution, sourced from the platform capability profile's ratchet knowledge (#69). [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:138:recommended-default-pattern-enforced-product-wide-jumpship-never",
+      "content_sha256": "cd85d528c2102d3f5f20af6a2a4aa5d03e0e35ccfe7d8b38719bf11922041e86",
+      "display": "138",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 170,
+      "title": "Recommended-default pattern enforced product-wide: Jumpship never presents an open question when it can compute a ranked recommendation — every card (interrogation, quarantine ruling, dial position, foundation decision) arrives pre-set to the recommended option with the alternatives, their computed consequences, and the recommendation's stated basis alongside; confirm and override are equal-weight actions, and the ledger records which was taken. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:139:recommendation-basis-disclosure-every-recommendation-names-what-it",
+      "content_sha256": "65b837824099345edb8e8fe09d14887000cf27cebe7de53da8c241b395a815b8",
+      "display": "139",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 171,
+      "title": "Recommendation-basis disclosure: every recommendation names what it optimizes (customer cost, latency, drain time, risk) — and where Jumpship's own operating cost is a factor in the ranking (e.g., worker co-location reducing transfer fees), that interest is disclosed on the card rather than hidden; recommendations must be defensible as best-for-the-customer first, with any alignment of interests stated as exactly that. [fe]"
+    },
+    {
+      "anchor_id": "numbered-list:140:region-placement-solver-given-the-detected-source-region",
+      "content_sha256": "f077d3514a05ca609a9db983c7a793a758d648fca81f7b93847905355d2166ce",
+      "display": "140",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 172,
+      "title": "Region placement solver: given the detected source region, the app's deploy region(s) (from repo/deploy config), and the target platform's available-region list, compute the placement triple — recommended target region (= the app's region: post-cutover latency is forever, migration cost is weeks), worker region (= target region: the heavy repeated flows are bulk/rehearsal loads and both-direction verification reads, while source-side verification hits the worker's local replica, and only the one-time dump plus the skinny CDC tail pay cross-region), and golden-bucket region (= worker region: the dump crosses once, restores recur per rehearsal) — with per-option transfer-cost and latency estimates feeding the foundation card (#132); the control plane's own region is irrelevant by construction since only hashes/specs/decisions cross that boundary, so the data plane deploys to whatever region the solver picks. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:141:private-connectivity-ladder-the-platform-capability-profile-69",
+      "content_sha256": "a1f7fc0aaa409b9f0922d96d8f0a2d3309d0a951048ec5a1aebd60071d755699",
+      "display": "141",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 173,
+      "title": "Private-connectivity ladder: the platform capability profile (#69) records each source/target platform's best available network rung — VPC-peering-class private link / private-endpoint service / public TLS only — and the worker connects at the highest rung the customer's plan allows, with the chosen rung and its data-path fact (\"stays on the cloud backbone / never crosses the public internet\") rendered on the connect screen as part of the security statement (#2); where the placement solver (#140) cannot eliminate a cross-cloud leg (source hosted on a different cloud than every available target region), that leg's per-GB transfer cost is computed and disclosed up front — it lands on the customer's own source-platform bill, so it is quoted in the readiness report rather than discovered on an invoice. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:142:agent-as-conductor-one-jumpship-agent-orchestrates-the",
+      "content_sha256": "0374b79b72b5abf9a04c519c28c11727977f854645a0e021affdc29f8ef6bf62",
+      "display": "142",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 182,
+      "title": "Agent-as-conductor: one Jumpship agent orchestrates the entire engagement end to end — sequences the phases, reacts to alarms, census diffs, and triage signals, decides when to snapshot, rehearse, re-verify, and escalate, and composes the temporary migration infrastructure per engagement (worker sizing from the fan-out projection, source replica flavor, change-feed tailer, drivers, disk). Everything else in this list is a tool the agent invokes, not a peer process; the customer is hiring the agent, and the agent uses power tools the way a human migration engineer runs a dump utility rather than copying rows by hand. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:143:deterministic-within-call-semantics-every-data-touching-tool",
+      "content_sha256": "1fdf20c8d831b845f86b0e87849b5cabc3585e3d67d85aa2812c75ace4db4ee8",
+      "display": "143",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 184,
+      "title": "Deterministic within-call semantics: every data-touching tool the agent invokes (transform, load, CDC apply, verify) executes mechanically from versioned artifacts. The agent has full authorship of the mapping spec `f` — it writes it, revises it after every ruling, decides when to re-run it — and zero per-record improvisation, because the guarantee `target = f(source)` only means something if `f` is a fixed, inspectable artifact: kill-test resume (#67), golden-corpus byte-identity (#74), and reverse-transform verification (#91) all depend on it. Judgment writes the law; the law executes mechanically. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:144:the-constitution-harness-gates-bind-the-agent-itself",
+      "content_sha256": "28f527c48be10a65c697cbda0c0a62a8968cf38f826d307ee86ef1fc9c63f9f9",
+      "display": "144",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 186,
+      "title": "The constitution: harness gates bind the agent itself. The agent is structurally incapable of flipping cutover, writing to the source, deleting the golden snapshot, releasing credentials, or bypassing consent and quarantine gates — the same way source credentials are read-only by construction (#5). The incapability list is explicit and customer-visible, because it is precisely what makes granting the agent full autonomy safe to say yes to: \"full autonomy, and here is the short list of things it architecturally cannot do without your typed consent.\" [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:145:source-target-generality-via-capability-contracts-every-source",
+      "content_sha256": "9ad123fe4ed18e2ccf171459f5121d5aff53613a3726e047e752f9d8b2537b57",
+      "display": "145",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 188,
+      "title": "Source/target generality via capability contracts: every source must yield {a consistent point-in-time snapshot method, a change feed, a consistency token}; every target must yield {a bulk load path, staged constraints, a rehearsal mechanism}. The agent satisfies the contract from whatever the platform actually offers — the snapshot capability ladder (#15) is the template — and where a platform cannot meet a clause, Jumpship degrades honestly (freeze-window instead of CDC, disposable instances instead of copy-on-write branches) or declines. The product is the guarantee applied to a pair, not a Mongo→Postgres tool. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:146:worker-as-generic-substrate-the-per-migration-worker",
+      "content_sha256": "b8b164e781f0a5e2be2b88292ff10873f72409d273d20c20648b4751f82c2b6b",
+      "display": "146",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 190,
+      "title": "Worker as generic substrate: the per-migration worker is a neutral, isolated, single-tenant sandbox — compute, disk, immutable custody, audit — with no source or target assumptions baked in. What runs on it is composed by the agent per engagement under the capability contract; the provisioning primitives themselves stay deterministic tools (\"a worker in region X with Y TB\"). [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:147:new-pair-economics-as-operational-memory-extends-42",
+      "content_sha256": "74c7c916c9f6e9466cd46645fa2e6e3f5d912ca4206fe4f56797b64c5dcafe62",
+      "display": "147",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 192,
+      "title": "New-pair economics as operational memory (extends #42/#69): the first migration on a new source→target pair runs agent-heavy — more discovery, more interrogation, more HITL — and is priced accordingly; everything learned accretes into the platform capability profiles, so later migrations on that pair are mostly profile-driven with the agent handling the residual. The agent is how Jumpship reaches a new pair without an engineering sprint; the profiles are how it never re-learns one. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:148:guarantee-tier-discipline-a-pair-whose-verification-cannot",
+      "content_sha256": "3164f34737721aa5d4971f36fcb345be3e04c4a021303d99b196f6534e3d3350",
+      "display": "148",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 194,
+      "title": "Guarantee-tier discipline: a pair whose verification cannot yet meet the full pyramid standard (#89–#95, including a per-pair canonical form and reverse transform) is sold as rehearsal-only/beta, never with the signed integrity report — the certificate must mean exactly the same thing on every pair, because the certificate is the brand. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:149:three-part-topology-mothership-deterministic-deployment-and-supervision",
+      "content_sha256": "a128be778ee5a08cb198a0d493daa6d1f6945bd1f38c3c98265371d3b592146e",
+      "display": "149",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 206,
+      "title": "Three-part topology: **mothership** = deterministic deployment and supervision of customer agent cells; **Jumpship backend** = deterministic migration product and data-plane machinery; **migration cell** = one customer's isolated worker plus conductor agent and customer-purposed runtime resources. The cell agent has unrestricted read only inside its cell and structurally zero reach into another cell or the mothership's deployment authority. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:150:mothership-scope-deliberately-narrow-maintain-the-cell-template",
+      "content_sha256": "19755bd825c8839812e482adea766f7e367a607081f5bd6daffec0bc310752df",
+      "display": "150",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 207,
+      "title": "Mothership scope, deliberately narrow: maintain the cell template and deployment registry; allocate a customer/cell identity; create or attach the cell's compute, network boundary, runtime IAM role, KMS key, secrets namespace, and storage namespace; inject a signed bootstrap manifest; start/restart the agent harness; observe liveness; revoke the runtime identity; and terminate the cell when the Jumpship backend authorizes teardown. It does not snapshot, tail CDC, load rows, verify parity, decide migration phases, render cards, page on migration semantics, or own the engagement ledger. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:151:mothership-iam-authority-without-standing-keys-the-mothership",
+      "content_sha256": "3b044a2db042a2a440dc78026348c792942f7eb0e394843702b6ab98f9a09760",
+      "display": "151",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 208,
+      "title": "Mothership IAM authority without standing keys: the mothership owns the AWS deployment authority needed to mint per-cell roles and resources, but uses a workload identity / short-lived role assumption rather than a long-lived IAM access key. Its deployer role can create only resources carrying a signed `cell_id` and approved template boundary; it cannot read customer secrets, decrypt customer data, assume the cell runtime role, or invoke source/target data operations. The per-cell KMS administration path and the cell's decrypt/use path are separate policies. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:152:jumpship-backend-ownership-snapshot-and-golden-copy-custody",
+      "content_sha256": "bca101a029be602c16350776f75f71c707ca4d15a19dee0fae673b6a328f7b8f",
+      "display": "152",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 209,
+      "title": "Jumpship backend ownership: snapshot and golden-copy custody (#15–19), census (#20–24), transform compilation and loading (#54–74), CDC (#75–85), verification (#86–96), artifacts and ledgers, connector workflows, phase state, consent gates (#104–108), cutover choreography, reverse sync, watch, and deletion attestation (#120–121) belong to the Jumpship backend. They may execute on customer-purposed AWS resources provisioned by the mothership, but provisioning location does not transfer product ownership to the mothership. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:153:corridor-architecture-split-the-backend-owns-the-source",
+      "content_sha256": "8b03cee6609a917138fe07b99b167458fb0fc53135d1e1788f808d4cdafda1be",
+      "display": "153",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 210,
+      "title": "Corridor architecture split: the backend owns the source/target capability contracts and migration corridor profiles — Atlas→Supabase, Firebase→Supabase, VPS-Mongo→Neon, sharded→Aurora, and so on — including snapshot/change-feed/load/verification adapters, platform scar tissue, phase rules, and connector needs. The mothership receives only a compiled **cell deployment manifest** from the backend: region, worker class, disk, network endpoints, required runtime components, and policy template version. It provisions that manifest without interpreting database semantics. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:154:two-constitutions-enforced-at-the-correct-layer-the",
+      "content_sha256": "7440df048ccc230a3daf25f14c256153884ef0d4da7adeec2a5fe1e6d21781ba",
+      "display": "154",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 211,
+      "title": "Two constitutions, enforced at the correct layer: the mothership constitution prevents cross-cell access, privilege escalation, deployment-template escape, and agent self-replication; the Jumpship backend constitution prevents source writes, per-record LLM improvisation, unresolved-quarantine progression, unverified cutover, consent bypass, premature snapshot deletion, and invalid credential lifecycle transitions. The cell agent can author recommendations and mapping specs but cannot amend either constitution. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:155:supervision-split-the-mothership-watches-infrastructure-facts-only",
+      "content_sha256": "0a1b8d64db8be10c0b7653f6e275ab885e1234d476ebbd203e7e07fa5ae66b37",
+      "display": "155",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 212,
+      "title": "Supervision split: the mothership watches infrastructure facts only — cell boot, agent-process heartbeat, instance health, bootstrap version, restart budget, and identity expiry — and deterministically restarts the cell or pages the Jumpship backend when those fail. The backend watches migration facts — oplog headroom, CDC lag, quarantine, verification, writers, phase stalls, approval deadlines — and decides whether to invoke a backend recovery tool, ask the agent to diagnose, or page a human. A dead agent is relaunched by the mothership and re-briefed from a backend-issued, signed checkpoint; the agent never supervises itself. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:156:boundary-traffic-mothership-cell-carries-only-deployment-material",
+      "content_sha256": "ff1c88143892a1109c7e72a5594430e261d128323ab41d1d8ffa8fb707b17904",
+      "display": "156",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 213,
+      "title": "Boundary traffic: **mothership ↔ cell** carries only deployment material and infrastructure health (signed bootstrap manifest down; heartbeat and attested runtime identity up). **backend ↔ cell** carries capability-scoped commands and permitted artifacts (specs, card outcomes, quarantine signatures, rubric results, health metrics, ledgered decisions), never raw customer records into the shared control plane. Bulk customer data remains inside customer-purposed cell resources. This keeps prompt-injection blast radius equal to the cell runtime role and prevents the mothership's deployment authority from becoming a customer-data access path. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:157:efficient-mvp-and-evolution-begin-with-a-small",
+      "content_sha256": "e77cb4e2b5552f1eed66c836ca3d266aaaf0ec0cc9e3210fb3d2c83ec0848318",
+      "display": "157",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 214,
+      "title": "Efficient MVP and evolution: begin with a small Terraform/OpenTofu module plus a thin cell-controller service as the mothership, one versioned Atlas→Supabase backend corridor, and one agent harness image. Build the per-cell IAM/KMS/network boundary and signed bootstrap/checkpoint contract from day one; keep fleet scheduling, autoscaling, multi-region placement automation, and automated corridor-profile curation out until multiple simultaneous cells justify them. The stable seam is `backend compiles deployment manifest → mothership provisions cell → agent invokes backend tools → backend authorizes teardown → mothership destroys cell`. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:158:aws-residency-is-not-the-authorization-boundary-the",
+      "content_sha256": "bc5fe88b14412bc99e635475b9bc9db0ad2bbdc5d67061c550aef66a3c4279a3",
+      "display": "158",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 215,
+      "title": "AWS residency is not the authorization boundary: the conductor agent runs wholly inside Jumpship's AWS organization, but \"inside our AWS\" never means account-wide discovery or administrator access. Its universe is one migration cell. It may inspect everything relevant to that customer's engagement — replica, samples, repo evidence, quarantine, target, rehearsals, logs, specs, and tool results — while IAM, network, KMS, Secrets Manager, and backend authorization make every other cell, shared control-plane datastore, deployment authority, and audit account invisible and unreachable. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:159:agent-permission-asymmetry-broad-read-over-cell-local",
+      "content_sha256": "8743743a3ae37fb72611328113dcec682ba7cc57d0dd21a4c4087a2b6f7bcc97",
+      "display": "159",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 216,
+      "title": "Agent permission asymmetry: broad read over cell-local migration evidence; write access only to agent-owned working artifacts and spec proposals; execution through named Jumpship-backend capabilities. The agent has no `iam:*`, policy mutation, role creation, `sts:AssumeRole`, arbitrary KMS grant creation, cross-cell list/read, source-write credential, direct traffic-flip, snapshot-delete, or self-termination permission. Sensitive work follows `agent requests operation → backend validates phase/spec/consent → backend issues a narrow short-lived execution grant to the deterministic tool runtime → result is ledgered → agent interprets it`. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:160:typed-inventory-instead-of-aws-exploration-the-backend",
+      "content_sha256": "5650da7707b2379172f4f867b434b24d7e1fbced120f96c2580b7510c700b50f",
+      "display": "160",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 217,
+      "title": "Typed inventory instead of AWS exploration: the backend gives the agent a signed cell manifest containing the source, target, corridor/profile versions, permitted evidence locations, available tools, and current phase. The agent does not learn its environment by listing the AWS account (`ListBuckets`, account-wide `DescribeInstances`, `ListSecrets`, etc.); it reasons over the manifest and capability results. This gives it complete migration context without making cloud-resource discovery part of model intelligence. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:161:production-account-topology-use-aws-organizations-with-separate",
+      "content_sha256": "e6d320adf115d505c7295e8aa36ee540e9d83c168ebb33f305d84e24fa182909",
+      "display": "161",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 218,
+      "title": "Production account topology: use AWS Organizations with separate accounts for (a) mothership deployment authority, (b) Jumpship shared backend/control plane, (c) security/log archive, and, where customer assurance or fleet scale warrants it, (d) one disposable/customer-purposed migration-cell account per engagement. The mothership can bootstrap and close a cell account but cannot decrypt its data; the backend can authorize migration operations but cannot mint its own deployment authority; organization audit trails land in an immutable account neither can modify. Account-per-cell is the strongest isolation end state, not an MVP prerequisite. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:162:single-account-mvp-containment-early-cells-may-share",
+      "content_sha256": "278110141bed477bbb71758a1b9862134999e5e14d7e00a12b60d17b4e5c2691",
+      "display": "162",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 219,
+      "title": "Single-account MVP containment: early cells may share one Jumpship data-plane AWS account only if each cell has a unique VPC, runtime role, backend-tool role, KMS key, secrets namespace, S3 prefix, mandatory `cell_id` session/resource tags, permission boundaries, explicit cross-cell denies, and cell-scoped VPC endpoint policies. Agent and deterministic tool roles remain separate: the agent decides and requests; the tool role briefly receives only the data permission needed for the approved operation. The interfaces are designed so moving a cell into its own AWS account later changes deployment, not migration semantics. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:163:model-provider-seam-bedrock-first-production-inference-goes",
+      "content_sha256": "39cf9e7c396df37588b6032f904ccd4194426ea1538ea6a4b194352e445c8fce",
+      "display": "163",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 220,
+      "title": "Model-provider seam, Bedrock first: production inference goes directly through Amazon Bedrock's model-runtime APIs from the cell, authenticated by its IAM role and reached through a VPC endpoint; the harness speaks a small Jumpship-owned provider interface rather than a provider-native message format. Bedrock is the first provider because regional inference, short-lived AWS identity, CloudTrail/CloudWatch legibility, prompt caching, and model-family optionality fit the cell boundary. Public model APIs remain development fallbacks and never receive customer data. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:164:task-tier-routing-rather-than-one-model-for",
+      "content_sha256": "2f269d23f3eb2ec2d827b1382459792f5b85008a5285814acf8da5885fab6eab",
+      "display": "164",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 221,
+      "title": "Task-tier routing rather than one-model-for-everything: the backend labels each reasoning request by capability and consequence — extraction/summarization/routine classification, ordinary migration reasoning, or high-stakes design/incident analysis — and the provider router selects the cheapest qualified model tier. Escalation to a stronger tier is triggered by an evaluation failure, disagreement, low confidence, or high reversibility cost, not by default. Model names and prices are configuration/profile data; the routing contract is stable. [agent]"
+    },
+    {
+      "anchor_id": "numbered-list:165:four-stores-one-authority-rule-canonical-migration-state",
+      "content_sha256": "597f1d0213a06dca7677aaa5469be360f8c49367dccfe15a51c0304e2bab0908",
+      "display": "165",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 222,
+      "title": "Four stores, one authority rule: canonical migration state (phase, approved spec, consent, verification verdict) lives only in the Jumpship backend; agent execution state (current step, pending operation, retry and wait state) lives in a durable per-cell checkpoint store; agent memory (findings, summaries, hypotheses, diagnoses) lives in the cell memory store; raw evidence lives on cell EBS/S3. Agent memory can assist reasoning but can never override canonical backend truth. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:166:unified-postgres-memory-substrate-use-ordinary-postgres-in",
+      "content_sha256": "0e4a1a4b8c9a9079bb89f808863041dd03de642e62f12288ee367835a0e2e8fd",
+      "display": "166",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 223,
+      "title": "Unified Postgres memory substrate: use ordinary Postgres in the cell for durable checkpoints, append-only agent events, episodic memory, semantic/procedural memory, provenance, temporal validity, full-text search, and — only where semantic retrieval earns it — `pgvector`. Adopt the useful unified-Postgres pattern validated by Tiger Data, not Agentic Postgres as an all-in-one agent platform: no Tiger Cloud dependency, no arbitrary database MCP, no pgvectorscale/DiskANN, hypertables, BM25 extension, or vectorizer until measured corpus size/query pressure justifies each addition. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:167:cheapest-durable-deployment-for-the-first-corridors-run",
+      "content_sha256": "431de67a7665cd31b969925d478598fe14ccfe08d0a37520b38c9fc7826f5ba8",
+      "display": "167",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 224,
+      "title": "Cheapest durable deployment: for the first corridors, run the cell Postgres on the worker's already-paid-for encrypted EBS volume and archive WAL/periodic encrypted backups into the cell's KMS-scoped S3 prefix; on worker replacement, the mothership restores the runtime and the backend-signed checkpoint identifies the database/evidence generation to restore. A separate RDS/Aurora instance per migration is deferred until concurrency, recovery SLOs, or enterprise assurance outweigh the per-cell cost. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:168:explicit-memory-classes-a-read-only-constitutional-memory",
+      "content_sha256": "831d7eb124a2082a69afa0c906df874ceb5ac8644d695a1564d680b22ac63093",
+      "display": "168",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 225,
+      "title": "Explicit memory classes: (a) read-only constitutional memory — role, invariants, corridor/tool contract; (b) canonical active-state projection — current phase/spec/blockers/next door, regenerated from backend truth; (c) working memory — current plan, pending operation, recent observations; (d) append-only episodic memory — observation→reasoning→action→outcome with artifact hashes; (e) semantic/procedural memory — distilled facts and reusable methods. Every durable memory carries `migration_id`, phase, spec/tool version, evidence references, author, confidence, `valid_from`, `valid_until`, and `superseded_by`. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:169:deterministic-context-compiler-before-every-model-call-backend",
+      "content_sha256": "773e1bebda5f745747c17a1f528cc507c322d2be4d1269ce60e3d6f17333c2ec",
+      "display": "169",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 226,
+      "title": "Deterministic context compiler: before every model call, backend/harness code — not free-form agent retrieval — compiles a budgeted context in this order: cached constitution and corridor contract; canonical active-state projection; current task and acceptance condition; recent interaction/tool slice; exact matching ledger decisions; retrieved valid memories; narrow evidence excerpts. The compiler records the IDs/hashes and token allocation of every included item so a reasoning turn is replayable and auditable. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:170:retrieval-ladder-exact-identifiers-relational-filters-phase-spec",
+      "content_sha256": "b2cff384be1197154f6ecbbd78b78ab249f3e7dc65d283c6d0d94cfdf6b2c854",
+      "display": "170",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 227,
+      "title": "Retrieval ladder: exact identifiers, relational filters, phase/spec validity, and full-text search precede vector similarity; semantic retrieval is a fallback for fuzzy recall, followed by reranking and an explicit raw-evidence fetch when necessary. Vector similarity can suggest a memory but cannot establish that it is current: invalidated/superseded facts are filtered mechanically, and every returned claim retains provenance to its source artifacts. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:171:structured-compaction-never-lossy-authority-the-raw-event",
+      "content_sha256": "69bc601325ec087390d52fe2fde47ae1464c3151e5f7fb893cec8959409c218b",
+      "display": "171",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 228,
+      "title": "Structured compaction, never lossy authority: the raw event log is retained; when working history crosses a token/turn threshold, a cheap model tier produces a typed checkpoint summary containing covered event IDs, completed work, unresolved items, hypotheses, decisions, evidence hashes, and next action. Deterministic validation confirms all referenced IDs exist before the summary becomes retrievable. Compaction never rewrites the mapping spec, ledger, approval, verification state, or raw evidence. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:172:prompt-cache-friendly-context-layout-the-stable-prefix",
+      "content_sha256": "c6d193fcf733e77d29d783505e5f339b2155fa5349d8f0766fe45013a9a632b0",
+      "display": "172",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 229,
+      "title": "Prompt-cache-friendly context layout: the stable prefix (constitution, corridor rules, tool definitions, canonical examples) is versioned and placed before the dynamic suffix so Bedrock prompt caching can reuse it; current state, retrieved memory, and evidence follow. Cache read/write tokens, hit rate, time-to-first-token, and cost per completed agent step are first-class metrics. Cache invalidation is a version bump, never implicit prompt mutation. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:173:evidence-and-embedding-discipline-large-artifacts-remain-in",
+      "content_sha256": "31793c6737ad6d5e40903c29618dceda6a9d6d0966893b68259a5fe9fc052e4f",
+      "display": "173",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 230,
+      "title": "Evidence and embedding discipline: large artifacts remain in S3/EBS and Postgres stores typed references, hashes, classifications, summaries, and retrieval indexes. Do not embed raw customer rows, whole transcripts, or every tool result by default; embed only stable, distilled units with a demonstrated fuzzy-retrieval use case, asynchronously and idempotently by content hash. This reduces inference/embedding cost, index noise, deletion work, and accidental context leakage. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:174:agentcore-decision-do-not-use-agentcore-runtime-harness",
+      "content_sha256": "c4224e80a9befd4e5abe8047bc9b63ef1904f8fa0c42ec86be6a05ebc601b40b",
+      "display": "174",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 231,
+      "title": "AgentCore decision: do not use AgentCore Runtime, Harness, or Memory as the MVP's agent substrate. Runtime duplicates the already-required cell worker; managed memory's generic extraction/automatic injection weakens Jumpship's provenance and deterministic-context requirements; Harness would surrender ownership of the loop before its shape is understood. AgentCore components remain individually reconsiderable later (especially governed tool gateway/identity/observability), but none is canonical state and none may widen the cell boundary. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:175:runtime-framework-decision-deliberately-parked-the-agent-loop",
+      "content_sha256": "78e28ea685e4841d58a487834944124a5a722ce8b16fd7c98208194ef9bf106c",
+      "display": "175",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 232,
+      "title": "Runtime-framework decision deliberately parked: the agent loop requires durable checkpoint/resume, interrupt/wait, streaming, typed state, idempotent tool requests, traceability, and provider neutrality, but no framework is selected or shortlisted here. Candidate runtimes will be evaluated separately against a Jumpship migration trajectory corpus. All decisions #163–174 expose framework-neutral interfaces so this choice cannot force a memory, provider, backend, or data-boundary rewrite. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:176:cheap-fast-good-operating-method-the-agent-wakes",
+      "content_sha256": "e338858d6af5221cadcb30f5c298a0fa728366bd96a6f9d63163b45c9f56e868",
+      "display": "176",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 233,
+      "title": "Cheap-fast-good operating method: the agent wakes on backend/user/alarm events rather than reasoning continuously; deterministic tool outputs are memoized by artifact hash + tool/spec version; routine consolidation is batched; token-efficient structured tools return summaries plus drill-down handles; the strongest reasoning tier is reserved for consequential judgment; OpenTelemetry traces model/tool steps into cell-scoped CloudWatch with redaction. Optimize against cost and latency per accepted decision, resolved quarantine class, and completed phase — never raw token price or turns alone. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:177:engine-language-and-dependency-rule-the-deterministic-migration",
+      "content_sha256": "cd78c6e88ff4fa292affcd42fe0383419cda078dc23d415f82214aa78050d4b7",
+      "display": "177",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 234,
+      "title": "Engine language and dependency rule: the deterministic migration engine is Go — matching Jumpship's backend, compiling to one static-ish deployable, and giving direct access to mature MongoDB/Postgres/AWS libraries without Python hot-path overhead or JVM/Kafka operational weight. External components are pinned binaries/OCI layers with checksums and SBOMs; Jumpship owns the orchestration and semantics around them. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:178:snapshot-implementation-ladder-atlas-dedicated-cluster-migrations-prefer",
+      "content_sha256": "4f454eb913b10af42b23d5eb94b10fde1e844b9864a1a3e1529661eefef5733f",
+      "display": "178",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 235,
+      "title": "Snapshot implementation ladder: Atlas dedicated-cluster migrations prefer Atlas Admin API/official SDK cloud-backup snapshot download or restore; the provider-native snapshot is retained as the golden artifact, restored into worker-side MongoDB, and self-proved. Replica-set fallback uses pinned MongoDB Database Tools (`mongodump --archive --gzip --oplog` + `mongorestore --archive --gzip --oplogReplay`); standalone fallback requires a write freeze. Atlas Extended-JSON-to-S3 export is lower priority than native snapshot download because BSON/storage fidelity is the subject matter. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:179:mongodb-access-substrate-all-census-batch-cursor-and",
+      "content_sha256": "dbabdbc25eca2414102b6189dac0eaa62412e0f89168e0486d056c1c11d2aabe",
+      "display": "179",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 236,
+      "title": "MongoDB access substrate: all census, batch cursor, and CDC work uses the official Go driver v2 and `bson.Raw` against the worker restore or read-only source. No generic JSON conversion occurs before the mapping compiler sees BSON types. Atlas control operations use the Atlas Admin API/official Go SDK; AWS custody uses AWS SDK for Go v2. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:180:code-archaeology-toolchain-ripgrep-for-fast-fingerprint-exact",
+      "content_sha256": "1adb0ca85889e88361d7b353b6a3f80d7f975b103039952979d5cde01458d712",
+      "display": "180",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 237,
+      "title": "Code-archaeology toolchain: `ripgrep` for fast fingerprint/exact-symbol discovery, Semgrep for reusable language-aware patterns, and Tree-sitter for custom AST/dataflow extraction where pattern rules stop being honest. These deterministic scanners produce evidence and query/writer candidates; the agent interprets them. An LLM-only repo scan is never the writer/query census. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:181:mapping-artifact-and-safe-expression-stack-the-signed",
+      "content_sha256": "820134685900be24eea593e7fa80e0e12706d0d9773cfe938f95c5fee7a1d2aa",
+      "display": "181",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 238,
+      "title": "Mapping artifact and safe-expression stack: the signed mapping spec is versioned canonical JSON validated by JSON Schema plus a custom Go compiler that enforces totality and corridor rules. Bounded scalar predicates/coercions use a restricted `cel-expr/cel-go` environment — precompiled, typed, side-effect-free, no clock/random/network/filesystem/database functions. Structural normalization uses Jumpship-owned typed operations (`copy`, `coerce`, `explode_array`, `create_child`, `resolve_reference`, `quarantine`, explicit `drop`), not arbitrary JavaScript/Python. Exact decimal arithmetic uses `cockroachdb/apd`; money never passes through binary float. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:182:shared-transform-plan-the-compiler-lowers-the-mapping",
+      "content_sha256": "9684c864ec2706a653b725d3d82cecef07182ecb888b53f9191410c14bdef4a7",
+      "display": "182",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 239,
+      "title": "Shared transform plan: the compiler lowers the mapping spec into one versioned typed execution plan consumed by the batch cursor and change-event driver. The plan and compiled CEL programs are immutable/thread-safe and content-addressed; golden-corpus CI proves batch/CDC byte-equivalence. Jumpship owns this compiler and transform library — it is core product IP, not delegated to DMS, an ETL vendor, or generated per-record code. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:183:target-load-stack-use-jackc-pgx-v5-through",
+      "content_sha256": "721d63fb3296936cc34064347dc87b9e8b4678eb3b4a80ae8a222b717018ca6f",
+      "display": "183",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 240,
+      "title": "Target/load stack: use `jackc/pgx/v5` through the Supabase direct endpoint, with streaming binary `COPY` (`CopyFromSource`) and bounded per-table concurrency from the platform probe. Protocol is bare tables → COPY in FK-topological order → indexes → `ANALYZE` → constraints `NOT VALID` → triage → `VALIDATE`. Pooler transaction mode is forbidden for migration load and replication; `pgx` prepared-statement behavior is explicitly controlled where a pooler is unavoidable. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:184:identity-map-minimization-preserve-mongo-id-derive-deterministic",
+      "content_sha256": "3bf884b169d2ae882037f716b46ba2c1e1cced49b748fee4bc8acd7778cfaef1",
+      "display": "184",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 241,
+      "title": "Identity-map minimization: preserve `mongo_id`, derive deterministic target identities (UUIDv5-class namespace derivation), and derive child keys from `(parent_mongo_id, structural_path, array_index)` so most migrations require no lookup map. Where a real source→target map remains, use CockroachDB Pebble on encrypted EBS — a production-proven embedded LSM KV with checkpoints/snapshots — never an in-memory map or a network cache. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:185:rehearsal-adapter-use-supabase-branching-through-its-management",
+      "content_sha256": "ad058b335c66114480605fcf51a57596ba6fc4137b1605eec2f23be9b7a1ea18",
+      "display": "185",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 242,
+      "title": "Rehearsal adapter: use Supabase Branching through its Management API when the project/plan permits; create an isolated branch, wait for health, retrieve scoped credentials, load it explicitly (branches are data-less unless configured otherwise), verify, then delete. Fallback order is disposable Supabase project → customer-authorized disposable Postgres on the actual target platform → worker-local Postgres for early transform testing only. Local Postgres never substitutes for final platform-physics rehearsal. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:186:native-mongo-cdc-build-a-narrow-go-tailer",
+      "content_sha256": "7be8dd932f579b6257f500c0b2e77049ecee29e410430d4f8ef0eb59c105d5c4",
+      "display": "186",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 243,
+      "title": "Native Mongo CDC: build a narrow Go tailer over official MongoDB change streams with resume/start tokens, `StartAtOperationTime` for T₀ overlap, `FullDocument: UpdateLookup`, pre/post-images where supported, bounded batches, filters, and durable checkpoints. No Kafka/Redpanda/NATS/SQS is inserted into the baseline cell: active stages use bounded Go channels and cell Postgres stores durable checkpoints/events/dead letters. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:187:cdc-delivery-semantics-derive-immutable-event-id-sha",
+      "content_sha256": "2d32b5f2e2928715cdf1ab400cc91d2105a0c72ac3430ad3cd6f5b8fc1638ac0",
+      "display": "187",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 244,
+      "title": "CDC delivery semantics: derive immutable `event_id = SHA-256(resume_token)`; execute the shared transform; then, in one target transaction, insert `event_id` into `jumpship_applied_events` and apply the state-based upsert/delete. Only after target commit does the source checkpoint advance. A crash between commit and checkpoint causes redelivery and a target-ledger no-op — an honest at-least-once transport with exactly-once effect, not a fictional cross-database transaction. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:188:generic-cdc-platforms-rejected-for-the-baseline-debezium",
+      "content_sha256": "e84c1bd14ad5d7ff1c50cefebe28c60dab05a1133fd6d10d60469dc768953ae9",
+      "display": "188",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 245,
+      "title": "Generic CDC platforms rejected for the baseline: Debezium adds Kafka Connect + broker + offsets while still leaving Jumpship to build transform/apply/verification and still inherits oplog-history loss; AWS DMS samples schema, flattens documents, restricts mixed types/evolution, and conflicts with full-census/total-spec guarantees; Airbyte/Estuary add another state machine without removing Jumpship's difficult work. They may become adapter references or later corridor accelerators, never the certificate-producing Atlas→Supabase engine. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:189:quarantine-persistence-authoritative-quarantine-lives-in-typed-postgres",
+      "content_sha256": "6b447aa1e95bdc778c9f21afdcacf57bcf04e2e470e430fbd3c08a626ee2786c",
+      "display": "189",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 246,
+      "title": "Quarantine persistence: authoritative quarantine lives in typed Postgres tables with `mongo_id`, source artifact reference, spec/rule versions, reason code/detail, cluster signature, timestamps, resolution state, and ledger decision. Go creates deterministic signatures; DuckDB may explore/cluster large Parquet exports but cannot mark resolution. Silent drop and vendor dead-letter opacity remain impossible. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:190:verification-data-stack-source-and-target-values-lower",
+      "content_sha256": "4feb31baeb1bcadf1d0d9ccf65a67957247a71b2bc82373effc726ad5ef0bfe6",
+      "display": "190",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 247,
+      "title": "Verification data stack: source and target values lower into a Jumpship-defined typed canonical representation encoded as canonical CBOR (`fxamacker/cbor`) with explicit BSON tags and missing-vs-null semantics; customer-visible record/field/manifests use SHA-256. Apache Arrow/Parquet stores sorted manifest partitions; DuckDB performs disk-backed external sort/join/aggregation across manifests and rehearsal baselines without loading them into RAM. Non-cryptographic hashes may partition work but never support the integrity certificate. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:191:verification-signature-the-final-manifest-root-and-verdict",
+      "content_sha256": "8882f6835461b428a6d16f74404e12f05cc8a9ce37bb496fd34da44242415921",
+      "display": "191",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 248,
+      "title": "Verification signature: the final manifest/root and verdict are signed with a dedicated asymmetric AWS KMS signing key whose policy is separate from customer-data encryption keys. Encryption CMKs are not mislabeled as signing keys. Signature input includes corridor/tool/spec versions, T₀, manifest roots, verification-layer outcomes, and rehearsal-baseline identity. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:192:query-semantic-runner-a-jumpship-go-runner-executes",
+      "content_sha256": "9056b0b1cce3e5bda56a17352c21ac406f035d8bf7fe6513e8d32899b5afd91f",
+      "display": "192",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 249,
+      "title": "Query-semantic runner: a Jumpship Go runner executes the captured Mongo query against the worker replica and its approved SQL translation against rehearsal/target via `pgx`, canonicalizes results, and compares values, cardinality, ordering, pagination, and error semantics. `EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON)` supplies target physics; k6 may exercise smoke/throughput scenarios. The agent diagnoses deterministic diffs, not eyeballed samples. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:193:reverse-sync-stack-where-rollback-tier-requires-it",
+      "content_sha256": "e27f0a43d246c2ad864b14856a8d059e36c198d9740fbd1bc48f0e0aca4b94c1",
+      "display": "193",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 250,
+      "title": "Reverse-sync stack: where rollback tier requires it and Supabase capabilities permit, use a direct connection, PostgreSQL `pgoutput`, a scoped publication/replication slot, `jackc/pglogrepl`, the compiled reverse transform, and the official MongoDB driver under a separate time-bound source-write credential. Monitor LSN/slot WAL retention continuously and remove slot/publication at window close. Fallback is a target transactional-outbox trigger polled by `pgx`; if neither is authorized/supported, live reverse sync is not promised. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:194:observability-implementation-opentelemetry-go-instruments-every-engine-tool",
+      "content_sha256": "88e3e13429f2029825072ca99b7c1ed3cf6cefdf0845e610a0a4472bcbd90ed4",
+      "display": "194",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 251,
+      "title": "Observability implementation: OpenTelemetry Go instruments every engine/tool phase and exports through an in-cell OTel Collector to cell-scoped CloudWatch (and authorized customer observability). Required metrics include snapshot bytes/progress, census rate, load throughput/checkpoint age, CDC lag/oplog headroom/dead letters, apply latency, quarantine count, verification mismatches, and reverse-slot WAL bytes. Raw documents and field values are redacted from logs/traces by construction. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:195:reliability-test-stack-testcontainers-for-go-runs-pinned",
+      "content_sha256": "7ad033ad2d79a127c912631cf8449c1d52a9b9e2afea946e5d60f9f4fbef3e32",
+      "display": "195",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 252,
+      "title": "Reliability test stack: Testcontainers for Go runs pinned real MongoDB/Postgres/MinIO/Toxiproxy dependencies; Toxiproxy injects latency, disconnect, timeout, bandwidth, and half-open failures; Go built-in fuzzing plus `pgregory.net/rapid` exercise BSON/canonicalization/spec/CDC/reverse transforms; an external kill harness sends randomized `SIGKILL` during dump, COPY, map writes, apply/checkpoint boundaries, and manifest creation. Final hashes must equal an uninterrupted reference. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:196:supply-chain-stack-every-engine-tool-image-is",
+      "content_sha256": "79d94f763ca84ec9f6fdf62bb3beceb694d35638470b70eabb134fcb93dca651",
+      "display": "196",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 253,
+      "title": "Supply-chain stack: every engine/tool image is pinned by digest, produces a Syft SBOM, is scanned by Grype or Trivy, signed with Cosign, and promoted only after corpus, integration, kill, and corridor conformance gates. Database Tools, DuckDB, Semgrep, and other external binaries are treated as versioned inputs recorded in every engagement manifest. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:197:build-versus-buy-boundary-adopt-established-mechanics-mongodb",
+      "content_sha256": "ce9eef929232e1572f9654dbf3bb8b2ad5eaa97db5906500dc81e9a5a55f1555",
+      "display": "197",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 254,
+      "title": "Build-versus-buy boundary: adopt established mechanics (MongoDB backup tools/driver, Atlas API, AWS SDK, pgx/pglogrepl, CEL, Pebble, Arrow/Parquet, DuckDB, ripgrep/Semgrep/Tree-sitter, OTel, Testcontainers/Toxiproxy); build the source/target contracts, snapshot selector, full census, mapping compiler, structural transforms, batch/CDC equivalence, quarantine, idempotent apply, canonical verification, reverse transform, query verifier, gates, profiles, and signed certificate. Jumpship's IP begins where generic byte movement stops. [infra]"
+    },
+    {
+      "anchor_id": "numbered-list:198:explicit-baseline-non-choices-no-spark-flink-kafka",
+      "content_sha256": "83b48ae59fa769ebf298d04a6377d1dc45bf5505c9e64806ee3f54826f2389b6",
+      "display": "198",
+      "kind": "numbered-list",
+      "occurrence": 1,
+      "occurrence_count": 1,
+      "source_line": 255,
+      "title": "Explicit baseline non-choices: no Spark/Flink, Kafka/Redpanda, Kubernetes, Lambda data path, Python record hot path, arbitrary scripting transform, arbitrary agent SQL/MCP, network cache as durable state, in-memory ID map, Supabase transaction pooler for load/replication, or managed migration product as integrity authority. Each can be reopened only by a measured corridor requirement that survives the guarantee and cell-boundary tests. [infra]"
+    },
+    {
+      "anchor_id": "addendum:addendum-agent-architecture-and-source-target-generality-july-11-2026",
+      "content_sha256": "104ac7fd6f1027594e1da5125b3a96cd50a450620ee999ff1c815d1ac3d43a3a",
+      "heading_level": 2,
+      "heading_path": [
+        "addendum-agent-architecture-and-source-target-generality-july-11-2026"
+      ],
+      "kind": "addendum",
+      "source_line": 175,
+      "title": "Addendum — agent architecture & source/target generality (July 11, 2026)"
+    },
+    {
+      "anchor_id": "addendum:addendum-mothership-jumpship-backend-and-migration-cells-july-11-2026-corrected",
+      "content_sha256": "a35447b4cc3e0e995fee220fc51bb1c55bcc1e11ee7bd78d8911ff629e354b00",
+      "heading_level": 2,
+      "heading_path": [
+        "addendum-mothership-jumpship-backend-and-migration-cells-july-11-2026-corrected"
+      ],
+      "kind": "addendum",
+      "source_line": 196,
+      "title": "Addendum — mothership, Jumpship backend, and migration cells (July 11 2026, corrected)"
+    },
+    {
+      "anchor_id": "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above",
+      "content_sha256": "8150e3ea613e0d35754e1bb4a13649339952e79a07404ffd835c55ff06e7c8b9",
+      "heading_level": 2,
+      "heading_path": [
+        "ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above"
+      ],
+      "kind": "addendum",
+      "source_line": 259,
+      "title": "UI Paradigm — Chat-First Session (July 10 2026 revision; supersedes all pushed-report surfaces above)"
+    },
+    {
+      "anchor_id": "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--the-six-primitives",
+      "content_sha256": "c84e31eec0fdb35558778dd7afca8976ac817b855530f48b329ffe5c76aceb42",
+      "heading_level": 3,
+      "heading_path": [
+        "ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above",
+        "the-six-primitives"
+      ],
+      "kind": "addendum",
+      "source_line": 267,
+      "title": "The six primitives"
+    },
+    {
+      "anchor_id": "addendum:ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above--per-phase-re-mapping-of-former-report-artifact-surfaces",
+      "content_sha256": "ab74c4731492f474cca95cd1068129af59ed29df906c132edcbc3508ef096251",
+      "heading_level": 3,
+      "heading_path": [
+        "ui-paradigm-chat-first-session-july-10-2026-revision-supersedes-all-pushed-report-surfaces-above",
+        "per-phase-re-mapping-of-former-report-artifact-surfaces"
+      ],
+      "kind": "addendum",
+      "source_line": 276,
+      "title": "Per-phase re-mapping of former report/artifact surfaces"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+      "content_sha256": "598174850f2c2db74353d8e1f24526eb1097f6f6cf5b4c97832b6a85cdec396f",
+      "heading_level": 2,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane"
+      ],
+      "kind": "addendum",
+      "source_line": 304,
+      "title": "Techstack — Jumpship backend on the AWS customer-migration data plane"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--ownership-map",
+      "content_sha256": "111103ae78472d4f1a0042f8c8cc70ec00eb70fee6311b3b6ba88ebd6ed85c24",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "ownership-map"
+      ],
+      "kind": "addendum",
+      "source_line": 315,
+      "title": "Ownership map"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--why-aws-and-not-hetzner-class-bare-metal",
+      "content_sha256": "6c055e7576aca631ace83e95efe2d8ecf8828097b1609ad8c45ab7d0e9e89c0d",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "why-aws-and-not-hetzner-class-bare-metal"
+      ],
+      "kind": "addendum",
+      "source_line": 327,
+      "title": "Why AWS (and not Hetzner-class bare metal)"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--the-nine-services",
+      "content_sha256": "55d5ee22eda4b0fe7ed098893b4398bbc02a76a0aed9416440969b1a21765d3a",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "the-nine-services"
+      ],
+      "kind": "addendum",
+      "source_line": 351,
+      "title": "The nine services"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--phase-services-map",
+      "content_sha256": "c9870c4d1ce2c35072b4104677e6a22a1c5761be1ce229a0542ef1b0e756ac6e",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "phase-services-map"
+      ],
+      "kind": "addendum",
+      "source_line": 365,
+      "title": "Phase → services map"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deliberate-non-choices",
+      "content_sha256": "9b62a6bcb41615092af1d06e5cf306dcae33b430ba578175ece273c385739119",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deliberate-non-choices"
+      ],
+      "kind": "addendum",
+      "source_line": 380,
+      "title": "Deliberate non-choices"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--cost-shape-cartful-scale-2-tb-6-weeks",
+      "content_sha256": "af488ed897b62a90a4d699f1412b622a531e451ca5c004437fa9d23b6d12a5a4",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "cost-shape-cartful-scale-2-tb-6-weeks"
+      ],
+      "kind": "addendum",
+      "source_line": 391,
+      "title": "Cost shape (Cartful-scale: 2 TB, ~6 weeks)"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--where-the-agent-lives-july-11-2026-agent-placement-session",
+      "content_sha256": "8e301de7b70ef24d9052a7ca1be3d6f619eb0a0d72530475e4d8925d9c3e4910",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "where-the-agent-lives-july-11-2026-agent-placement-session"
+      ],
+      "kind": "addendum",
+      "source_line": 398,
+      "title": "Where the agent lives (July 11 2026, agent-placement session)"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling",
+      "content_sha256": "cd2bcd2b20accdcfdeb34ab781a64fc732998f0a2ceb585f2bcbf4dd1b9beca9",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling"
+      ],
+      "kind": "addendum",
+      "source_line": 436,
+      "title": "Agent techstack and per-migration context (July 12 2026 ruling)"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--selected-now",
+      "content_sha256": "1a364f8a8d1487748612cb3e7bf80e6f95b396a419b9233e7e72a74d67e1d902",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "selected-now"
+      ],
+      "kind": "addendum",
+      "source_line": 438,
+      "title": "Selected now"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--what-memory-means-here",
+      "content_sha256": "0a5bee5fe3c6a89a895f0e02075c9aa8d5b19b62113705a8d72cd3f3a8230867",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "what-memory-means-here"
+      ],
+      "kind": "addendum",
+      "source_line": 455,
+      "title": "What “memory” means here"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--minimal-cell-memory-schema",
+      "content_sha256": "51e4cf1fcd64258fe92f02e26d5ca1ca0dd50dab480922f5aee9f49ec16567a0",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "minimal-cell-memory-schema"
+      ],
+      "kind": "addendum",
+      "source_line": 474,
+      "title": "Minimal cell-memory schema"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--context-compiler-contract",
+      "content_sha256": "728e4a83a1eadfa20041f2d04c1904d8941a775dfeb1b4118df93407b2aebc07",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "context-compiler-contract"
+      ],
+      "kind": "addendum",
+      "source_line": 493,
+      "title": "Context compiler contract"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--recovery-sequence",
+      "content_sha256": "7cc7c2e828b909fc6a2328d39b69a3435fad186c1c40399466b7daa7cd0d47c5",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "recovery-sequence"
+      ],
+      "kind": "addendum",
+      "source_line": 524,
+      "title": "Recovery sequence"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--tiger-data-agentic-postgres-verdict",
+      "content_sha256": "278cacebb48ba303b09ba44d2ddec8bcb12d0414ab838ce3555a33a30ac3d55a",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "tiger-data-agentic-postgres-verdict"
+      ],
+      "kind": "addendum",
+      "source_line": 538,
+      "title": "Tiger Data / Agentic Postgres verdict"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--agentcore-verdict",
+      "content_sha256": "9893650bf5f0ebe034581293bcaa6b16e37bc140bad2375dead0a74fc4ab52cd",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "agentcore-verdict"
+      ],
+      "kind": "addendum",
+      "source_line": 548,
+      "title": "AgentCore verdict"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--cost-latency-controls-that-are-architectural-not-model-specific",
+      "content_sha256": "7a58a48ee37d2fd604818398ff1414daa51b675078a9be6b043bc04ba9146dfc",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "cost-latency-controls-that-are-architectural-not-model-specific"
+      ],
+      "kind": "addendum",
+      "source_line": 556,
+      "title": "Cost/latency controls that are architectural, not model-specific"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--agent-techstack-and-per-migration-context-july-12-2026-ruling--research-anchors",
+      "content_sha256": "2601255ab0ee3e400944ff596dd777faeec80e4c0a674b27de858f1d577ac479",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "agent-techstack-and-per-migration-context-july-12-2026-ruling",
+        "research-anchors"
+      ],
+      "kind": "addendum",
+      "source_line": 570,
+      "title": "Research anchors"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling",
+      "content_sha256": "d97270c9451da5fbdf67e479ae9cf66d77d24b7782779c3a829f0068333630e1",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling"
+      ],
+      "kind": "addendum",
+      "source_line": 579,
+      "title": "Deterministic migration-engine techstack (July 12 2026 ruling)"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--stack-at-a-glance",
+      "content_sha256": "3179464ab83b5e53d1a9ab38bc2029f1173150db13637e17a797f0906a43bbad",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "stack-at-a-glance"
+      ],
+      "kind": "addendum",
+      "source_line": 587,
+      "title": "Stack at a glance"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--1-snapshot-and-golden-copy-acquisition",
+      "content_sha256": "42f9b4098c353bfbd3074199db171c4bbee7e4a5c452bf996aca10b1d4145c2b",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "1-snapshot-and-golden-copy-acquisition"
+      ],
+      "kind": "addendum",
+      "source_line": 614,
+      "title": "1. Snapshot and golden-copy acquisition"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--2-worker-restore-census-and-profiling",
+      "content_sha256": "9f7100ae5bfdbeeffcdc80c10a5ba8e2a8d866d99b4257d2a81fc5dcabf62f8a",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "2-worker-restore-census-and-profiling"
+      ],
+      "kind": "addendum",
+      "source_line": 650,
+      "title": "2. Worker restore, census, and profiling"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--3-repository-and-workload-archaeology",
+      "content_sha256": "7722e1f8206c0a60d256cf26c20d4bc0120f266e0821201ab5a3f538c085f856",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "3-repository-and-workload-archaeology"
+      ],
+      "kind": "addendum",
+      "source_line": 667,
+      "title": "3. Repository and workload archaeology"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--4-mapping-artifact-and-compiler",
+      "content_sha256": "fa25cd96e70274277d590b182d61784df09f67bd3aa6e65552e98f21a8859a2b",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "4-mapping-artifact-and-compiler"
+      ],
+      "kind": "addendum",
+      "source_line": 684,
+      "title": "4. Mapping artifact and compiler"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--5-target-preparation-and-bulk-load",
+      "content_sha256": "a0b26aac71dc36a1f726208d52ad10b3cfaf65b6841e162ba3976cc57861d6cb",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "5-target-preparation-and-bulk-load"
+      ],
+      "kind": "addendum",
+      "source_line": 719,
+      "title": "5. Target preparation and bulk load"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--6-rehearsal-environments",
+      "content_sha256": "57edd69c1a6660435bdda8d69b03550c7813587c8fad0c6377845ce7dd5a428e",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "6-rehearsal-environments"
+      ],
+      "kind": "addendum",
+      "source_line": 748,
+      "title": "6. Rehearsal environments"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--7-mongodb-cdc-tailer-and-apply",
+      "content_sha256": "b2bdf86cc7b1cf149c7d9fa5c65f8972565138ac2bd697cadfc1b764bbf64d50",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "7-mongodb-cdc-tailer-and-apply"
+      ],
+      "kind": "addendum",
+      "source_line": 766,
+      "title": "7. MongoDB CDC tailer and apply"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--8-quarantine",
+      "content_sha256": "5a6e6eda590d9a0d388ce592c68e0115e1c15ae6b1f703e70f266a72a3403851",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "8-quarantine"
+      ],
+      "kind": "addendum",
+      "source_line": 792,
+      "title": "8. Quarantine"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--9-verification-and-signed-integrity-proof",
+      "content_sha256": "6663b25164f1d4aac3c8566c13671a5bfbc42c15db58df0799fe84bc292a5e86",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "9-verification-and-signed-integrity-proof"
+      ],
+      "kind": "addendum",
+      "source_line": 800,
+      "title": "9. Verification and signed integrity proof"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--10-reverse-sync-and-rollback-window",
+      "content_sha256": "583ede901f75cd3e92f2332a16bfd9afeb6e0a257cfbd5c74be230b821fe117f",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "10-reverse-sync-and-rollback-window"
+      ],
+      "kind": "addendum",
+      "source_line": 830,
+      "title": "10. Reverse sync and rollback window"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--11-observability-and-operations",
+      "content_sha256": "bc364f91d2c24da30a0a7eaa7bb5e8dab1c68866688cf9142a603cce3a351b4b",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "11-observability-and-operations"
+      ],
+      "kind": "addendum",
+      "source_line": 850,
+      "title": "11. Observability and operations"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--12-testing-chaos-and-release-gates",
+      "content_sha256": "fcec2a72833037b8d87bd452631eb7adb4a164200a1b50c57a1604bdd2a7f10f",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "12-testing-chaos-and-release-gates"
+      ],
+      "kind": "addendum",
+      "source_line": 867,
+      "title": "12. Testing, chaos, and release gates"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--adopt-build-and-reject",
+      "content_sha256": "6e4cd92aefd3c18cb561d0ce568ec0aac97959a5c19d9b7c3ceb720f4f44b70e",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "adopt-build-and-reject"
+      ],
+      "kind": "addendum",
+      "source_line": 890,
+      "title": "Adopt, build, and reject"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--deterministic-migration-engine-techstack-july-12-2026-ruling--migration-engine-research-anchors",
+      "content_sha256": "7496b28fd4f389b3680c3ecee7ab263d18c429f4e5e74eef4425d9ae85d8433a",
+      "heading_level": 4,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "deterministic-migration-engine-techstack-july-12-2026-ruling",
+        "migration-engine-research-anchors"
+      ],
+      "kind": "addendum",
+      "source_line": 907,
+      "title": "Migration-engine research anchors"
+    },
+    {
+      "anchor_id": "addendum:techstack-jumpship-backend-on-the-aws-customer-migration-data-plane--boundary-note",
+      "content_sha256": "5f39819251b1636293974594205affb6d451bd21b73a8a041baaae8d98e21555",
+      "heading_level": 3,
+      "heading_path": [
+        "techstack-jumpship-backend-on-the-aws-customer-migration-data-plane",
+        "boundary-note"
+      ],
+      "kind": "addendum",
+      "source_line": 924,
+      "title": "Boundary note"
+    }
+  ],
+  "logical_source_version": "jumpship-mvp-source-v1-2026-07-17",
+  "planning_inputs": [
+    {
+      "path": "01-repository-and-documentation-plan.md",
+      "sha256": "b2aa3afd61eeed426aa0f2deca06012f4ae904febf8ad1ddb526e247278ae369"
+    },
+    {
+      "path": "acceptance-rubric.md",
+      "sha256": "264507353593c157f83a435d93546f352f4f31b6adf627c6e21016a01855cff4"
+    },
+    {
+      "path": "agent-task-packets.md",
+      "sha256": "a760327cb3a142b3ac3deb0e0804d62248dfeca4a50d8d0a33f059e93f588a4f"
+    },
+    {
+      "path": "architecture-decisions-and-contracts.md",
+      "sha256": "1f0be1807349e2602b78b49a6ccfcdfbe407d4e3d094429c2c6334c84b684847"
+    },
+    {
+      "path": "capability-traceability-matrix.md",
+      "sha256": "d664860cc932aa8135395dc8a68e015b3e684c292a86fb9c69e33d8236383aba"
+    },
+    {
+      "path": "plan.md",
+      "sha256": "f165d6d33274cbaefdc68848c2d3b2a1df9dfcc8104e9abba24490a418821b5c"
+    },
+    {
+      "path": "research.md",
+      "sha256": "794be17180da5caed11e8a77650369a8b1599337db146526be6fd04163765eb4"
+    },
+    {
+      "path": "security-threat-model-and-data-boundaries.md",
+      "sha256": "b6a1de774ef7679daa00b79af8a161310eb675ade6b856b536904ef75e6b6445"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "source": {
+    "path": "featurelist-and-techstack/00-baseline-cartful-atlas-to-supabase-cdc.md",
+    "sha256": "89008f738028f4f0e6721c268682e02b4a79119c7a77c6c2168aaf3becfce49d"
+  },
+  "source_plan_sha256": "e05e983565007d751e08a950e9d533645e08191b034bb2540287021e2adf95f3"
+}

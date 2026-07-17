@@ -1,0 +1,249 @@
+{
+  "$id": "https://jumpship.dev/schemas/capabilities/mvp.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "requirement",
+          "requirement_detail",
+          "source_anchors",
+          "authority_anchors",
+          "owners",
+          "plans",
+          "rubric_ids",
+          "tests",
+          "evidence",
+          "status"
+        ],
+        "properties": {
+          "applicability": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["predicate", "fallback", "fallback_test"],
+            "properties": {
+              "fallback": { "type": "string", "minLength": 1 },
+              "fallback_test": { "type": "string", "minLength": 1 },
+              "predicate": { "type": "string", "minLength": 1 }
+            }
+          },
+          "authority_anchors": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^(?:plan:[a-z0-9][a-z0-9-]*:[a-z0-9][a-z0-9-]*|adr:ADR-[0-9]{3})$"
+            }
+          },
+          "deferral": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["applicability_class", "public_selectable", "reason", "result"],
+            "properties": {
+              "applicability_class": { "type": "string", "const": "explicitly_deferred" },
+              "public_selectable": { "type": "boolean", "const": false },
+              "reason": { "type": "string", "const": "not_implemented_in_mvp" },
+              "result": { "type": "string", "const": "not_applicable" }
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "governance": { "type": "string", "enum": ["reviewed-candidate-only"] },
+          "id": {
+            "type": "string",
+            "enum": [
+              "MVP-CAP-ACCESS-MANIFEST",
+              "MVP-CAP-AGENT-INCAPABILITY-DISCLOSURE",
+              "MVP-CAP-AGENT-RUNTIME",
+              "MVP-CAP-APPLICATION-PR-DELIVERY",
+              "MVP-CAP-ARCH-TRUST-DOMAINS",
+              "MVP-CAP-ARCHAEOLOGY",
+              "MVP-CAP-ATTEMPT-TIMELINE",
+              "MVP-CAP-AUTOMATION-SURFACE",
+              "MVP-CAP-AWS-CELL",
+              "MVP-CAP-BILLING-RATCHET",
+              "MVP-CAP-CDC-APPLY",
+              "MVP-CAP-CENSUS",
+              "MVP-CAP-CONNECT-CHANNELS",
+              "MVP-CAP-CONNECT-DETECTION",
+              "MVP-CAP-CONNECT-GITHUB",
+              "MVP-CAP-CONNECT-MONGODB",
+              "MVP-CAP-CONNECT-POSTGRES-TARGET",
+              "MVP-CAP-CONNECT-STAGED",
+              "MVP-CAP-CONSENT-STEPUP",
+              "MVP-CAP-CORRIDOR-CONTRACT",
+              "MVP-CAP-CREDENTIAL-CUSTODY",
+              "MVP-CAP-CROSS-MIGRATION-LEARNING",
+              "MVP-CAP-CUTOVER-CHOREOGRAPHY",
+              "MVP-CAP-CUTOVER-RUNBOOK",
+              "MVP-CAP-DECISION-PROVENANCE",
+              "MVP-CAP-DECOMMISSION",
+              "MVP-CAP-DESIGN-BRIEF",
+              "MVP-CAP-DOSSIER",
+              "MVP-CAP-DRIFT-SENTINEL",
+              "MVP-CAP-DUAL-WRITE",
+              "MVP-CAP-ENGINE-STACK",
+              "MVP-CAP-EXTERNAL-PR-REVIEW",
+              "MVP-CAP-FANOUT-COST",
+              "MVP-CAP-FOUNDATION-DECISIONS",
+              "MVP-CAP-GATED-APPROVAL",
+              "MVP-CAP-GOLDEN-PROOF",
+              "MVP-CAP-HANDOVER-WARRANTY",
+              "MVP-CAP-IDENTITY-LOGIN",
+              "MVP-CAP-IDMAP-RESUME",
+              "MVP-CAP-INCIDENT-BRIEF",
+              "MVP-CAP-INTERROGATION",
+              "MVP-CAP-MAPPING-TOTALITY",
+              "MVP-CAP-NONCHOICES",
+              "MVP-CAP-NORMALIZATION",
+              "MVP-CAP-PLACEMENT-SOLVER",
+              "MVP-CAP-POSTCUTOVER-WATCH",
+              "MVP-CAP-PRIME-DIRECTIVE",
+              "MVP-CAP-QUARANTINE",
+              "MVP-CAP-READINESS",
+              "MVP-CAP-RECOMMENDED-DEFAULT",
+              "MVP-CAP-RECONCILIATION",
+              "MVP-CAP-REHEARSAL",
+              "MVP-CAP-REVERSE-ROLLBACK",
+              "MVP-CAP-REVERSIBILITY",
+              "MVP-CAP-SEALED-ANALYSIS-RUNNER",
+              "MVP-CAP-SEMANTIC-TRANSLATION",
+              "MVP-CAP-SESSION-SHELL",
+              "MVP-CAP-SIGNED-INTEGRITY",
+              "MVP-CAP-SNAPSHOT-LADDER",
+              "MVP-CAP-STAGED-LOAD",
+              "MVP-CAP-SYNC-HEALTH",
+              "MVP-CAP-TARGET-PROBE",
+              "MVP-CAP-TOKEN-LOSS",
+              "MVP-CAP-TRANSFORM-PARITY",
+              "MVP-CAP-VERIFICATION-RUBRIC",
+              "MVP-CAP-VERIFY-LAYERS",
+              "MVP-CAP-WORKSPACE-RBAC",
+              "MVP-CAP-WRITER-AUTHORITY-FENCING",
+              "MVP-CAP-WRITER-CENSUS"
+            ]
+          },
+          "owners": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "plans": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^(?:0[1-9]|05a|05b|security)$" }
+          },
+          "requirement": {
+            "type": "string",
+            "enum": ["required", "conditional", "explicitly-deferred"]
+          },
+          "requirement_detail": { "type": "string", "minLength": 1 },
+          "rubric_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^JSMVP-R[0-9]{3}$" }
+          },
+          "source_anchors": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^(?:numbered-list:[0-9]+[a-z]?:[a-z0-9]+(?:-[a-z0-9]+)*|addendum:[a-z0-9][a-z0-9-]*[a-z0-9])$"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "contracted", "implemented", "qualified", "waived", "retired"]
+          },
+          "tests": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "title": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "incapabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "effect",
+          "reason",
+          "remediation",
+          "remediation_source",
+          "capability_ids",
+          "source_anchors",
+          "negative_test_refs"
+        ],
+        "properties": {
+          "capability_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^MVP-CAP-[A-Z0-9][A-Z0-9-]+$" }
+          },
+          "effect": { "type": "string", "minLength": 1 },
+          "id": { "type": "string", "pattern": "^MVP-INCAP-[A-Z0-9][A-Z0-9-]+$" },
+          "negative_test_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "reason": { "type": "string", "minLength": 1 },
+          "remediation": { "type": "string", "minLength": 1 },
+          "remediation_source": {
+            "type": "string",
+            "enum": ["customer", "named_approver", "jumpship_backend", "release_owner", "not_available_in_mvp"]
+          },
+          "source_anchors": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "logical_source_version": { "type": "string", "minLength": 1 },
+    "registry_version": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "source_manifest_path": { "type": "string", "const": "contracts/capabilities/mvp-source-anchors.yaml" },
+    "source_manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "source_plan_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  },
+  "required": [
+    "$schema",
+    "schema_version",
+    "registry_version",
+    "logical_source_version",
+    "source_manifest_path",
+    "source_manifest_sha256",
+    "source_plan_sha256",
+    "capabilities",
+    "incapabilities"
+  ],
+  "title": "Jumpship stable MVP capability registry",
+  "type": "object"
+}

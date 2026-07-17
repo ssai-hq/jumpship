@@ -1,0 +1,16 @@
+{
+  "adr_index_sha256": "d6e996905dd0429340ee200774be1ee7d5026851e2e97f200dd1352bc28ed4bc",
+  "anchor_algorithm": "jumpship-capability-anchors-v1",
+  "capability_count": 69,
+  "incapability_count": 10,
+  "license_sha256": "ec754bc72c6efa41f19c252c7839c22ad2f5f714daba62a015db5a62ec1da431",
+  "logical_source_version": "jumpship-mvp-source-v1-2026-07-17",
+  "numbered_anchor_count": 213,
+  "addendum_anchor_count": 40,
+  "registry_schema_sha256": "e668acd8c76190c59782d8f3145975dad867063be28048e9374558cd3ad0b0db",
+  "registry_sha256": "2ee442183304a538b47ee3da7e76d587e3f792538ff46eec2187ebec7a5a61bc",
+  "source_manifest_schema_sha256": "b5ef7c11146579ea157c136e81e245066cb1afebdf59a0fcc22ea74fc3d95550",
+  "source_manifest_sha256": "f40fa3e49a9bff54b5d0db5904d0695ff333b77e06e382bbfa226a859b56f72b",
+  "source_plan_sha256": "e05e983565007d751e08a950e9d533645e08191b034bb2540287021e2adf95f3",
+  "source_sha256": "89008f738028f4f0e6721c268682e02b4a79119c7a77c6c2168aaf3becfce49d"
+}

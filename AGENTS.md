@@ -1,6 +1,6 @@
 # Jumpship Repository Instructions
 
-Jumpship is the current SSAI product: a production SaaS and isolated migration system for the closed MongoDB-to-managed-PostgreSQL MVP corridor, supporting MongoDB Atlas or compatible self-managed MongoDB sources and Supabase Postgres or PlanetScale Postgres targets. It is not a CLI-only migration engine, and the public repository is not the architecture authority.
+Jumpship is the current SSAI product: a production SaaS and isolated migration system for the closed MongoDB-to-managed-PostgreSQL MVP corridor, supporting MongoDB Atlas or compatible self-managed MongoDB sources and Supabase Postgres or PlanetScale Postgres targets. It is not limited to a command-line migration engine, and the public repository is not the architecture authority.
 
 ## Source precedence
 
@@ -64,4 +64,4 @@ Before cell teardown, deterministically consolidate the durable customer-facing 
 
 ## Current status
 
-The repository is pre-scaffold and pre-first-migration. Do not infer that planned directories or capabilities have shipped. The next work is M0 repository truth/capability reconciliation followed by the M1 monorepo, contract, local-development, and CI spine.
+The repository is pre-scaffold and pre-first-migration. P00's repository truth, ADR register, security boundary, stable capability registry, and exact source-anchor manifest are present and mechanically checked. A `planned` registry record is not shipped behavior. The next authorized implementation is P01's monorepo, contract, local-development, and CI spine; do not infer that later planned directories or capabilities exist.

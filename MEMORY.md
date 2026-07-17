@@ -2,6 +2,14 @@
 
 Running log of durable decisions and build state. Newest first. Keep entries dated; prune when superseded.
 
+## 2026-07-17 — P00 architecture and capability baseline implemented
+
+- The public repository now carries all 34 frozen ADRs, public architecture/security summaries, and the accepted Apache-2.0 license record.
+- `contracts/capabilities/mvp.yaml` contains the closed 69-record MVP capability namespace plus stable customer-visible incapability IDs and the explicit automatic-dual-write deferral.
+- `contracts/capabilities/mvp-source-anchors.yaml` binds logical source `jumpship-mvp-source-v1-2026-07-17`, the frozen source SHA-256, and every numbered occurrence and binding addendum content hash.
+- The direct public checker has zero uncovered, orphaned, untestable, or ambiguous-anchor findings. The separate private-source checker compares a mounted source and can emit only a review candidate.
+- P01 remains the next implementation packet. It owns the root dispatcher/toolchain scaffold and must delegate capability checking to P00's accepted entrypoint without changing normalized behavior.
+
 ## 2026-07-17 — P00 seed and license decision frozen
 
 - The existing root-document edits are the official P00 seed and must be continued rather than discarded or independently recreated.
@@ -13,7 +21,7 @@ Running log of durable decisions and build state. Newest first. Keep entries dat
 
 ## 2026-07-15 — Public repository reconciled to the production MVP packet
 
-- The canonical internal source of truth is now `mdhq/*MIGRATIONPIVOT/jumpship-docs/mvp-implementation/`, which supersedes incompatible CLI-only and six-day-sprint guidance.
+- The canonical internal source of truth is now `mdhq/*MIGRATIONPIVOT/jumpship-docs/mvp-implementation/`, which supersedes incompatible command-line-only and six-day-sprint guidance.
 - Jumpship's MVP is a chat-first multi-tenant SaaS for the closed MongoDB-to-managed-PostgreSQL corridor, with exactly two high-friction consent kinds: cutover and decommission.
 - The runtime is a modular monolith with hard trust boundaries: Vercel web, ECS control API/coordinator, narrow Mothership, and one isolated temporary AWS migration cell per migration.
 - Shared control-plane RDS is permanent product authority. Agent/engine execution state and raw customer material remain cell-local. Customer source and target databases remain externally owned; only temporary encrypted migration copies enter Jumpship custody.

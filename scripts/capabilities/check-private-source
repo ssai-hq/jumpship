@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""Compare a separately mounted private living source to the accepted public manifest."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+sys.dont_write_bytecode = True
+
+from capability_lib import build_source_manifest, load_json_yaml, write_canonical_json
+
+
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_MANIFEST = ROOT / "contracts/capabilities/mvp-source-anchors.yaml"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", required=True, type=Path)
+    parser.add_argument("--source-manifest", default=DEFAULT_MANIFEST, type=Path)
+    parser.add_argument("--candidate", type=Path)
+    args = parser.parse_args()
+    source = args.source.expanduser()
+    if not source.is_absolute():
+        parser.error("--source must be an absolute mounted-private-source path")
+    manifest_path = args.source_manifest
+    if not manifest_path.is_absolute():
+        manifest_path = ROOT / manifest_path
+    accepted = load_json_yaml(manifest_path)
+    candidate = build_source_manifest(source, accepted)
+
+    accepted_pairs = {
+        entry["anchor_id"]: entry["content_sha256"] for entry in accepted["anchors"]
+    }
+    candidate_pairs = {
+        entry["anchor_id"]: entry["content_sha256"] for entry in candidate["anchors"]
+    }
+    source_equal = candidate["source"]["sha256"] == accepted["source"]["sha256"]
+    anchors_equal = candidate_pairs == accepted_pairs
+    if source_equal and anchors_equal:
+        print(
+            "private source check: PASS "
+            f"source_sha256={candidate['source']['sha256']} anchors={len(candidate_pairs)}"
+        )
+        return 0
+
+    missing = sorted(set(accepted_pairs) - set(candidate_pairs))
+    added = sorted(set(candidate_pairs) - set(accepted_pairs))
+    changed = sorted(
+        anchor for anchor in set(accepted_pairs) & set(candidate_pairs)
+        if accepted_pairs[anchor] != candidate_pairs[anchor]
+    )
+    print(
+        "private source check: FAIL "
+        f"source_hash_equal={str(source_equal).lower()} "
+        f"missing={len(missing)} added={len(added)} changed={len(changed)}",
+        file=sys.stderr,
+    )
+    if missing:
+        print(f"missing anchors: {missing}", file=sys.stderr)
+    if added:
+        print(f"added anchors: {added}", file=sys.stderr)
+    if changed:
+        print(f"changed anchors: {changed}", file=sys.stderr)
+    if args.candidate is not None:
+        candidate_path = args.candidate.expanduser().resolve()
+        if candidate_path == manifest_path.resolve():
+            parser.error("--candidate must not overwrite the accepted source manifest")
+        try:
+            candidate_relative = candidate_path.relative_to(ROOT)
+        except ValueError:
+            candidate_relative = None
+        if candidate_relative is not None:
+            allowed_root = (ROOT / "build/capability-candidates").resolve()
+            try:
+                candidate_path.relative_to(allowed_root)
+            except ValueError:
+                parser.error(
+                    "repository-local --candidate output is allowed only under "
+                    "build/capability-candidates/"
+                )
+        write_canonical_json(candidate_path, candidate)
+        print(f"review candidate written: {candidate_path}", file=sys.stderr)
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

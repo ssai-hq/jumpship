@@ -69,17 +69,31 @@ Raw customer records, unredacted prompts, CDC payloads, quarantine bodies, and a
 - OpenTofu infrastructure with GitHub OIDC; no long-lived AWS deployment keys.
 - OpenTelemetry to AWS-supported observability paths. A specialized trace/search backend is added only after measured volume or query evidence justifies it.
 
+## Capability traceability
+
+The accepted MVP source is represented publicly by two machine inputs:
+
+- [`contracts/capabilities/mvp.yaml`](./contracts/capabilities/mvp.yaml) is the closed stable-ID registry, including applicability, ownership, tests, evidence locations, and customer-visible agent incapabilities.
+- [`contracts/capabilities/mvp-source-anchors.yaml`](./contracts/capabilities/mvp-source-anchors.yaml) binds the frozen living-source version and SHA-256 plus every numbered occurrence and binding addendum section by content hash.
+
+Run the clean-clone check directly until P01 adds the root dispatcher:
+
+```sh
+./scripts/capabilities/check --registry --source-manifest contracts/capabilities/mvp-source-anchors.yaml
+```
+
+The optional private-source comparison is an integration-review command. It is not a public build, CI, or runtime dependency.
+
 ## Status
 
-Early and pre-first-migration. The repository currently contains guidance files only; the production scaffold and contracts have not yet been implemented.
+Early and pre-first-migration. P00 has established the public architecture, security, ADR, and stable capability baseline. Runtime packages, databases, cloud resources, and the production scaffold have not yet been implemented.
 
 The first implementation sequence is:
 
-1. Reconcile repository truth, stable capability IDs, ADR index, and the accepted Apache-2.0 license decision.
-2. Add the monorepo scaffold, version locks, local dependencies, and CI spine.
-3. Add versioned contract schemas and generated-code drift checks.
-4. Add control-plane and cell database baselines with RLS, grants, and isolation tests.
-5. Prove a mock web -> API/outbox -> fake cell -> typed event -> web vertical slice.
+1. Add the monorepo scaffold, version locks, local dependencies, and CI spine.
+2. Add versioned runtime contract schemas and generated-code drift checks.
+3. Add control-plane and cell database baselines with RLS, grants, and isolation tests.
+4. Prove a mock web -> API/outbox -> fake cell -> typed event -> web vertical slice.
 
 ## Source of truth
 
@@ -91,6 +105,6 @@ For internal development, the controlled implementation source of truth is:
 
 Start with its `README.md` and `plan.md`, then use the focused plan and agent task packet for the work being implemented. Repository-wide implementation instructions live in [`AGENTS.md`](./AGENTS.md). Earlier Jumpship research, case-study flows, and repository history provide lineage only where they do not conflict with the current packet.
 
-This repository is public. Never commit customer names, records, source code, credentials, connection strings, migration transcripts, prompts, traces containing customer material, or raw evidence.
+This repository is public. Never commit customer-identifying names, records, source code, credentials, connection strings, migration transcripts, prompts, traces containing customer material, or raw evidence.
 
 Jumpship source code is licensed under the [Apache License 2.0](./LICENSE).
