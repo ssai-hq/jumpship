@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""Validate public packet/command metadata, Make safety, and generated catalogs."""
+
+from __future__ import annotations
+
+import argparse
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+from packet_contract import (
+    ContractError,
+    MAKE_SAFETY_TOKEN,
+    MANIFEST_PATH,
+    SELECTOR_KEYS,
+    SELECTOR_RE,
+    build_catalog,
+    build_runtime_inventory,
+    canonical_json,
+    render_help,
+    scan_packet_make_safety,
+    verify_catalog,
+    write_atomic_output,
+    write_exclusive_output,
+)
+
+
+def repository_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def dispatch(root: Path, manifest: dict, dispatcher: str) -> int:
+    print(
+        "packet contracts: local hook dispatch only; this does not establish packet acceptance or readiness",
+        flush=True,
+    )
+    target = next(
+        (item for item in manifest["commands"]["targets"] if item["name"] == dispatcher), None
+    )
+    if target is None or target["kind"] not in {"aggregate", "composite", "dispatcher"}:
+        raise ContractError(f"{dispatcher!r} is not a declared aggregate/composite dispatcher")
+
+    selected = [(key, os.environ[key]) for key in SELECTOR_KEYS if os.environ.get(key)]
+    if len(selected) > 1:
+        rendered = ", ".join(f"{key}={value}" for key, value in selected)
+        raise ContractError(f"exactly one selector key may be set, got {rendered}")
+    require_complete = os.environ.get("REQUIRE_COMPLETE", "0")
+    if require_complete not in {"0", "1"}:
+        raise ContractError("REQUIRE_COMPLETE must be 0 or 1")
+
+    all_hooks = [
+        item
+        for item in manifest["commands"]["internal_targets"]
+        if item.get("dispatcher") == dispatcher
+    ]
+    candidates = all_hooks
+    if selected:
+        key, value = selected[0]
+        if not SELECTOR_RE.fullmatch(value):
+            raise ContractError(f"unsafe selector value {key}={value!r}")
+        selector = next(
+            (
+                item
+                for item in manifest["commands"]["selectors"]
+                if item["target"] == dispatcher and item["key"] == key and item["value"] == value
+            ),
+            None,
+        )
+        if selector is None:
+            allowed = sorted(
+                f"{item['key']}={item['value']}"
+                for item in manifest["commands"]["selectors"]
+                if item["target"] == dispatcher
+            )
+            raise ContractError(
+                f"unknown selector {dispatcher} {key}={value}; allowed={allowed}"
+            )
+        if selector["hook_refs"]:
+            references = set(selector["hook_refs"])
+            candidates = [item for item in all_hooks if item["target"] in references]
+        else:
+            candidates = [
+                item
+                for item in all_hooks
+                if item["selector_key"] == key and item["selector"] == value
+            ]
+        if not candidates:
+            raise ContractError(f"selector {dispatcher} {key}={value} has no registered hook")
+
+    unavailable = [item for item in candidates if item["lifecycle"] != "active"]
+    if require_complete == "1" and unavailable:
+        detail = ", ".join(f"{item['target']}={item['lifecycle']}" for item in unavailable)
+        raise ContractError(
+            f"{dispatcher} local hook coverage is incomplete: {detail}; REQUIRE_COMPLETE=1 "
+            "does not establish packet acceptance or readiness"
+        )
+    if selected and unavailable:
+        detail = ", ".join(f"{item['target']}={item['lifecycle']}" for item in unavailable)
+        raise ContractError(f"selected coverage is not active: {detail}")
+
+    for item in unavailable:
+        print(f"{dispatcher}: skip {item['target']} ({item['lifecycle']})")
+    active = [item for item in candidates if item["lifecycle"] == "active"]
+    if not active:
+        print(f"{dispatcher}: no eligible active hooks")
+        return 0
+
+    environment = os.environ.copy()
+    for key in (*SELECTOR_KEYS, "REQUIRE_COMPLETE"):
+        environment.pop(key, None)
+    for item in active:
+        print(f"{dispatcher}: run {item['target']} ({item['owner']})", flush=True)
+        completed = subprocess.run(
+            ["make", "--no-print-directory", item["target"]], cwd=root, env=environment, check=False
+        )
+        if completed.returncode:
+            return completed.returncode
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "mode", choices=("make-safety", "commands", "graph", "generate", "generated", "help", "inventory", "dispatch")
+    )
+    parser.add_argument("dispatcher", nargs="?", help="dispatcher name for dispatch mode")
+    parser.add_argument("--output", type=Path, help="exclusive repo-contained output for inventory mode")
+    parser.add_argument("--repo-root", type=Path, default=repository_root(), help=argparse.SUPPRESS)
+    arguments = parser.parse_args()
+    if arguments.output is not None and arguments.mode != "inventory":
+        parser.error("--output is valid only with inventory mode")
+    root = arguments.repo_root.resolve()
+    try:
+        if arguments.mode == "make-safety":
+            if arguments.dispatcher:
+                parser.error("make-safety does not accept a dispatcher")
+            scan_packet_make_safety(root)
+            print(MAKE_SAFETY_TOKEN)
+            return 0
+        catalog = build_catalog(root)
+        if arguments.mode == "generate":
+            output = write_atomic_output(root, root / MANIFEST_PATH, canonical_json(catalog))
+            print(f"packet contracts: wrote {output.relative_to(root)}")
+        else:
+            verify_catalog(root, catalog)
+            if arguments.mode != "dispatch" and arguments.dispatcher:
+                parser.error(f"{arguments.mode} does not accept a dispatcher")
+            if arguments.mode == "graph":
+                print("packet contracts: node set, expanded dependencies, joins, and acyclicity OK")
+            elif arguments.mode == "generated":
+                print("packet contracts: static generated catalog is current")
+            else:
+                inventory = build_runtime_inventory(root)
+                if arguments.mode == "help":
+                    sys.stdout.write(render_help(inventory))
+                elif arguments.mode == "inventory":
+                    encoded = canonical_json(inventory)
+                    if arguments.output is None:
+                        sys.stdout.buffer.write(encoded)
+                    else:
+                        output = write_exclusive_output(root, arguments.output, encoded)
+                        print(f"packet contracts: wrote runtime inventory {output.relative_to(root)}")
+                elif arguments.mode == "dispatch":
+                    if not arguments.dispatcher:
+                        parser.error("dispatch requires a dispatcher")
+                    return dispatch(root, inventory, arguments.dispatcher)
+                else:
+                    print(
+                        "packet contracts: commands, selectors, hooks, ownership, and live lifecycle OK "
+                        "(planctl remains scheduling authority)"
+                    )
+    except ContractError as exc:
+        print(f"packet contracts: ERROR: {exc}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

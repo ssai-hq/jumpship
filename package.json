@@ -1,0 +1,19 @@
+{
+  "name": "@ssai-hq/jumpship-workspace",
+  "version": "0.0.0-private",
+  "private": true,
+  "description": "Repository orchestration for the Jumpship modular monolith",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@11.4.0+sha512.8P68fjdVKrSFSUqRQkGzOOCzWAuT1UzjHwCTMBWICGMSkDihtK5OQUoO5jrDW/IRl+mQFyxKaCVkULVjYxCWjw==",
+  "engines": {
+    "node": "24.18.0",
+    "pnpm": "11.4.0"
+  },
+  "scripts": {
+    "build": "pnpm --dir web build",
+    "dev": "pnpm --dir web dev",
+    "lint": "pnpm --recursive --if-present run lint",
+    "test": "pnpm --recursive --if-present run test",
+    "typecheck": "pnpm --recursive --if-present run typecheck"
+  }
+}

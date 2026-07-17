@@ -1,31 +1,55 @@
-# OS / editor
-.DS_Store
-*.swp
-.idea/
-.vscode/
+# Repository-local, checksum-verified toolchain and caches.
+/.tools/
+/.pnpm-store/
+.pnpm-debug.log*
 
-# Go
+# Go outputs and profiles.
+/bin/
 engine/bin/
+vendor/
+build/
+*.coverprofile
 *.test
 *.out
-vendor/
 
-# Node / web
+# JavaScript dependencies and framework output.
 node_modules/
 .next/
+coverage/
 dist/
 *.local
 
-# Env & secrets — never commit credentials
+# Local configuration and credentials. Checked-in examples use .example.
 .env
 .env.*
+!.env.example
+!.env.*.example
 *.pem
 *.key
+*.p12
 
-# Local dev state
-*.sqlite
-*.sqlite3
-deploy/box/data/
-.terraform/
+# Local infrastructure state and crash output.
 *.tfstate
 *.tfstate.*
+.terraform/
+crash.log
+crash.*.log
+deploy/box/data/
+
+# Historical local fixtures may use SQLite, but product code may not.
+*.sqlite
+*.sqlite3
+
+# Editor and operating-system state.
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python bytecode must not be produced by repository checks.
+__pycache__/
+*.py[cod]
+
+# Temporary files.
+*.tmp
+*.bak

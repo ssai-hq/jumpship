@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "python-preflight: error: Python >=3.10 is required; python3 was not found" >&2
+  exit 1
+fi
+
+if ! python3 -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)'; then
+  observed=$(python3 --version 2>&1 || true)
+  echo "python-preflight: error: Python >=3.10 is required; observed ${observed:-unknown}" >&2
+  exit 1
+fi

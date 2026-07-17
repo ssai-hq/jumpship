@@ -1,0 +1,12 @@
+{
+  "forbidden_edge_report": {
+    "count": 0,
+    "violations": []
+  },
+  "schema_version": "1.0.0",
+  "status": "pass",
+  "symlink_report": {
+    "count": 0,
+    "violations": []
+  }
+}

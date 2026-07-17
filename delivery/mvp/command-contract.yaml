@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "jumpship-mvp-command-contract",
+  "selector_keys": ["SUITE", "PHASE", "PLANE", "LAYER"],
+  "target_groups": [
+    {
+      "owner": "P01",
+      "kind": "dispatcher",
+      "targets": {
+        "help": "Print the canonical public command index.",
+        "doctor": "Validate the pinned local developer toolchain.",
+        "bootstrap": "Install the pinned repository-local dependencies.",
+        "docs-check": "Validate durable documentation and generated-file policy.",
+        "capability-check": "Run the accepted public capability registry check.",
+        "command-check": "Validate public commands, selectors, hooks, and ownership.",
+        "packet-graph-check": "Validate the public packet graph and generated manifest.",
+        "architecture-check": "Validate repository import and trust boundaries.",
+        "gen": "Generate deterministic packet metadata and repository documentation.",
+        "gen-check": "Reject stale generated repository outputs.",
+        "fmt": "Check deterministic source formatting.",
+        "lint": "Run repository static analysis.",
+        "verify": "Run the safe read-only repository verification ladder."
+      }
+    },
+    {
+      "owner": "P01",
+      "kind": "aggregate",
+      "targets": {
+        "test-unit": "Run eligible unit-test hooks.",
+        "test-integration": "Run eligible integration-test hooks.",
+        "test-security": "Run eligible security-test hooks.",
+        "test-chaos": "Run eligible chaos-test hooks.",
+        "test-kill": "Run eligible deterministic kill-point hooks.",
+        "test-e2e": "Run eligible end-to-end-test hooks."
+      }
+    },
+    {
+      "owner": "P01",
+      "kind": "composite",
+      "targets": {
+        "db-migration-compat": "Run control and cell migration compatibility layers.",
+        "api-callback-log-canary": "Run auth, connector, and infrastructure callback leak canaries.",
+        "cell-crl-publication-test": "Run persistence and infrastructure CRL publication layers.",
+        "activation-receipt-crash-test": "Run persistence and quality activation-receipt crash layers."
+      }
+    },
+    {
+      "owner": "P02",
+      "kind": "direct",
+      "targets": {
+        "test-contracts": "Run contract and compatibility tests.",
+        "api-gen-check": "Check generated API clients.",
+        "api-contract-test": "Run API contract conformance tests."
+      }
+    },
+    {
+      "owner": "P03",
+      "kind": "direct",
+      "targets": {
+        "dev-up": "Start the representative local stack.",
+        "dev-down": "Stop the local stack while preserving volumes.",
+        "dev-reset": "Explicitly reset confirmed local development state.",
+        "web-dev": "Start the local web development process.",
+        "api-dev": "Start the local API development process."
+      }
+    },
+    {
+      "owner": "P04",
+      "kind": "direct",
+      "targets": {
+        "db-control-fresh": "Create an isolated fresh control database.",
+        "db-control-migrate": "Apply control-plane migrations.",
+        "db-control-rls-test": "Test control-plane row-level security.",
+        "db-control-grants-test": "Test control-plane database grants.",
+        "db-sqlc-check": "Check generated SQL bindings.",
+        "db-application-control-test": "Test application write-authority persistence.",
+        "application-writer-grant-crash-test": "Test writer-grant persistence crash recovery."
+      }
+    },
+    {
+      "owner": "P05",
+      "kind": "direct",
+      "targets": {
+        "db-cell-fresh": "Create an isolated fresh cell database.",
+        "db-cell-migrate": "Apply cell-local migrations.",
+        "db-cell-grants-test": "Test cell-local database grants.",
+        "db-cell-restore-test": "Test cell-local restore behavior.",
+        "db-target-helper-test": "Test target-helper authority boundaries.",
+        "db-reverse-attribution-test": "Test reverse-attribution persistence."
+      }
+    },
+    {
+      "owner": "P06",
+      "kind": "direct",
+      "targets": {
+        "api-auth-test": "Test identity and session behavior.",
+        "api-rbac-test": "Test workspace authorization policy.",
+        "api-client-audience-test": "Test client audience separation."
+      }
+    },
+    {
+      "owner": "P07",
+      "kind": "direct",
+      "targets": {
+        "api-connector-test": "Test connector lifecycle adapters.",
+        "source-writer-fence-test": "Test source writer-fence adapters.",
+        "github-adapter-policy-test": "Test bounded GitHub adapter policy.",
+        "deployment-evidence-provider-test": "Test deployment-evidence provider adapters."
+      }
+    },
+    {
+      "owner": "P08",
+      "kind": "direct",
+      "targets": {
+        "api-unit": "Run control API unit tests.",
+        "api-integration": "Run control API integration tests.",
+        "api-consent-test": "Test consent authority behavior.",
+        "api-sse-replay-test": "Test durable SSE replay.",
+        "api-outbox-idempotency-test": "Test outbox idempotency.",
+        "api-evidence-boundary-test": "Test shared evidence boundaries.",
+        "api-cli-policy-test": "Test CLI and coding-agent policy parity.",
+        "api-application-test": "Test application-change orchestration.",
+        "api-writer-authority-test": "Test application writer authority.",
+        "api-decommission-test": "Test decommission orchestration.",
+        "api-analysis-policy-test": "Test analysis policy boundaries.",
+        "api-bundle-activation-test": "Test bundle activation API policy.",
+        "api-deletion-attestation-test": "Test deletion attestation orchestration.",
+        "api-regional-recovery-test": "Test regional recovery API policy."
+      }
+    },
+    {
+      "owner": "P09",
+      "kind": "direct",
+      "targets": {
+        "tofu-fmt-check": "Check OpenTofu formatting.",
+        "tofu-validate": "Validate OpenTofu roots.",
+        "tofu-policy-test": "Test infrastructure policy.",
+        "aws-org-policy-test": "Test AWS organization policy."
+      }
+    },
+    {
+      "owner": "P10",
+      "kind": "direct",
+      "targets": {
+        "tofu-plan": "Plan an exact deployment profile and root.",
+        "tofu-apply-foundation": "Apply an exact approved foundation plan.",
+        "ephemeral-nonprod-cycle": "Exercise the ephemeral non-production lifecycle.",
+        "deployment-profile-inventory-zero": "Prove a deployment profile inventory is empty.",
+        "deployment-profile-validate": "Validate closed deployment profiles.",
+        "cost-baseline": "Generate a deployment-profile cost baseline.",
+        "deploy-readiness-policy-test": "Test deployment readiness policy.",
+        "deploy-readiness-check": "Check exact deployment readiness inputs.",
+        "restore-drill-control": "Run the control-plane restore drill.",
+        "recovery-foundation-preflight": "Validate recovery foundation inputs.",
+        "ses-recovery-canary": "Run the SES recovery canary.",
+        "recovery-authorization-negative-test": "Test recovery authorization denial.",
+        "provider-evidence-journal-recovery-test": "Test provider evidence journal recovery.",
+        "signer-purpose-negative-test": "Test purpose-bound signer denial.",
+        "cell-ca-signer-negative": "Test cell CA signer denial.",
+        "cell-control-mtls-negative": "Test cell-control mTLS denial.",
+        "application-writer-grant-signer-negative-test": "Test writer-grant signer denial.",
+        "deletion-attestor-negative-test": "Test deletion attestor denial.",
+        "build-images": "Build pinned OCI images.",
+        "image-scan": "Scan built OCI images.",
+        "image-verify-signature": "Verify OCI signatures.",
+        "supply-chain-verify": "Verify supply-chain provenance.",
+        "cosign-identity-policy-test": "Test signing identity policy.",
+        "sbom": "Generate repository software bills of materials.",
+        "aws-kms-deletion-state-test": "Test KMS deletion-state handling.",
+        "aws-object-lock-lifecycle-test": "Test object-lock lifecycle handling."
+      }
+    },
+    {
+      "owner": "P11",
+      "kind": "direct",
+      "targets": {
+        "cell-provision-fixture": "Exercise isolated cell provisioning fixtures.",
+        "cell-restart-fixture": "Exercise isolated cell restart fixtures.",
+        "cell-destroy-fixture": "Exercise isolated cell destruction fixtures.",
+        "cell-ssm-transcript-test": "Test redacted SSM transcript handling.",
+        "cell-security-negative": "Test cell security denials.",
+        "bedrock-boundary-test": "Test cell Bedrock boundary policy."
+      }
+    },
+    {
+      "owner": "P12",
+      "kind": "direct",
+      "targets": {
+        "api-cell-protocol-test": "Test the cell control protocol."
+      }
+    },
+    {
+      "owner": "P13",
+      "kind": "direct",
+      "targets": {
+        "engine-gen-check": "Check generated engine inputs.",
+        "engine-unit": "Run deterministic engine unit tests.",
+        "engine-race": "Run engine race tests.",
+        "engine-integration": "Run engine integration tests.",
+        "engine-fuzz": "Run engine fuzz tests.",
+        "engine-supply-chain": "Verify engine supply-chain inputs.",
+        "engine-inject-policy-test": "Test engine injection policy.",
+        "test-snapshot": "Test deterministic snapshots.",
+        "test-census": "Test complete source census.",
+        "fixture-mongodb-postgres-generate": "Generate deterministic MongoDB-to-PostgreSQL corridor fixtures.",
+        "cell-demo": "Run the safe representative cell demo."
+      }
+    },
+    {
+      "owner": "P14",
+      "kind": "direct",
+      "targets": {
+        "test-archaeology": "Test repository and workload archaeology.",
+        "test-application-estate": "Test application-estate discovery.",
+        "test-platform-probe": "Test platform probes.",
+        "test-placement": "Test target placement decisions."
+      }
+    },
+    {
+      "owner": "P15",
+      "kind": "direct",
+      "targets": {
+        "test-mapping": "Test mapping artifact generation.",
+        "test-transform": "Test deterministic transforms.",
+        "test-application-adaptation": "Test application adaptation specifications.",
+        "test-golden": "Test golden-copy transforms.",
+        "fuzz-mapping": "Fuzz mapping behavior."
+      }
+    },
+    {
+      "owner": "P16",
+      "kind": "direct",
+      "targets": {
+        "test-rehearsal": "Test migration rehearsal.",
+        "test-load": "Test bulk load behavior.",
+        "test-quarantine": "Test quarantine behavior.",
+        "test-target-application-gate": "Test target application gates."
+      }
+    },
+    {
+      "owner": "P17",
+      "kind": "direct",
+      "targets": {
+        "test-cdc": "Test CDC behavior.",
+        "test-reconcile": "Test deterministic reconciliation."
+      }
+    },
+    {
+      "owner": "P18",
+      "kind": "direct",
+      "targets": {
+        "test-verify": "Test corridor verification.",
+        "test-verifier-mutations": "Test verifier mutation detection.",
+        "test-proof": "Test signed integrity proof generation.",
+        "test-report-renderer": "Test restricted report rendering.",
+        "test-deployment-evidence": "Test deployment evidence verification.",
+        "test-merge-equivalence": "Test merge-equivalence verification.",
+        "test-application-semantic-parity": "Test application semantic parity.",
+        "proof-verifier-build": "Build the offline proof verifier.",
+        "proof-verifier-test": "Test the offline proof verifier.",
+        "fixture-mongodb-postgres-verify": "Verify deterministic MongoDB-to-PostgreSQL corridor fixtures."
+      }
+    },
+    {
+      "owner": "P19",
+      "kind": "direct",
+      "targets": {
+        "test-agent-conformance": "Test reference conductor conformance.",
+        "test-agent-recovery": "Test durable agent recovery."
+      }
+    },
+    {
+      "owner": "P20",
+      "kind": "direct",
+      "targets": {
+        "test-agent-context": "Test context-manifest behavior.",
+        "test-analysis-runner": "Test the sealed analysis runner.",
+        "test-analysis-sandbox-escape": "Test analysis sandbox escape denials.",
+        "test-analysis-runner-supply-chain": "Verify analysis-runner supply chain.",
+        "test-application-adaptation-tools": "Test bounded application adaptation tools.",
+        "test-repository-patch-runner": "Test the sealed repository patch runner.",
+        "test-github-pr-review": "Test bounded GitHub PR and review orchestration.",
+        "test-writer-authority": "Test application writer-authority tooling.",
+        "analysis-runner-security-test": "Test analysis-runner security policy."
+      }
+    },
+    {
+      "owner": "P21",
+      "kind": "direct",
+      "targets": {
+        "eval-validate": "Validate evaluation inputs.",
+        "eval-unit": "Run evaluation unit tests.",
+        "eval-sanitize": "Test evaluation sanitization.",
+        "eval-calibrate-graders": "Calibrate deterministic graders.",
+        "eval-compare": "Compare evaluation runs.",
+        "eval-run": "Run a declared evaluation suite.",
+        "eval-aat": "Run agent acceptance tests.",
+        "test-agent-bakeoff": "Run the isolated next-release bakeoff.",
+        "test-agent-security": "Test agent security policy.",
+        "agent-bundle-build": "Build an immutable AgentBundle candidate.",
+        "agent-qualification-record": "Generate an AgentBundle qualification record.",
+        "agent-bundle-qualify": "Qualify an AgentBundle candidate.",
+        "agent-bundle-shadow": "Exercise an isolated shadow activation.",
+        "agent-bundle-canary": "Exercise an isolated canary activation.",
+        "agent-promotion-envelope-verify": "Verify a synthetic promotion envelope.",
+        "agent-bundle-promote": "Promote an isolated fixture bundle.",
+        "agent-bundle-rollback": "Rollback an isolated fixture bundle.",
+        "eval-learning-record-test": "Test reviewed learning records.",
+        "eval-profile-promotion-test": "Test profile learning promotion.",
+        "quality-boundary-negative": "Test quality-plane authority denial.",
+        "provider-data-use-verify": "Verify provider data-use evidence.",
+        "provider-data-use-renewal-test": "Test provider data-use renewal.",
+        "provider-evidence-transition-crash-test": "Test provider evidence transition recovery.",
+        "provider-use-lease-partition-test": "Test provider-use lease partitions.",
+        "bundle-activation-authority-test": "Test bundle activation authority."
+      }
+    },
+    {
+      "owner": "P22",
+      "kind": "direct",
+      "targets": {
+        "web-gen-check": "Check generated web clients.",
+        "web-lint": "Lint the web application.",
+        "web-typecheck": "Type-check the web application.",
+        "web-test-unit": "Run web unit tests.",
+        "web-test-component": "Run web component tests.",
+        "web-test-a11y": "Run web accessibility tests.",
+        "web-test-visual": "Run web visual regression tests.",
+        "web-test-e2e": "Run web end-to-end tests.",
+        "web-test-visual-update": "Explicitly update visual fixtures.",
+        "web-build": "Build the web application.",
+        "web-bundle-budget": "Check the web bundle budget.",
+        "web-security-test": "Test web security boundaries.",
+        "web-release-check": "Check an immutable web deployment."
+      }
+    },
+    {
+      "owner": "P26",
+      "kind": "direct",
+      "targets": {
+        "test-cutover": "Test fenced cutover.",
+        "test-reverse": "Test reverse synchronization.",
+        "test-watch": "Test deterministic post-cutover watch.",
+        "test-application-authority": "Test application write-authority transitions.",
+        "corridor-preflight": "Run corridor preflight.",
+        "corridor-security": "Run corridor security checks.",
+        "corridor-agent-shadow": "Run corridor agent shadow checks.",
+        "corridor-cutover-rehearsal": "Run the cutover rehearsal.",
+        "corridor-browser": "Run corridor browser checks.",
+        "corridor-rollback": "Run confirmed corridor rollback.",
+        "corridor-decommission": "Run confirmed corridor decommission.",
+        "corridor-cleanup": "Run confirmed corridor cleanup.",
+        "corridor-cleanup-verify": "Verify corridor cleanup."
+      }
+    },
+    {
+      "owner": "P27",
+      "kind": "direct",
+      "targets": {
+        "test-corridor": "Run complete corridor qualification.",
+        "security-corridor-qualify": "Qualify corridor security.",
+        "corridor-local": "Run the deterministic local corridor.",
+        "corridor-provider": "Run a provider-backed corridor.",
+        "corridor-chaos": "Run provider-backed corridor chaos qualification.",
+        "corridor-recovery": "Run provider-backed corridor recovery qualification.",
+        "corridor-evidence-verify": "Verify corridor evidence artifacts.",
+        "deploy-staging": "Deploy the immutable staging ReleaseUnit.",
+        "smoke-staging": "Smoke-test the staging ReleaseUnit.",
+        "restore-drill-cell": "Run the cell restore drill.",
+        "aws-regional-control-recovery-drill": "Run the regional recovery drill."
+      }
+    },
+    {
+      "owner": "P28",
+      "kind": "direct",
+      "targets": {
+        "deploy-production": "Deploy the authorized production ReleaseUnit.",
+        "smoke-production": "Smoke-test the production ReleaseUnit.",
+        "release-qualify": "Qualify the exact production release."
+      }
+    }
+  ],
+  "selectors": [
+    {"target": "test-unit", "key": "SUITE", "value": "repository", "owner": "P01", "hook_refs": []},
+    {"target": "test-unit", "key": "SUITE", "value": "local-stack", "owner": "P03", "hook_refs": []},
+    {"target": "test-unit", "key": "SUITE", "value": "identity", "owner": "P06", "hook_refs": []},
+    {"target": "test-unit", "key": "SUITE", "value": "control-api", "owner": "P08", "hook_refs": []},
+    {"target": "test-unit", "key": "SUITE", "value": "harness", "owner": "P20", "hook_refs": []},
+    {"target": "test-unit", "key": "SUITE", "value": "mothership", "owner": "P11", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "identity", "owner": "P06", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "control-api", "owner": "P08", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "mothership-cell", "owner": "P12", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "cell-mtls", "owner": "P12", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "writer-grant-delivery", "owner": "P12", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "harness-postgres", "owner": "P19", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "tool-broker", "owner": "P01", "hook_refs": ["_p12_test-integration_LAYER-supervisor", "_p20_test-integration_LAYER-runtime"]},
+    {"target": "test-integration", "key": "SUITE", "value": "bedrock-adapter", "owner": "P20", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "analysis-runner", "owner": "P20", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "repository-patch-runner", "owner": "P20", "hook_refs": []},
+    {"target": "test-integration", "key": "SUITE", "value": "github-pr-review", "owner": "P20", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "local-stack", "owner": "P03", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "identity", "owner": "P06", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "connectors", "owner": "P07", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "control-api", "owner": "P08", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "cell-supervisor", "owner": "P12", "hook_refs": []},
+    {"target": "test-security", "key": "SUITE", "value": "agent-runtime", "owner": "P20", "hook_refs": []},
+    {"target": "test-chaos", "key": "PHASE", "value": "cdc", "owner": "P17", "hook_refs": []},
+    {"target": "test-chaos", "key": "PHASE", "value": "cutover", "owner": "P26", "hook_refs": []},
+    {"target": "test-kill", "key": "PHASE", "value": "load", "owner": "P16", "hook_refs": []},
+    {"target": "test-kill", "key": "SUITE", "value": "harness", "owner": "P19", "hook_refs": []},
+    {"target": "test-kill", "key": "SUITE", "value": "application-effects", "owner": "P19", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "session", "owner": "P24", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "application-change-set", "owner": "P24", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "gates-watch", "owner": "P25", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "writer-cohorts", "owner": "P25", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "release", "owner": "P27", "hook_refs": []},
+    {"target": "test-e2e", "key": "SUITE", "value": "auth-connect-foundation", "owner": "P23", "hook_refs": []},
+    {"target": "cell-demo", "key": "PHASE", "value": "snapshot-census", "owner": "P13", "hook_refs": []},
+    {"target": "eval-run", "key": "SUITE", "value": "mvp", "owner": "P21", "hook_refs": []},
+    {"target": "test-corridor", "key": "SUITE", "value": "application-delivery", "owner": "P27", "hook_refs": []},
+    {"target": "db-migration-compat", "key": "PLANE", "value": "control", "owner": "P04", "hook_refs": []},
+    {"target": "db-migration-compat", "key": "PLANE", "value": "cell", "owner": "P05", "hook_refs": []},
+    {"target": "api-callback-log-canary", "key": "LAYER", "value": "auth", "owner": "P06", "hook_refs": []},
+    {"target": "api-callback-log-canary", "key": "LAYER", "value": "connector", "owner": "P07", "hook_refs": []},
+    {"target": "api-callback-log-canary", "key": "LAYER", "value": "infra", "owner": "P10", "hook_refs": []},
+    {"target": "cell-crl-publication-test", "key": "LAYER", "value": "persistence", "owner": "P04", "hook_refs": []},
+    {"target": "cell-crl-publication-test", "key": "LAYER", "value": "infra", "owner": "P10", "hook_refs": []},
+    {"target": "activation-receipt-crash-test", "key": "LAYER", "value": "persistence", "owner": "P04", "hook_refs": []},
+    {"target": "activation-receipt-crash-test", "key": "LAYER", "value": "quality", "owner": "P21", "hook_refs": []}
+  ],
+  "hooks": [
+    {"target": "_p01_test-unit_SUITE-repository", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "repository", "owner": "P01", "depends_on": ["P00"], "lifecycle": "planned"},
+    {"target": "_p03_test-unit_SUITE-local-stack", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "local-stack", "owner": "P03", "depends_on": ["P01", "P02"], "lifecycle": "planned"},
+    {"target": "_p06_test-unit_SUITE-identity", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "identity", "owner": "P06", "depends_on": ["P02", "P04"], "lifecycle": "planned"},
+    {"target": "_p08_test-unit_SUITE-control-api", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "control-api", "owner": "P08", "depends_on": ["P02", "P04", "P06", "P07"], "lifecycle": "planned"},
+    {"target": "_p20_test-unit_SUITE-harness", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "harness", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p11_test-unit_SUITE-mothership", "dispatcher": "test-unit", "selector_key": "SUITE", "selector": "mothership", "owner": "P11", "depends_on": ["P02", "P09"], "lifecycle": "planned"},
+    {"target": "_p06_test-integration_SUITE-identity", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "identity", "owner": "P06", "depends_on": ["P02", "P04"], "lifecycle": "planned"},
+    {"target": "_p08_test-integration_SUITE-control-api", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "control-api", "owner": "P08", "depends_on": ["P02", "P04", "P06", "P07"], "lifecycle": "planned"},
+    {"target": "_p12_test-integration_SUITE-mothership-cell", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "mothership-cell", "owner": "P12", "depends_on": ["P02", "P05", "P08", "P11"], "lifecycle": "planned"},
+    {"target": "_p12_test-integration_SUITE-cell-mtls", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "cell-mtls", "owner": "P12", "depends_on": ["P02", "P05", "P08", "P11"], "lifecycle": "planned"},
+    {"target": "_p12_test-integration_SUITE-writer-grant-delivery", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "writer-grant-delivery", "owner": "P12", "depends_on": ["P02", "P05", "P08", "P11"], "lifecycle": "planned"},
+    {"target": "_p12_test-integration_LAYER-supervisor", "dispatcher": "test-integration", "selector_key": "LAYER", "selector": "supervisor", "owner": "P12", "depends_on": ["P02", "P05", "P08", "P11"], "lifecycle": "planned"},
+    {"target": "_p20_test-integration_LAYER-runtime", "dispatcher": "test-integration", "selector_key": "LAYER", "selector": "runtime", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p20_test-integration_SUITE-bedrock-adapter", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "bedrock-adapter", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p19_test-integration_SUITE-harness-postgres", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "harness-postgres", "owner": "P19", "depends_on": ["P02", "P05", "P08", "P12"], "lifecycle": "planned"},
+    {"target": "_p20_test-integration_SUITE-analysis-runner", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "analysis-runner", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p20_test-integration_SUITE-repository-patch-runner", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "repository-patch-runner", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p20_test-integration_SUITE-github-pr-review", "dispatcher": "test-integration", "selector_key": "SUITE", "selector": "github-pr-review", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p03_test-security_SUITE-local-stack", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "local-stack", "owner": "P03", "depends_on": ["P01", "P02"], "lifecycle": "planned"},
+    {"target": "_p06_test-security_SUITE-identity", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "identity", "owner": "P06", "depends_on": ["P02", "P04"], "lifecycle": "planned"},
+    {"target": "_p07_test-security_SUITE-connectors", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "connectors", "owner": "P07", "depends_on": ["P02", "P04", "P06"], "lifecycle": "planned"},
+    {"target": "_p08_test-security_SUITE-control-api", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "control-api", "owner": "P08", "depends_on": ["P02", "P04", "P06", "P07"], "lifecycle": "planned"},
+    {"target": "_p12_test-security_SUITE-cell-supervisor", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "cell-supervisor", "owner": "P12", "depends_on": ["P02", "P05", "P08", "P11"], "lifecycle": "planned"},
+    {"target": "_p20_test-security_SUITE-agent-runtime", "dispatcher": "test-security", "selector_key": "SUITE", "selector": "agent-runtime", "owner": "P20", "depends_on": ["P12", "P14", "P19"], "lifecycle": "planned"},
+    {"target": "_p17_test-chaos_PHASE-cdc", "dispatcher": "test-chaos", "selector_key": "PHASE", "selector": "cdc", "owner": "P17", "depends_on": ["P13", "P15", "P16"], "lifecycle": "planned"},
+    {"target": "_p26_test-chaos_PHASE-cutover", "dispatcher": "test-chaos", "selector_key": "PHASE", "selector": "cutover", "owner": "P26", "depends_on": ["P08", "P14", "P15", "P16", "P17", "P18", "P19", "P20", "P21"], "lifecycle": "planned"},
+    {"target": "_p16_test-kill_PHASE-load", "dispatcher": "test-kill", "selector_key": "PHASE", "selector": "load", "owner": "P16", "depends_on": ["P05", "P12", "P15"], "lifecycle": "planned"},
+    {"target": "_p19_test-kill_SUITE-harness", "dispatcher": "test-kill", "selector_key": "SUITE", "selector": "harness", "owner": "P19", "depends_on": ["P02", "P05", "P08", "P12"], "lifecycle": "planned"},
+    {"target": "_p19_test-kill_SUITE-application-effects", "dispatcher": "test-kill", "selector_key": "SUITE", "selector": "application-effects", "owner": "P19", "depends_on": ["P02", "P05", "P08", "P12"], "lifecycle": "planned"},
+    {"target": "_p24_test-e2e_SUITE-session", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "session", "owner": "P24", "depends_on": ["P08", "P22", "P23"], "lifecycle": "planned"},
+    {"target": "_p24_test-e2e_SUITE-application-change-set", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "application-change-set", "owner": "P24", "depends_on": ["P08", "P22", "P23"], "lifecycle": "planned"},
+    {"target": "_p25_test-e2e_SUITE-gates-watch", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "gates-watch", "owner": "P25", "depends_on": ["P06", "P08", "P14", "P17", "P18", "P22", "P23", "P24"], "lifecycle": "planned"},
+    {"target": "_p25_test-e2e_SUITE-writer-cohorts", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "writer-cohorts", "owner": "P25", "depends_on": ["P06", "P08", "P14", "P17", "P18", "P22", "P23", "P24"], "lifecycle": "planned"},
+    {"target": "_p27_test-e2e_SUITE-release", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "release", "owner": "P27", "depends_on": ["P10", "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20", "P21", "P22", "P23", "P24", "P25", "P26", "J13", "J19"], "lifecycle": "planned"},
+    {"target": "_p23_test-e2e_SUITE-auth-connect-foundation", "dispatcher": "test-e2e", "selector_key": "SUITE", "selector": "auth-connect-foundation", "owner": "P23", "depends_on": ["P06", "P07", "P08", "P14", "P22"], "lifecycle": "planned"},
+    {"target": "_p04_db-migration-compat_PLANE-control", "dispatcher": "db-migration-compat", "selector_key": "PLANE", "selector": "control", "owner": "P04", "depends_on": ["P02", "P03"], "lifecycle": "planned"},
+    {"target": "_p05_db-migration-compat_PLANE-cell", "dispatcher": "db-migration-compat", "selector_key": "PLANE", "selector": "cell", "owner": "P05", "depends_on": ["P02", "P03"], "lifecycle": "planned"},
+    {"target": "_p06_api-callback-log-canary_LAYER-auth", "dispatcher": "api-callback-log-canary", "selector_key": "LAYER", "selector": "auth", "owner": "P06", "depends_on": ["P02", "P04"], "lifecycle": "planned"},
+    {"target": "_p07_api-callback-log-canary_LAYER-connector", "dispatcher": "api-callback-log-canary", "selector_key": "LAYER", "selector": "connector", "owner": "P07", "depends_on": ["P02", "P04", "P06"], "lifecycle": "planned"},
+    {"target": "_p10_api-callback-log-canary_LAYER-infra", "dispatcher": "api-callback-log-canary", "selector_key": "LAYER", "selector": "infra", "owner": "P10", "depends_on": ["P03", "P04", "P09"], "lifecycle": "planned"},
+    {"target": "_p04_cell-crl-publication-test_LAYER-persistence", "dispatcher": "cell-crl-publication-test", "selector_key": "LAYER", "selector": "persistence", "owner": "P04", "depends_on": ["P02", "P03"], "lifecycle": "planned"},
+    {"target": "_p10_cell-crl-publication-test_LAYER-infra", "dispatcher": "cell-crl-publication-test", "selector_key": "LAYER", "selector": "infra", "owner": "P10", "depends_on": ["P03", "P04", "P09"], "lifecycle": "planned"},
+    {"target": "_p04_activation-receipt-crash-test_LAYER-persistence", "dispatcher": "activation-receipt-crash-test", "selector_key": "LAYER", "selector": "persistence", "owner": "P04", "depends_on": ["P02", "P03"], "lifecycle": "planned"},
+    {"target": "_p21_activation-receipt-crash-test_LAYER-quality", "dispatcher": "activation-receipt-crash-test", "selector_key": "LAYER", "selector": "quality", "owner": "P21", "depends_on": ["P10", "P13", "P14", "P15", "P16", "P17", "P18", "J19"], "lifecycle": "planned"}
+  ],
+  "adapters": [
+    {"target": "_p00_capability-check", "public_target": "capability-check", "owner": "P00"}
+  ]
+}

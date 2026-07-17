@@ -1,0 +1,73 @@
+# Jumpship CODEOWNERS bootstrap
+#
+# @Avinier is the current repository-contract, architecture, security, data,
+# runtime, product, and release owner recorded by the accepted planning
+# baseline. Under the plan's solo-founder allowance, that one identity fills
+# both CODEOWNERS reviewer classes for repository-contract paths. This is an
+# ownership map, not an independent approval: protected-environment and
+# independent-release approvals remain separate gates.
+
+* @Avinier
+
+/contracts/ @Avinier
+/db/ @Avinier
+/cmd/control-api/ @Avinier
+/cmd/coordinator/ @Avinier
+/cmd/engine/ @Avinier
+/internal/engine/ @Avinier
+/internal/corridors/mongodb_postgres/ @Avinier
+/test/golden/ @Avinier
+/test/integration/engine/ @Avinier
+/test/chaos/engine/ @Avinier
+/test/fixtures/mongodb-postgres/ @Avinier
+
+/contracts/application/ @Avinier
+/internal/applications/ @Avinier
+/internal/harness/tools/ @Avinier
+/internal/harness/analysis/ @Avinier
+/agent/prompts/ @Avinier
+/agent/skills/ @Avinier
+
+/cmd/cell-agent/ @Avinier
+/cmd/analysis-runner/ @Avinier
+/cmd/agent-quality/ @Avinier
+/cmd/agent-eval/ @Avinier
+/internal/harness/ @Avinier
+/agent/ @Avinier
+/evals/ @Avinier
+
+/cmd/mothership/ @Avinier
+/cmd/cell-supervisor/ @Avinier
+/internal/mothership/ @Avinier
+/infra/ @Avinier
+/cmd/bundle-activator/ @Avinier
+/cmd/deletion-attestor/ @Avinier
+/cmd/jumpship/ @Avinier
+/internal/client/ @Avinier
+/integrations/codex/ @Avinier
+/cmd/jumpship-proof/ @Avinier
+/internal/evidence/proof/ @Avinier
+
+/web/ @Avinier
+/DESIGN.md @Avinier
+/internal/identity/ @Avinier
+/internal/connectors/ @Avinier
+/web/src/lib/security/ @Avinier
+/SECURITY.md @Avinier
+
+/release/ @Avinier
+/policy/ @Avinier
+/infra/security-signers/ @Avinier
+/.github/workflows/signer-*.yml @Avinier
+/.github/workflows/deploy-*.yml @Avinier
+/.github/workflows/recovery-*.yml @Avinier
+/.github/workflows/release-qualify.yml @Avinier
+
+/Makefile @Avinier
+/mk/ @Avinier
+/delivery/mvp/ @Avinier
+/scripts/packets/ @Avinier
+/scripts/architecture/ @Avinier
+/scripts/docs/ @Avinier
+/docs/adr/ @Avinier
+/AGENTS.md @Avinier

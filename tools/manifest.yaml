@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "manifest_id": "jumpship-toolchain-2026-07-17",
+  "policy": {
+    "install_root": "build/tools",
+    "network_install_scope": "repository-local-only",
+    "global_installs_allowed": false,
+    "mutable_installers_allowed": false,
+    "supported_platforms": [
+      "darwin-amd64",
+      "darwin-arm64",
+      "linux-amd64",
+      "linux-arm64"
+    ]
+  },
+  "runtimes": [
+    {
+      "name": "go",
+      "datasource": "golang-version",
+      "version": "1.26.5",
+      "license": "BSD-3-Clause",
+      "purpose": "Compile, test, and format the modular-monolith Go workspace.",
+      "source": "https://go.dev/dl/",
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://go.dev/dl/go1.26.5.darwin-amd64.tar.gz",
+          "archive": "tar.gz",
+          "root": "go",
+          "sha256": "6231d8d3b8f5552ec6cbf6d685bdd5482e1e703214b120e89b3bf0d7bf1ef725"
+        },
+        "darwin-arm64": {
+          "url": "https://go.dev/dl/go1.26.5.darwin-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "go",
+          "sha256": "efb87ff28af9a188d0536ef5d42e63dd52ba8263cd7344a993cc48dd11dedb6a"
+        },
+        "linux-amd64": {
+          "url": "https://go.dev/dl/go1.26.5.linux-amd64.tar.gz",
+          "archive": "tar.gz",
+          "root": "go",
+          "sha256": "5c2c3b16caefa1d968a94c1daca04a7ca301a496d9b086e17ad77bb81393f053"
+        },
+        "linux-arm64": {
+          "url": "https://go.dev/dl/go1.26.5.linux-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "go",
+          "sha256": "fe4789e92b1f33358680864bbe8704289e7bb5fc207d80623c308935bd696d49"
+        }
+      }
+    },
+    {
+      "name": "node",
+      "datasource": "node-version",
+      "version": "24.18.0",
+      "license": "MIT",
+      "purpose": "Run the one-package pnpm web workspace and contract generators.",
+      "source": "https://nodejs.org/download/release/v24.18.0/",
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-x64.tar.gz",
+          "archive": "tar.gz",
+          "root": "node-v24.18.0-darwin-x64",
+          "sha256": "dfd0dbd3e721503434df7b7205e719f61b3a3a31b2bcf9729b8b91fea240f080"
+        },
+        "darwin-arm64": {
+          "url": "https://nodejs.org/download/release/v24.18.0/node-v24.18.0-darwin-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "node-v24.18.0-darwin-arm64",
+          "sha256": "e1a97e14c99c803e96c7339403282ea05a499c32f8d83defe9ef5ec66f979ed1"
+        },
+        "linux-amd64": {
+          "url": "https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-x64.tar.gz",
+          "archive": "tar.gz",
+          "root": "node-v24.18.0-linux-x64",
+          "sha256": "783130984963db7ba9cbd01089eaf2c2efb055c7c1693c943174b967b3050cb8"
+        },
+        "linux-arm64": {
+          "url": "https://nodejs.org/download/release/v24.18.0/node-v24.18.0-linux-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "node-v24.18.0-linux-arm64",
+          "sha256": "6b4484c2190274175df9aa8f28e2d758a819cb1c1fe6ab481e2f95b463ab8508"
+        }
+      }
+    },
+    {
+      "name": "pnpm",
+      "datasource": "npm",
+      "version": "11.4.0",
+      "license": "MIT",
+      "purpose": "Resolve the sole web workspace into the root lockfile.",
+      "source": "https://registry.npmjs.org/pnpm/-/pnpm-11.4.0.tgz",
+      "bootstrap": true,
+      "artifacts": {
+        "all": {
+          "url": "https://registry.npmjs.org/pnpm/-/pnpm-11.4.0.tgz",
+          "archive": "tar.gz",
+          "root": "package",
+          "sha512": "f0febc7e37552ab485494a914241b338e0b3580b93d54ce31f00933015880863129038a1b4ae4e414a0ee63ac35bf21197e990172c4a68256450b5636310968f"
+        }
+      }
+    },
+    {
+      "name": "postgresql",
+      "datasource": "docker",
+      "version": "17.10",
+      "license": "PostgreSQL",
+      "purpose": "Define the control, cell, and customer-target PostgreSQL compatibility baseline.",
+      "source": "https://www.postgresql.org/docs/release/17.10/",
+      "bootstrap": false,
+      "provisioning_owner": "P03-local-and-P10-platform-image-locks"
+    }
+  ],
+  "tools": [
+    {
+      "name": "opentofu",
+      "command": "tofu",
+      "datasource": "github-releases",
+      "version": "1.11.0",
+      "license": "MPL-2.0",
+      "purpose": "Validate the OpenTofu 1.11-compatible infrastructure contract.",
+      "source": "https://github.com/opentofu/opentofu/releases/tag/v1.11.0",
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://github.com/opentofu/opentofu/releases/download/v1.11.0/tofu_1.11.0_darwin_amd64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "417fdda2f597517d26d4a33aff33133692d62d8cc1a4749a2321b4272ddb19f6"
+        },
+        "darwin-arm64": {
+          "url": "https://github.com/opentofu/opentofu/releases/download/v1.11.0/tofu_1.11.0_darwin_arm64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "0eff533261ec96a829a755dcc778468a4b9059f0b9a4312a684d4f565e9548de"
+        },
+        "linux-amd64": {
+          "url": "https://github.com/opentofu/opentofu/releases/download/v1.11.0/tofu_1.11.0_linux_amd64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "c425c2080e3f204a1fe094356777535a34c4bc9fdbca4eccb74cdd25c1ae8a94"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/opentofu/opentofu/releases/download/v1.11.0/tofu_1.11.0_linux_arm64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "be01f174589a6f95ef3401d6514c32a01c0812fb14bfdd8883868089a6a833a2"
+        }
+      }
+    },
+    {
+      "name": "golangci-lint",
+      "command": "golangci-lint",
+      "datasource": "github-releases",
+      "version": "2.12.2",
+      "license": "GPL-3.0-only",
+      "purpose": "Run the repository's pinned Go static-analysis policy.",
+      "source": "https://github.com/golangci/golangci-lint/releases/tag/v2.12.2",
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-darwin-amd64.tar.gz",
+          "archive": "tar.gz",
+          "root": "golangci-lint-2.12.2-darwin-amd64",
+          "sha256": "f6f06d94b6241521c53d15450c5209b028270bf966f842afb11c030c79f5bc16"
+        },
+        "darwin-arm64": {
+          "url": "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-darwin-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "golangci-lint-2.12.2-darwin-arm64",
+          "sha256": "a9c54498731b3128f79e090be6110f3e5fffccc617b08142ed244d4126c73f29"
+        },
+        "linux-amd64": {
+          "url": "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-amd64.tar.gz",
+          "archive": "tar.gz",
+          "root": "golangci-lint-2.12.2-linux-amd64",
+          "sha256": "8df580d2670fed8fa984aac0507099af8df275e665215f5c7a2ae3943893a553"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-arm64.tar.gz",
+          "archive": "tar.gz",
+          "root": "golangci-lint-2.12.2-linux-arm64",
+          "sha256": "44cd40a8c76c86755375adfeea52cfd3533cb43d7bd647771e0ae065e166df3a"
+        }
+      }
+    },
+    {
+      "name": "goose",
+      "command": "goose",
+      "datasource": "github-releases",
+      "version": "3.27.2",
+      "license": "MIT",
+      "purpose": "Apply handwritten, ordered PostgreSQL migrations.",
+      "source": "https://github.com/pressly/goose/releases/tag/v3.27.2",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "release-checksum-manifest",
+        "url": "https://github.com/pressly/goose/releases/download/v3.27.2/checksums.txt",
+        "sha256": "953ed0067ff20901a8327e18ac42a7722b788389deb098f1cfd5ce7c543eef4d"
+      }
+    },
+    {
+      "name": "sqlc",
+      "command": "sqlc",
+      "datasource": "github-releases",
+      "version": "1.31.1",
+      "license": "MIT",
+      "purpose": "Generate typed PostgreSQL query adapters from reviewed SQL.",
+      "source": "https://github.com/sqlc-dev/sqlc/releases/tag/v1.31.1",
+      "bootstrap": false,
+      "integrity": {
+      "kind": "release-assets",
+      "sha256": "847442bac115cc28859b65e49cf21859c736f0fd352a22614ceeed7fad9132e7",
+      "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_darwin_arm64.zip"
+    },
+    "activation": {
+      "status": "blocked",
+      "reason": "platform-integrity-incomplete",
+      "required_platforms": [
+        "darwin-amd64",
+        "darwin-arm64",
+        "linux-amd64",
+        "linux-arm64"
+      ],
+      "pinned_platforms": [
+        "darwin-arm64"
+      ]
+    }
+    },
+    {
+      "name": "oapi-codegen",
+      "command": "oapi-codegen",
+      "datasource": "go",
+      "version": "2.8.0",
+      "license": "Apache-2.0",
+      "purpose": "Generate Go consumers from the accepted OpenAPI contract.",
+      "source": "https://proxy.golang.org/github.com/oapi-codegen/oapi-codegen/v2/@v/v2.8.0.info",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "go-sum",
+        "url": "https://proxy.golang.org/github.com/oapi-codegen/oapi-codegen/v2/@v/v2.8.0.ziphash",
+        "module": "github.com/oapi-codegen/oapi-codegen/v2@v2.8.0",
+        "sum": "h1:s4hxMxuqtR8jPzXkBTtFwY/SBuj3gEAYikmbBSdtLMM=",
+        "go_mod_sum": "h1:yae2TI9IYB5vxQ35gFrpXh9L5H1eJv4MAUK1jumGMTo=",
+        "origin_sha1": "de2d8b2b0afb287198554eb305bb0d2687d26a85"
+      }
+    },
+    {
+      "name": "buf",
+      "command": "buf",
+      "datasource": "github-releases",
+      "version": "1.71.0",
+      "license": "Apache-2.0",
+      "purpose": "Lint and generate versioned protobuf and ConnectRPC contracts.",
+      "source": "https://github.com/bufbuild/buf/releases/tag/v1.71.0",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "release-checksum-manifest",
+        "url": "https://github.com/bufbuild/buf/releases/download/v1.71.0/sha256.txt",
+        "sha256": "9fa69dd51837106d688687dbe5ab63cbef41cb09ff362284c3e90dcedb126dab"
+      }
+    },
+    {
+      "name": "openapi-typescript",
+      "command": "openapi-typescript",
+      "datasource": "npm",
+      "version": "7.13.0",
+      "license": "MIT",
+      "purpose": "Generate the web TypeScript client from accepted OpenAPI.",
+      "source": "https://registry.npmjs.org/openapi-typescript/-/openapi-typescript-7.13.0.tgz",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "npm-sri",
+        "url": "https://registry.npmjs.org/openapi-typescript/-/openapi-typescript-7.13.0.tgz",
+        "sha512": "1053f7f7681ca974bb9ed3ef6e10736c5f13c8103e6da218126efdd47cb96248c360a4e793f4e7e4e41e2a6e41219bc98a1a69f19cebe21cf1d08add7b52cd19"
+      }
+    },
+    {
+      "name": "syft",
+      "command": "syft",
+      "datasource": "github-releases",
+      "version": "1.48.0",
+      "license": "Apache-2.0",
+      "purpose": "Produce deterministic software-bill-of-material inventories.",
+      "source": "https://github.com/anchore/syft/releases/tag/v1.48.0",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "release-checksum-manifest",
+        "url": "https://github.com/anchore/syft/releases/download/v1.48.0/syft_1.48.0_checksums.txt",
+        "sha256": "0dd856e828c76a9c5a736a0d568a136b64acf0d9720b868547e2217e7bed5d61"
+      }
+    },
+    {
+      "name": "trivy",
+      "command": "trivy",
+      "datasource": "github-releases",
+      "version": "0.72.0",
+      "license": "Apache-2.0",
+      "purpose": "Scan source, lockfiles, images, and SBOMs for known vulnerabilities.",
+      "source": "https://github.com/aquasecurity/trivy/releases/tag/v0.72.0",
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_macOS-64bit.tar.gz",
+          "archive": "tar.gz",
+          "root": ".",
+          "sha256": "ee5e60df8a98e5b89fd74a6d86f9e5c7e9a266a35002cb1e43291698b3bfee08"
+        },
+        "darwin-arm64": {
+          "url": "https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_macOS-ARM64.tar.gz",
+          "archive": "tar.gz",
+          "root": ".",
+          "sha256": "88f208680dc05da2b459e19b4f5aa2b4dc7c2117892ba4aab2ae63baba330016"
+        },
+        "linux-amd64": {
+          "url": "https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_Linux-64bit.tar.gz",
+          "archive": "tar.gz",
+          "root": ".",
+          "sha256": "bbb64b9695866ce4a7a8f5c9592002c5961cab378577fa3f8a040df362b9b2ea"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/aquasecurity/trivy/releases/download/v0.72.0/trivy_0.72.0_Linux-ARM64.tar.gz",
+          "archive": "tar.gz",
+          "root": ".",
+          "sha256": "2ca2c023109c2db6b2b77366b6717291452d4531167377d95c79547f0c8e3467"
+        }
+      }
+    },
+    {
+      "name": "cosign",
+      "command": "cosign",
+      "datasource": "github-releases",
+      "version": "3.1.2",
+      "license": "Apache-2.0",
+      "purpose": "Verify and sign release artifacts through purpose-bound keyless identity policy.",
+      "source": "https://github.com/sigstore/cosign/releases/tag/v3.1.2",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "release-checksum-manifest",
+        "url": "https://github.com/sigstore/cosign/releases/download/v3.1.2/cosign_checksums.txt",
+        "sha256": "3ef5d389c3f508b96025fd1b92744a305c46e95951c91242b57467567d5622db"
+      }
+    },
+    {
+      "name": "semgrep",
+      "command": "semgrep",
+      "datasource": "pypi",
+      "version": "1.170.0",
+      "license": "LGPL-2.1-or-later",
+      "purpose": "Run repository-owned static security rules over source and configuration.",
+      "source": "https://github.com/semgrep/semgrep/releases/tag/v1.170.0",
+      "bootstrap": false,
+      "integrity": {
+        "kind": "pypi-sdist",
+        "url": "https://pypi.org/pypi/semgrep/1.170.0/json",
+        "artifact": "semgrep-1.170.0.tar.gz",
+        "sha256": "525dd0e3d96aa9cb62cd6d75a523a9597e7c00ce9740330b8ec46eab89f366cb"
+      }
+    },
+    {
+      "name": "duckdb",
+      "command": "duckdb",
+      "datasource": "github-releases",
+      "version": "1.5.4",
+      "license": "MIT",
+      "purpose": "Run bounded, local analytical checks over synthetic and sealed evidence extracts.",
+      "source": "https://github.com/duckdb/duckdb/releases/tag/v1.5.4",
+      "bootstrap": false,
+      "integrity": {
+      "kind": "release-asset",
+      "url": "https://github.com/duckdb/duckdb/releases/download/v1.5.4/duckdb_cli-osx-arm64.zip",
+      "sha256": "d6c35195683fd1378e5624b01ca390069d399f8341c38986b7e3dfa0b3470d10"
+    },
+    "activation": {
+      "status": "blocked",
+      "reason": "platform-integrity-incomplete",
+      "required_platforms": [
+        "darwin-amd64",
+        "darwin-arm64",
+        "linux-amd64",
+        "linux-arm64"
+      ],
+      "pinned_platforms": [
+        "darwin-arm64"
+      ]
+    }
+    }
+  ]
+}

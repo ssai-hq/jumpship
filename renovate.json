@@ -1,0 +1,84 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":disableRateLimiting"
+  ],
+  "rangeStrategy": "pin",
+  "rebaseWhen": "conflicted",
+  "labels": [
+    "dependencies"
+  ],
+  "schedule": [
+    "before 06:00 on monday"
+  ],
+  "prConcurrentLimit": 5,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "dependencies",
+      "security"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Group low-risk developer-only updates",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "digest",
+        "patch",
+        "minor"
+      ],
+      "groupName": "low-risk developer dependencies",
+      "automerge": false
+    },
+    {
+      "description": "Isolate security, database, provider, and cryptography updates",
+      "matchPackageNames": [
+        "/(^|\\/)aws-sdk/",
+        "/(^|\\/)auth/",
+        "/(^|\\/)cel/",
+        "/(^|\\/)crypto/",
+        "/(^|\\/)mongodb/",
+        "/(^|\\/)pgx/",
+        "/(^|\\/)postgres/",
+        "/(^|\\/)webauthn/"
+      ],
+      "groupName": null,
+      "separateMajorMinor": true,
+      "separateMinorPatch": true,
+      "automerge": false,
+      "labels": [
+        "dependencies",
+        "security-review-required"
+      ]
+    },
+    {
+      "description": "Keep runtime and tool releases isolated and checksum reviewed",
+      "matchManagers": [
+        "mise",
+        "custom.regex"
+      ],
+      "groupName": null,
+      "automerge": false,
+      "labels": [
+        "dependencies",
+        "supply-chain-review-required"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^tools/manifest\\.yaml$/"
+      ],
+      "matchStrings": [
+        "\\\"name\\\": \\\"(?<depName>[^\\\"]+)\\\"[\\s\\S]{0,160}?\\\"datasource\\\": \\\"(?<datasource>[^\\\"]+)\\\"[\\s\\S]{0,160}?\\\"version\\\": \\\"(?<currentValue>[^\\\"]+)\\\""
+      ]
+    }
+  ]
+}

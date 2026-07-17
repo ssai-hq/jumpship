@@ -1,0 +1,16 @@
+{
+  "codeowners_sha256": "32bbee6ff6b76ddcc13449fd963d723458f5dcd355c0dec891cdccd10b0e3016",
+  "command_contract_sha256": "2457bc4c7049011792f7d10d9a8e56c5817878d9191a226f9625ef7ce286442a",
+  "dependency_request_schema_sha256": "c67da02c5615ad3517c1ff6a63f3ee1e706c85de8f337ff992cda7d1958ea0d2",
+  "generated_packet_manifest_sha256": "080a954e740e5914750ec97cdbadb14ab6069a95aaee336579d36780d0b940e4",
+  "go_mod_sha256": "f4e24fc69674d9ca0ad097a8480061865ead287dfbff7356ddcd4ed3859c2862",
+  "go_sum_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "p00_dependency_receipt_sha256": "cd866594ed1a25b27f594fb7c328fa6b3ac843bc6120a509dbb8b4b01faa30e7",
+  "package_json_sha256": "c251b20c787df1cb6b5ca297d323ec5d7de4a611188e4dfe3d647cab60b628bb",
+  "packet_graph_sha256": "781674b6a59c088374b69034e2641b742d2a711bebe5ee48082862c0aaf5c585",
+  "pnpm_lock_sha256": "1c46b5c769b27d5ae9e6eed3585079c7c8200e429273f95a6c37148492da2867",
+  "pnpm_workspace_sha256": "22e66b3c62a4ecc996078152c8aed0ca52f3a6e35d8dea5a17253a1da77d3f34",
+  "schema_version": "1.0.0",
+  "tool_manifest_sha256": "16b3b1e590fe7bb6001f29a56b3bff535d82c1020f63192d91b90a65777d8885",
+  "web_package_json_sha256": "7b7a54405004cb91a565b5134c6979049982ad8dfb204246ed0fa1d0b774d9b5"
+}

@@ -1,0 +1,12 @@
+[tools]
+go = "1.26.5"
+node = "24.18.0"
+pnpm = "11.4.0"
+opentofu = "1.11.0"
+
+[settings]
+experimental = false
+idiomatic_version_file_enable_tools = []
+lockfile = false
+not_found_auto_install = false
+yes = false

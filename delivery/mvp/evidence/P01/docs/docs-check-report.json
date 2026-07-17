@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "adr_ids": "pass",
+    "claude_pointer": "pass",
+    "generated_markers": "pass",
+    "memory": "pass",
+    "public_commands": "pass",
+    "relative_links": "pass",
+    "safety": "pass"
+  },
+  "finding_count": 0,
+  "findings": [],
+  "schema_version": "1.0.0",
+  "status": "pass"
+}
