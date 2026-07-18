@@ -1203,6 +1203,38 @@ class ToolchainPolicyTests(unittest.TestCase):
         with self.assertRaises(clean_clone.CleanCloneError):
             clean_clone._resolve_output(Path("../escape.json"))
 
+    def test_clean_clone_compose_environment_is_isolated_from_docker_authority(self) -> None:
+        with mock.patch.dict(
+            os.environ,
+            {
+                "AWS_ACCESS_KEY_ID": "must-not-cross",
+                "AWS_SECRET_ACCESS_KEY": "must-not-cross",
+                "DOCKER_AUTH_CONFIG": "must-not-cross",
+                "DOCKER_CERT_PATH": "must-not-cross",
+                "DOCKER_CONTEXT": "must-not-cross",
+                "DOCKER_HOST": "tcp://must-not-cross.example.invalid:2376",
+                "DOCKER_TLS_VERIFY": "1",
+            },
+            clear=False,
+        ):
+            environment = clean_clone._isolated_environment(
+                Path("/isolated-home"),
+                Path("/isolated-root"),
+                Path("/isolated-home/.docker"),
+            )
+        self.assertEqual("/isolated-home", environment["HOME"])
+        self.assertEqual("/isolated-home/.docker", environment["DOCKER_CONFIG"])
+        for forbidden in (
+            "AWS_ACCESS_KEY_ID",
+            "AWS_SECRET_ACCESS_KEY",
+            "DOCKER_AUTH_CONFIG",
+            "DOCKER_CERT_PATH",
+            "DOCKER_CONTEXT",
+            "DOCKER_HOST",
+            "DOCKER_TLS_VERIFY",
+        ):
+            self.assertNotIn(forbidden, environment)
+
     def test_clean_clone_tail_redacts_temporary_absolute_paths(self) -> None:
         temporary_root = Path("/private/tmp/jumpship-clean-123")
         clone = temporary_root / "jumpship"

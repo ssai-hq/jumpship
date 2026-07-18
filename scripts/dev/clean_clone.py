@@ -9,6 +9,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -20,6 +21,7 @@ from typing import Any, Iterable
 sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parents[2]
+P03_FRAGMENT = ROOT / "mk" / "packets" / "P03.mk"
 ACCEPTANCE = [
     "make",
     "doctor",
@@ -38,6 +40,100 @@ ACCEPTANCE = [
 
 class CleanCloneError(RuntimeError):
     """An isolated clone precondition or acceptance failure."""
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _compose_candidates() -> list[Path]:
+    candidates: list[Path] = []
+    standalone = shutil.which("docker-compose")
+    if standalone:
+        candidates.append(Path(standalone))
+    candidates.extend(
+        Path(value)
+        for value in (
+            "/Applications/Docker.app/Contents/Resources/cli-plugins/docker-compose",
+            "/opt/homebrew/lib/docker/cli-plugins/docker-compose",
+            "/usr/local/lib/docker/cli-plugins/docker-compose",
+            "/usr/local/libexec/docker/cli-plugins/docker-compose",
+            "/usr/lib/docker/cli-plugins/docker-compose",
+            "/usr/libexec/docker/cli-plugins/docker-compose",
+        )
+    )
+    configured = os.environ.get("DOCKER_CONFIG", "").strip()
+    if configured:
+        candidates.append(Path(configured) / "cli-plugins" / "docker-compose")
+    candidates.append(Path.home() / ".docker" / "cli-plugins" / "docker-compose")
+    return candidates
+
+
+def _resolve_compose_plugin() -> tuple[Path, str, str]:
+    seen: set[Path] = set()
+    for candidate in _compose_candidates():
+        try:
+            resolved = candidate.expanduser().resolve(strict=True)
+        except OSError:
+            continue
+        if resolved in seen or not resolved.is_file() or not os.access(resolved, os.X_OK):
+            continue
+        seen.add(resolved)
+        with tempfile.TemporaryDirectory(prefix="jumpship-p01-compose-version-") as temporary:
+            temporary_root = Path(temporary)
+            isolated_home = temporary_root / "home"
+            isolated_config = isolated_home / ".docker"
+            isolated_config.mkdir(parents=True, mode=0o700)
+            version = subprocess.run(
+                [str(resolved), "version"],
+                check=False,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=30,
+                env={
+                    "DOCKER_CONFIG": str(isolated_config),
+                    "HOME": str(isolated_home),
+                    "LANG": os.environ.get("LANG", "C.UTF-8"),
+                    "LC_ALL": os.environ.get("LC_ALL", "C.UTF-8"),
+                    "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+                    "TMPDIR": str(temporary_root),
+                },
+            )
+        value = version.stdout.strip()
+        if version.returncode != 0 or re.search(r"\bv2\.[0-9]", value) is None:
+            continue
+        if len(value) > 160 or any(character in value for character in "\r\n"):
+            continue
+        return resolved, value, _sha256_file(resolved)
+    raise CleanCloneError(
+        "Docker Compose v2 executable is required once the P03 packet fragment is present"
+    )
+
+
+def _isolated_environment(
+    home: Path, temporary_root: Path, docker_config: Path | None = None
+) -> dict[str, str]:
+    environment = {
+        "HOME": str(home),
+        "LANG": os.environ.get("LANG", "C.UTF-8"),
+        "LC_ALL": os.environ.get("LC_ALL", "C.UTF-8"),
+        "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "TMPDIR": str(temporary_root),
+        "XDG_CACHE_HOME": str(home / ".cache"),
+        "XDG_CONFIG_HOME": str(home / ".config"),
+    }
+    if docker_config is not None:
+        environment["DOCKER_CONFIG"] = str(docker_config)
+    for name in ("HTTPS_PROXY", "HTTP_PROXY", "NO_PROXY", "SSL_CERT_DIR", "SSL_CERT_FILE"):
+        if name in os.environ:
+            environment[name] = os.environ[name]
+    return environment
 
 
 def _git(*args: str) -> str:
@@ -115,6 +211,7 @@ def rehearse(output_path: Path | None, *, quiet: bool = False) -> dict[str, Any]
     if branch != "main":
         raise CleanCloneError(f"clean-clone rehearsal requires main; observed {branch!r}")
     commit = _git("rev-parse", "HEAD")
+    compose = _resolve_compose_plugin() if P03_FRAGMENT.is_file() else None
     started_at = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
     with tempfile.TemporaryDirectory(prefix="jumpship-p01-clean-clone-") as temporary:
         temporary_root = Path(temporary)
@@ -149,19 +246,23 @@ def rehearse(output_path: Path | None, *, quiet: bool = False) -> dict[str, Any]
             raise CleanCloneError(f"clone HEAD mismatch: expected {commit}, observed {observed}")
         home = temporary_root / "home"
         home.mkdir(mode=0o700)
-        env = {
-            "HOME": str(home),
-            "LANG": os.environ.get("LANG", "C.UTF-8"),
-            "LC_ALL": os.environ.get("LC_ALL", "C.UTF-8"),
-            "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
-            "PYTHONDONTWRITEBYTECODE": "1",
-            "TMPDIR": str(temporary_root),
-            "XDG_CACHE_HOME": str(home / ".cache"),
-            "XDG_CONFIG_HOME": str(home / ".config"),
-        }
-        for name in ("HTTPS_PROXY", "HTTP_PROXY", "NO_PROXY", "SSL_CERT_DIR", "SSL_CERT_FILE"):
-            if name in os.environ:
-                env[name] = os.environ[name]
+        docker_config: Path | None = None
+        compose_evidence: dict[str, str] | None = None
+        if compose is not None:
+            compose_plugin, compose_version, compose_sha256 = compose
+            docker_config = home / ".docker"
+            plugin_directory = docker_config / "cli-plugins"
+            plugin_directory.mkdir(parents=True, mode=0o700)
+            isolated_plugin = plugin_directory / "docker-compose"
+            shutil.copyfile(compose_plugin, isolated_plugin)
+            isolated_plugin.chmod(0o500)
+            if _sha256_file(isolated_plugin) != compose_sha256:
+                raise CleanCloneError("isolated Docker Compose plugin copy failed integrity check")
+            compose_evidence = {
+                "copied_by_sha256": compose_sha256,
+                "version": compose_version,
+            }
+        env = _isolated_environment(home, temporary_root, docker_config)
         forwarded_values = [
             env[name]
             for name in ("HTTPS_PROXY", "HTTP_PROXY", "NO_PROXY", "SSL_CERT_DIR", "SSL_CERT_FILE")
@@ -178,6 +279,9 @@ def rehearse(output_path: Path | None, *, quiet: bool = False) -> dict[str, Any]
             timeout=1800,
         )
         output = run.stdout
+        redaction_input = output
+        if compose is not None:
+            redaction_input = redaction_input.replace(str(compose[0]), "<compose-plugin>")
         ended_at = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
         report = {
             "schema_version": 1,
@@ -191,13 +295,17 @@ def rehearse(output_path: Path | None, *, quiet: bool = False) -> dict[str, Any]
             "exit_code": run.returncode,
             "stdout_sha256": hashlib.sha256(output.encode("utf-8")).hexdigest(),
             "output_tail": _redacted_tail(
-                output, clone, home, temporary_root, forwarded_values
+                redaction_input, clone, home, temporary_root, forwarded_values
             ),
             "environment": {
                 "isolated_home": True,
+                "isolated_docker_config": docker_config is not None,
                 "local_clone_no_hardlinks": True,
                 "source_worktree_clean": True,
                 "cloud_credentials_forwarded": False,
+                "docker_credentials_forwarded": False,
+                "docker_context_forwarded": False,
+                "docker_compose_plugin": compose_evidence,
             },
         }
         if output_path is not None:
@@ -215,9 +323,8 @@ def rehearse(output_path: Path | None, *, quiet: bool = False) -> dict[str, Any]
                 f"(stdout sha256 {report['stdout_sha256']})"
             )
         if run.returncode != 0:
-            if not quiet:
-                for line in report["output_tail"]:
-                    print(line, file=sys.stderr)
+            for line in report["output_tail"]:
+                print(line, file=sys.stderr)
             raise CleanCloneError(f"isolated acceptance exited {run.returncode}")
         return report
 
