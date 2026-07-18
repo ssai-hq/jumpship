@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "defect_id": "P02-CATALOG-RU-HASH-CYCLE",
+  "artifacts": {
+    "contracts/client/customer-incapability-catalog.schema.json": "fd5bd6cfbd6b466b484f4f866c3bf90c036f8d2b958e01c33d758a3084f9585a",
+    "contracts/client/customer-incapability-catalog-binding.schema.json": "fe0b164d7dcd902adaf628b3711ad188997fa2653c20bbf1a9a3badbec602f5c",
+    "contracts/client/customer-incapability-catalog-response.schema.json": "0511b62dfbd16c592711e67ab5140e2a6676fbff04c5f3ccb762d8c75511c7e0",
+    "contracts/release/release-unit.schema.json": "b2cb0204589f4fed904f77603ac6071061466cd6bd14de11530858e15fbcb0b3",
+    "contracts/openapi/openapi.yaml": "bbf0d61b85416ef7bf1135c7d0b371d4554a33d1d3b5069afe6e94d07fd2fb6b",
+    "contracts/compatibility-baseline.json": "99d75233946ddd949ac07fe162d1e2470c932714a27c0462191f6091eca29509",
+    "contracts/compatibility-report.json": "16015c484d4b4c0afd59374a1d6d109b2fd4b8ac7eef3133289a6e190d9cd55a",
+    "contracts/contract-manifest.json": "b3fb6c6950659a336c85e4085dbc52c3f42b4a66aa9db26a08e04fa97318b85e"
+  }
+}

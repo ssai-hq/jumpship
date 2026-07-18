@@ -3058,10 +3058,10 @@
         "type": "object"
       },
       "GetEnvironmentAgentIncapabilitiesResponse": {
-        "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json"
+        "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json"
       },
       "GetMigrationAgentIncapabilitiesResponse": {
-        "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json"
+        "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json"
       },
       "GetMigrationHealthResponse": {
         "additionalProperties": false,

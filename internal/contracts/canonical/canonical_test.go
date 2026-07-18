@@ -356,7 +356,7 @@ func TestSharedCatalogContentIdentityTamperDenial(t *testing.T) {
 		projection := object["logical_payload_projection"].(map[string]any)
 		projection["object_type"] = "attacker_catalog"
 		projection["id_field"] = "attacker_id"
-		projection["domain_separator"] = "jumpship:attacker_catalog:1.0.0\x00"
+		projection["domain_separator"] = "jumpship:attacker_catalog:2.0.0\x00"
 		projection["excluded_fields"] = []any{
 			"attacker_id", "logical_payload_sha256", "logical_payload_projection",
 		}
@@ -416,6 +416,128 @@ func TestSharedCatalogContentIdentityTamperDenial(t *testing.T) {
 	}
 	if err := VerifyCustomerIncapabilityCatalog(oversized); err == nil {
 		t.Fatal("catalog above the frozen byte limit was accepted")
+	}
+}
+
+func loadContractFixtureInstance(t *testing.T, name string) json.RawMessage {
+	t.Helper()
+	fixturePath := filepath.Join("..", "..", "..", "contracts", "fixtures", "client", name)
+	raw, err := os.ReadFile(fixturePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var wrapper struct {
+		Instance json.RawMessage `json:"instance"`
+	}
+	if err := json.Unmarshal(raw, &wrapper); err != nil {
+		t.Fatal(err)
+	}
+	return wrapper.Instance
+}
+
+func TestCatalogOneWayBindingResponseAndDowngradeBoundaries(t *testing.T) {
+	catalog := loadContractFixtureInstance(t, "valid-customer-incapability-catalog.json")
+	binding := loadContractFixtureInstance(t, "valid-customer-incapability-catalog-binding.json")
+	response := loadContractFixtureInstance(t, "valid-customer-incapability-catalog-response.json")
+	if err := VerifyCustomerIncapabilityCatalogBinding(binding); err != nil {
+		t.Fatalf("valid generated catalog binding rejected: %v", err)
+	}
+	if err := VerifyCustomerIncapabilityCatalogResponse(response); err != nil {
+		t.Fatalf("valid generated catalog response rejected: %v", err)
+	}
+
+	var responseObject map[string]any
+	if err := json.Unmarshal(response, &responseObject); err != nil {
+		t.Fatal(err)
+	}
+	originalCatalog, marshalOriginalErr := json.Marshal(responseObject["catalog"])
+	if marshalOriginalErr != nil {
+		t.Fatal(marshalOriginalErr)
+	}
+	responseObject["selection_mode"] = "pinned_cell_release_binding"
+	responseObject["migration_id"] = "018f0f7e-7b8a-7abc-8def-0123456789ab"
+	responseObject["release_evidence_chain"] = []any{strings.Repeat("7", 64)}
+	responseObject["served_at"] = "2026-07-19T00:00:00Z"
+	metadataChanged, marshalResponseErr := json.Marshal(responseObject)
+	if marshalResponseErr != nil {
+		t.Fatal(marshalResponseErr)
+	}
+	if err := VerifyCustomerIncapabilityCatalogResponse(metadataChanged); err != nil {
+		t.Fatalf("response-only metadata change altered catalog validity: %v", err)
+	}
+	retainedCatalog, marshalRetainedErr := json.Marshal(responseObject["catalog"])
+	if marshalRetainedErr != nil {
+		t.Fatal(marshalRetainedErr)
+	}
+	if !bytes.Equal(originalCatalog, retainedCatalog) {
+		t.Fatal("response-only metadata change altered nested immutable catalog")
+	}
+
+	oldFlat := mutateAndReidentify(t, catalog, func(object map[string]any) {
+		object["schema_version"] = "1.0.0"
+		object["release_unit_id"] = strings.Repeat("2", 64)
+	})
+	if err := VerifyContentIdentity(oldFlat); err != nil {
+		t.Fatalf("downgrade witness should retain a coherent generic identity: %v", err)
+	}
+	if err := VerifyCustomerIncapabilityCatalog(oldFlat); err == nil {
+		t.Fatal("old flat catalog downgrade accepted")
+	}
+	if err := VerifyCustomerIncapabilityCatalog(response); err == nil {
+		t.Fatal("response envelope accepted as immutable catalog")
+	}
+
+	var catalogObject map[string]any
+	if err := json.Unmarshal(catalog, &catalogObject); err != nil {
+		t.Fatal(err)
+	}
+	releaseSeed := map[string]any{
+		"schema_version":         "1.0.0",
+		"release_unit_id":        strings.Repeat("0", 64),
+		"logical_payload_sha256": strings.Repeat("0", 64),
+		"logical_payload_projection": map[string]any{
+			"object_type":                      "release_unit",
+			"id_field":                         "release_unit_id",
+			"object_schema_version":            "1.0.0",
+			"canonical_encoder":                "RFC8785_JCS",
+			"domain_separator":                 "jumpship:release_unit:1.0.0\x00",
+			"excluded_fields":                  []any{"release_unit_id", "logical_payload_sha256", "logical_payload_projection"},
+			"equivalent_digest_fields":         []any{},
+			"id_encoding":                      "lowercase_hex_sha256",
+			"id_equals_logical_payload_sha256": true,
+		},
+		"customer_incapability_catalog_hash":         catalogObject["catalog_hash"],
+		"customer_incapability_source_registry_hash": catalogObject["source_registry_hash"],
+		"members": []any{map[string]any{
+			"kind":           "customer_incapability_catalog",
+			"object_id":      catalogObject["catalog_id"],
+			"content_sha256": catalogObject["catalog_hash"],
+		}},
+	}
+	releaseSeedBytes, marshalReleaseErr := json.Marshal(releaseSeed)
+	if marshalReleaseErr != nil {
+		t.Fatal(marshalReleaseErr)
+	}
+	releaseUnit := mutateAndReidentify(t, releaseSeedBytes, func(map[string]any) {})
+	var releaseObject map[string]any
+	if err := json.Unmarshal(releaseUnit, &releaseObject); err != nil {
+		t.Fatal(err)
+	}
+	associationBinding := mutateAndReidentify(t, binding, func(object map[string]any) {
+		object["release_unit_id"] = releaseObject["release_unit_id"]
+		object["release_unit_hash"] = releaseObject["release_unit_id"]
+	})
+	if err := VerifyCustomerIncapabilityCatalogAssociation(catalog, associationBinding, releaseUnit); err != nil {
+		t.Fatalf("valid catalog/ReleaseUnit binding association rejected: %v", err)
+	}
+	substitutedSource := mutateAndReidentify(t, associationBinding, func(object map[string]any) {
+		object["source_registry_hash"] = strings.Repeat("8", 64)
+	})
+	if err := VerifyCustomerIncapabilityCatalogBinding(substitutedSource); err != nil {
+		t.Fatalf("substitution witness should have a valid binding identity: %v", err)
+	}
+	if err := VerifyCustomerIncapabilityCatalogAssociation(catalog, substitutedSource, releaseUnit); err == nil {
+		t.Fatal("cross-object source registry substitution accepted")
 	}
 }
 

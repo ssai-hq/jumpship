@@ -43,7 +43,7 @@ RELEASE_DIGEST_RE = re.compile(r"\Asha256:[0-9a-f]{64}\Z")
 PROFILE_HASH_RE = re.compile(r"\A[0-9a-f]{64}\Z")
 P02_CONTRACT_MANIFEST = Path("contracts/contract-manifest.json")
 P02_CONTRACT_MANIFEST_SHA256 = (
-    "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9"
+    "b3fb6c6950659a336c85e4085dbc52c3f42b4a66aa9db26a08e04fa97318b85e"
 )
 PROFILE_REGISTRY = Path("contracts/release/deployment-profiles.yaml")
 PROFILE_REGISTRY_SHA256 = (

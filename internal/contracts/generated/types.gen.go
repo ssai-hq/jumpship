@@ -1501,11 +1501,45 @@ type JumpshipExactBrowserCeremonyContract struct {
 	WorkspaceID         string  `json:"workspace_id"`
 }
 
-// JumpshipReleaseSelectedCustomerIncapabilityCatalogContract is generated from contracts/client/customer-incapability-catalog.schema.json.
-type JumpshipReleaseSelectedCustomerIncapabilityCatalogContract struct {
+// JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract is generated from contracts/client/customer-incapability-catalog-binding.schema.json.
+type JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract struct {
+	BindingHash              string `json:"binding_hash"`
+	BindingID                string `json:"binding_id"`
+	CatalogHash              string `json:"catalog_hash"`
+	CatalogID                string `json:"catalog_id"`
+	LogicalPayloadProjection struct {
+		CanonicalEncoder             string            `json:"canonical_encoder"`
+		DomainSeparator              string            `json:"domain_separator"`
+		EquivalentDigestFields       []json.RawMessage `json:"equivalent_digest_fields"`
+		ExcludedFields               []json.RawMessage `json:"excluded_fields"`
+		IdEncoding                   string            `json:"id_encoding"`
+		IdEqualsLogicalPayloadSHA256 bool              `json:"id_equals_logical_payload_sha256"`
+		IdField                      string            `json:"id_field"`
+		ObjectSchemaVersion          string            `json:"object_schema_version"`
+		ObjectType                   string            `json:"object_type"`
+	} `json:"logical_payload_projection"`
+	LogicalPayloadSHA256 string `json:"logical_payload_sha256"`
+	ReleaseUnitHash      string `json:"release_unit_hash"`
+	ReleaseUnitID        string `json:"release_unit_id"`
+	SchemaVersion        string `json:"schema_version"`
+	SourceRegistryHash   string `json:"source_registry_hash"`
+}
+
+// JumpshipCustomerIncapabilityCatalogAPIResponseContract is generated from contracts/client/customer-incapability-catalog-response.schema.json.
+type JumpshipCustomerIncapabilityCatalogAPIResponseContract struct {
+	Catalog              JumpshipImmutableCustomerIncapabilityCatalogContract          `json:"catalog"`
+	CatalogBinding       JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract `json:"catalog_binding"`
+	MigrationID          *string                                                       `json:"migration_id"`
+	ReleaseEvidenceChain []string                                                      `json:"release_evidence_chain"`
+	SchemaVersion        string                                                        `json:"schema_version"`
+	SelectionMode        string                                                        `json:"selection_mode"`
+	ServedAt             string                                                        `json:"served_at"`
+}
+
+// JumpshipImmutableCustomerIncapabilityCatalogContract is generated from contracts/client/customer-incapability-catalog.schema.json.
+type JumpshipImmutableCustomerIncapabilityCatalogContract struct {
 	CatalogHash string `json:"catalog_hash"`
 	CatalogID   string `json:"catalog_id"`
-	IssuedAt    string `json:"issued_at"`
 	Items       []struct {
 		CapabilityID                string   `json:"capability_id"`
 		CodingAgentDenied           bool     `json:"coding_agent_denied"`
@@ -1529,15 +1563,9 @@ type JumpshipReleaseSelectedCustomerIncapabilityCatalogContract struct {
 		ObjectSchemaVersion          string            `json:"object_schema_version"`
 		ObjectType                   string            `json:"object_type"`
 	} `json:"logical_payload_projection"`
-	LogicalPayloadSHA256 string   `json:"logical_payload_sha256"`
-	MigrationID          *string  `json:"migration_id"`
-	ReleaseEvidenceChain []string `json:"release_evidence_chain"`
-	ReleaseUnitHash      string   `json:"release_unit_hash"`
-	ReleaseUnitID        string   `json:"release_unit_id"`
-	SchemaVersion        string   `json:"schema_version"`
-	SelectionMode        string   `json:"selection_mode"`
-	SortOrder            string   `json:"sort_order"`
-	SourceRegistryHash   string   `json:"source_registry_hash"`
+	LogicalPayloadSHA256 string `json:"logical_payload_sha256"`
+	SchemaVersion        string `json:"schema_version"`
+	SourceRegistryHash   string `json:"source_registry_hash"`
 }
 
 // JumpshipLocalCredentialBrokerFrameContract is generated from contracts/client/local-broker.schema.json.

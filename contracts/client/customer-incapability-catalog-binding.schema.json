@@ -1,0 +1,130 @@
+{
+  "$id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Separate deterministic immutable registration record binding one exact ReleaseUnit identity to one exact immutable catalog and source registry.",
+  "properties": {
+    "binding_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "binding_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "catalog_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "catalog_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "logical_payload_projection": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_encoder": {
+          "const": "RFC8785_JCS",
+          "type": "string"
+        },
+        "domain_separator": {
+          "const": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+          "type": "string"
+        },
+        "equivalent_digest_fields": {
+          "const": [
+            "binding_hash"
+          ],
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        },
+        "excluded_fields": {
+          "const": [
+            "binding_id",
+            "binding_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        "id_encoding": {
+          "const": "lowercase_hex_sha256",
+          "type": "string"
+        },
+        "id_equals_logical_payload_sha256": {
+          "const": true,
+          "type": "boolean"
+        },
+        "id_field": {
+          "const": "binding_id",
+          "type": "string"
+        },
+        "object_schema_version": {
+          "const": "1.0.0",
+          "type": "string"
+        },
+        "object_type": {
+          "const": "customer_incapability_catalog_binding",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_type",
+        "id_field",
+        "object_schema_version",
+        "canonical_encoder",
+        "domain_separator",
+        "excluded_fields",
+        "equivalent_digest_fields",
+        "id_encoding",
+        "id_equals_logical_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "logical_payload_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "release_unit_id": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "source_registry_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "binding_id",
+    "logical_payload_sha256",
+    "logical_payload_projection",
+    "binding_hash",
+    "release_unit_id",
+    "release_unit_hash",
+    "catalog_id",
+    "catalog_hash",
+    "source_registry_hash"
+  ],
+  "title": "Jumpship Customer Incapability Catalog ReleaseUnit Binding Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "public",
+  "x-jumpship-flow-ids": [
+    "F01",
+    "F02",
+    "F23"
+  ],
+  "x-jumpship-max-bytes": 16384
+}

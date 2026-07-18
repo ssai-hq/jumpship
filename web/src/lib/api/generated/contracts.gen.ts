@@ -1135,21 +1135,39 @@ export interface JumpshipExactBrowserCeremonyContract {
   readonly workspace_id: string;
 }
 
-/** Generated from contracts/client/customer-incapability-catalog.schema.json. */
-export interface JumpshipReleaseSelectedCustomerIncapabilityCatalogContract {
+/** Generated from contracts/client/customer-incapability-catalog-binding.schema.json. */
+export interface JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract {
+  readonly binding_hash: string;
+  readonly binding_id: string;
   readonly catalog_hash: string;
   readonly catalog_id: string;
-  readonly issued_at: string;
-  readonly items: ReadonlyArray<{ readonly capability_id: string; readonly coding_agent_denied: true; readonly incapability_id: string; readonly negative_test_receipt_hashes: ReadonlyArray<string>; readonly operation_id: string; readonly reason_code: string; readonly required_human_surface: "browser" | "human_cli" | "support" | "unavailable"; readonly safe_explanation: string; readonly safe_remediation: string; readonly structural_denial_contract_ids: ReadonlyArray<string>; }>;
-  readonly logical_payload_projection: { readonly canonical_encoder: "RFC8785_JCS"; readonly domain_separator: "jumpship:customer_incapability_catalog:1.0.0\u0000"; readonly equivalent_digest_fields: ["catalog_hash"]; readonly excluded_fields: ["catalog_id", "catalog_hash", "logical_payload_sha256", "logical_payload_projection"]; readonly id_encoding: "lowercase_hex_sha256"; readonly id_equals_logical_payload_sha256: true; readonly id_field: "catalog_id"; readonly object_schema_version: "1.0.0"; readonly object_type: "customer_incapability_catalog"; };
+  readonly logical_payload_projection: { readonly canonical_encoder: "RFC8785_JCS"; readonly domain_separator: "jumpship:customer_incapability_catalog_binding:1.0.0\u0000"; readonly equivalent_digest_fields: ["binding_hash"]; readonly excluded_fields: ["binding_id", "binding_hash", "logical_payload_sha256", "logical_payload_projection"]; readonly id_encoding: "lowercase_hex_sha256"; readonly id_equals_logical_payload_sha256: true; readonly id_field: "binding_id"; readonly object_schema_version: "1.0.0"; readonly object_type: "customer_incapability_catalog_binding"; };
   readonly logical_payload_sha256: string;
-  readonly migration_id: (string) | null;
-  readonly release_evidence_chain: ReadonlyArray<string>;
   readonly release_unit_hash: string;
   readonly release_unit_id: string;
   readonly schema_version: "1.0.0";
+  readonly source_registry_hash: string;
+}
+
+/** Generated from contracts/client/customer-incapability-catalog-response.schema.json. */
+export interface JumpshipCustomerIncapabilityCatalogAPIResponseContract {
+  readonly catalog: JumpshipImmutableCustomerIncapabilityCatalogContract;
+  readonly catalog_binding: JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract;
+  readonly migration_id: (string) | null;
+  readonly release_evidence_chain: ReadonlyArray<string>;
+  readonly schema_version: "1.0.0";
   readonly selection_mode: "new_admission_release" | "pinned_cell_release_binding";
-  readonly sort_order: "capability_id_then_incapability_id";
+  readonly served_at: string;
+}
+
+/** Generated from contracts/client/customer-incapability-catalog.schema.json. */
+export interface JumpshipImmutableCustomerIncapabilityCatalogContract {
+  readonly catalog_hash: string;
+  readonly catalog_id: string;
+  readonly items: ReadonlyArray<{ readonly capability_id: string; readonly coding_agent_denied: true; readonly incapability_id: string; readonly negative_test_receipt_hashes: ReadonlyArray<string>; readonly operation_id: string; readonly reason_code: string; readonly required_human_surface: "browser" | "human_cli" | "support" | "unavailable"; readonly safe_explanation: string; readonly safe_remediation: string; readonly structural_denial_contract_ids: ReadonlyArray<string>; }>;
+  readonly logical_payload_projection: { readonly canonical_encoder: "RFC8785_JCS"; readonly domain_separator: "jumpship:customer_incapability_catalog:2.0.0\u0000"; readonly equivalent_digest_fields: ["catalog_hash"]; readonly excluded_fields: ["catalog_id", "catalog_hash", "logical_payload_sha256", "logical_payload_projection"]; readonly id_encoding: "lowercase_hex_sha256"; readonly id_equals_logical_payload_sha256: true; readonly id_field: "catalog_id"; readonly object_schema_version: "2.0.0"; readonly object_type: "customer_incapability_catalog"; };
+  readonly logical_payload_sha256: string;
+  readonly schema_version: "2.0.0";
   readonly source_registry_hash: string;
 }
 

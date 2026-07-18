@@ -1,6 +1,6 @@
 # Frozen-contract change procedure
 
-P02 freezes contract schema version `1.0.0` and the exact hashes in `contracts/contract-manifest.json`.
+P02 freezes contract schema version `1.0.0` except the authoritatively corrected customer-incapability catalog `2.0.0`, and freezes the exact hashes in `contracts/contract-manifest.json`.
 
 1. Identify every affected schema, OpenAPI operation, protobuf field/RPC, generated DTO/client, fixture, and downstream consumer.
 2. Classify the change before editing. Additive optional changes may remain in v1. Removing or renaming fields, tightening accepted values, changing protobuf field numbers, changing an existing operation/RPC, or altering canonical identity is breaking and requires a versioned path plus fixture migration.

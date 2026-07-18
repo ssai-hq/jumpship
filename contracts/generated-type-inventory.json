@@ -413,9 +413,27 @@
         "internal/contracts/generated/types.gen.go",
         "web/src/lib/api/generated/contracts.gen.ts"
       ],
+      "id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json",
+      "path": "contracts/client/customer-incapability-catalog-binding.schema.json",
+      "type": "JumpshipCustomerIncapabilityCatalogReleaseUnitBindingContract"
+    },
+    {
+      "destinations": [
+        "internal/contracts/generated/types.gen.go",
+        "web/src/lib/api/generated/contracts.gen.ts"
+      ],
+      "id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json",
+      "path": "contracts/client/customer-incapability-catalog-response.schema.json",
+      "type": "JumpshipCustomerIncapabilityCatalogAPIResponseContract"
+    },
+    {
+      "destinations": [
+        "internal/contracts/generated/types.gen.go",
+        "web/src/lib/api/generated/contracts.gen.ts"
+      ],
       "id": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json",
       "path": "contracts/client/customer-incapability-catalog.schema.json",
-      "type": "JumpshipReleaseSelectedCustomerIncapabilityCatalogContract"
+      "type": "JumpshipImmutableCustomerIncapabilityCatalogContract"
     },
     {
       "destinations": [

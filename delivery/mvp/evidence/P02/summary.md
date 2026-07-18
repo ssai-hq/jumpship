@@ -8,7 +8,8 @@ Result:
 
 - Dispatch readiness before editing: `true` at integration commit `71e3d0de5f9c4b4d348ed61e255f76ed4d353a1d`, with accepted P00 and P01 receipts.
 - Contract freeze: `159` materialized artifacts, including `93` closed JSON Schemas, OpenAPI, protobuf, domain fixtures, compatibility baseline/report, Go clients/DTOs and Connect transport tests, TypeScript clients/DTOs, and canonical/signature/content-identity libraries.
-- Generated manifest: `158` sibling artifacts hash-bound by `contracts/contract-manifest.json`; the manifest itself is bound by this evidence.
+- Original published manifest: `158` sibling artifacts hash-bound by the original `contracts/contract-manifest.json`.
+- Corrective manifest (2026-07-19): `163` sibling artifacts plus the manifest itself, including corrected catalog `2.0.0`, separate binding/response schemas and regenerated clients. See `corrective/summary.md`.
 - Application delivery: full selected-application estate and change-set contracts, safe browser projections, writer-control boundaries, customer-owned PR/deployment evidence, and reverse-apply attribution.
 - Runtime interoperability: dependency-free Go and TypeScript canonicalization, typed identity, signature verification, catalog verification, OpenAPI surfaces, and Connect JSON cell client.
 - Validation: exact packet acceptance passed; `20` Python tests, Go contract packages, and `6` TypeScript tests passed. Repository command, architecture, format, and lint checks also passed.

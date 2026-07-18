@@ -1,0 +1,237 @@
+{
+  "cases": [
+    {
+      "document": {
+        "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "items": [
+          {
+            "capability_id": "MVP-CAP-APPLICATION-ADAPTATION",
+            "coding_agent_denied": true,
+            "incapability_id": "cannot-customer-validate",
+            "negative_test_receipt_hashes": [
+              "5555555555555555555555555555555555555555555555555555555555555555"
+            ],
+            "operation_id": "recordCustomerValidation",
+            "reason_code": "human-validation-required",
+            "required_human_surface": "browser",
+            "safe_explanation": "Jumpship cannot perform customer-owned validation.",
+            "safe_remediation": "A customer operator validates the proposed application change.",
+            "structural_denial_contract_ids": [
+              "browser-ceremony-human-principal"
+            ]
+          },
+          {
+            "capability_id": "MVP-CAP-PR-DELIVERY",
+            "coding_agent_denied": true,
+            "incapability_id": "cannot-merge",
+            "negative_test_receipt_hashes": [
+              "6666666666666666666666666666666666666666666666666666666666666666"
+            ],
+            "operation_id": "mergePullRequest",
+            "reason_code": "customer-authority-required",
+            "required_human_surface": "unavailable",
+            "safe_explanation": "Jumpship can publish a draft pull request but cannot merge it.",
+            "safe_remediation": "An authorized customer operator reviews and merges the pull request.",
+            "structural_denial_contract_ids": [
+              "openapi-forbidden-public-operation"
+            ]
+          }
+        ],
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
+          "equivalent_digest_fields": [
+            "catalog_hash"
+          ],
+          "excluded_fields": [
+            "catalog_id",
+            "catalog_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "catalog_id",
+          "object_schema_version": "2.0.0",
+          "object_type": "customer_incapability_catalog"
+        },
+        "logical_payload_sha256": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "release_unit_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "release_unit_id": "2222222222222222222222222222222222222222222222222222222222222222",
+        "schema_version": "1.0.0",
+        "selection_mode": "new_admission_release",
+        "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "expectation": "invalid",
+      "name": "old-flat-v1-downgrade"
+    },
+    {
+      "document": {
+        "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "items": [
+          {
+            "capability_id": "MVP-CAP-APPLICATION-ADAPTATION",
+            "coding_agent_denied": true,
+            "incapability_id": "cannot-customer-validate",
+            "negative_test_receipt_hashes": [
+              "5555555555555555555555555555555555555555555555555555555555555555"
+            ],
+            "operation_id": "recordCustomerValidation",
+            "reason_code": "human-validation-required",
+            "required_human_surface": "browser",
+            "safe_explanation": "Jumpship cannot perform customer-owned validation.",
+            "safe_remediation": "A customer operator validates the proposed application change.",
+            "structural_denial_contract_ids": [
+              "browser-ceremony-human-principal"
+            ]
+          },
+          {
+            "capability_id": "MVP-CAP-PR-DELIVERY",
+            "coding_agent_denied": true,
+            "incapability_id": "cannot-merge",
+            "negative_test_receipt_hashes": [
+              "6666666666666666666666666666666666666666666666666666666666666666"
+            ],
+            "operation_id": "mergePullRequest",
+            "reason_code": "customer-authority-required",
+            "required_human_surface": "unavailable",
+            "safe_explanation": "Jumpship can publish a draft pull request but cannot merge it.",
+            "safe_remediation": "An authorized customer operator reviews and merges the pull request.",
+            "structural_denial_contract_ids": [
+              "openapi-forbidden-public-operation"
+            ]
+          }
+        ],
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
+          "equivalent_digest_fields": [
+            "catalog_hash"
+          ],
+          "excluded_fields": [
+            "catalog_id",
+            "catalog_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "catalog_id",
+          "object_schema_version": "2.0.0",
+          "object_type": "customer_incapability_catalog"
+        },
+        "logical_payload_sha256": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+        "migration_id": "018f0f7e-7b8a-7abc-8def-0123456789ab",
+        "schema_version": "2.0.0",
+        "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "expectation": "invalid",
+      "name": "release-metadata-smuggling"
+    },
+    {
+      "document": {
+        "catalog": {
+          "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+          "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+          "items": [
+            {
+              "capability_id": "MVP-CAP-APPLICATION-ADAPTATION",
+              "coding_agent_denied": true,
+              "incapability_id": "cannot-customer-validate",
+              "negative_test_receipt_hashes": [
+                "5555555555555555555555555555555555555555555555555555555555555555"
+              ],
+              "operation_id": "recordCustomerValidation",
+              "reason_code": "human-validation-required",
+              "required_human_surface": "browser",
+              "safe_explanation": "Jumpship cannot perform customer-owned validation.",
+              "safe_remediation": "A customer operator validates the proposed application change.",
+              "structural_denial_contract_ids": [
+                "browser-ceremony-human-principal"
+              ]
+            },
+            {
+              "capability_id": "MVP-CAP-PR-DELIVERY",
+              "coding_agent_denied": true,
+              "incapability_id": "cannot-merge",
+              "negative_test_receipt_hashes": [
+                "6666666666666666666666666666666666666666666666666666666666666666"
+              ],
+              "operation_id": "mergePullRequest",
+              "reason_code": "customer-authority-required",
+              "required_human_surface": "unavailable",
+              "safe_explanation": "Jumpship can publish a draft pull request but cannot merge it.",
+              "safe_remediation": "An authorized customer operator reviews and merges the pull request.",
+              "structural_denial_contract_ids": [
+                "openapi-forbidden-public-operation"
+              ]
+            }
+          ],
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
+            "equivalent_digest_fields": [
+              "catalog_hash"
+            ],
+            "excluded_fields": [
+              "catalog_id",
+              "catalog_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "catalog_id",
+            "object_schema_version": "2.0.0",
+            "object_type": "customer_incapability_catalog"
+          },
+          "logical_payload_sha256": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+          "schema_version": "2.0.0",
+          "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+        },
+        "catalog_binding": {
+          "binding_hash": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+          "binding_id": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+          "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+          "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+            "equivalent_digest_fields": [
+              "binding_hash"
+            ],
+            "excluded_fields": [
+              "binding_id",
+              "binding_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "binding_id",
+            "object_schema_version": "1.0.0",
+            "object_type": "customer_incapability_catalog_binding"
+          },
+          "logical_payload_sha256": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+          "release_unit_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+          "release_unit_id": "2222222222222222222222222222222222222222222222222222222222222222",
+          "schema_version": "1.0.0",
+          "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+        },
+        "migration_id": null,
+        "release_evidence_chain": [
+          "4444444444444444444444444444444444444444444444444444444444444444"
+        ],
+        "schema_version": "1.0.0",
+        "selection_mode": "new_admission_release",
+        "served_at": "2026-07-18T00:00:00Z"
+      },
+      "expectation": "invalid",
+      "name": "response-as-catalog"
+    }
+  ],
+  "fixture_version": "1.0.0",
+  "schema_path": "contracts/client/customer-incapability-catalog.schema.json"
+}

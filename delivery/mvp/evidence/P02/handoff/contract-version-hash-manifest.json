@@ -2,24 +2,24 @@
   "schema_version": "1.0.0",
   "kind": "p02-contract-version-hash-handoff",
   "packet_id": "P02",
-  "contract_schema_version": "1.0.0",
-  "materialized_artifact_count": 159,
-  "manifest_bound_artifact_count": 158,
-  "json_schema_count": 93,
+  "contract_schema_version": "1.0.0 with customer-incapability-catalog 2.0.0",
+  "materialized_artifact_count": 164,
+  "manifest_bound_artifact_count": 163,
+  "json_schema_count": 95,
   "canonicalization": "RFC8785-JCS",
   "typed_digest_domain": "jumpship:<object-type>:<schema-version>\\u0000",
   "contract_manifest": {
     "path": "contracts/contract-manifest.json",
-    "sha256": "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9"
+    "sha256": "b3fb6c6950659a336c85e4085dbc52c3f42b4a66aa9db26a08e04fa97318b85e"
   },
   "compatibility_baseline": {
     "path": "contracts/compatibility-baseline.json",
-    "sha256": "04715b75e9cc09785ec26ff17e5466b292c9d5175e9b1005d74c364239312953"
+    "sha256": "99d75233946ddd949ac07fe162d1e2470c932714a27c0462191f6091eca29509"
   },
   "compatibility_report": {
     "path": "contracts/compatibility-report.json",
-    "sha256": "a1a48aa90ef579e610398f46786c8efae9c712c1ac8b972dd75de3c5107104ee",
+    "sha256": "16015c484d4b4c0afd59374a1d6d109b2fd4b8ac7eef3133289a6e190d9cd55a",
     "status": "compatible_unchanged",
-    "surface_sha256": "b23afaf641d6088ad8e6b9b07dcf9e4cffa4f6fa17cce629099dd3856da61eb1"
+    "surface_sha256": "07a5b948ccb122a2526e8f36284ba0cca9e7f1f31d69d8f2caffa1def26799d8"
   }
 }

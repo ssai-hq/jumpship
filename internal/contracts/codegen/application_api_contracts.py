@@ -1749,9 +1749,10 @@ def _client_schemas() -> dict[str, dict[str, Any]]:
             "negative_test_receipt_hashes",
         ),
     )
+    catalog_schema_version = "2.0.0"
     catalog = schema(
         "client/customer-incapability-catalog.schema.json",
-        "Jumpship Release-Selected Customer Incapability Catalog Contract",
+        "Jumpship Immutable Customer Incapability Catalog Contract",
         {
             "catalog_id": hash_field(),
             "logical_payload_sha256": hash_field(),
@@ -1759,10 +1760,10 @@ def _client_schemas() -> dict[str, dict[str, Any]]:
                 {
                     "object_type": s_string(const="customer_incapability_catalog"),
                     "id_field": s_string(const="catalog_id"),
-                    "object_schema_version": s_string(const=SCHEMA_VERSION),
+                    "object_schema_version": s_string(const=catalog_schema_version),
                     "canonical_encoder": s_string(const="RFC8785_JCS"),
                     "domain_separator": s_string(
-                        const="jumpship:customer_incapability_catalog:1.0.0\u0000"
+                        const="jumpship:customer_incapability_catalog:2.0.0\u0000"
                     ),
                     "excluded_fields": {
                         "type": "array",
@@ -1799,48 +1800,133 @@ def _client_schemas() -> dict[str, dict[str, Any]]:
                     "id_equals_logical_payload_sha256",
                 ),
             ),
-            "selection_mode": s_string(enum=("new_admission_release", "pinned_cell_release_binding")),
-            "release_unit_id": _hash(),
-            "release_unit_hash": _hash(),
             "catalog_hash": _hash(),
             "source_registry_hash": _hash(),
-            "sort_order": s_string(const="capability_id_then_incapability_id"),
-            "migration_id": nullable(_id()),
-            "release_evidence_chain": s_array(
-                _hash(), min_items=1, max_items=64, unique=True
-            ),
             "items": s_array(
                 catalog_item,
                 min_items=1,
                 max_items=2048,
                 unique=True,
             ),
-            "issued_at": timestamp_field(),
         },
         (
             "catalog_id",
             "logical_payload_sha256",
             "logical_payload_projection",
-            "selection_mode",
-            "release_unit_id",
-            "release_unit_hash",
             "catalog_hash",
             "source_registry_hash",
-            "sort_order",
-            "migration_id",
-            "release_evidence_chain",
             "items",
-            "issued_at",
         ),
         data_class="public",
         max_bytes=1_048_576,
         flow_ids=("F01", "F02", "F23"),
-        description="Release-bound capability disclosure resolved from the serving or migration-pinned ReleaseUnit with no newest-release fallback or independent signature.",
+        description="Immutable content-addressed public capability disclosure containing only its source registry and strictly sorted incapability entries; ReleaseUnit, migration, selection, evidence and response metadata are forbidden.",
+        schema_version=catalog_schema_version,
+    )
+    binding = schema(
+        "client/customer-incapability-catalog-binding.schema.json",
+        "Jumpship Customer Incapability Catalog ReleaseUnit Binding Contract",
+        {
+            "binding_id": hash_field(),
+            "logical_payload_sha256": hash_field(),
+            "logical_payload_projection": s_object(
+                {
+                    "object_type": s_string(const="customer_incapability_catalog_binding"),
+                    "id_field": s_string(const="binding_id"),
+                    "object_schema_version": s_string(const=SCHEMA_VERSION),
+                    "canonical_encoder": s_string(const="RFC8785_JCS"),
+                    "domain_separator": s_string(
+                        const="jumpship:customer_incapability_catalog_binding:1.0.0\u0000"
+                    ),
+                    "excluded_fields": {
+                        "type": "array",
+                        "const": [
+                            "binding_id",
+                            "binding_hash",
+                            "logical_payload_sha256",
+                            "logical_payload_projection",
+                        ],
+                        "minItems": 4,
+                        "maxItems": 4,
+                    },
+                    "equivalent_digest_fields": {
+                        "type": "array",
+                        "const": ["binding_hash"],
+                        "minItems": 1,
+                        "maxItems": 1,
+                    },
+                    "id_encoding": s_string(const="lowercase_hex_sha256"),
+                    "id_equals_logical_payload_sha256": {"type": "boolean", "const": True},
+                },
+                (
+                    "object_type",
+                    "id_field",
+                    "object_schema_version",
+                    "canonical_encoder",
+                    "domain_separator",
+                    "excluded_fields",
+                    "equivalent_digest_fields",
+                    "id_encoding",
+                    "id_equals_logical_payload_sha256",
+                ),
+            ),
+            "binding_hash": _hash(),
+            "release_unit_id": _hash(),
+            "release_unit_hash": _hash(),
+            "catalog_id": _hash(),
+            "catalog_hash": _hash(),
+            "source_registry_hash": _hash(),
+        },
+        (
+            "binding_id",
+            "logical_payload_sha256",
+            "logical_payload_projection",
+            "binding_hash",
+            "release_unit_id",
+            "release_unit_hash",
+            "catalog_id",
+            "catalog_hash",
+            "source_registry_hash",
+        ),
+        data_class="public",
+        max_bytes=16_384,
+        flow_ids=("F01", "F02", "F23"),
+        description="Separate deterministic immutable registration record binding one exact ReleaseUnit identity to one exact immutable catalog and source registry.",
+    )
+    response = schema(
+        "client/customer-incapability-catalog-response.schema.json",
+        "Jumpship Customer Incapability Catalog API Response Contract",
+        {
+            "selection_mode": s_string(enum=("new_admission_release", "pinned_cell_release_binding")),
+            "migration_id": nullable(_id()),
+            "release_evidence_chain": s_array(_hash(), min_items=1, max_items=64, unique=True),
+            "catalog_binding": {
+                "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json"
+            },
+            "catalog": {
+                "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json"
+            },
+            "served_at": timestamp_field(),
+        },
+        (
+            "selection_mode",
+            "migration_id",
+            "release_evidence_chain",
+            "catalog_binding",
+            "catalog",
+            "served_at",
+        ),
+        data_class="public",
+        max_bytes=1_081_344,
+        flow_ids=("F01", "F02", "F23"),
+        description="Non-content-addressed API envelope combining immutable catalog content and its validated ReleaseUnit binding with selection, migration and release-evidence metadata.",
     )
     return {
         "contracts/client/local-broker.schema.json": local_broker,
         "contracts/client/browser-ceremony.schema.json": ceremony,
         "contracts/client/customer-incapability-catalog.schema.json": catalog,
+        "contracts/client/customer-incapability-catalog-binding.schema.json": binding,
+        "contracts/client/customer-incapability-catalog-response.schema.json": response,
     }
 
 
@@ -2753,8 +2839,8 @@ def _openapi_operation_components(endpoints: list[dict[str, Any]]) -> dict[str, 
     external_responses = {
         "getApplicationEstate": "https://jumpship.dev/contracts/application/application-estate-safe-projection.schema.json",
         "getApplicationChangeSet": "https://jumpship.dev/contracts/application/application-change-set-safe-projection.schema.json",
-        "getEnvironmentAgentIncapabilities": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json",
-        "getMigrationAgentIncapabilities": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json",
+        "getEnvironmentAgentIncapabilities": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json",
+        "getMigrationAgentIncapabilities": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json",
     }
     for endpoint in endpoints:
         operation_id = endpoint["operation_id"]
@@ -3027,6 +3113,7 @@ def _fixtures() -> dict[str, Artifact]:
         object_type: str,
         id_field: str,
         equivalent_digest_fields: tuple[str, ...] = (),
+        schema_version: str = SCHEMA_VERSION,
     ) -> dict[str, Any]:
         """Attach the exact RFC 8785-compatible identity projection metadata.
 
@@ -3054,7 +3141,7 @@ def _fixtures() -> dict[str, Artifact]:
             sort_keys=True,
         ).encode("utf-8")
         digest = hashlib.sha256(
-            f"jumpship:{object_type}:{SCHEMA_VERSION}\0".encode("utf-8")
+            f"jumpship:{object_type}:{schema_version}\0".encode("utf-8")
             + canonical
         ).hexdigest()
         payload[id_field] = digest
@@ -3064,9 +3151,9 @@ def _fixtures() -> dict[str, Artifact]:
         payload["logical_payload_projection"] = {
             "object_type": object_type,
             "id_field": id_field,
-            "object_schema_version": SCHEMA_VERSION,
+            "object_schema_version": schema_version,
             "canonical_encoder": "RFC8785_JCS",
-            "domain_separator": f"jumpship:{object_type}:{SCHEMA_VERSION}\0",
+            "domain_separator": f"jumpship:{object_type}:{schema_version}\0",
             "excluded_fields": excluded,
             "equivalent_digest_fields": list(equivalent_digest_fields),
             "id_encoding": "lowercase_hex_sha256",
@@ -3470,14 +3557,8 @@ def _fixtures() -> dict[str, Artifact]:
     )
     catalog_instance = content_identity(
         {
-            "schema_version": SCHEMA_VERSION,
-            "selection_mode": "new_admission_release",
-            "release_unit_id": "2" * 64,
-            "release_unit_hash": "2" * 64,
+            "schema_version": "2.0.0",
             "source_registry_hash": "3" * 64,
-            "sort_order": "capability_id_then_incapability_id",
-            "migration_id": None,
-            "release_evidence_chain": ["4" * 64],
             "items": [
                 {
                     "capability_id": "MVP-CAP-APPLICATION-ADAPTATION",
@@ -3504,17 +3585,85 @@ def _fixtures() -> dict[str, Artifact]:
                     "negative_test_receipt_hashes": ["6" * 64],
                 },
             ],
-            "issued_at": "2026-07-18T00:00:00Z",
         },
         object_type="customer_incapability_catalog",
         id_field="catalog_id",
         equivalent_digest_fields=("catalog_hash",),
+        schema_version="2.0.0",
     )
     fixtures["contracts/fixtures/client/valid-customer-incapability-catalog.json"] = json_artifact(
         {
             "schema_path": "contracts/client/customer-incapability-catalog.schema.json",
             "expected_valid": True,
             "instance": catalog_instance,
+        },
+        "application/json",
+    )
+    binding_instance = content_identity(
+        {
+            "schema_version": SCHEMA_VERSION,
+            "release_unit_id": "2" * 64,
+            "release_unit_hash": "2" * 64,
+            "catalog_id": catalog_instance["catalog_id"],
+            "catalog_hash": catalog_instance["catalog_hash"],
+            "source_registry_hash": catalog_instance["source_registry_hash"],
+        },
+        object_type="customer_incapability_catalog_binding",
+        id_field="binding_id",
+        equivalent_digest_fields=("binding_hash",),
+    )
+    fixtures["contracts/fixtures/client/valid-customer-incapability-catalog-binding.json"] = json_artifact(
+        {
+            "schema_path": "contracts/client/customer-incapability-catalog-binding.schema.json",
+            "expected_valid": True,
+            "instance": binding_instance,
+        },
+        "application/json",
+    )
+    response_instance = {
+        "schema_version": SCHEMA_VERSION,
+        "selection_mode": "new_admission_release",
+        "migration_id": None,
+        "release_evidence_chain": ["4" * 64],
+        "catalog_binding": binding_instance,
+        "catalog": catalog_instance,
+        "served_at": "2026-07-18T00:00:00Z",
+    }
+    fixtures["contracts/fixtures/client/valid-customer-incapability-catalog-response.json"] = json_artifact(
+        {
+            "schema_path": "contracts/client/customer-incapability-catalog-response.schema.json",
+            "expected_valid": True,
+            "instance": response_instance,
+        },
+        "application/json",
+    )
+    fixtures["contracts/fixtures/client/customer-incapability-catalog-denials.json"] = json_artifact(
+        {
+            "schema_path": "contracts/client/customer-incapability-catalog.schema.json",
+            "fixture_version": SCHEMA_VERSION,
+            "cases": [
+                {
+                    "name": "old-flat-v1-downgrade",
+                    "document": {
+                        **catalog_instance,
+                        "schema_version": "1.0.0",
+                        "selection_mode": "new_admission_release",
+                        "release_unit_id": "2" * 64,
+                        "release_unit_hash": "2" * 64,
+                    },
+                    "expectation": "invalid",
+                },
+                {
+                    "name": "release-metadata-smuggling",
+                    "document": {**catalog_instance, "migration_id": uid},
+                    "expectation": "invalid",
+                },
+                {
+                    "name": "response-as-catalog",
+                    "document": response_instance,
+                    "expectation": "invalid",
+                },
+            ],
         },
         "application/json",
     )

@@ -1,9 +1,8 @@
 {
   "expected_valid": true,
   "instance": {
-    "catalog_hash": "46f13a1d1febfb50120918da26bf57612f18cec532dfae0e63014a677ff8d460",
-    "catalog_id": "46f13a1d1febfb50120918da26bf57612f18cec532dfae0e63014a677ff8d460",
-    "issued_at": "2026-07-18T00:00:00Z",
+    "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+    "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
     "items": [
       {
         "capability_id": "MVP-CAP-APPLICATION-ADAPTATION",
@@ -40,7 +39,7 @@
     ],
     "logical_payload_projection": {
       "canonical_encoder": "RFC8785_JCS",
-      "domain_separator": "jumpship:customer_incapability_catalog:1.0.0\u0000",
+      "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
       "equivalent_digest_fields": [
         "catalog_hash"
       ],
@@ -53,19 +52,11 @@
       "id_encoding": "lowercase_hex_sha256",
       "id_equals_logical_payload_sha256": true,
       "id_field": "catalog_id",
-      "object_schema_version": "1.0.0",
+      "object_schema_version": "2.0.0",
       "object_type": "customer_incapability_catalog"
     },
-    "logical_payload_sha256": "46f13a1d1febfb50120918da26bf57612f18cec532dfae0e63014a677ff8d460",
-    "migration_id": null,
-    "release_evidence_chain": [
-      "4444444444444444444444444444444444444444444444444444444444444444"
-    ],
-    "release_unit_hash": "2222222222222222222222222222222222222222222222222222222222222222",
-    "release_unit_id": "2222222222222222222222222222222222222222222222222222222222222222",
-    "schema_version": "1.0.0",
-    "selection_mode": "new_admission_release",
-    "sort_order": "capability_id_then_incapability_id",
+    "logical_payload_sha256": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+    "schema_version": "2.0.0",
     "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
   },
   "schema_path": "contracts/client/customer-incapability-catalog.schema.json"

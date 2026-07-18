@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { canonicalizeJson, registryDigest, typedDigest, validatePublicKeyRegistry, verifyContentIdentity, verifyCustomerIncapabilityCatalog, verifyDetached, type JsonValue, type SignatureClaims } from "./canonical.gen.ts";
+import { canonicalizeJson, registryDigest, typedDigest, validatePublicKeyRegistry, verifyContentIdentity, verifyCustomerIncapabilityCatalog, verifyCustomerIncapabilityCatalogAssociation, verifyCustomerIncapabilityCatalogBinding, verifyCustomerIncapabilityCatalogResponse, verifyDetached, type JsonValue, type SignatureClaims } from "./canonical.gen.ts";
 import type { PublicKeyRegistry, SignatureEnvelope } from "./contracts.gen.ts";
 
 interface Vector { name: string; object_type: string; schema_version: string; input: string; canonical: string; digest: string }
@@ -153,8 +153,24 @@ async function reidentifyForTest(input: JsonValue, mutate: (object: MutableJsonO
 
 test("shared catalog fixture enforces typed identity and strict unique ordering", async () => {
   const fixture = JSON.parse(await readFile("contracts/fixtures/client/valid-customer-incapability-catalog.json", "utf8")) as { instance: JsonValue };
+  const bindingFixture = JSON.parse(await readFile("contracts/fixtures/client/valid-customer-incapability-catalog-binding.json", "utf8")) as { instance: JsonValue };
+  const responseFixture = JSON.parse(await readFile("contracts/fixtures/client/valid-customer-incapability-catalog-response.json", "utf8")) as { instance: JsonValue };
   assert.equal(await verifyContentIdentity(fixture.instance), true);
   assert.equal(await verifyCustomerIncapabilityCatalog(fixture.instance), true);
+  assert.equal(await verifyCustomerIncapabilityCatalogBinding(bindingFixture.instance), true);
+  assert.equal(await verifyCustomerIncapabilityCatalogResponse(responseFixture.instance), true);
+  const responseMetadataChanged = structuredClone(responseFixture.instance) as MutableJsonObject;
+  responseMetadataChanged.selection_mode = "pinned_cell_release_binding";
+  responseMetadataChanged.migration_id = "018f0f7e-7b8a-7abc-8def-0123456789ab";
+  responseMetadataChanged.release_evidence_chain = ["7".repeat(64)];
+  responseMetadataChanged.served_at = "2026-07-19T00:00:00Z";
+  assert.equal(await verifyCustomerIncapabilityCatalogResponse(responseMetadataChanged), true);
+  assert.deepEqual(responseMetadataChanged.catalog, (responseFixture.instance as MutableJsonObject).catalog);
+  const oldFlat = structuredClone(fixture.instance) as MutableJsonObject;
+  oldFlat.schema_version = "1.0.0";
+  oldFlat.release_unit_id = "2".repeat(64);
+  assert.equal(await verifyCustomerIncapabilityCatalog(oldFlat), false);
+  assert.equal(await verifyCustomerIncapabilityCatalog(responseFixture.instance), false);
   const tampered = structuredClone(fixture.instance) as unknown as { items: Array<{ safe_explanation: string }> };
   tampered.items[0].safe_explanation = "Semantically changed while holding every digest field fixed.";
   assert.equal(await verifyContentIdentity(tampered as unknown as JsonValue), false);
@@ -175,7 +191,7 @@ test("shared catalog fixture enforces typed identity and strict unique ordering"
     const projection = object.logical_payload_projection as MutableJsonObject;
     projection.object_type = "attacker_catalog";
     projection.id_field = "attacker_id";
-    projection.domain_separator = "jumpship:attacker_catalog:1.0.0\0";
+    projection.domain_separator = "jumpship:attacker_catalog:2.0.0\0";
     projection.excluded_fields = ["attacker_id", "logical_payload_sha256", "logical_payload_projection"];
     projection.equivalent_digest_fields = [];
   });
@@ -208,6 +224,38 @@ test("shared catalog fixture enforces typed identity and strict unique ordering"
   assert.ok(new TextEncoder().encode(canonicalizeJson(oversized)).length > 1_048_576);
   assert.equal(await verifyContentIdentity(oversized), true);
   assert.equal(await verifyCustomerIncapabilityCatalog(oversized), false);
+
+  const catalog = fixture.instance as MutableJsonObject;
+  const releaseUnit = await reidentifyForTest({
+    schema_version: "1.0.0",
+    release_unit_id: "0".repeat(64),
+    logical_payload_sha256: "0".repeat(64),
+    logical_payload_projection: {
+      object_type: "release_unit",
+      id_field: "release_unit_id",
+      object_schema_version: "1.0.0",
+      canonical_encoder: "RFC8785_JCS",
+      domain_separator: "jumpship:release_unit:1.0.0\0",
+      excluded_fields: ["release_unit_id", "logical_payload_sha256", "logical_payload_projection"],
+      equivalent_digest_fields: [],
+      id_encoding: "lowercase_hex_sha256",
+      id_equals_logical_payload_sha256: true,
+    },
+    customer_incapability_catalog_hash: catalog.catalog_hash,
+    customer_incapability_source_registry_hash: catalog.source_registry_hash,
+    members: [{ kind: "customer_incapability_catalog", object_id: catalog.catalog_id, content_sha256: catalog.catalog_hash }],
+  }, () => {});
+  const releaseUnitID = (releaseUnit as MutableJsonObject).release_unit_id;
+  const associationBinding = await reidentifyForTest(bindingFixture.instance, (object) => {
+    object.release_unit_id = releaseUnitID;
+    object.release_unit_hash = releaseUnitID;
+  });
+  assert.equal(await verifyCustomerIncapabilityCatalogAssociation(fixture.instance, associationBinding, releaseUnit), true);
+  const substitutedBinding = await reidentifyForTest(associationBinding, (object) => {
+    object.source_registry_hash = "8".repeat(64);
+  });
+  assert.equal(await verifyCustomerIncapabilityCatalogBinding(substitutedBinding), true);
+  assert.equal(await verifyCustomerIncapabilityCatalogAssociation(fixture.instance, substitutedBinding, releaseUnit), false);
 });
 
 function base64(bytes: Uint8Array): string {

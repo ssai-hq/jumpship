@@ -35,13 +35,20 @@ class ContractSuite(unittest.TestCase):
         titles = [schema["title"] for schema in self.schemas]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertEqual(len(titles), len(set(titles)))
+        versioned_schema_exceptions = {
+            "contracts/client/customer-incapability-catalog.schema.json": "2.0.0",
+        }
         for path, schema in zip(self.schema_paths, self.schemas, strict=True):
             relative = path.relative_to(ROOT).as_posix()
             self.assertEqual(schema["$schema"], SCHEMA_DIALECT, relative)
             self.assertEqual(schema["type"], "object", relative)
             self.assertIs(schema["additionalProperties"], False, relative)
             self.assertIn("schema_version", schema["required"], relative)
-            self.assertEqual(schema["properties"]["schema_version"]["const"], "1.0.0", relative)
+            self.assertEqual(
+                schema["properties"]["schema_version"]["const"],
+                versioned_schema_exceptions.get(relative, "1.0.0"),
+                relative,
+            )
             self.assertEqual(schema["x-generated-by"], GENERATOR, relative)
             self.assertIn(schema["x-jumpship-data-class"], DATA_CLASSES, relative)
             self.assertGreater(schema["x-jumpship-max-bytes"], 0, relative)
@@ -807,6 +814,28 @@ class ContractSuite(unittest.TestCase):
             incapability["properties"]["items"]["items"]["properties"]["coding_agent_denied"]["const"],
             True,
         )
+        self.assertEqual(incapability["properties"]["schema_version"]["const"], "2.0.0")
+        self.assertFalse(
+            {
+                "selection_mode",
+                "release_unit_id",
+                "release_unit_hash",
+                "migration_id",
+                "release_evidence_chain",
+                "issued_at",
+                "served_at",
+            }
+            & set(incapability["properties"]),
+            "immutable catalog identity must contain no release, migration, selection, evidence, or response metadata",
+        )
+        binding = self.registry.by_id[
+            "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json"
+        ]
+        response = self.registry.by_id[
+            "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json"
+        ]
+        self.assertTrue({"release_unit_id", "catalog_hash", "source_registry_hash"}.issubset(binding["properties"]))
+        self.assertTrue({"selection_mode", "migration_id", "release_evidence_chain", "catalog_binding", "catalog"}.issubset(response["properties"]))
         forbidden_paths = [path for path in (ROOT / "contracts").rglob("*") if "episode" in path.name or "iteration" in path.name]
         self.assertEqual(forbidden_paths, [])
 
@@ -883,6 +912,28 @@ class ContractSuite(unittest.TestCase):
             "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json"
         ]
         validate(catalog, schema, self.registry)
+        binding_fixture = json.loads(
+            (
+                ROOT
+                / "contracts/fixtures/client/valid-customer-incapability-catalog-binding.json"
+            ).read_text()
+        )
+        response_fixture = json.loads(
+            (
+                ROOT
+                / "contracts/fixtures/client/valid-customer-incapability-catalog-response.json"
+            ).read_text()
+        )
+        binding = binding_fixture["instance"]
+        response = response_fixture["instance"]
+        binding_schema = self.registry.by_id[
+            "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json"
+        ]
+        response_schema = self.registry.by_id[
+            "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json"
+        ]
+        validate(binding, binding_schema, self.registry)
+        validate(response, response_schema, self.registry)
 
         def semantic_check(instance: dict[str, object]) -> bool:
             projection = instance.get("logical_payload_projection")
@@ -928,6 +979,43 @@ class ContractSuite(unittest.TestCase):
             return len(pairs) == len(items) and pairs == sorted(pairs) and len(pairs) == len(set(pairs))
 
         self.assertTrue(semantic_check(catalog))
+        self.assertEqual(response["catalog"], catalog)
+        self.assertEqual(response["catalog_binding"], binding)
+        response_metadata_changed = json.loads(json.dumps(response))
+        response_metadata_changed["selection_mode"] = "pinned_cell_release_binding"
+        response_metadata_changed["migration_id"] = "018f0f7e-7b8a-7abc-8def-0123456789ab"
+        response_metadata_changed["release_evidence_chain"] = ["7" * 64]
+        response_metadata_changed["served_at"] = "2026-07-19T00:00:00Z"
+        validate(response_metadata_changed, response_schema, self.registry)
+        self.assertEqual(response_metadata_changed["catalog"], catalog)
+        self.assertTrue(semantic_check(response_metadata_changed["catalog"]))
+
+        old_flat = json.loads(json.dumps(catalog))
+        old_flat.update(
+            {
+                "schema_version": "1.0.0",
+                "selection_mode": "new_admission_release",
+                "release_unit_id": "2" * 64,
+                "release_unit_hash": "2" * 64,
+            }
+        )
+        with self.assertRaises(ValidationError):
+            validate(old_flat, schema, self.registry)
+        with self.assertRaises(ValidationError):
+            validate(response, schema, self.registry)
+
+        self.assertEqual(binding["release_unit_id"], binding["release_unit_hash"])
+        self.assertEqual(binding["catalog_id"], catalog["catalog_id"])
+        self.assertEqual(binding["catalog_hash"], catalog["catalog_hash"])
+        self.assertEqual(binding["source_registry_hash"], catalog["source_registry_hash"])
+        substituted_binding = json.loads(json.dumps(binding))
+        substituted_binding["source_registry_hash"] = "8" * 64
+        validate(substituted_binding, binding_schema, self.registry)
+        self.assertNotEqual(
+            substituted_binding["source_registry_hash"],
+            catalog["source_registry_hash"],
+            "cross-object equality is a registrar/verifier rule in addition to JSON Schema",
+        )
 
         tampered = json.loads(json.dumps(catalog))
         tampered["items"][0]["safe_explanation"] = "Tampered while retaining the prior ID."

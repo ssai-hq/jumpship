@@ -19,4 +19,4 @@ Provider/profile contracts:
 - `contracts/auth/deployed-auth-config.schema.json` freezes the closed browser, CLI-human, coding-agent, OAuth callback, cell, and application-writer trust topology.
 - `contracts/agent/provider*.schema.json` freezes provider selection, evidence review, use leases, route holds, status, and journal transitions without embedding provider credentials.
 
-All listed surfaces use schema version `1.0.0`; downstream consumers must use the exact artifact hash from `contracts/contract-manifest.json`, not a filename or semantic version alone.
+All listed surfaces use schema version `1.0.0` except the corrected customer-incapability catalog `2.0.0`; downstream consumers must use the exact artifact hash from `contracts/contract-manifest.json`, not a filename or semantic version alone.

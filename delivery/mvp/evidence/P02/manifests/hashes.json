@@ -2,23 +2,30 @@
   "schema_version": "1.0.0",
   "packet_id": "P02",
   "evidence_sha256": {
-    "acceptance/rubric-map.md": "fa50ad741100327954eec849c83bd2147945488cd7e6b096e3f942207b6f59eb",
+    "acceptance/rubric-map.md": "d156773c4d1bcfe962276721f2b322b5c5343f3bd97b087426507165dc70006a",
     "commands/acceptance.md": "916b85dbccacbc1e64a8763088517e6624d78ca2a1adf90dbb03a51f778c15bc",
-    "commands/preflight.md": "e7ff8838e72eaa2e5fded43248bee8b707a350345a87dad8c102b302a5d66596",
+    "commands/preflight.md": "fdf761af9213ef3d52ad953bb3bcb35299a25aa1c3c6fe63bf69f33e79989ac8",
     "commands/supplemental.md": "e23f3951a916322f1b7ee77b8a3e1f056721935746de3346ba399c64c8855a79",
-    "handoff/application-profile-inventory.md": "6573f45f622d4406e0387668cbfd639d558f3068c3ef5e072b47d8e1238b4077",
-    "handoff/change-request-procedure.md": "b394a372489b532a646baba4b226ef312518e6e5eb99f595d0b9b09a9f952c8a",
-    "handoff/contract-version-hash-manifest.json": "3137298046f847c9719df9e1c9d9ad6a4a9c47d0b1d63ed4efe1da47cb13dfa7",
-    "handoff/generated-client-hashes.json": "2d00611a1e817f8c9143e6168bd8836c6b4d0c9db03e3f6356cf3b34665e794f",
+    "corrective/boundary-review.md": "7e7e7a07cde0e4eaf2b383b18137a6f7c2532f88903af164c861a568e4e7fafa",
+    "corrective/commands.md": "cbe83e1431ba7de897845474b032af8eaeb96f42df3bf559448ae8c71499968f",
+    "corrective/contract-hashes.json": "8e522eae2b2153a2c973258dc6a2a40f200cc95f6a75884cb7fcf93dbe3b6229",
+    "corrective/summary.md": "70c3554d29cf399a5cf5655afa43c35257c041e7a7fe322ba388906796fbcc0c",
+    "handoff/application-profile-inventory.md": "bf0d21e0f7d7974a2342058ea8392993ac43ad3cfe2344ba84cb13cb8c0b305d",
+    "handoff/change-request-procedure.md": "4c80505342ba0d617b96dc3921685e778c3bfcfa6fcdf2cff223bb5e8bc17c01",
+    "handoff/contract-version-hash-manifest.json": "662d7268cce1dc2a94591fb7d1db1035a9fef16df311ff6604de3d2280ae1af8",
+    "handoff/generated-client-hashes.json": "9762ed016040c26992fc614bd9109dbcef3d3a4b2eb417d28ab6b65397df85e8",
     "reviews/pre-close-review.md": "1c3b2bb866384ca75ab246e210bbb3cda894d27f758c8c4472850e65303643f3",
-    "summary.md": "c743d0e7f256a08798c5f918de3010f48b413c6d38a184f57792fed245f8cc8f"
+    "summary.md": "7f9500fb583f9c2318c83f83ee68c2b0caf8b9467689f89eb38633bf5aaabc93"
   },
   "contract_sha256": {
-    "contracts/client/customer-incapability-catalog.schema.json": "63ed86f4ccd8c87453e7f4d8314d97d5b9734ad438c2491b4d49a610e6994e84",
-    "contracts/compatibility-baseline.json": "04715b75e9cc09785ec26ff17e5466b292c9d5175e9b1005d74c364239312953",
-    "contracts/compatibility-report.json": "a1a48aa90ef579e610398f46786c8efae9c712c1ac8b972dd75de3c5107104ee",
-    "contracts/contract-manifest.json": "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9",
-    "contracts/openapi/openapi.yaml": "f3d73a628a21d2927e5cca4da14ae8f58bdc117b232aeaabafaa007000117f50",
-    "contracts/proto/jumpship/cell/v1/cell.proto": "86047eb03f7c068a951d08879dea0f09529b60d112b3d8970bac50c35e1a6c3d"
+    "contracts/client/customer-incapability-catalog-binding.schema.json": "fe0b164d7dcd902adaf628b3711ad188997fa2653c20bbf1a9a3badbec602f5c",
+    "contracts/client/customer-incapability-catalog-response.schema.json": "0511b62dfbd16c592711e67ab5140e2a6676fbff04c5f3ccb762d8c75511c7e0",
+    "contracts/client/customer-incapability-catalog.schema.json": "fd5bd6cfbd6b466b484f4f866c3bf90c036f8d2b958e01c33d758a3084f9585a",
+    "contracts/compatibility-baseline.json": "99d75233946ddd949ac07fe162d1e2470c932714a27c0462191f6091eca29509",
+    "contracts/compatibility-report.json": "16015c484d4b4c0afd59374a1d6d109b2fd4b8ac7eef3133289a6e190d9cd55a",
+    "contracts/contract-manifest.json": "b3fb6c6950659a336c85e4085dbc52c3f42b4a66aa9db26a08e04fa97318b85e",
+    "contracts/openapi/openapi.yaml": "bbf0d61b85416ef7bf1135c7d0b371d4554a33d1d3b5069afe6e94d07fd2fb6b",
+    "contracts/proto/jumpship/cell/v1/cell.proto": "86047eb03f7c068a951d08879dea0f09529b60d112b3d8970bac50c35e1a6c3d",
+    "contracts/release/release-unit.schema.json": "b2cb0204589f4fed904f77603ac6071061466cd6bd14de11530858e15fbcb0b3"
   }
 }

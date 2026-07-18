@@ -265,9 +265,16 @@ export async function verifyContentIdentity(input: string | JsonValue): Promise<
 }
 
 const catalogTopLevelFields = [
-  "catalog_hash", "catalog_id", "issued_at", "items", "logical_payload_projection",
-  "logical_payload_sha256", "migration_id", "release_evidence_chain", "release_unit_hash",
-  "release_unit_id", "schema_version", "selection_mode", "sort_order", "source_registry_hash",
+  "catalog_hash", "catalog_id", "items", "logical_payload_projection",
+  "logical_payload_sha256", "schema_version", "source_registry_hash",
+] as const;
+const catalogBindingTopLevelFields = [
+  "binding_hash", "binding_id", "catalog_hash", "catalog_id", "logical_payload_projection",
+  "logical_payload_sha256", "release_unit_hash", "release_unit_id", "schema_version", "source_registry_hash",
+] as const;
+const catalogResponseTopLevelFields = [
+  "catalog", "catalog_binding", "migration_id", "release_evidence_chain", "schema_version",
+  "selection_mode", "served_at",
 ] as const;
 const catalogProjectionFields = [
   "canonical_encoder", "domain_separator", "equivalent_digest_fields", "excluded_fields",
@@ -317,21 +324,16 @@ export async function verifyCustomerIncapabilityCatalog(input: string | JsonValu
     if (new TextEncoder().encode(canonicalizeJson(value)).length > 1_048_576) return false;
     const projection = value.logical_payload_projection;
     if (!isJsonObject(projection) || !hasExactKeys(projection, catalogProjectionFields)) return false;
-    if (value.schema_version !== "1.0.0" || projection.object_type !== "customer_incapability_catalog" ||
-      projection.id_field !== "catalog_id" || projection.object_schema_version !== "1.0.0" ||
+    if (value.schema_version !== "2.0.0" || projection.object_type !== "customer_incapability_catalog" ||
+      projection.id_field !== "catalog_id" || projection.object_schema_version !== "2.0.0" ||
       projection.canonical_encoder !== "RFC8785_JCS" ||
-      projection.domain_separator !== "jumpship:customer_incapability_catalog:1.0.0\0" ||
+      projection.domain_separator !== "jumpship:customer_incapability_catalog:2.0.0\0" ||
       projection.id_encoding !== "lowercase_hex_sha256" || projection.id_equals_logical_payload_sha256 !== true ||
       !equalsStrings(projection.excluded_fields, ["catalog_id", "catalog_hash", "logical_payload_sha256", "logical_payload_projection"]) ||
       !equalsStrings(projection.equivalent_digest_fields, ["catalog_hash"])) return false;
-    for (const field of ["catalog_id", "logical_payload_sha256", "release_unit_id", "release_unit_hash", "catalog_hash", "source_registry_hash"] as const) {
+    for (const field of ["catalog_id", "logical_payload_sha256", "catalog_hash", "source_registry_hash"] as const) {
       if (typeof value[field] !== "string" || !hashHex.test(value[field] as string)) return false;
     }
-    if (value.selection_mode !== "new_admission_release" && value.selection_mode !== "pinned_cell_release_binding") return false;
-    if (value.sort_order !== "capability_id_then_incapability_id") return false;
-    if (value.migration_id !== null && (typeof value.migration_id !== "string" || !catalogMigrationID.test(value.migration_id))) return false;
-    if (typeof value.issued_at !== "string" || strictRFC3339Nanos(value.issued_at) === null) return false;
-    if (!validCatalogStringArray(value.release_evidence_chain, 1, 64, (field) => typeof field === "string" && hashHex.test(field))) return false;
     if (!Array.isArray(value.items) || value.items.length < 1 || value.items.length > 2048) return false;
     let previousCapability = "";
     let previousIncapability = "";
@@ -350,6 +352,80 @@ export async function verifyCustomerIncapabilityCatalog(input: string | JsonValu
       previousIncapability = incapability;
     }
     return verifyContentIdentity(value);
+  } catch {
+    return false;
+  }
+}
+
+export async function verifyCustomerIncapabilityCatalogBinding(input: string | JsonValue): Promise<boolean> {
+  try {
+    const value = typeof input === "string" ? strictParse(input) : input;
+    if (!isJsonObject(value) || !hasExactKeys(value, catalogBindingTopLevelFields)) return false;
+    if (new TextEncoder().encode(canonicalizeJson(value)).length > 16_384) return false;
+    const projection = value.logical_payload_projection;
+    if (!isJsonObject(projection) || !hasExactKeys(projection, catalogProjectionFields)) return false;
+    if (value.schema_version !== "1.0.0" || projection.object_type !== "customer_incapability_catalog_binding" ||
+      projection.id_field !== "binding_id" || projection.object_schema_version !== "1.0.0" ||
+      projection.canonical_encoder !== "RFC8785_JCS" ||
+      projection.domain_separator !== "jumpship:customer_incapability_catalog_binding:1.0.0\0" ||
+      projection.id_encoding !== "lowercase_hex_sha256" || projection.id_equals_logical_payload_sha256 !== true ||
+      !equalsStrings(projection.excluded_fields, ["binding_id", "binding_hash", "logical_payload_sha256", "logical_payload_projection"]) ||
+      !equalsStrings(projection.equivalent_digest_fields, ["binding_hash"])) return false;
+    for (const field of ["binding_id", "binding_hash", "logical_payload_sha256", "release_unit_id", "release_unit_hash", "catalog_id", "catalog_hash", "source_registry_hash"] as const) {
+      if (typeof value[field] !== "string" || !hashHex.test(value[field] as string)) return false;
+    }
+    if (value.release_unit_id !== value.release_unit_hash || value.catalog_id !== value.catalog_hash) return false;
+    return verifyContentIdentity(value);
+  } catch {
+    return false;
+  }
+}
+
+export async function verifyCustomerIncapabilityCatalogResponse(input: string | JsonValue): Promise<boolean> {
+  try {
+    const value = typeof input === "string" ? strictParse(input) : input;
+    if (!isJsonObject(value) || !hasExactKeys(value, catalogResponseTopLevelFields)) return false;
+    if (new TextEncoder().encode(canonicalizeJson(value)).length > 1_081_344) return false;
+    if (value.schema_version !== "1.0.0" ||
+      (value.selection_mode !== "new_admission_release" && value.selection_mode !== "pinned_cell_release_binding")) return false;
+    if (value.migration_id !== null && (typeof value.migration_id !== "string" || !catalogMigrationID.test(value.migration_id))) return false;
+    if (typeof value.served_at !== "string" || strictRFC3339Nanos(value.served_at) === null) return false;
+    if (!validCatalogStringArray(value.release_evidence_chain, 1, 64, (field) => typeof field === "string" && hashHex.test(field))) return false;
+    if (!await verifyCustomerIncapabilityCatalog(value.catalog) ||
+      !await verifyCustomerIncapabilityCatalogBinding(value.catalog_binding)) return false;
+    if (!isJsonObject(value.catalog) || !isJsonObject(value.catalog_binding)) return false;
+    return value.catalog_binding.catalog_id === value.catalog.catalog_id &&
+      value.catalog_binding.catalog_hash === value.catalog.catalog_hash &&
+      value.catalog_binding.source_registry_hash === value.catalog.source_registry_hash;
+  } catch {
+    return false;
+  }
+}
+
+export async function verifyCustomerIncapabilityCatalogAssociation(
+  catalogInput: string | JsonValue,
+  bindingInput: string | JsonValue,
+  releaseUnitInput: string | JsonValue,
+): Promise<boolean> {
+  try {
+    const catalog = typeof catalogInput === "string" ? strictParse(catalogInput) : catalogInput;
+    const binding = typeof bindingInput === "string" ? strictParse(bindingInput) : bindingInput;
+    const releaseUnit = typeof releaseUnitInput === "string" ? strictParse(releaseUnitInput) : releaseUnitInput;
+    if (!await verifyCustomerIncapabilityCatalog(catalog) ||
+      !await verifyCustomerIncapabilityCatalogBinding(binding) ||
+      !await verifyContentIdentity(releaseUnit) || !isJsonObject(catalog) || !isJsonObject(binding) ||
+      !isJsonObject(releaseUnit)) return false;
+    if (binding.release_unit_id !== releaseUnit.release_unit_id || binding.release_unit_hash !== releaseUnit.release_unit_id ||
+      binding.catalog_id !== catalog.catalog_id || binding.catalog_hash !== catalog.catalog_hash ||
+      binding.source_registry_hash !== catalog.source_registry_hash ||
+      releaseUnit.customer_incapability_catalog_hash !== catalog.catalog_hash ||
+      releaseUnit.customer_incapability_source_registry_hash !== catalog.source_registry_hash ||
+      !Array.isArray(releaseUnit.members)) return false;
+    const catalogMembers = releaseUnit.members.filter(
+      (member) => isJsonObject(member) && member.kind === "customer_incapability_catalog",
+    );
+    return catalogMembers.length === 1 && isJsonObject(catalogMembers[0]) &&
+      catalogMembers[0].object_id === catalog.catalog_id && catalogMembers[0].content_sha256 === catalog.catalog_hash;
   } catch {
     return false;
   }

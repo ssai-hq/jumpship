@@ -3637,7 +3637,13 @@ def _release_artifacts() -> dict[str, Artifact]:
         data_class="security_material",
         max_bytes=2_097_152,
         flow_ids=("F24",),
-        description="Canonical content-addressed release composition; any member change creates a new unit.",
+        description="Canonical content-addressed release composition; any member change creates a new unit. It binds the exact immutable customer-incapability catalog and source-registry hashes one-way; the separately derived reverse binding is not a ReleaseUnit member.",
+        semantic_invariants=(
+            "customer_incapability_catalog_contains_no_release_unit_or_response_metadata",
+            "release_unit_binds_exact_customer_incapability_catalog_and_source_registry_hashes",
+            "customer_incapability_catalog_binding_is_derived_only_after_release_unit_identity",
+            "customer_incapability_catalog_binding_is_not_a_release_unit_member",
+        ),
         one_of=[
             _branch(
                 required=(),

@@ -1,0 +1,33 @@
+{
+  "expected_valid": true,
+  "instance": {
+    "binding_hash": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+    "binding_id": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+    "catalog_hash": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+    "catalog_id": "ab58d74982ba340e324b2d221110f92b672506351fe092f566c91331a6cc0085",
+    "logical_payload_projection": {
+      "canonical_encoder": "RFC8785_JCS",
+      "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+      "equivalent_digest_fields": [
+        "binding_hash"
+      ],
+      "excluded_fields": [
+        "binding_id",
+        "binding_hash",
+        "logical_payload_sha256",
+        "logical_payload_projection"
+      ],
+      "id_encoding": "lowercase_hex_sha256",
+      "id_equals_logical_payload_sha256": true,
+      "id_field": "binding_id",
+      "object_schema_version": "1.0.0",
+      "object_type": "customer_incapability_catalog_binding"
+    },
+    "logical_payload_sha256": "6b1145a8544424e8b5175788629caadd599d4937f5d214742c2144d151e1f3c8",
+    "release_unit_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+    "release_unit_id": "2222222222222222222222222222222222222222222222222222222222222222",
+    "schema_version": "1.0.0",
+    "source_registry_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "schema_path": "contracts/client/customer-incapability-catalog-binding.schema.json"
+}

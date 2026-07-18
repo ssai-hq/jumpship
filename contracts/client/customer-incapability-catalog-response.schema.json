@@ -1,0 +1,70 @@
+{
+  "$id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Non-content-addressed API envelope combining immutable catalog content and its validated ReleaseUnit binding with selection, migration and release-evidence metadata.",
+  "properties": {
+    "catalog": {
+      "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog.schema.json"
+    },
+    "catalog_binding": {
+      "$ref": "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json"
+    },
+    "migration_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_evidence_chain": {
+      "items": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "selection_mode": {
+      "enum": [
+        "new_admission_release",
+        "pinned_cell_release_binding"
+      ],
+      "type": "string"
+    },
+    "served_at": {
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?Z$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "selection_mode",
+    "migration_id",
+    "release_evidence_chain",
+    "catalog_binding",
+    "catalog",
+    "served_at"
+  ],
+  "title": "Jumpship Customer Incapability Catalog API Response Contract",
+  "type": "object",
+  "x-generated-by": "internal/contracts/codegen/generate.py",
+  "x-jumpship-compatibility": "additive-with-versioned-breaking-change",
+  "x-jumpship-data-class": "public",
+  "x-jumpship-flow-ids": [
+    "F01",
+    "F02",
+    "F23"
+  ],
+  "x-jumpship-max-bytes": 1081344
+}

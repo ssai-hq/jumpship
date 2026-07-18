@@ -4344,9 +4344,240 @@
     {
       "invalid": {
         "__unknown_property": true,
+        "binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "binding_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "issued_at": "2026-07-18T01:00:00Z",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+          "equivalent_digest_fields": [
+            "binding_hash"
+          ],
+          "excluded_fields": [
+            "binding_id",
+            "binding_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "binding_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "customer_incapability_catalog_binding"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "invalid_reason": "strict unknown property",
+      "schema_id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-binding.schema.json",
+      "schema_path": "contracts/client/customer-incapability-catalog-binding.schema.json",
+      "valid": {
+        "binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "binding_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "logical_payload_projection": {
+          "canonical_encoder": "RFC8785_JCS",
+          "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+          "equivalent_digest_fields": [
+            "binding_hash"
+          ],
+          "excluded_fields": [
+            "binding_id",
+            "binding_hash",
+            "logical_payload_sha256",
+            "logical_payload_projection"
+          ],
+          "id_encoding": "lowercase_hex_sha256",
+          "id_equals_logical_payload_sha256": true,
+          "id_field": "binding_id",
+          "object_schema_version": "1.0.0",
+          "object_type": "customer_incapability_catalog_binding"
+        },
+        "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "schema_version": "1.0.0",
+        "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "invalid": {
+        "__unknown_property": true,
+        "catalog": {
+          "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "items": [
+            {
+              "capability_id": "MVP-CAP-ARCHAEOLOGY",
+              "coding_agent_denied": true,
+              "incapability_id": "1.0.0",
+              "negative_test_receipt_hashes": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              ],
+              "operation_id": "1.0.0",
+              "reason_code": "1.0.0",
+              "required_human_surface": "browser",
+              "safe_explanation": "1.0.0",
+              "safe_remediation": "1.0.0",
+              "structural_denial_contract_ids": [
+                "1.0.0"
+              ]
+            }
+          ],
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
+            "equivalent_digest_fields": [
+              "catalog_hash"
+            ],
+            "excluded_fields": [
+              "catalog_id",
+              "catalog_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "catalog_id",
+            "object_schema_version": "2.0.0",
+            "object_type": "customer_incapability_catalog"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "2.0.0",
+          "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "catalog_binding": {
+          "binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "binding_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+            "equivalent_digest_fields": [
+              "binding_hash"
+            ],
+            "excluded_fields": [
+              "binding_id",
+              "binding_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "binding_id",
+            "object_schema_version": "1.0.0",
+            "object_type": "customer_incapability_catalog_binding"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "1.0.0",
+          "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "migration_id": "018f1234-5678-7abc-8def-0123456789ab",
+        "release_evidence_chain": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "schema_version": "1.0.0",
+        "selection_mode": "new_admission_release",
+        "served_at": "2026-07-18T01:00:00Z"
+      },
+      "invalid_reason": "strict unknown property",
+      "schema_id": "https://jumpship.dev/contracts/client/customer-incapability-catalog-response.schema.json",
+      "schema_path": "contracts/client/customer-incapability-catalog-response.schema.json",
+      "valid": {
+        "catalog": {
+          "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "items": [
+            {
+              "capability_id": "MVP-CAP-ARCHAEOLOGY",
+              "coding_agent_denied": true,
+              "incapability_id": "1.0.0",
+              "negative_test_receipt_hashes": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              ],
+              "operation_id": "1.0.0",
+              "reason_code": "1.0.0",
+              "required_human_surface": "browser",
+              "safe_explanation": "1.0.0",
+              "safe_remediation": "1.0.0",
+              "structural_denial_contract_ids": [
+                "1.0.0"
+              ]
+            }
+          ],
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
+            "equivalent_digest_fields": [
+              "catalog_hash"
+            ],
+            "excluded_fields": [
+              "catalog_id",
+              "catalog_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "catalog_id",
+            "object_schema_version": "2.0.0",
+            "object_type": "customer_incapability_catalog"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "2.0.0",
+          "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "catalog_binding": {
+          "binding_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "binding_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "logical_payload_projection": {
+            "canonical_encoder": "RFC8785_JCS",
+            "domain_separator": "jumpship:customer_incapability_catalog_binding:1.0.0\u0000",
+            "equivalent_digest_fields": [
+              "binding_hash"
+            ],
+            "excluded_fields": [
+              "binding_id",
+              "binding_hash",
+              "logical_payload_sha256",
+              "logical_payload_projection"
+            ],
+            "id_encoding": "lowercase_hex_sha256",
+            "id_equals_logical_payload_sha256": true,
+            "id_field": "binding_id",
+            "object_schema_version": "1.0.0",
+            "object_type": "customer_incapability_catalog_binding"
+          },
+          "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "schema_version": "1.0.0",
+          "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "migration_id": "018f1234-5678-7abc-8def-0123456789ab",
+        "release_evidence_chain": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        ],
+        "schema_version": "1.0.0",
+        "selection_mode": "new_admission_release",
+        "served_at": "2026-07-18T01:00:00Z"
+      }
+    },
+    {
+      "invalid": {
+        "__unknown_property": true,
+        "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "items": [
           {
             "capability_id": "MVP-CAP-ARCHAEOLOGY",
@@ -4367,7 +4598,7 @@
         ],
         "logical_payload_projection": {
           "canonical_encoder": "RFC8785_JCS",
-          "domain_separator": "jumpship:customer_incapability_catalog:1.0.0\u0000",
+          "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
           "equivalent_digest_fields": [
             "catalog_hash"
           ],
@@ -4380,19 +4611,11 @@
           "id_encoding": "lowercase_hex_sha256",
           "id_equals_logical_payload_sha256": true,
           "id_field": "catalog_id",
-          "object_schema_version": "1.0.0",
+          "object_schema_version": "2.0.0",
           "object_type": "customer_incapability_catalog"
         },
         "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "migration_id": "018f1234-5678-7abc-8def-0123456789ab",
-        "release_evidence_chain": [
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        ],
-        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "schema_version": "1.0.0",
-        "selection_mode": "new_admission_release",
-        "sort_order": "capability_id_then_incapability_id",
+        "schema_version": "2.0.0",
         "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       },
       "invalid_reason": "strict unknown property",
@@ -4401,7 +4624,6 @@
       "valid": {
         "catalog_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         "catalog_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "issued_at": "2026-07-18T01:00:00Z",
         "items": [
           {
             "capability_id": "MVP-CAP-ARCHAEOLOGY",
@@ -4422,7 +4644,7 @@
         ],
         "logical_payload_projection": {
           "canonical_encoder": "RFC8785_JCS",
-          "domain_separator": "jumpship:customer_incapability_catalog:1.0.0\u0000",
+          "domain_separator": "jumpship:customer_incapability_catalog:2.0.0\u0000",
           "equivalent_digest_fields": [
             "catalog_hash"
           ],
@@ -4435,19 +4657,11 @@
           "id_encoding": "lowercase_hex_sha256",
           "id_equals_logical_payload_sha256": true,
           "id_field": "catalog_id",
-          "object_schema_version": "1.0.0",
+          "object_schema_version": "2.0.0",
           "object_type": "customer_incapability_catalog"
         },
         "logical_payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "migration_id": "018f1234-5678-7abc-8def-0123456789ab",
-        "release_evidence_chain": [
-          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        ],
-        "release_unit_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "release_unit_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "schema_version": "1.0.0",
-        "selection_mode": "new_admission_release",
-        "sort_order": "capability_id_then_incapability_id",
+        "schema_version": "2.0.0",
         "source_registry_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       }
     },

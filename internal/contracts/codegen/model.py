@@ -156,6 +156,7 @@ def schema(
     description: str,
     all_of: list[dict[str, Any]] | None = None,
     definitions: dict[str, Any] | None = None,
+    schema_version: str = SCHEMA_VERSION,
 ) -> dict[str, Any]:
     if not path.endswith(".schema.json"):
         raise ValueError(f"schema path must end in .schema.json: {path}")
@@ -163,7 +164,7 @@ def schema(
         raise ValueError(f"unknown data class {data_class!r}")
     if not flow_ids or any(re.fullmatch(r"F(?:0[1-9]|1[0-9]|2[0-8])", value) is None for value in flow_ids):
         raise ValueError(f"invalid flow IDs for {path}: {flow_ids!r}")
-    all_properties = {"schema_version": {"const": SCHEMA_VERSION}, **properties}
+    all_properties = {"schema_version": {"const": schema_version}, **properties}
     document: dict[str, Any] = {
         "$schema": SCHEMA_DIALECT,
         "$id": f"{CONTRACT_BASE}{path}",
