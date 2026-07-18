@@ -1,0 +1,74 @@
+{
+  "name": "CI / PR fast gates",
+  "on": {
+    "pull_request": {
+      "types": ["opened", "reopened", "synchronize", "ready_for_review"]
+    },
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "ci-pr-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "fast": {
+      "name": "Pinned fast gate",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 35,
+      "env": {
+        "CI": "true",
+        "JUMPSHIP_DEPLOYMENT_PROFILE": "local"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "pr-fast"
+          }
+        },
+        {
+          "name": "Prove this gate is local-only",
+          "run": "python3 scripts/ci/profile_guard.py --profile local --mode local"
+        },
+        {
+          "name": "Run fast Make contract",
+          "run": "python3 scripts/ci/run_gate.py --title 'PR fast repository gates' --owner P03 --artifact-dir .ci-artifacts/pr-fast/repository --target doctor --target docs-check --target capability-check --target command-check --target packet-graph-check --target gen-check --target fmt --target lint --target architecture-check --target test-unit --target test-contracts --target test-security"
+        },
+        {
+          "name": "Run credential-free infrastructure policy targets as P09 lands",
+          "run": "python3 scripts/ci/run_gate.py --title 'PR infrastructure policy gates' --owner P09 --allow-planned --artifact-dir .ci-artifacts/pr-fast/infra-policy --target tofu-fmt-check --target tofu-validate --target tofu-policy-test"
+        },
+        {
+          "name": "Upload detailed fast-gate evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "pr-fast-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/pr-fast",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "7",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise job summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### PR fast gate' '' '- Workflow result: `${{ job.status }}`' '- Detailed logs: `pr-fast-${{ github.run_id }}-${{ github.run_attempt }}`' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/model/[^/]+/invoke"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json",
+      "x-amzn-bedrock-invocation-latency": "1"
+    },
+    "jsonBody": {
+      "completion": "deterministic-local-provider-response",
+      "stop_reason": "end_turn",
+      "fixture": true
+    }
+  }
+}

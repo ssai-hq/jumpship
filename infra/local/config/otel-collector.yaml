@@ -1,0 +1,70 @@
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 128
+    spike_limit_mib: 32
+  batch:
+    timeout: 1s
+    send_batch_size: 256
+  transform/redact:
+    error_mode: propagate
+    trace_statements:
+      - context: span
+        statements:
+          - delete_key(span.attributes, "db.statement")
+          - delete_key(span.attributes, "db.query.text")
+          - delete_key(span.attributes, "http.url")
+          - delete_key(span.attributes, "http.target")
+          - delete_key(span.attributes, "url.full")
+          - delete_key(span.attributes, "gen_ai.prompt")
+          - delete_key(span.attributes, "gen_ai.completion")
+          - delete_key(span.attributes, "http.request.header.authorization")
+          - delete_key(span.attributes, "http.request.header.cookie")
+    log_statements:
+      - context: log
+        statements:
+          - set(log.body, "[redacted-local-log-body]")
+          - delete_key(log.attributes, "db.statement")
+          - delete_key(log.attributes, "db.query.text")
+          - delete_key(log.attributes, "http.url")
+          - delete_key(log.attributes, "url.full")
+          - delete_key(log.attributes, "gen_ai.prompt")
+          - delete_key(log.attributes, "gen_ai.completion")
+          - delete_key(log.attributes, "http.request.header.authorization")
+          - delete_key(log.attributes, "http.request.header.cookie")
+    metric_statements:
+      - context: datapoint
+        statements:
+          - keep_keys(datapoint.attributes, ["jumpship.local.metric.dimension"])
+
+exporters:
+  debug:
+    verbosity: normal
+
+service:
+  extensions: [health_check]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, transform/redact, batch]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, transform/redact, batch]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, transform/redact, batch]
+      exporters: [debug]

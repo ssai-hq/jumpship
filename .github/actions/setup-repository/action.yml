@@ -1,0 +1,29 @@
+{
+  "name": "Set up pinned Jumpship toolchain",
+  "description": "Restore content-addressed caches and run the repository's checksum-verifying bootstrap.",
+  "inputs": {
+    "cache-namespace": {
+      "description": "Stable gate-specific cache namespace.",
+      "required": true
+    }
+  },
+  "runs": {
+    "using": "composite",
+    "steps": [
+      {
+        "name": "Restore repository caches (actions/cache v4.2.3, pinned)",
+        "uses": "actions/cache@5a3ec84eff668545956fd18022155c47e93e2684",
+        "with": {
+          "path": "build/tools/cache\nbuild/tools/_toolchains\nbuild/tools/go-build\nbuild/tools/go-mod\nbuild/tools/golangci-cache\nbuild/tools/pnpm-store\nbuild/tools/trivy-cache",
+          "key": "${{ runner.os }}-${{ runner.arch }}-${{ inputs.cache-namespace }}-${{ hashFiles('tools/manifest.yaml', 'go.sum', 'pnpm-lock.yaml') }}",
+          "restore-keys": "${{ runner.os }}-${{ runner.arch }}-${{ inputs.cache-namespace }}-"
+        }
+      },
+      {
+        "name": "Bootstrap checksummed repository-local tools",
+        "shell": "bash",
+        "run": "set -euo pipefail\nmake bootstrap"
+      }
+    ]
+  }
+}

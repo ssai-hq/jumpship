@@ -1,0 +1,114 @@
+{
+  "name": "Release / qualify exact production unit",
+  "on": {
+    "workflow_dispatch": {
+      "inputs": {
+        "profile": {
+          "description": "Exact production profile; no aliases are accepted.",
+          "required": true,
+          "default": "paid-production",
+          "type": "choice",
+          "options": ["paid-production"]
+        },
+        "release_digest": {
+          "description": "Immutable release digest in sha256:<64 lowercase hex> form.",
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "release-qualify-${{ inputs.release_digest }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "release-input-gate": {
+      "name": "Validate exact production selector and digest",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 5,
+      "permissions": {
+        "contents": "read"
+      },
+      "outputs": {
+        "profile": "${{ steps.release.outputs.profile }}",
+        "release_digest": "${{ steps.release.outputs.release_digest }}"
+      },
+      "steps": [
+        {
+          "name": "Checkout release guard (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Reject aliases, non-production profiles, mutable refs, and static credentials",
+          "id": "release",
+          "env": {
+            "REQUESTED_PROFILE": "${{ inputs.profile }}",
+            "REQUESTED_DIGEST": "${{ inputs.release_digest }}"
+          },
+          "run": "python3 scripts/ci/profile_guard.py --profile \"$REQUESTED_PROFILE\" --mode release --release-digest \"$REQUESTED_DIGEST\" --require-main-ref --github-output \"$GITHUB_OUTPUT\""
+        }
+      ]
+    },
+    "qualify": {
+      "name": "Qualification handoff only (no deploy)",
+      "if": "${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}",
+      "needs": ["release-input-gate"],
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 120,
+      "environment": "production-qualification",
+      "permissions": {
+        "contents": "read"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "release-qualify"
+          }
+        },
+        {
+          "name": "Run qualification target only when P28 defines it",
+          "env": {
+            "VALIDATED_PROFILE": "${{ needs.release-input-gate.outputs.profile }}",
+            "VALIDATED_DIGEST": "${{ needs.release-input-gate.outputs.release_digest }}"
+          },
+          "run": "python3 scripts/ci/run_gate.py --title 'Exact release qualification' --owner P28 --allow-planned --artifact-dir .ci-artifacts/release-qualify --make-var ENV=production --make-var PROFILE=$VALIDATED_PROFILE --make-var RELEASE_DIGEST=$VALIDATED_DIGEST --target release-qualify"
+        },
+        {
+          "name": "Upload detailed release evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "release-qualify-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/release-qualify",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "30",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise qualification summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Exact release qualification' '' '- Workflow result: `${{ job.status }}`' '- Profile: `${{ needs.release-input-gate.outputs.profile }}`' '- Digest: `${{ needs.release-input-gate.outputs.release_digest }}`' '- This workflow never deploys and does not imply manual approval.' '- P28 target absence remains `planned-not-evaluated`.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

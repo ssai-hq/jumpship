@@ -1,0 +1,107 @@
+{
+  "name": "CI / infrastructure planning gates",
+  "on": {
+    "workflow_dispatch": {
+      "inputs": {
+        "profile": {
+          "description": "Closed non-production deployment profile to plan.",
+          "required": true,
+          "default": "ephemeral-nonprod",
+          "type": "choice",
+          "options": ["ephemeral-nonprod", "persistent-nonprod"]
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "ci-infra-${{ github.workflow }}-${{ github.ref }}-${{ inputs.profile || 'ephemeral-nonprod' }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "profile-gate": {
+      "name": "Validate selector before OIDC",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 5,
+      "permissions": {
+        "contents": "read"
+      },
+      "outputs": {
+        "profile": "${{ steps.profile.outputs.profile }}"
+      },
+      "steps": [
+        {
+          "name": "Checkout selector guard (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Reject unknown, local, production, or credential-bearing requests",
+          "id": "profile",
+          "env": {
+            "REQUESTED_PROFILE": "${{ inputs.profile || 'ephemeral-nonprod' }}"
+          },
+          "run": "python3 scripts/ci/profile_guard.py --profile \"$REQUESTED_PROFILE\" --mode cloud --require-main-ref --github-output \"$GITHUB_OUTPUT\""
+        }
+      ]
+    },
+    "plan": {
+      "name": "OIDC-scoped plan handoff (no apply)",
+      "if": "${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}",
+      "needs": ["profile-gate"],
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 60,
+      "environment": "nonprod-plan",
+      "permissions": {
+        "contents": "read",
+        "id-token": "write"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "infra-plan"
+          }
+        },
+        {
+          "name": "Run validation and plan targets as P09 and P10 land",
+          "env": {
+            "VALIDATED_PROFILE": "${{ needs.profile-gate.outputs.profile }}"
+          },
+          "run": "python3 scripts/ci/run_gate.py --title 'Infrastructure validation and plan' --owner P09/P10 --allow-planned --artifact-dir .ci-artifacts/infra-plan --make-var ENV=nonprod --make-var ROOT=control-plane --make-var PROFILE=$VALIDATED_PROFILE --target deployment-profile-validate --target tofu-fmt-check --target tofu-validate --target tofu-policy-test --target tofu-plan"
+        },
+        {
+          "name": "Upload detailed plan evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "infra-plan-${{ needs.profile-gate.outputs.profile }}-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/infra-plan",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "1",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise plan summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Infrastructure plan handoff' '' '- Workflow result: `${{ job.status }}`' '- Profile: `${{ needs.profile-gate.outputs.profile }}`' '- OIDC is available only on a manual main-branch run in `nonprod-plan` after selector validation.' '- This workflow never applies infrastructure.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

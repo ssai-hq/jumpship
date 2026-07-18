@@ -1,0 +1,82 @@
+{
+  "name": "Test / browser gates",
+  "on": {
+    "pull_request": {
+      "paths": [
+        "web/**",
+        "api/**",
+        "cmd/**",
+        "internal/**",
+        "mk/packets/P22.mk",
+        ".github/workflows/test-browser.yml",
+        "scripts/ci/**"
+      ]
+    },
+    "push": {
+      "branches": ["main"],
+      "paths": [
+        "web/**",
+        "api/**",
+        "cmd/**",
+        "internal/**",
+        "mk/packets/P22.mk",
+        ".github/workflows/test-browser.yml",
+        "scripts/ci/**"
+      ]
+    },
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "test-browser-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+    "cancel-in-progress": "${{ github.event_name == 'pull_request' }}"
+  },
+  "jobs": {
+    "browser": {
+      "name": "Browser, accessibility, and visual gates",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 60,
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "browser"
+          }
+        },
+        {
+          "name": "Run browser targets as P22 lands",
+          "run": "python3 scripts/ci/run_gate.py --title 'Browser quality gates' --owner P22 --allow-planned --artifact-dir .ci-artifacts/browser --target web-test-e2e --target web-test-a11y --target web-test-visual"
+        },
+        {
+          "name": "Upload detailed browser evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "browser-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/browser",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "7",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise browser summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Browser quality gates' '' '- Workflow result: `${{ job.status }}`' '- P22-owned browser targets remain `planned-not-evaluated` until defined.' '- Screenshots, traces, and reports are retained when produced.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

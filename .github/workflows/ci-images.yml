@@ -1,0 +1,63 @@
+{
+  "name": "CI / image and supply-chain gates",
+  "on": {
+    "pull_request": {},
+    "push": {
+      "branches": ["main"]
+    },
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "ci-images-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+    "cancel-in-progress": "${{ github.event_name == 'pull_request' }}"
+  },
+  "jobs": {
+    "supply-chain": {
+      "name": "Build, SBOM, scan, signature, and provenance gates",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 75,
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "images-supply-chain"
+          }
+        },
+        {
+          "name": "Run supply-chain targets as their P10 owner lands",
+          "run": "python3 scripts/ci/run_gate.py --title 'Image and supply-chain gates' --owner P10 --allow-planned --artifact-dir .ci-artifacts/images --target build-images --target image-scan --target sbom --target image-verify-signature --target supply-chain-verify"
+        },
+        {
+          "name": "Upload detailed supply-chain evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "image-supply-chain-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/images",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "30",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise supply-chain summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Image and supply-chain gates' '' '- Workflow result: `${{ job.status }}`' '- P10-owned targets remain `planned-not-evaluated` until defined.' '- Detailed artifacts retain logs, SBOMs, scan reports, signatures, and provenance when produced.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/v1/tools/[^/]+/invoke"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "invocation_id": "synthetic-local-invocation-0001",
+      "status": "succeeded",
+      "output": {
+        "fixture": true
+      }
+    }
+  }
+}

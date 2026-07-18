@@ -1,0 +1,72 @@
+{
+  "name": "Quality / evaluation gates",
+  "on": {
+    "push": {
+      "branches": ["main"],
+      "paths": [
+        "evals/**",
+        "quality/**",
+        "mk/packets/P21.mk",
+        ".github/workflows/quality-evals.yml",
+        "scripts/ci/**"
+      ]
+    },
+    "schedule": [
+      {"cron": "43 3 * * 1-5"}
+    ],
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "quality-evals-${{ github.workflow }}-${{ github.ref }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "evals": {
+      "name": "Deterministic evaluation suite",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 90,
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "quality-evals"
+          }
+        },
+        {
+          "name": "Run deterministic evaluation targets as P21 lands",
+          "run": "python3 scripts/ci/run_gate.py --title 'Deterministic evaluation gates' --owner P21 --allow-planned --artifact-dir .ci-artifacts/evals --make-var SUITE=mvp --target eval-validate --target eval-unit --target eval-sanitize --target eval-run"
+        },
+        {
+          "name": "Upload detailed evaluation evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "quality-evals-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/evals",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "14",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise evaluation summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Deterministic evaluation gates' '' '- Workflow result: `${{ job.status }}`' '- Suite: `mvp`' '- P21-owned targets remain `planned-not-evaluated` until defined.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

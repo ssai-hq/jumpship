@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+"""Run a packet-owned application entrypoint with the pinned repository toolchain."""
+
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[3]
+
+
+def _require_tool(name: str) -> Path:
+    tool = ROOT / "build" / "tools" / "bin" / name
+    if not tool.is_file():
+        raise RuntimeError(f"pinned {name} is unavailable; run `make bootstrap` first")
+    return tool
+
+
+def _web() -> None:
+    entrypoints = tuple(
+        path
+        for pattern in ("app/page.*", "pages/index.*", "src/app/page.*", "src/pages/index.*")
+        for path in (ROOT / "web").glob(pattern)
+        if path.is_file()
+    )
+    if not entrypoints:
+        raise RuntimeError(
+            "web development entrypoint is not implemented yet; its owning packet must add a page before `make web-dev` can run"
+        )
+    pnpm = _require_tool("pnpm")
+    os.execv(str(pnpm), [str(pnpm), "--dir", str(ROOT / "web"), "dev"])
+
+
+def _api() -> None:
+    entrypoint = ROOT / "cmd" / "control-api" / "main.go"
+    if not entrypoint.is_file():
+        raise RuntimeError(
+            "control API development entrypoint is not implemented yet; its owning packet must add cmd/control-api/main.go before `make api-dev` can run"
+        )
+    go = _require_tool("go")
+    os.chdir(ROOT)
+    os.execv(str(go), [str(go), "run", "./cmd/control-api"])
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("service", choices=("web", "api"))
+    args = parser.parse_args()
+    try:
+        if args.service == "web":
+            _web()
+        else:
+            _api()
+    except RuntimeError as error:
+        print(f"development entrypoint: {error}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

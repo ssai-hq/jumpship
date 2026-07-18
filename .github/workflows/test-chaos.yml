@@ -1,0 +1,83 @@
+{
+  "name": "Test / chaos gates",
+  "on": {
+    "schedule": [
+      {"cron": "11 4 * * 6"}
+    ],
+    "workflow_dispatch": {
+      "inputs": {
+        "phase": {
+          "description": "Declared chaos phase selector.",
+          "required": true,
+          "default": "cdc",
+          "type": "choice",
+          "options": ["cdc", "cutover"]
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "test-chaos-${{ github.workflow }}-${{ inputs.phase || 'cdc' }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "chaos": {
+      "name": "Declared chaos selector",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 90,
+      "env": {
+        "CI": "true",
+        "JUMPSHIP_DEPLOYMENT_PROFILE": "local"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "chaos"
+          }
+        },
+        {
+          "name": "Prove chaos fixtures are local-only",
+          "run": "python3 scripts/ci/profile_guard.py --profile local --mode local"
+        },
+        {
+          "name": "Dispatch the declared chaos phase as its owner lands",
+          "env": {
+            "CHAOS_PHASE": "${{ inputs.phase || 'cdc' }}"
+          },
+          "run": "python3 scripts/ci/run_gate.py --title 'Declared chaos gates' --owner P17/P26 --allow-planned --artifact-dir .ci-artifacts/chaos --make-var PHASE=$CHAOS_PHASE --target test-chaos"
+        },
+        {
+          "name": "Upload detailed chaos evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "chaos-${{ inputs.phase || 'cdc' }}-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/chaos",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "14",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise chaos summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Declared chaos gate' '' '- Workflow result: `${{ job.status }}`' '- Phase: `${{ inputs.phase || 'cdc' }}`' '- Planned selectors are not represented as qualification.' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

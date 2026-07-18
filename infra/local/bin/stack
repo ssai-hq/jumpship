@@ -1,0 +1,640 @@
+#!/usr/bin/env python3
+"""Safe, local-only lifecycle controller for the P03 fixture stack."""
+
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+import re
+import shutil
+import socket
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from typing import NamedTuple
+
+
+ROOT = Path(__file__).resolve().parents[3]
+LOCAL_DIR = ROOT / "infra" / "local"
+COMPOSE_FILE = LOCAL_DIR / "compose.yml"
+ENV_FILE = LOCAL_DIR / ".env.example"
+PROJECT = "jumpship-local"
+HOST_INGRESS_NETWORK = "jumpship-local-host-ingress"
+RESET_CONFIRMATION = "destroy:jumpship-local:volumes"
+MVP_CAP_ARCH_TRUST_DOMAINS = "MVP-CAP-ARCH-TRUST-DOMAINS"
+MVP_CAP_NONCHOICES = "MVP-CAP-NONCHOICES"
+PROFILES = ("network", "agent", "observability", "web", "full")
+RUNNABLE_PROFILES = ("network", "agent", "observability")
+PORT_VARIABLES = frozenset(
+    {
+        "JUMPSHIP_CONTROL_POSTGRES_PORT",
+        "JUMPSHIP_CELL_POSTGRES_PORT",
+        "JUMPSHIP_TARGET_POSTGRES_PORT",
+        "JUMPSHIP_MONGO_PORT",
+        "JUMPSHIP_MINIO_API_PORT",
+        "JUMPSHIP_MINIO_CONSOLE_PORT",
+        "JUMPSHIP_MAILPIT_SMTP_PORT",
+        "JUMPSHIP_MAILPIT_UI_PORT",
+        "JUMPSHIP_TOXIPROXY_API_PORT",
+        "JUMPSHIP_TOXIPROXY_DATA_PORT",
+        "JUMPSHIP_ALLOWED_EGRESS_PORT",
+        "JUMPSHIP_FAKE_BEDROCK_PORT",
+        "JUMPSHIP_FAKE_CHAT_PORT",
+        "JUMPSHIP_FAKE_TOOL_BROKER_PORT",
+        "JUMPSHIP_OTEL_GRPC_PORT",
+        "JUMPSHIP_OTEL_HTTP_PORT",
+        "JUMPSHIP_OTEL_HEALTH_PORT",
+    }
+)
+HOST_ENVIRONMENT = frozenset(
+    {
+        "PATH",
+        "HOME",
+        "TMPDIR",
+        "LANG",
+        "LC_ALL",
+        "LC_CTYPE",
+        "SSL_CERT_FILE",
+        "SSL_CERT_DIR",
+        "HTTP_PROXY",
+        "HTTPS_PROXY",
+        "NO_PROXY",
+        "http_proxy",
+        "https_proxy",
+        "no_proxy",
+        "DOCKER_API_VERSION",
+        "DOCKER_CERT_PATH",
+        "DOCKER_CONFIG",
+        "DOCKER_CONTEXT",
+        "DOCKER_DEFAULT_PLATFORM",
+        "DOCKER_HOST",
+        "DOCKER_TLS_VERIFY",
+        "COMPOSE_ANSI",
+        "COMPOSE_PROGRESS",
+    }
+)
+DOCKER_SELECTOR_ENVIRONMENT = frozenset(
+    {
+        "DOCKER_CERT_PATH",
+        "DOCKER_CONTEXT",
+        "DOCKER_HOST",
+        "DOCKER_TLS_VERIFY",
+    }
+)
+VOLUMES = (
+    "jumpship-local-control-postgres-data",
+    "jumpship-local-cell-postgres-data",
+    "jumpship-local-target-postgres-data",
+    "jumpship-local-mongo-data",
+    "jumpship-local-mongo-config",
+    "jumpship-local-minio-data",
+)
+DOCKER_CONTEXT_RE = re.compile(r"\A[A-Za-z0-9][A-Za-z0-9_.-]*\Z")
+
+
+class ReadinessProbe(NamedTuple):
+    label: str
+    port_variable: str
+    default_port: int
+    kind: str
+    path: str = "/"
+    method: str = "GET"
+
+
+class LocalStackError(RuntimeError):
+    """A stable, user-actionable local-stack failure."""
+
+
+def _environment(*, sanitize_docker_selectors: bool = False) -> dict[str, str]:
+    # Start from an allowlist, not the caller's environment. The checked-in env
+    # file is the only credential source; arbitrary customer/provider variables
+    # cannot reach Compose or become interpolation inputs in a future service.
+    allowed = HOST_ENVIRONMENT | PORT_VARIABLES
+    env = {key: value for key, value in os.environ.items() if key in allowed}
+    if sanitize_docker_selectors:
+        for key in DOCKER_SELECTOR_ENVIRONMENT:
+            env.pop(key, None)
+    env["COMPOSE_PROJECT_NAME"] = PROJECT
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    return env
+
+
+def _base_compose(
+    *, profiles: tuple[str, ...] = (), docker_host: str | None = None
+) -> list[str]:
+    command = ["docker"]
+    if docker_host is not None:
+        command.extend(("--host", docker_host))
+    command.extend(
+        [
+            "compose",
+            "--project-name",
+            PROJECT,
+            "--env-file",
+            str(ENV_FILE),
+            "--file",
+            str(COMPOSE_FILE),
+        ]
+    )
+    for profile in profiles:
+        command.extend(("--profile", profile))
+    return command
+
+
+def _run(
+    command: list[str],
+    *,
+    capture: bool = False,
+    sanitize_docker_selectors: bool = False,
+) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        command,
+        cwd=ROOT,
+        env=_environment(sanitize_docker_selectors=sanitize_docker_selectors),
+        check=False,
+        text=True,
+        capture_output=capture,
+    )
+
+
+def _explicit_docker_selection() -> tuple[str | None, str | None]:
+    host = os.environ.get("DOCKER_HOST", "").strip() or None
+    context = os.environ.get("DOCKER_CONTEXT", "").strip() or None
+    if host is not None and context is not None:
+        raise LocalStackError(
+            "DOCKER_HOST and DOCKER_CONTEXT cannot both select the local fixture daemon"
+        )
+    if host is not None and not host.startswith("unix://"):
+        raise LocalStackError(
+            "remote Docker endpoints are forbidden; DOCKER_HOST must select a local unix:// socket"
+        )
+    if context is not None and DOCKER_CONTEXT_RE.fullmatch(context) is None:
+        raise LocalStackError("DOCKER_CONTEXT contains unsafe characters")
+    if os.environ.get("DOCKER_TLS_VERIFY", "").strip() or os.environ.get(
+        "DOCKER_CERT_PATH", ""
+    ).strip():
+        raise LocalStackError(
+            "Docker TLS endpoint overrides are forbidden for the local fixture stack"
+        )
+    return host, context
+
+
+def _require_docker_cli() -> None:
+    if shutil.which("docker") is None:
+        raise LocalStackError(
+            "Docker CLI is required; install Docker Desktop before running the local stack."
+        )
+
+
+def _local_docker_endpoint() -> tuple[str, str]:
+    _require_docker_cli()
+    host, requested_context = _explicit_docker_selection()
+    if host is not None:
+        return "DOCKER_HOST override", host
+
+    context = requested_context
+    if context is None:
+        current = _run(["docker", "context", "show"], capture=True)
+        if current.returncode != 0:
+            raise LocalStackError("could not resolve the current Docker context")
+        context = current.stdout.strip()
+        if DOCKER_CONTEXT_RE.fullmatch(context) is None:
+            raise LocalStackError("the current Docker context name is unsafe")
+
+    inspected = _run(
+        [
+            "docker",
+            "context",
+            "inspect",
+            context,
+            "--format",
+            "{{.Endpoints.docker.Host}}",
+        ],
+        capture=True,
+    )
+    if inspected.returncode != 0:
+        raise LocalStackError("could not inspect the selected Docker context")
+    endpoint = inspected.stdout.strip()
+    if not endpoint.startswith("unix://"):
+        raise LocalStackError(
+            "remote Docker contexts are forbidden; select a context backed by a local unix:// socket"
+        )
+    return context, endpoint
+
+
+def _require_compose(
+    *, daemon: bool, selection: tuple[str, str] | None = None
+) -> tuple[str, str] | None:
+    _require_docker_cli()
+    if daemon:
+        selected = selection or _local_docker_endpoint()
+        context, endpoint = selected
+        version_command = _base_compose(docker_host=endpoint) + ["version"]
+        sanitize_selectors = True
+    else:
+        selected = None
+        context = endpoint = ""
+        version_command = ["docker", "compose", "version"]
+        sanitize_selectors = False
+    version = _run(
+        version_command,
+        capture=True,
+        sanitize_docker_selectors=sanitize_selectors,
+    )
+    if version.returncode != 0:
+        raise LocalStackError("Docker Compose v2 is required (`docker compose version` failed).")
+    if daemon:
+        info = _run(
+            ["docker", "--host", endpoint, "info", "--format", "{{.ServerVersion}}"],
+            capture=True,
+            sanitize_docker_selectors=True,
+        )
+        if info.returncode != 0:
+            detail = info.stderr.strip().splitlines()
+            suffix = f" ({detail[-1]})" if detail else ""
+            raise LocalStackError(f"Docker daemon is unavailable{suffix}.")
+        return context, endpoint
+    return None
+
+
+def _port(variable: str, default: int) -> int:
+    raw = os.environ.get(variable, str(default))
+    try:
+        port = int(raw)
+    except ValueError as exc:
+        raise LocalStackError(f"{variable} must be an integer port") from exc
+    if not 1 <= port <= 65535:
+        raise LocalStackError(f"{variable} must be between 1 and 65535")
+    return port
+
+
+def _readiness_probes(profiles: tuple[str, ...]) -> tuple[ReadinessProbe, ...]:
+    probes = [
+        ReadinessProbe("control PostgreSQL", "JUMPSHIP_CONTROL_POSTGRES_PORT", 15432, "tcp"),
+        ReadinessProbe("cell PostgreSQL", "JUMPSHIP_CELL_POSTGRES_PORT", 15433, "tcp"),
+        ReadinessProbe("target PostgreSQL", "JUMPSHIP_TARGET_POSTGRES_PORT", 15435, "tcp"),
+        ReadinessProbe("MongoDB", "JUMPSHIP_MONGO_PORT", 27017, "tcp"),
+        ReadinessProbe(
+            "MinIO API",
+            "JUMPSHIP_MINIO_API_PORT",
+            19000,
+            "http",
+            "/minio/health/live",
+        ),
+        ReadinessProbe("Mailpit SMTP", "JUMPSHIP_MAILPIT_SMTP_PORT", 11025, "tcp"),
+        ReadinessProbe("Mailpit UI", "JUMPSHIP_MAILPIT_UI_PORT", 18025, "http", "/readyz"),
+    ]
+    selected = set(profiles)
+    if "network" in selected:
+        probes.extend(
+            (
+                ReadinessProbe(
+                    "Toxiproxy API", "JUMPSHIP_TOXIPROXY_API_PORT", 18474, "http", "/proxies"
+                ),
+                ReadinessProbe(
+                    "allowed-egress fixture",
+                    "JUMPSHIP_ALLOWED_EGRESS_PORT",
+                    18083,
+                    "http",
+                    "/allowlisted/readiness",
+                ),
+            )
+        )
+    if "agent" in selected:
+        probes.extend(
+            (
+                ReadinessProbe(
+                    "fake Bedrock",
+                    "JUMPSHIP_FAKE_BEDROCK_PORT",
+                    18080,
+                    "http",
+                    "/model/readiness/invoke",
+                    "POST",
+                ),
+                ReadinessProbe(
+                    "fake chat",
+                    "JUMPSHIP_FAKE_CHAT_PORT",
+                    18081,
+                    "http",
+                    "/api/messages",
+                    "POST",
+                ),
+                ReadinessProbe(
+                    "fake tool broker",
+                    "JUMPSHIP_FAKE_TOOL_BROKER_PORT",
+                    18082,
+                    "http",
+                    "/v1/tools/readiness/invoke",
+                    "POST",
+                ),
+            )
+        )
+    if "observability" in selected:
+        probes.extend(
+            (
+                ReadinessProbe(
+                    "OpenTelemetry gRPC", "JUMPSHIP_OTEL_GRPC_PORT", 14317, "tcp"
+                ),
+                ReadinessProbe(
+                    "OpenTelemetry HTTP", "JUMPSHIP_OTEL_HTTP_PORT", 14318, "tcp"
+                ),
+                ReadinessProbe(
+                    "OpenTelemetry health",
+                    "JUMPSHIP_OTEL_HEALTH_PORT",
+                    13133,
+                    "http",
+                ),
+            )
+        )
+    return tuple(probes)
+
+
+def _probe_ready(probe: ReadinessProbe) -> bool:
+    port = _port(probe.port_variable, probe.default_port)
+    try:
+        if probe.kind == "tcp":
+            with socket.create_connection(("127.0.0.1", port), timeout=1):
+                return True
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        request = urllib.request.Request(
+            f"http://127.0.0.1:{port}{probe.path}", method=probe.method
+        )
+        with opener.open(request, timeout=1) as response:
+            return response.status == 200
+    except (OSError, urllib.error.URLError):
+        return False
+
+
+def _wait_for_readiness(profiles: tuple[str, ...], wait_timeout: int) -> None:
+    pending = {probe.label: probe for probe in _readiness_probes(profiles)}
+    deadline = time.monotonic() + min(wait_timeout, 60)
+    while pending and time.monotonic() < deadline:
+        for label, probe in tuple(pending.items()):
+            if _probe_ready(probe):
+                pending.pop(label)
+        if pending:
+            time.sleep(0.5)
+    if pending:
+        raise LocalStackError(
+            "local fixture readiness probes failed: " + ", ".join(sorted(pending))
+        )
+
+
+def _assert_mongo_primary(endpoint: str) -> None:
+    compose = _base_compose(docker_host=endpoint)
+    init_container = _run(
+        compose + ["ps", "--all", "--quiet", "mongo-init"],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    container_ids = init_container.stdout.split()
+    if init_container.returncode != 0 or len(container_ids) != 1:
+        raise LocalStackError("MongoDB replica initializer completion could not be proven")
+
+    state = _run(
+        [
+            "docker",
+            "--host",
+            endpoint,
+            "inspect",
+            "--format",
+            "{{.State.Status}} {{.State.ExitCode}}",
+            container_ids[0],
+        ],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    if state.returncode != 0 or state.stdout.strip() != "exited 0":
+        raise LocalStackError("MongoDB replica initializer did not complete successfully")
+
+    primary = _run(
+        compose
+        + [
+            "exec",
+            "-T",
+            "mongo",
+            "/bin/bash",
+            "-ec",
+            "exec mongosh --quiet --host 127.0.0.1 "
+            '--username "$MONGO_INITDB_ROOT_USERNAME" '
+            '--password "$MONGO_INITDB_ROOT_PASSWORD" '
+            "--authenticationDatabase admin "
+            "--eval 'quit(db.hello().isWritablePrimary ? 0 : 1)'",
+        ],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    if primary.returncode != 0:
+        raise LocalStackError("MongoDB rs0 is not an authenticated writable primary")
+
+    mongo_container = _run(
+        compose + ["ps", "--all", "--quiet", "mongo"],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    mongo_ids = mongo_container.stdout.split()
+    if mongo_container.returncode != 0 or len(mongo_ids) != 1:
+        raise LocalStackError("MongoDB source container identity could not be proven")
+    image = _run(
+        [
+            "docker",
+            "--host",
+            endpoint,
+            "inspect",
+            "--format",
+            "{{.Image}}",
+            mongo_ids[0],
+        ],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    image_id = image.stdout.strip()
+    if image.returncode != 0 or not image_id.startswith("sha256:"):
+        raise LocalStackError("MongoDB source image identity could not be proven")
+
+    # Exercise the fixed relay from a client attached only to the ingress
+    # network. directConnection is required because rs0 intentionally advertises
+    # its internal-only member name. Opening a change stream proves replica-set
+    # semantics instead of accepting a TCP-only or standalone false positive.
+    host_corridor = _run(
+        [
+            "docker",
+            "--host",
+            endpoint,
+            "run",
+            "--rm",
+            "--network",
+            HOST_INGRESS_NETWORK,
+            "--read-only",
+            "--user",
+            "999:999",
+            "--cap-drop",
+            "ALL",
+            "--security-opt",
+            "no-new-privileges:true",
+            "--tmpfs",
+            "/tmp:size=16m,mode=1777",
+            "--env",
+            "HOME=/tmp",
+            "--entrypoint",
+            "mongosh",
+            image_id,
+            "--quiet",
+            "mongodb://jumpship_fixture:jumpship_fixture_not_a_secret@local-ingress:27017/admin?replicaSet=rs0&directConnection=true&authSource=admin",
+            "--eval",
+            "const cursor = db.getSiblingDB('jumpship_source_fixture').getCollection('readiness').watch([], {maxAwaitTimeMS: 100}); cursor.close(); quit(0)",
+        ],
+        capture=True,
+        sanitize_docker_selectors=True,
+    )
+    if host_corridor.returncode != 0:
+        raise LocalStackError(
+            "MongoDB host-ingress URI did not prove writable replica/change-stream capability"
+        )
+
+
+def _validated_profiles(raw_profiles: list[str]) -> tuple[str, ...]:
+    unique: list[str] = []
+    for profile in raw_profiles:
+        if profile not in PROFILES:
+            allowed = ", ".join(PROFILES)
+            raise LocalStackError(f"unknown local profile {profile!r}; allowed profiles: {allowed}")
+        if profile not in RUNNABLE_PROFILES:
+            raise LocalStackError(
+                f"profile {profile!r} is a fail-closed ownership boundary; "
+                "its application entrypoint has not been supplied by a later packet"
+            )
+        if profile not in unique:
+            unique.append(profile)
+    return tuple(unique)
+
+
+def _validate_config(
+    *, profiles: tuple[str, ...] = (), docker_host: str | None = None
+) -> None:
+    result = _run(
+        _base_compose(profiles=profiles, docker_host=docker_host)
+        + ["config", "--quiet"],
+        sanitize_docker_selectors=docker_host is not None,
+    )
+    if result.returncode != 0:
+        raise LocalStackError("checked-in local Compose configuration is invalid")
+
+
+def _up(profiles: tuple[str, ...], wait_timeout: int) -> None:
+    selection = _require_compose(daemon=True)
+    assert selection is not None
+    _, endpoint = selection
+    _validate_config(profiles=profiles, docker_host=endpoint)
+    result = _run(
+        _base_compose(profiles=profiles, docker_host=endpoint)
+        + ["up", "--detach", "--wait", "--wait-timeout", str(wait_timeout)],
+        sanitize_docker_selectors=True,
+    )
+    if result.returncode != 0:
+        raise LocalStackError("local fixture stack did not become healthy")
+    _assert_mongo_primary(endpoint)
+    _wait_for_readiness(profiles, wait_timeout)
+    enabled = ", ".join(("local",) + profiles)
+    print(f"local fixture stack is healthy (profiles: {enabled})")
+
+
+def _down() -> None:
+    selection = _require_compose(daemon=True)
+    assert selection is not None
+    _, endpoint = selection
+    result = _run(
+        _base_compose(profiles=("*",), docker_host=endpoint)
+        + ["down", "--remove-orphans"],
+        sanitize_docker_selectors=True,
+    )
+    if result.returncode != 0:
+        raise LocalStackError("could not stop the local fixture stack")
+    print("local fixture stack stopped; named volumes were preserved")
+
+
+def _reset(confirm: str | None) -> None:
+    context, endpoint = _local_docker_endpoint()
+    print(f"destructive scope: Compose project {PROJECT!r}", flush=True)
+    print(f"  Docker context: {context!r}", flush=True)
+    print(f"  Docker endpoint: {endpoint!r}", flush=True)
+    for volume in VOLUMES:
+        print(f"  volume: {volume}", flush=True)
+    if confirm != RESET_CONFIRMATION:
+        raise LocalStackError(
+            f"reset denied; rerun with --confirm {RESET_CONFIRMATION!r} after reviewing the scope above"
+        )
+    validated_selection = _require_compose(
+        daemon=True, selection=(context, endpoint)
+    )
+    assert validated_selection == (context, endpoint)
+    print(
+        f"validated Docker endpoint: {endpoint!r} via {context!r}",
+        flush=True,
+    )
+    _validate_config(docker_host=endpoint)
+    result = _run(
+        _base_compose(profiles=("*",), docker_host=endpoint)
+        + ["down", "--volumes", "--remove-orphans"],
+        sanitize_docker_selectors=True,
+    )
+    if result.returncode != 0:
+        raise LocalStackError("could not reset the exact local Compose project")
+    print(f"reset complete for Compose project {PROJECT!r}")
+
+
+def _config(quiet: bool) -> None:
+    _require_compose(daemon=False)
+    profiles = tuple(PROFILES)
+    command = _base_compose(profiles=profiles) + ["config"]
+    if quiet:
+        command.append("--quiet")
+    result = _run(command)
+    if result.returncode != 0:
+        raise LocalStackError("checked-in local Compose configuration is invalid")
+
+
+def _parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    config = subparsers.add_parser("config", help="render and validate every declared local profile")
+    config.add_argument("--quiet", action="store_true")
+
+    up = subparsers.add_parser("up", help="start the local-only fixture stack")
+    up.add_argument("--profile", action="append", default=[], help="enable an optional local fixture profile")
+    up.add_argument("--wait-timeout", type=int, default=180, help="health wait timeout in seconds")
+
+    subparsers.add_parser("down", help="stop containers while preserving all named volumes")
+
+    reset = subparsers.add_parser("reset", help="destroy only the named volumes in the fixed local project")
+    reset.add_argument("--confirm", help="exact destructive-action confirmation token")
+    return parser
+
+
+def main() -> int:
+    args = _parser().parse_args()
+    try:
+        if args.command == "config":
+            _config(args.quiet)
+        elif args.command == "up":
+            if args.wait_timeout < 1 or args.wait_timeout > 900:
+                raise LocalStackError("--wait-timeout must be between 1 and 900 seconds")
+            _up(_validated_profiles(args.profile), args.wait_timeout)
+        elif args.command == "down":
+            _down()
+        elif args.command == "reset":
+            _reset(args.confirm)
+        else:  # pragma: no cover - argparse owns this boundary.
+            raise LocalStackError(f"unsupported command: {args.command}")
+    except LocalStackError as error:
+        print(f"local stack: {error}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

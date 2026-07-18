@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "ANY",
+    "urlPathPattern": "/allowlisted/.*"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "fixture": "allowed-egress",
+      "network": "local-only"
+    }
+  }
+}

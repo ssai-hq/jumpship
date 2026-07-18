@@ -1,0 +1,120 @@
+{
+  "name": "CI / merge and nightly gates",
+  "on": {
+    "push": {
+      "branches": ["main"]
+    },
+    "schedule": [
+      {"cron": "17 2 * * *"}
+    ],
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "ci-merge-${{ github.workflow }}-${{ github.ref }}",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "slow": {
+      "name": "Merge and nightly verification",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 60,
+      "env": {
+        "CI": "true",
+        "JUMPSHIP_DEPLOYMENT_PROFILE": "local"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Set up pinned repository toolchain",
+          "uses": "./.github/actions/setup-repository",
+          "with": {
+            "cache-namespace": "merge-slow"
+          }
+        },
+        {
+          "name": "Prove this gate is local-only",
+          "run": "python3 scripts/ci/profile_guard.py --profile local --mode local"
+        },
+        {
+          "name": "Run repository verification ladder",
+          "run": "python3 scripts/ci/run_gate.py --title 'Merge and nightly verification' --owner P03 --artifact-dir .ci-artifacts/merge-slow --target verify"
+        },
+        {
+          "name": "Upload detailed slow-gate evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "merge-slow-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/merge-slow",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "14",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise slow-gate summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Merge and nightly verification' '' '- Workflow result: `${{ job.status }}`' '- Detailed logs: `merge-slow-${{ github.run_id }}-${{ github.run_attempt }}`' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    },
+    "clean-clone": {
+      "name": "Clean-clone rehearsal",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 60,
+      "env": {
+        "CI": "true"
+      },
+      "steps": [
+        {
+          "name": "Checkout source (actions/checkout v4.2.2, pinned)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "fetch-depth": "0",
+            "persist-credentials": "false"
+          }
+        },
+        {
+          "name": "Materialize the canonical main branch locally",
+          "shell": "bash",
+          "run": "git switch -C main \"$GITHUB_SHA\""
+        },
+        {
+          "name": "Rehearse from a clean clone without workstation state",
+          "shell": "bash",
+          "run": "set -euo pipefail\nPYTHONDONTWRITEBYTECODE=1 python3 scripts/ci/clean_clone_rehearsal.py --machine --output .ci-artifacts/clean-clone/report.json"
+        },
+        {
+          "name": "Upload clean-clone evidence (actions/upload-artifact v4.6.2, pinned)",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "with": {
+            "name": "clean-clone-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".ci-artifacts/clean-clone",
+            "include-hidden-files": "true",
+            "if-no-files-found": "error",
+            "retention-days": "14",
+            "compression-level": "6"
+          }
+        },
+        {
+          "name": "Publish concise clean-clone summary",
+          "if": "${{ always() }}",
+          "shell": "bash",
+          "run": "printf '%s\\n' '### Clean-clone rehearsal' '' '- Workflow result: `${{ job.status }}`' '- Detailed logs: `clean-clone-${{ github.run_id }}-${{ github.run_attempt }}`' >> \"$GITHUB_STEP_SUMMARY\""
+        }
+      ]
+    }
+  }
+}

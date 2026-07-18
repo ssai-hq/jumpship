@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/(chat\\.postMessage|messages)"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "ok": true,
+      "id": "synthetic-local-message-0001",
+      "ts": "0.000001"
+    }
+  }
+}

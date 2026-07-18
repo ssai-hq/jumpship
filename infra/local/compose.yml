@@ -1,0 +1,377 @@
+name: jumpship-local
+
+x-image-locks:
+  postgres: &postgres-image "postgres:17.10-bookworm@sha256:4f736ae292687621d4dbe0d499ffd024a36bd2ee7d8ca6f2ccd4c800f047b394"
+  mongo: &mongo-image "mongo:8.0.12-noble@sha256:258ab0a4c63cc4c9ae1bbc65d7e3a431cfe9794d8a5c6d6e050bb85f7e2e63ae"
+  minio: &minio-image "minio/minio:RELEASE.2025-09-07T16-13-09Z@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e"
+  mailpit: &mailpit-image "axllent/mailpit:v1.27.8@sha256:6abc8e633df15eaf785cfcf38bae48e66f64beecdc03121e249d0f9ec15f0707"
+  toxiproxy: &toxiproxy-image "ghcr.io/shopify/toxiproxy:2.11.0@sha256:cfdb2ca7ac7131a650d09db49782cc33e5c5d97fd3be5b3a6e27cd13d0ee8d57"
+  otel-collector: &otel-image "otel/opentelemetry-collector-contrib:0.136.0@sha256:45392d534c1edcc809c2d112394029246bc679d2ae5ea7081414a1fc74f2c621"
+  wiremock: &wiremock-image "wiremock/wiremock:3.13.1@sha256:d61e7720f89483fdef5366843b58d1dfd06bcce5828179c9f2f54de5c28354b0"
+  haproxy: &haproxy-image "haproxy:3.2.11-alpine3.23@sha256:17cd651239b99d2481580814103d56f55307ddc1170300702efa0c1baf106fa4"
+
+x-jumpship-profile-contracts:
+  local: "Default, host-only data and communication fixtures. It never invokes a cloud CLI or mounts a host container socket."
+  network: "Adds a programmable network fault proxy and a deterministic allowed-egress fixture; it is not a transparent internet proxy."
+  agent: "Adds deterministic Bedrock-shaped, chat, and tool-broker fixtures. No request can fall through to a real provider."
+  observability: "Adds a local OpenTelemetry receiver with a debug exporter; it is not a production telemetry backend."
+  web: "Reserved for a later packet-owned web entrypoint. This packet supplies only an explicit fail-closed boundary."
+  full: "Composes all packet-owned fixtures but fails closed until later packets supply the application services."
+
+x-postgres-common: &postgres-common
+  image: *postgres-image
+  restart: unless-stopped
+  stop_grace_period: 30s
+  networks:
+    - fixtures
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready --username=$$POSTGRES_USER --dbname=$$POSTGRES_DB"]
+    interval: 2s
+    timeout: 3s
+    retries: 30
+    start_period: 5s
+
+x-wiremock-common: &wiremock-common
+  image: *wiremock-image
+  restart: unless-stopped
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  tmpfs:
+    - /tmp:size=16m,mode=1777
+  networks:
+    - fixtures
+  command:
+    - --disable-banner
+    - --global-response-templating
+
+x-ingress-common: &ingress-common
+  image: *haproxy-image
+  restart: unless-stopped
+  read_only: true
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  tmpfs:
+    - /run:size=1m,mode=0755
+    - /tmp:size=1m,mode=1777
+  networks:
+    - fixtures
+    - host-ingress
+  labels:
+    com.jumpship.capability.trust-domains: "MVP-CAP-ARCH-TRUST-DOMAINS"
+    com.jumpship.capability.nonchoices: "MVP-CAP-NONCHOICES"
+  healthcheck:
+    test: ["CMD", "haproxy", "-c", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
+    interval: 5s
+    timeout: 3s
+    retries: 12
+    start_period: 2s
+
+services:
+  control-postgres:
+    <<: *postgres-common
+    environment:
+      POSTGRES_USER: "${JUMPSHIP_FIXTURE_POSTGRES_USER:-jumpship_fixture}"
+      POSTGRES_PASSWORD: "${JUMPSHIP_FIXTURE_POSTGRES_PASSWORD:-jumpship_fixture_not_a_secret}"
+      POSTGRES_DB: jumpship_control
+    volumes:
+      - control-postgres-data:/var/lib/postgresql/data
+
+  cell-postgres:
+    <<: *postgres-common
+    environment:
+      POSTGRES_USER: "${JUMPSHIP_FIXTURE_POSTGRES_USER:-jumpship_fixture}"
+      POSTGRES_PASSWORD: "${JUMPSHIP_FIXTURE_POSTGRES_PASSWORD:-jumpship_fixture_not_a_secret}"
+      POSTGRES_DB: jumpship_cell
+    volumes:
+      - cell-postgres-data:/var/lib/postgresql/data
+
+  target-postgres:
+    <<: *postgres-common
+    environment:
+      POSTGRES_USER: "${JUMPSHIP_FIXTURE_POSTGRES_USER:-jumpship_fixture}"
+      POSTGRES_PASSWORD: "${JUMPSHIP_FIXTURE_POSTGRES_PASSWORD:-jumpship_fixture_not_a_secret}"
+      POSTGRES_DB: jumpship_target_fixture
+    volumes:
+      - target-postgres-data:/var/lib/postgresql/data
+
+  mongo:
+    image: *mongo-image
+    restart: unless-stopped
+    stop_grace_period: 30s
+    entrypoint: ["/bin/bash", "-ec"]
+    command:
+      - |
+        umask 077
+        printf '%s' "$${JUMPSHIP_FIXTURE_MONGO_KEY}" > /run/jumpship-mongo/keyfile
+        chown 999:999 /run/jumpship-mongo /run/jumpship-mongo/keyfile
+        exec /usr/local/bin/docker-entrypoint.sh mongod \
+          --replSet rs0 \
+          --bind_ip_all \
+          --auth \
+          --keyFile /run/jumpship-mongo/keyfile
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${JUMPSHIP_FIXTURE_MONGO_USER:-jumpship_fixture}"
+      MONGO_INITDB_ROOT_PASSWORD: "${JUMPSHIP_FIXTURE_MONGO_PASSWORD:-jumpship_fixture_not_a_secret}"
+      JUMPSHIP_FIXTURE_MONGO_KEY: "${JUMPSHIP_FIXTURE_MONGO_KEY:-obviouslySyntheticLocalReplicaKeyNotASecret123456789}"
+    tmpfs:
+      - /run/jumpship-mongo:size=64k,mode=0700
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    networks:
+      - fixtures
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          mongosh --quiet --host 127.0.0.1
+          --username "$$MONGO_INITDB_ROOT_USERNAME"
+          --password "$$MONGO_INITDB_ROOT_PASSWORD"
+          --authenticationDatabase admin
+          --eval 'quit(db.adminCommand({ping: 1}).ok ? 0 : 1)'
+      interval: 3s
+      timeout: 5s
+      retries: 40
+      start_period: 10s
+
+  mongo-init:
+    image: *mongo-image
+    restart: "no"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    entrypoint: ["/bin/bash", "-ec"]
+    command:
+      - |
+        auth=(--host mongo --username "$$MONGO_INITDB_ROOT_USERNAME" --password "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin)
+        if ! mongosh --quiet "$${auth[@]}" --eval 'try { quit(rs.status().ok === 1 ? 0 : 1) } catch (error) { quit(1) }'; then
+          mongosh --quiet "$${auth[@]}" --eval 'rs.initiate({_id: "rs0", members: [{_id: 0, host: "mongo:27017"}]})'
+        fi
+        for attempt in $$(seq 1 40); do
+          if mongosh --quiet "$${auth[@]}" --eval 'quit(db.hello().isWritablePrimary ? 0 : 1)'; then
+            exit 0
+          fi
+          sleep 1
+        done
+        printf '%s\n' 'MongoDB replica set did not elect a primary.' >&2
+        exit 1
+    environment:
+      HOME: /tmp
+      MONGO_INITDB_ROOT_USERNAME: "${JUMPSHIP_FIXTURE_MONGO_USER:-jumpship_fixture}"
+      MONGO_INITDB_ROOT_PASSWORD: "${JUMPSHIP_FIXTURE_MONGO_PASSWORD:-jumpship_fixture_not_a_secret}"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    networks:
+      - fixtures
+
+  minio:
+    image: *minio-image
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: "${JUMPSHIP_FIXTURE_MINIO_USER:-jumpship_fixture}"
+      MINIO_ROOT_PASSWORD: "${JUMPSHIP_FIXTURE_MINIO_PASSWORD:-jumpship_fixture_not_a_secret}"
+      MINIO_BROWSER_REDIRECT_URL: "http://127.0.0.1:${JUMPSHIP_MINIO_CONSOLE_PORT:-19001}"
+    volumes:
+      - minio-data:/data
+    networks:
+      - fixtures
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+      start_period: 5s
+
+  mailpit:
+    image: *mailpit-image
+    restart: unless-stopped
+    environment:
+      MP_MAX_MESSAGES: "500"
+      MP_SMTP_AUTH_ACCEPT_ANY: "0"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "0"
+    networks:
+      - fixtures
+
+  toxiproxy:
+    image: *toxiproxy-image
+    profiles: ["network", "full"]
+    restart: unless-stopped
+    networks:
+      - fixtures
+
+  allowed-egress-fixture:
+    <<: *wiremock-common
+    profiles: ["network", "full"]
+    volumes:
+      - ./fixtures/wiremock/allowed-egress:/home/wiremock/mappings:ro
+
+  fake-bedrock:
+    <<: *wiremock-common
+    profiles: ["agent", "full"]
+    volumes:
+      - ./fixtures/wiremock/fake-bedrock:/home/wiremock/mappings:ro
+
+  fake-chat:
+    <<: *wiremock-common
+    profiles: ["agent", "full"]
+    volumes:
+      - ./fixtures/wiremock/fake-chat:/home/wiremock/mappings:ro
+
+  fake-tool-broker:
+    <<: *wiremock-common
+    profiles: ["agent", "full"]
+    volumes:
+      - ./fixtures/wiremock/fake-tool-broker:/home/wiremock/mappings:ro
+
+  otel-collector:
+    image: *otel-image
+    profiles: ["observability", "full"]
+    restart: unless-stopped
+    command: ["--config=/etc/otelcol-contrib/config.yaml"]
+    volumes:
+      - ./config/otel-collector.yaml:/etc/otelcol-contrib/config.yaml:ro
+    networks:
+      - fixtures
+
+  local-ingress:
+    <<: *ingress-common
+    depends_on:
+      control-postgres:
+        condition: service_healthy
+      cell-postgres:
+        condition: service_healthy
+      target-postgres:
+        condition: service_healthy
+      mongo-init:
+        condition: service_completed_successfully
+      minio:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    volumes:
+      - ./config/haproxy/local.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "127.0.0.1:${JUMPSHIP_CONTROL_POSTGRES_PORT:-15432}:15432"
+      - "127.0.0.1:${JUMPSHIP_CELL_POSTGRES_PORT:-15433}:15433"
+      - "127.0.0.1:${JUMPSHIP_TARGET_POSTGRES_PORT:-15435}:15435"
+      - "127.0.0.1:${JUMPSHIP_MONGO_PORT:-27017}:27017"
+      - "127.0.0.1:${JUMPSHIP_MINIO_API_PORT:-19000}:19000"
+      - "127.0.0.1:${JUMPSHIP_MINIO_CONSOLE_PORT:-19001}:19001"
+      - "127.0.0.1:${JUMPSHIP_MAILPIT_SMTP_PORT:-11025}:11025"
+      - "127.0.0.1:${JUMPSHIP_MAILPIT_UI_PORT:-18025}:18025"
+
+  network-ingress:
+    <<: *ingress-common
+    profiles: ["network", "full"]
+    depends_on:
+      toxiproxy:
+        condition: service_started
+      allowed-egress-fixture:
+        condition: service_started
+    volumes:
+      - ./config/haproxy/network.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "127.0.0.1:${JUMPSHIP_TOXIPROXY_API_PORT:-18474}:18474"
+      - "127.0.0.1:${JUMPSHIP_TOXIPROXY_DATA_PORT:-18666}:18666"
+      - "127.0.0.1:${JUMPSHIP_ALLOWED_EGRESS_PORT:-18083}:18083"
+
+  agent-ingress:
+    <<: *ingress-common
+    profiles: ["agent", "full"]
+    depends_on:
+      fake-bedrock:
+        condition: service_started
+      fake-chat:
+        condition: service_started
+      fake-tool-broker:
+        condition: service_started
+    volumes:
+      - ./config/haproxy/agent.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "127.0.0.1:${JUMPSHIP_FAKE_BEDROCK_PORT:-18080}:18080"
+      - "127.0.0.1:${JUMPSHIP_FAKE_CHAT_PORT:-18081}:18081"
+      - "127.0.0.1:${JUMPSHIP_FAKE_TOOL_BROKER_PORT:-18082}:18082"
+
+  observability-ingress:
+    <<: *ingress-common
+    profiles: ["observability", "full"]
+    depends_on:
+      otel-collector:
+        condition: service_started
+    volumes:
+      - ./config/haproxy/observability.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "127.0.0.1:${JUMPSHIP_OTEL_GRPC_PORT:-14317}:14317"
+      - "127.0.0.1:${JUMPSHIP_OTEL_HTTP_PORT:-14318}:14318"
+      - "127.0.0.1:${JUMPSHIP_OTEL_HEALTH_PORT:-13133}:13133"
+
+  web-boundary:
+    image: *postgres-image
+    profiles: ["web"]
+    restart: "no"
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - >-
+        printf '%s\n' 'The web Compose profile is reserved; use make web-dev after its owning packet supplies an entrypoint.' >&2;
+        exit 78
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    network_mode: none
+
+  full-boundary:
+    image: *postgres-image
+    profiles: ["full"]
+    restart: "no"
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - >-
+        printf '%s\n' 'The full application profile remains unavailable until the application packets supply their services.' >&2;
+        exit 78
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    network_mode: none
+
+networks:
+  fixtures:
+    name: jumpship-local-fixtures
+    internal: true
+    labels:
+      com.jumpship.capability.trust-domains: "MVP-CAP-ARCH-TRUST-DOMAINS"
+      com.jumpship.capability.nonchoices: "MVP-CAP-NONCHOICES"
+  host-ingress:
+    name: jumpship-local-host-ingress
+    driver: bridge
+    labels:
+      com.jumpship.capability.trust-domains: "MVP-CAP-ARCH-TRUST-DOMAINS"
+      com.jumpship.capability.nonchoices: "MVP-CAP-NONCHOICES"
+
+volumes:
+  control-postgres-data:
+    name: jumpship-local-control-postgres-data
+  cell-postgres-data:
+    name: jumpship-local-cell-postgres-data
+  target-postgres-data:
+    name: jumpship-local-target-postgres-data
+  mongo-data:
+    name: jumpship-local-mongo-data
+  mongo-config:
+    name: jumpship-local-mongo-config
+  minio-data:
+    name: jumpship-local-minio-data
