@@ -100,15 +100,17 @@ class ToolchainPolicyTests(unittest.TestCase):
 
     def test_manifest_rejects_deferred_version_without_provenance_binding(self) -> None:
         manifest = json.loads((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8"))
-        deferred = next(record for record in manifest["tools"] if record["name"] == "sqlc")
-        deferred["version"] = "1.31.2"
+        deferred = next(
+            record for record in manifest["tools"] if record["name"] == "oapi-codegen"
+        )
+        deferred["version"] = "2.8.1"
         errors = dependency_locks._manifest_errors(manifest)
         self.assertTrue(any("source does not bind" in error for error in errors))
         self.assertTrue(any("provenance URL does not bind" in error for error in errors))
 
     def test_platform_incomplete_deferred_binaries_cannot_be_activated(self) -> None:
         manifest = json.loads((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8"))
-        for name in ("sqlc", "duckdb"):
+        for name in ("duckdb",):
             record = next(item for item in manifest["tools"] if item["name"] == name)
             self.assertEqual("blocked", record["activation"]["status"])
             self.assertEqual(["darwin-arm64"], record["activation"]["pinned_platforms"])
@@ -120,8 +122,8 @@ class ToolchainPolicyTests(unittest.TestCase):
                 }
             }
             self.assertIsNone(dependency_locks._tool_integrity_binding(record, dependency))
-        sqlc = next(item for item in manifest["tools"] if item["name"] == "sqlc")
-        sqlc["activation"]["status"] = "ready"
+        duckdb = next(item for item in manifest["tools"] if item["name"] == "duckdb")
+        duckdb["activation"]["status"] = "ready"
         errors = dependency_locks._manifest_errors(manifest)
         self.assertTrue(any("activation must remain blocked" in error for error in errors))
 
@@ -129,25 +131,22 @@ class ToolchainPolicyTests(unittest.TestCase):
         manifest = json.loads((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8"))
         sqlc = next(item for item in manifest["tools"] if item["name"] == "sqlc")
         sqlc["bootstrap"] = True
-        sqlc.pop("activation")
-        sqlc.pop("integrity")
-        sqlc["artifacts"] = {
-            platform_name: {
-                "url": f"https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc-{platform_name}.zip",
-                "archive": "zip",
-                "root": ".",
-                "sha256": str(index) * 64,
+        sqlc.pop("activation", None)
+        sqlc.pop("integrity", None)
+        if "artifacts" not in sqlc:
+            sqlc["artifacts"] = {
+                platform_name: {
+                    "url": f"https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc-{platform_name}.zip",
+                    "archive": "zip",
+                    "root": ".",
+                    "sha256": str(index) * 64,
+                }
+                for index, platform_name in enumerate(
+                    sorted(dependency_locks.SUPPORTED_PLATFORMS), 1
+                )
             }
-            for index, platform_name in enumerate(sorted(dependency_locks.SUPPORTED_PLATFORMS), 1)
-        }
         self.assertEqual([], dependency_locks._manifest_errors(manifest))
         records = toolchain._records(manifest)
-        current_manifest = json.loads(
-            (ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8")
-        )
-        self.assertNotIn(
-            "sqlc", toolchain._enabled_bootstrap_names(toolchain._records(current_manifest))
-        )
         self.assertIn("sqlc", toolchain._enabled_bootstrap_names(records))
 
     def test_toolchain_rejects_unsafe_version_path_atom(self) -> None:
