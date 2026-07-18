@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "P03",
+  "evidence_sha256": {
+    "acceptance/rubric-map.md": "52512f76ef11d2e19d7bdd0d94f206f665f669df3c7f2339e27ea0ac206a0e5e",
+    "commands/acceptance.md": "57d2491506b384b06b6bac1b5261bc1784be1f2c2d7bfc478d840ce94693b83c",
+    "commands/clean-clone.json": "85abc03c41fcc6d565abdfdb0272c902f7ad7ab9dd5e634c8d8f107361891b93",
+    "commands/preflight.md": "00972df285b1cdd126d9aa260535f17977f4b12a29684fe5386d5dddda1a635d",
+    "commands/runtime-profiles.md": "469b9961bd2fc4162cbc3bfeb85735e105f7860f5f182ce07693d88b1ee24546",
+    "commands/supplemental.md": "3afd5e2c569c7f081f3c51f6984d79782d36e33c9e10fc502ba13c66219392dd",
+    "handoff/cache-artifact-retention.md": "47b12c2249ffc5c7b28d9e1e389b85681721105c604c6b9d67b7b65131f61a31",
+    "handoff/fixture-credentials-policy.md": "201cd741765078c200a8ff7e8e12cebb0fc53d0761fb8913630bc504691dab74",
+    "handoff/service-ports.md": "cd83fcccbae175684e0ada431900240781a1d8f60b8a8854ab9c28a1fa609628",
+    "handoff/workflow-to-make-map.md": "d663a1deb83a45029ad91e2a236cde3532eebdf38b707342b8a7d85e21709382",
+    "reviews/pre-close-review.md": "41aceeafc21a28bed142b8e2aa567d5d46673d968e4f6f5db25e5566390e0719",
+    "summary.md": "eae5d1cd8852060a82cf11c75fa00c54fa05ca5493f422da5b3e5ffe054e51a6"
+  },
+  "contract_sha256": {
+    "contracts/contract-manifest.json": "909e8356dfb2096fd536f83d20cad86c34689e73d8891762ab7aba0072709cc9",
+    "contracts/release/deployment-profiles.yaml": "22fe40ca1b510144e95e25fe716262a5f2069ceecc7f8f93fcc022e3546f0f90",
+    "infra/local/compose.yml": "dbb24605f0e2bc140aa942a04794451e8cf6f54f1f592b002f04cc8c7edbadfa",
+    "scripts/ci/profile_guard.py": "6fa05a1ba19f6c7968f440cf28a86245d79a6aaa7888f6cdb97c28d284d6cb12",
+    "scripts/ci/workflow_policy.py": "cd1f85cba2268904ce366067e0cbb8205edaca9fa31f96a1c420052991a537f1"
+  }
+}
