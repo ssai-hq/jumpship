@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "P02",
+  "outcome": "complete",
+  "starting_commit": "35d530535bfb9c438a827962024fe04e6df09d14",
+  "ending_commit": "b260716ac9838a86a5e69575c05d132b5a34af8a",
+  "dependencies": [
+    {
+      "node_id": "P00",
+      "status": "accepted",
+      "receipt_path": "delivery/mvp/handoffs/P00/540299849278d71ae142da4a8ae25c97d31127b4.json",
+      "handoff_sha256": "cd866594ed1a25b27f594fb7c328fa6b3ac843bc6120a509dbb8b4b01faa30e7",
+      "ending_commit": "540299849278d71ae142da4a8ae25c97d31127b4"
+    },
+    {
+      "node_id": "P01",
+      "status": "accepted",
+      "receipt_path": "delivery/mvp/handoffs/P01/02a32c75bdfe84a421d73b0a848fe638a9a30ea4.json",
+      "handoff_sha256": "a0303baf49f2e64d1bcc27374c015706d92807dde2c52924de3d938a6d6e9a53",
+      "ending_commit": "02a32c75bdfe84a421d73b0a848fe638a9a30ea4"
+    }
+  ],
+  "changed_paths": [
+    "contracts/client/customer-incapability-catalog-binding.schema.json",
+    "contracts/client/customer-incapability-catalog-response.schema.json",
+    "contracts/client/customer-incapability-catalog.schema.json",
+    "contracts/compatibility-baseline.json",
+    "contracts/compatibility-report.json",
+    "contracts/contract-manifest.json",
+    "contracts/fixtures/client/customer-incapability-catalog-denials.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog-binding.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog-response.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog.json",
+    "contracts/fixtures/schema-corpus.json",
+    "contracts/generated-type-inventory.json",
+    "contracts/openapi/openapi.yaml",
+    "contracts/release/release-unit.schema.json",
+    "delivery/mvp/evidence/P02/acceptance/rubric-map.md",
+    "delivery/mvp/evidence/P02/corrective/boundary-review.md",
+    "delivery/mvp/evidence/P02/corrective/commands.md",
+    "delivery/mvp/evidence/P02/corrective/contract-hashes.json",
+    "delivery/mvp/evidence/P02/corrective/summary.md",
+    "delivery/mvp/evidence/P02/handoff/application-profile-inventory.md",
+    "delivery/mvp/evidence/P02/handoff/change-request-procedure.md",
+    "delivery/mvp/evidence/P02/handoff/contract-version-hash-manifest.json",
+    "delivery/mvp/evidence/P02/handoff/generated-client-hashes.json",
+    "delivery/mvp/evidence/P02/manifests/hashes.json",
+    "delivery/mvp/evidence/P02/summary.md",
+    "internal/contracts/canonical/canonical_test.go",
+    "internal/contracts/canonical/identity.go",
+    "internal/contracts/codegen/application_api_contracts.py",
+    "internal/contracts/codegen/client_templates.py",
+    "internal/contracts/codegen/generate.py",
+    "internal/contracts/codegen/model.py",
+    "internal/contracts/codegen/quality_release_contracts.py",
+    "internal/contracts/generated/types.gen.go",
+    "internal/contracts/tests/test_contracts.py",
+    "scripts/ci/profile_guard.py",
+    "web/src/lib/api/generated/canonical.gen.ts",
+    "web/src/lib/api/generated/canonical.test.ts",
+    "web/src/lib/api/generated/contracts.gen.ts"
+  ],
+  "generated_paths": [
+    "contracts/client/customer-incapability-catalog-binding.schema.json",
+    "contracts/client/customer-incapability-catalog-response.schema.json",
+    "contracts/client/customer-incapability-catalog.schema.json",
+    "contracts/compatibility-baseline.json",
+    "contracts/compatibility-report.json",
+    "contracts/contract-manifest.json",
+    "contracts/fixtures/client/customer-incapability-catalog-denials.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog-binding.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog-response.json",
+    "contracts/fixtures/client/valid-customer-incapability-catalog.json",
+    "contracts/fixtures/schema-corpus.json",
+    "contracts/generated-type-inventory.json",
+    "contracts/openapi/openapi.yaml",
+    "contracts/release/release-unit.schema.json",
+    "internal/contracts/generated/types.gen.go",
+    "web/src/lib/api/generated/canonical.gen.ts",
+    "web/src/lib/api/generated/canonical.test.ts",
+    "web/src/lib/api/generated/contracts.gen.ts"
+  ],
+  "contract_versions": [
+    {
+      "name": "jumpship-contract-freeze",
+      "version": "1.0.0+catalog.2.0.0",
+      "sha256": "b3fb6c6950659a336c85e4085dbc52c3f42b4a66aa9db26a08e04fa97318b85e"
+    },
+    {
+      "name": "customer-incapability-catalog",
+      "version": "2.0.0",
+      "sha256": "fd5bd6cfbd6b466b484f4f866c3bf90c036f8d2b958e01c33d758a3084f9585a"
+    },
+    {
+      "name": "customer-incapability-catalog-binding",
+      "version": "1.0.0",
+      "sha256": "fe0b164d7dcd902adaf628b3711ad188997fa2653c20bbf1a9a3badbec602f5c"
+    },
+    {
+      "name": "customer-incapability-catalog-response",
+      "version": "1.0.0",
+      "sha256": "0511b62dfbd16c592711e67ab5140e2a6676fbff04c5f3ccb762d8c75511c7e0"
+    },
+    {
+      "name": "jumpship-openapi",
+      "version": "1.0.0",
+      "sha256": "bbf0d61b85416ef7bf1135c7d0b371d4554a33d1d3b5069afe6e94d07fd2fb6b"
+    },
+    {
+      "name": "release-unit",
+      "version": "1.0.0",
+      "sha256": "b2cb0204589f4fed904f77603ac6071061466cd6bd14de11530858e15fbcb0b3"
+    }
+  ],
+  "commands": [
+    {
+      "command": "make gen gen-check test-contracts",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P02/corrective/commands.md"
+      ],
+      "reason": "The exact corrective P02 acceptance command regenerated and verified 164 artifacts and passed the Python, Go and TypeScript contract suites."
+    },
+    {
+      "command": "make verify",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P02/corrective/commands.md",
+        "delivery/mvp/evidence/P02/corrective/boundary-review.md"
+      ],
+      "reason": "Full repository verification passed after advancing the exact downstream P02 contract-manifest verifier pin."
+    }
+  ],
+  "manual_gate_results": [],
+  "acceptance_contributions": [
+    {
+      "rubric_id": "JSMVP-R005",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/commands.md", "delivery/mvp/evidence/P02/handoff/contract-version-hash-manifest.json"],
+      "reason": "The corrected versioned schemas, manifests, fixtures and generated artifacts are exact and reproducible."
+    },
+    {
+      "rubric_id": "JSMVP-R006",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/commands.md"],
+      "reason": "Semantic content-identity and cross-object state invariants fail closed in Python, Go and TypeScript tests."
+    },
+    {
+      "rubric_id": "JSMVP-R007",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/boundary-review.md"],
+      "reason": "Catalog, binding and response retain explicit public data classes, byte bounds and acyclic flow boundaries."
+    },
+    {
+      "rubric_id": "JSMVP-R008",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/boundary-review.md"],
+      "reason": "Both incapability endpoints now return the non-identity response schema without changing endpoint authority."
+    },
+    {
+      "rubric_id": "JSMVP-R009",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/commands.md"],
+      "reason": "The generated contract/tool surface remains closed and repository verification passes."
+    },
+    {
+      "rubric_id": "JSMVP-R010",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/commands.md"],
+      "reason": "Existing action coverage remains generated, closed and verification-clean."
+    },
+    {
+      "rubric_id": "JSMVP-R012",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/handoff/generated-client-hashes.json", "delivery/mvp/evidence/P02/corrective/commands.md"],
+      "reason": "Generated clients compile and the exact downstream runtime P02-manifest pin matches the corrected manifest."
+    },
+    {
+      "rubric_id": "JSMVP-R044",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/summary.md", "delivery/mvp/evidence/P02/corrective/boundary-review.md", "delivery/mvp/evidence/P02/corrective/contract-hashes.json"],
+      "reason": "Catalog identity is content-only, ReleaseUnit binds it one-way, the separate binding validates reverse association, and downgrade/substitution cases deny."
+    },
+    {
+      "rubric_id": "JSMVP-R056",
+      "status": "passed_local",
+      "evidence_refs": ["delivery/mvp/evidence/P02/corrective/boundary-review.md", "delivery/mvp/evidence/P02/corrective/contract-hashes.json"],
+      "reason": "ReleaseUnit retains exact catalog/source hash members and records the one-way/binding semantic invariants."
+    }
+  ],
+  "capability_ids": [
+    "MVP-CAP-AGENT-INCAPABILITY-DISCLOSURE",
+    "MVP-CAP-SEALED-ANALYSIS-RUNNER"
+  ],
+  "owner_continuity": {
+    "mode": "corrective",
+    "prior_executor_id": "codex:/root",
+    "new_executor_id": "codex:/root",
+    "reason": "Apply the one frozen P02-CATALOG-RU-HASH-CYCLE correction without reopening any other packet.",
+    "source_receipt": {
+      "path": "delivery/mvp/handoffs/P02/fac74609221cb1045ac79a605d2577e7a905af36.json",
+      "sha256": "6fcdbecbe9c76e107d8227163c982ef370d655b08079fe400df3bcb17fdc2dd9"
+    },
+    "dependency_receipts": [
+      {
+        "node_id": "P00",
+        "sha256": "cd866594ed1a25b27f594fb7c328fa6b3ac843bc6120a509dbb8b4b01faa30e7"
+      },
+      {
+        "node_id": "P01",
+        "sha256": "a0303baf49f2e64d1bcc27374c015706d92807dde2c52924de3d938a6d6e9a53"
+      }
+    ],
+    "scope_unchanged": true,
+    "approval": null
+  },
+  "corrective_amendment": {
+    "defect_id": "P02-CATALOG-RU-HASH-CYCLE",
+    "planning_amendment": "corrective-amendment-p02-catalog-releaseunit-hash-cycle.md",
+    "planning_source_commit": "9982e517ef016a78d60a80fe17339f1a8517000e",
+    "baseline_lock_sha256": "8d2480ab25cab2d20dfc10158d42d45d30be3cd4b5c1a1b1cf17bde5397f0d7d",
+    "supersedes_receipt": {
+      "path": "delivery/mvp/handoffs/P02/fac74609221cb1045ac79a605d2577e7a905af36.json",
+      "sha256": "6fcdbecbe9c76e107d8227163c982ef370d655b08079fe400df3bcb17fdc2dd9"
+    }
+  },
+  "scope_exceptions": [],
+  "evidence_refs": [
+    "delivery/mvp/evidence/P02/corrective/summary.md",
+    "delivery/mvp/evidence/P02/corrective/commands.md",
+    "delivery/mvp/evidence/P02/corrective/boundary-review.md",
+    "delivery/mvp/evidence/P02/corrective/contract-hashes.json",
+    "delivery/mvp/evidence/P02/manifests/hashes.json"
+  ],
+  "external_evidence_refs": [],
+  "security_custody_impact": "No credential, private-key, provider-token, customer-record or deployment custody was added. Catalog and binding remain unsigned public content; the existing release-evidence signature continues to cover the ReleaseUnit that binds their exact hashes.",
+  "skipped_checks": [],
+  "mocks": [],
+  "defects": [
+    {
+      "severity": "S1",
+      "summary": "P02 customer-incapability catalog and ReleaseUnit formed an impossible circular content identity.",
+      "owner": "codex:/root",
+      "status": "resolved"
+    }
+  ],
+  "downstream_consumers": [
+    "P03",
+    "P04",
+    "P08",
+    "P23",
+    "P24",
+    "P27",
+    "P28"
+  ],
+  "created_at": "2026-07-18T20:35:51Z"
+}
