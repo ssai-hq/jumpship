@@ -461,6 +461,45 @@ class LocalStackContractTests(unittest.TestCase):
             ["make", "doctor", "bootstrap", "gen-check", "fmt", "lint", "test-unit", "verify"],
         )
 
+    def test_clean_clone_environment_excludes_credentials_and_docker_authority(self) -> None:
+        path = ROOT / "scripts" / "ci" / "clean_clone_rehearsal.py"
+        spec = importlib.util.spec_from_file_location("p03_clean_clone_environment", path)
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader if spec else None)
+        module = importlib.util.module_from_spec(spec)
+        assert spec and spec.loader
+        spec.loader.exec_module(module)
+        with mock.patch.dict(
+            os.environ,
+            {
+                "AWS_ACCESS_KEY_ID": "must-not-cross",
+                "AWS_SECRET_ACCESS_KEY": "must-not-cross",
+                "DOCKER_AUTH_CONFIG": "must-not-cross",
+                "DOCKER_CERT_PATH": "must-not-cross",
+                "DOCKER_CONTEXT": "must-not-cross",
+                "DOCKER_HOST": "tcp://must-not-cross.example:2376",
+                "DOCKER_TLS_VERIFY": "1",
+            },
+            clear=False,
+        ):
+            environment = module._isolated_environment(
+                Path("/isolated-home"),
+                Path("/isolated-root"),
+                Path("/isolated-home/.docker"),
+            )
+        self.assertEqual(environment["HOME"], "/isolated-home")
+        self.assertEqual(environment["DOCKER_CONFIG"], "/isolated-home/.docker")
+        for forbidden in (
+            "AWS_ACCESS_KEY_ID",
+            "AWS_SECRET_ACCESS_KEY",
+            "DOCKER_AUTH_CONFIG",
+            "DOCKER_CERT_PATH",
+            "DOCKER_CONTEXT",
+            "DOCKER_HOST",
+            "DOCKER_TLS_VERIFY",
+        ):
+            self.assertNotIn(forbidden, environment)
+
 
 if __name__ == "__main__":
     unittest.main()
