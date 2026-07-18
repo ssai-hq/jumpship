@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0.0",
+  "packet_id": "P03",
+  "outcome": "complete",
+  "starting_commit": "447f0a016a406945e7742e4697652af4f72aec75",
+  "ending_commit": "42441fba60cc6980dcbea7bff6d299785a28a5b8",
+  "dependencies": [
+    {
+      "node_id": "P01",
+      "status": "accepted",
+      "receipt_path": "delivery/mvp/handoffs/P01/02a32c75bdfe84a421d73b0a848fe638a9a30ea4.json",
+      "handoff_sha256": "a0303baf49f2e64d1bcc27374c015706d92807dde2c52924de3d938a6d6e9a53",
+      "ending_commit": "02a32c75bdfe84a421d73b0a848fe638a9a30ea4"
+    },
+    {
+      "node_id": "P02",
+      "status": "accepted",
+      "receipt_path": "delivery/mvp/handoffs/P02/fac74609221cb1045ac79a605d2577e7a905af36.json",
+      "handoff_sha256": "6fcdbecbe9c76e107d8227163c982ef370d655b08079fe400df3bcb17fdc2dd9",
+      "ending_commit": "fac74609221cb1045ac79a605d2577e7a905af36"
+    }
+  ],
+  "changed_paths": [
+    ".github/actions/setup-repository/action.yml",
+    ".github/workflows/ci-images.yml",
+    ".github/workflows/ci-infra.yml",
+    ".github/workflows/ci-merge.yml",
+    ".github/workflows/ci-pr.yml",
+    ".github/workflows/quality-evals.yml",
+    ".github/workflows/release-qualify.yml",
+    ".github/workflows/test-browser.yml",
+    ".github/workflows/test-chaos.yml",
+    "delivery/mvp/evidence/P03/acceptance/rubric-map.md",
+    "delivery/mvp/evidence/P03/commands/acceptance.md",
+    "delivery/mvp/evidence/P03/commands/clean-clone.json",
+    "delivery/mvp/evidence/P03/commands/preflight.md",
+    "delivery/mvp/evidence/P03/commands/runtime-profiles.md",
+    "delivery/mvp/evidence/P03/commands/supplemental.md",
+    "delivery/mvp/evidence/P03/handoff/cache-artifact-retention.md",
+    "delivery/mvp/evidence/P03/handoff/fixture-credentials-policy.md",
+    "delivery/mvp/evidence/P03/handoff/service-ports.md",
+    "delivery/mvp/evidence/P03/handoff/workflow-to-make-map.md",
+    "delivery/mvp/evidence/P03/manifests/hashes.json",
+    "delivery/mvp/evidence/P03/reviews/pre-close-review.md",
+    "delivery/mvp/evidence/P03/summary.md",
+    "infra/local/.env.example",
+    "infra/local/README.md",
+    "infra/local/bin/dev",
+    "infra/local/bin/stack",
+    "infra/local/compose.yml",
+    "infra/local/config/haproxy/agent.cfg",
+    "infra/local/config/haproxy/local.cfg",
+    "infra/local/config/haproxy/network.cfg",
+    "infra/local/config/haproxy/observability.cfg",
+    "infra/local/config/otel-collector.yaml",
+    "infra/local/fixtures/wiremock/allowed-egress/allowlisted-endpoint.json",
+    "infra/local/fixtures/wiremock/fake-bedrock/invoke-model.json",
+    "infra/local/fixtures/wiremock/fake-chat/post-message.json",
+    "infra/local/fixtures/wiremock/fake-tool-broker/invoke-tool.json",
+    "mk/packets/P03.mk",
+    "scripts/ci/clean_clone_rehearsal.py",
+    "scripts/ci/profile_guard.py",
+    "scripts/ci/run_gate.py",
+    "scripts/ci/secret_scan.py",
+    "scripts/ci/workflow_policy.py",
+    "test/support/ci/test_local_stack.py",
+    "test/support/ci/test_security_policy.py"
+  ],
+  "generated_paths": [
+    "delivery/mvp/evidence/P03/commands/clean-clone.json"
+  ],
+  "contract_versions": [
+    {
+      "name": "jumpship-deployment-profile-registry",
+      "version": "1.0.0",
+      "sha256": "22fe40ca1b510144e95e25fe716262a5f2069ceecc7f8f93fcc022e3546f0f90"
+    },
+    {
+      "name": "p03-local-compose",
+      "version": "1.0.0",
+      "sha256": "dbb24605f0e2bc140aa942a04794451e8cf6f54f1f592b002f04cc8c7edbadfa"
+    },
+    {
+      "name": "p03-profile-guard",
+      "version": "1.0.0",
+      "sha256": "6fa05a1ba19f6c7968f440cf28a86245d79a6aaa7888f6cdb97c28d284d6cb12"
+    },
+    {
+      "name": "p03-workflow-policy",
+      "version": "1.0.0",
+      "sha256": "cd1f85cba2268904ce366067e0cbb8205edaca9fa31f96a1c420052991a537f1"
+    }
+  ],
+  "commands": [
+    {
+      "command": "make dev-up test-unit test-contracts test-security dev-down",
+      "status": "pass",
+      "exit_code": 0,
+      "evidence_refs": [
+        "delivery/mvp/evidence/P03/commands/acceptance.md",
+        "delivery/mvp/evidence/P03/commands/runtime-profiles.md"
+      ],
+      "reason": "The exact P03 lifecycle, unit, contract, security, and teardown vector passed from the clean implementation/evidence commit; deterministic local fixtures reached readiness and teardown preserved only the six named volumes."
+    }
+  ],
+  "manual_gate_results": [],
+  "acceptance_contributions": [
+    {
+      "rubric_id": "JSMVP-R012",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P03/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P03/commands/acceptance.md",
+        "delivery/mvp/evidence/P03/manifests/hashes.json",
+        "delivery/mvp/evidence/P03/reviews/pre-close-review.md"
+      ],
+      "reason": "P03's local contribution pins every workflow action and local third-party image immutably, binds the P02 deployment registry, validates workflow policy, and uses the checksum-verified repository toolchain."
+    },
+    {
+      "rubric_id": "JSMVP-R013",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P03/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P03/commands/clean-clone.json",
+        "delivery/mvp/evidence/P03/commands/supplemental.md"
+      ],
+      "reason": "The binding clean-clone vector passed with isolated home, configuration, cache, and Docker configuration; no workstation credential or Docker authority was forwarded, and the sole host Compose executable was version/hash bound."
+    },
+    {
+      "rubric_id": "JSMVP-R062",
+      "status": "passed_local",
+      "evidence_refs": [
+        "delivery/mvp/evidence/P03/acceptance/rubric-map.md",
+        "delivery/mvp/evidence/P03/handoff/cache-artifact-retention.md",
+        "delivery/mvp/evidence/P03/handoff/workflow-to-make-map.md",
+        "delivery/mvp/evidence/P03/reviews/pre-close-review.md"
+      ],
+      "reason": "P03 supplies the pinned supply-chain workflow, redacted evidence handling, and exact P10 target handoff while preserving later image, staging, and production contributions as planned-not-evaluated."
+    }
+  ],
+  "capability_ids": [
+    "MVP-CAP-ARCH-TRUST-DOMAINS",
+    "MVP-CAP-NONCHOICES"
+  ],
+  "owner_continuity": {
+    "mode": "initial",
+    "prior_executor_id": null,
+    "new_executor_id": "codex:/root",
+    "reason": "Initial P03 execution from the accepted P01 and P02 integration checkpoint; no prior same-packet receipt exists and packet scope is unchanged.",
+    "source_receipt": null,
+    "dependency_receipts": [
+      {
+        "node_id": "P01",
+        "sha256": "a0303baf49f2e64d1bcc27374c015706d92807dde2c52924de3d938a6d6e9a53"
+      },
+      {
+        "node_id": "P02",
+        "sha256": "6fcdbecbe9c76e107d8227163c982ef370d655b08079fe400df3bcb17fdc2dd9"
+      }
+    ],
+    "scope_unchanged": true,
+    "approval": null
+  },
+  "scope_exceptions": [],
+  "evidence_refs": [
+    "delivery/mvp/evidence/P03/acceptance/rubric-map.md",
+    "delivery/mvp/evidence/P03/commands/acceptance.md",
+    "delivery/mvp/evidence/P03/commands/clean-clone.json",
+    "delivery/mvp/evidence/P03/commands/preflight.md",
+    "delivery/mvp/evidence/P03/commands/runtime-profiles.md",
+    "delivery/mvp/evidence/P03/commands/supplemental.md",
+    "delivery/mvp/evidence/P03/handoff/cache-artifact-retention.md",
+    "delivery/mvp/evidence/P03/handoff/fixture-credentials-policy.md",
+    "delivery/mvp/evidence/P03/handoff/service-ports.md",
+    "delivery/mvp/evidence/P03/handoff/workflow-to-make-map.md",
+    "delivery/mvp/evidence/P03/manifests/hashes.json",
+    "delivery/mvp/evidence/P03/reviews/pre-close-review.md",
+    "delivery/mvp/evidence/P03/summary.md"
+  ],
+  "external_evidence_refs": [],
+  "security_custody_impact": "P03 takes custody of no real credential, customer record, provider response, private key, cloud account, release signature, or deployment authority. It adds synthetic local credentials and deterministic provider-shaped fixtures only, denies fixture internet egress, isolates host ingress through fixed relays, redacts local telemetry and retained CI logs, rejects static cloud credentials before OIDC, and defines no cloud apply or deploy path.",
+  "skipped_checks": [],
+  "mocks": [
+    {
+      "name": "P03 synthetic local provider fixture suite",
+      "contract_sha256": "dbb24605f0e2bc140aa942a04794451e8cf6f54f1f592b002f04cc8c7edbadfa",
+      "expires_at_node": "P27",
+      "limitations": "The local Mongo/PostgreSQL/MinIO/Mailpit/Toxiproxy/WireMock/OpenTelemetry topology proves deterministic contracts and trust boundaries only; it does not represent a real AWS account, provider tenant, customer dataset, staging qualification, production profile, or manual approval."
+    }
+  ],
+  "defects": [],
+  "downstream_consumers": [
+    "P04",
+    "P05",
+    "P10",
+    "P22"
+  ],
+  "created_at": "2026-07-18T09:35:11Z"
+}
