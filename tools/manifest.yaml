@@ -208,25 +208,33 @@
       "license": "MIT",
       "purpose": "Generate typed PostgreSQL query adapters from reviewed SQL.",
       "source": "https://github.com/sqlc-dev/sqlc/releases/tag/v1.31.1",
-      "bootstrap": false,
-      "integrity": {
-      "kind": "release-assets",
-      "sha256": "847442bac115cc28859b65e49cf21859c736f0fd352a22614ceeed7fad9132e7",
-      "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_darwin_arm64.zip"
-    },
-    "activation": {
-      "status": "blocked",
-      "reason": "platform-integrity-incomplete",
-      "required_platforms": [
-        "darwin-amd64",
-        "darwin-arm64",
-        "linux-amd64",
-        "linux-arm64"
-      ],
-      "pinned_platforms": [
-        "darwin-arm64"
-      ]
-    }
+      "bootstrap": true,
+      "artifacts": {
+        "darwin-amd64": {
+          "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_darwin_amd64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "868248513715376ee6430c6e0cdd0a7e68ecb18ea7ea073d208e72c7c9480bcc"
+        },
+        "darwin-arm64": {
+          "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_darwin_arm64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "847442bac115cc28859b65e49cf21859c736f0fd352a22614ceeed7fad9132e7"
+        },
+        "linux-amd64": {
+          "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_linux_amd64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "d2d86390f06189f090ec651d9cb56e4181dc00edbcd7ef2e45bc8561c2d76e7d"
+        },
+        "linux-arm64": {
+          "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_linux_arm64.zip",
+          "archive": "zip",
+          "root": ".",
+          "sha256": "57f70cc1fc9308a3c58f60b2a271279c4caeae97b62fd4dc07536472857ad2eb"
+        }
+      }
     },
     {
       "name": "oapi-codegen",
