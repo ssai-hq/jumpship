@@ -202,7 +202,8 @@ class ToolchainPolicyTests(unittest.TestCase):
                 )
         self.assertEqual("dependency lock check", events[0])
         repaired = [event.removeprefix("repair:") for event in events if event.startswith("repair:")]
-        self.assertEqual(list(toolchain.BOOTSTRAP_NAMES), repaired)
+        records = toolchain._records(manifest)
+        self.assertEqual(list(toolchain._enabled_bootstrap_names(records)), repaired)
         self.assertLess(events.index("wrappers"), events.index("frozen pnpm install"))
         self.assertLess(events.index("frozen pnpm install"), events.index("final-check"))
 
@@ -630,11 +631,12 @@ class ToolchainPolicyTests(unittest.TestCase):
             manifest_path.write_bytes((ROOT / "tools" / "manifest.yaml").read_bytes())
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             records = toolchain._records(manifest)
+            enabled_names = toolchain._enabled_bootstrap_names(records)
             state = {
                 "manifest_id": manifest["manifest_id"],
                 "manifest_sha256": dependency_locks._digest_file(manifest_path),
                 "platform": toolchain._platform_key(),
-                "tools": {name: records[name]["version"] for name in toolchain.BOOTSTRAP_NAMES},
+                "tools": {name: records[name]["version"] for name in enabled_names},
             }
             (isolated_tools / "state.json").write_bytes(toolchain._canonical_bytes(state))
             outputs = {
@@ -644,9 +646,12 @@ class ToolchainPolicyTests(unittest.TestCase):
                 "tofu": "OpenTofu v1.11.0",
                 "golangci-lint": "golangci-lint has version 2.12.2",
                 "trivy": "Version: 0.72.0",
+                "sqlc": "v1.31.1",
             }
-            for name, output in outputs.items():
-                wrapper = isolated_bin / name
+            for name in enabled_names:
+                command = toolchain.EXPECTED_VERSIONS[name][0]
+                output = outputs[command]
+                wrapper = isolated_bin / command
                 wrapper.write_text(f"#!/bin/sh\nprintf '%s\\n' {output!r}\n", encoding="utf-8")
                 wrapper.chmod(0o755)
             (temporary_root / ".gitignore").write_text("build/\n", encoding="utf-8")
