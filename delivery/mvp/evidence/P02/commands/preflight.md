@@ -5,9 +5,9 @@ Verification date: `2026-07-18`
 The frozen planning baseline was checked before editing with:
 
 ```text
-scripts/planctl check --strict --target-repo /Users/avinier/ssai/codebase/jumpship
-scripts/planctl ready P02 --target-repo /Users/avinier/ssai/codebase/jumpship
-scripts/planctl packet P02 --format json --target-repo /Users/avinier/ssai/codebase/jumpship
+scripts/planctl check --strict --target-repo <target-repo>
+scripts/planctl ready P02 --target-repo <target-repo>
+scripts/planctl packet P02 --format json --target-repo <target-repo>
 ```
 
 Normalized result: strict planning validation passed and P02 dispatch readiness was `true` at clean integration commit `71e3d0de5f9c4b4d348ed61e255f76ed4d353a1d`.
