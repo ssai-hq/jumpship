@@ -125,6 +125,31 @@ class ToolchainPolicyTests(unittest.TestCase):
         errors = dependency_locks._manifest_errors(manifest)
         self.assertTrue(any("activation must remain blocked" in error for error in errors))
 
+    def test_complete_sqlc_artifacts_enable_optional_repository_bootstrap(self) -> None:
+        manifest = json.loads((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8"))
+        sqlc = next(item for item in manifest["tools"] if item["name"] == "sqlc")
+        sqlc["bootstrap"] = True
+        sqlc.pop("activation")
+        sqlc.pop("integrity")
+        sqlc["artifacts"] = {
+            platform_name: {
+                "url": f"https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc-{platform_name}.zip",
+                "archive": "zip",
+                "root": ".",
+                "sha256": str(index) * 64,
+            }
+            for index, platform_name in enumerate(sorted(dependency_locks.SUPPORTED_PLATFORMS), 1)
+        }
+        self.assertEqual([], dependency_locks._manifest_errors(manifest))
+        records = toolchain._records(manifest)
+        current_manifest = json.loads(
+            (ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8")
+        )
+        self.assertNotIn(
+            "sqlc", toolchain._enabled_bootstrap_names(toolchain._records(current_manifest))
+        )
+        self.assertIn("sqlc", toolchain._enabled_bootstrap_names(records))
+
     def test_toolchain_rejects_unsafe_version_path_atom(self) -> None:
         manifest = json.loads((ROOT / "tools" / "manifest.yaml").read_text(encoding="utf-8"))
         manifest["runtimes"][0]["version"] = "../../escape"

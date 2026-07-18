@@ -39,12 +39,14 @@ TOOLCHAINS_ROOT = TOOLS_ROOT / "_toolchains"
 CACHE_ROOT = TOOLS_ROOT / "cache"
 STATE_PATH = TOOLS_ROOT / "state.json"
 BOOTSTRAP_NAMES = ("go", "node", "pnpm", "opentofu", "golangci-lint", "trivy")
+OPTIONAL_BOOTSTRAP_NAMES = ("sqlc",)
 EXECUTABLE_PATHS = {
     "go": ("bin/go", "bin/gofmt"),
     "node": ("bin/node",),
     "opentofu": ("tofu",),
     "golangci-lint": ("golangci-lint",),
     "trivy": ("trivy",),
+    "sqlc": ("sqlc",),
 }
 EXPECTED_VERSIONS = {
     "go": ("go", ("version",), re.compile(r"\bgo1\.26\.5\b")),
@@ -57,6 +59,7 @@ EXPECTED_VERSIONS = {
         re.compile(r"\bversion 2\.12\.2\b"),
     ),
     "trivy": ("trivy", ("--version",), re.compile(r"\bVersion:\s*0\.72\.0\b")),
+    "sqlc": ("sqlc", ("version",), re.compile(r"^v1\.31\.1$")),
 }
 ALLOWED_DOWNLOAD_HOSTS = {
     "dl.google.com",
@@ -112,10 +115,18 @@ def _records(manifest: dict[str, Any]) -> dict[str, dict[str, Any]]:
                     f"tools manifest record {index} has unsafe {field} path atom: {value!r}"
                 )
     by_name = {record.get("name"): record for record in records}
-    missing = sorted(set(BOOTSTRAP_NAMES) - set(by_name))
+    required_names = set(BOOTSTRAP_NAMES) | set(OPTIONAL_BOOTSTRAP_NAMES)
+    missing = sorted(required_names - set(by_name))
     if missing:
         raise ToolchainError(f"tools manifest is missing bootstrap records: {missing}")
     return by_name
+
+
+def _enabled_bootstrap_names(records: dict[str, dict[str, Any]]) -> tuple[str, ...]:
+    optional = tuple(
+        name for name in OPTIONAL_BOOTSTRAP_NAMES if records[name].get("bootstrap") is True
+    )
+    return BOOTSTRAP_NAMES + optional
 
 
 def _platform_key() -> str:
@@ -468,7 +479,8 @@ def _write_wrapper(name: str, body: str) -> None:
 
 
 def _write_wrappers(records: dict[str, dict[str, Any]]) -> None:
-    versions = {name: records[name]["version"] for name in BOOTSTRAP_NAMES}
+    enabled_names = _enabled_bootstrap_names(records)
+    versions = {name: records[name]["version"] for name in enabled_names}
     prefix = 'REPO_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/../../.." && pwd)\n'
     go_root = f'$REPO_ROOT/build/tools/_toolchains/go/{versions["go"]}'
     node_root = f'$REPO_ROOT/build/tools/_toolchains/node/{versions["node"]}'
@@ -491,6 +503,13 @@ def _write_wrappers(records: dict[str, dict[str, Any]]) -> None:
     _write_wrapper("tofu", prefix + f'exec "{tofu_root}/tofu" "$@"\n')
     _write_wrapper("golangci-lint", prefix + f'exec "{lint_root}/golangci-lint" "$@"\n')
     _write_wrapper("trivy", prefix + f'exec "{trivy_root}/trivy" "$@"\n')
+    if "sqlc" in enabled_names:
+        sqlc_root = f'$REPO_ROOT/build/tools/_toolchains/sqlc/{versions["sqlc"]}'
+        _write_wrapper("sqlc", prefix + f'exec "{sqlc_root}/sqlc" "$@"\n')
+    else:
+        sqlc_wrapper = BIN_ROOT / "sqlc"
+        _assert_no_symlink_chain(ROOT, sqlc_wrapper)
+        sqlc_wrapper.unlink(missing_ok=True)
 
 
 def _tool_env() -> dict[str, str]:
@@ -535,9 +554,13 @@ def _version_output(command: str, args: tuple[str, ...], *, repo_local: bool) ->
     return output
 
 
-def verify_repo_toolchain() -> list[str]:
+def verify_repo_toolchain(
+    records: dict[str, dict[str, Any]] | None = None,
+) -> list[str]:
+    if records is None:
+        records = _records(_load_manifest())
     errors: list[str] = []
-    for name in BOOTSTRAP_NAMES:
+    for name in _enabled_bootstrap_names(records):
         command, args, expected = EXPECTED_VERSIONS[name]
         output = _version_output(command, args, repo_local=True)
         if output is None:
@@ -549,11 +572,12 @@ def verify_repo_toolchain() -> list[str]:
 
 def _state(manifest: dict[str, Any], platform_key: str) -> dict[str, Any]:
     records = _records(manifest)
+    enabled_names = _enabled_bootstrap_names(records)
     return {
         "manifest_id": manifest["manifest_id"],
         "manifest_sha256": _sha256(MANIFEST_PATH),
         "platform": platform_key,
-        "tools": {name: records[name]["version"] for name in BOOTSTRAP_NAMES},
+        "tools": {name: records[name]["version"] for name in enabled_names},
     }
 
 
@@ -573,6 +597,7 @@ def _run_bootstrap_command(
 def _check_unlocked() -> None:
     _preflight_mutable_paths()
     manifest = _load_manifest()
+    records = _records(manifest)
     expected_state = _state(manifest, _platform_key())
     try:
         observed_state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
@@ -580,7 +605,7 @@ def _check_unlocked() -> None:
         raise ToolchainError(f"repository-local bootstrap state is missing or invalid: {exc}") from exc
     if observed_state != expected_state:
         raise ToolchainError("repository-local bootstrap state does not match tools/manifest.yaml")
-    errors = verify_repo_toolchain()
+    errors = verify_repo_toolchain(records)
     if errors:
         raise ToolchainError("repository-local tool verification failed:\n- " + "\n- ".join(errors))
     print("toolchain-check: exact repository-local versions verified")
@@ -603,14 +628,14 @@ def _bootstrap_unlocked(
         command_env=command_env,
     )
     STATE_PATH.unlink(missing_ok=True)
-    for name in BOOTSTRAP_NAMES:
+    for name in _enabled_bootstrap_names(records):
         record = records[name]
         if record.get("bootstrap") is not True:
             raise ToolchainError(f"{name}: bootstrap record is not enabled")
         print(f"bootstrap: {name} {record['version']} ({platform_key})", flush=True)
         _install_record(record, platform_key, offline=offline, repair=repair)
     _write_wrappers(records)
-    errors = verify_repo_toolchain()
+    errors = verify_repo_toolchain(records)
     if errors:
         raise ToolchainError("repository-local tool verification failed:\n- " + "\n- ".join(errors))
     print(f"bootstrap: verified repository-local toolchain at {TOOLS_ROOT}")
@@ -657,14 +682,14 @@ def _doctor_unlocked() -> None:
         f"doctor: host prerequisites exact enough "
         f"(POSIX sh, Git, Make, Python {platform.python_version()})"
     )
-    repo_errors = verify_repo_toolchain()
+    repo_errors = verify_repo_toolchain(records)
     if repo_errors:
         print("doctor: repository-local toolchain needs bootstrap")
         for error in repo_errors:
             print(f"  warn: {error}")
     else:
         print("doctor: repository-local toolchain is exact")
-    for name in BOOTSTRAP_NAMES:
+    for name in _enabled_bootstrap_names(records):
         command, args, expected = EXPECTED_VERSIONS[name]
         output = _version_output(command, args, repo_local=False)
         desired = records[name]["version"]

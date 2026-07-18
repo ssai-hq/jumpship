@@ -71,12 +71,13 @@ can never cause an automatic status transition.
 The script validates the supplied approval record but never creates or implies
 an approval. It does not grant the requester ownership of root locks.
 
-The current `sqlc` and DuckDB declarations are provenance records, not an
-install-ready promise. Their only pinned executable artifact is
-`darwin-arm64`, so `tools/manifest.yaml` marks activation blocked until
-checksum-bound artifacts exist for all four supported platforms. Dependency
-apply rejects requests that try to activate either declaration while that gate
-remains. This is a handoff risk, not an external approval or a completed gate.
+Deferred binary declarations are provenance records, not an install-ready
+promise. `tools/manifest.yaml` marks a declaration activation-blocked while its
+checksum-bound artifacts do not cover all four supported platforms. Dependency
+apply rejects requests that try to activate a declaration while that gate
+remains. Once a steward-reviewed manifest supplies the complete platform set,
+the same serialized request may activate an explicitly supported optional
+repository-local tool. This is a supply-chain gate, not an implied approval.
 
 ## Review expectations
 
