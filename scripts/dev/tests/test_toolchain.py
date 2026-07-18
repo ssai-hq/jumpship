@@ -1235,6 +1235,22 @@ class ToolchainPolicyTests(unittest.TestCase):
         ):
             self.assertNotIn(forbidden, environment)
 
+    def test_clean_clone_resolves_docker_cli_by_content_hash_in_closed_environment(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            executable = Path(temporary) / "docker"
+            executable.write_text(
+                "#!/bin/sh\nprintf '%s\\n' 'Docker version 29.1.3, build fixture'\n",
+                encoding="utf-8",
+            )
+            executable.chmod(0o700)
+            with mock.patch.object(
+                clean_clone, "_docker_candidates", return_value=[executable]
+            ):
+                resolved, version, sha256 = clean_clone._resolve_docker_cli()
+            self.assertEqual(executable.resolve(), resolved)
+            self.assertEqual("Docker version 29.1.3, build fixture", version)
+            self.assertEqual(dependency_locks._digest_file(executable), sha256)
+
     def test_clean_clone_tail_redacts_temporary_absolute_paths(self) -> None:
         temporary_root = Path("/private/tmp/jumpship-clean-123")
         clone = temporary_root / "jumpship"
